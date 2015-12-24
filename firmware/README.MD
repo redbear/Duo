@@ -5,8 +5,14 @@
 
 http://dfu-util.sourceforge.net/
 
+For Windows and Linux, download the binary package.
 
-## Updating firmwre
+For OSX, use the command line to install:
+
+$ brew install dfu-util
+
+
+## Updating firmware
 
 Press and hold the SETUP button on the Duo and then press reset button, when the RGB LED shows Yellow and flashing, release the SETUP button.
 
@@ -22,4 +28,6 @@ $ dfu-util -d 2b04:d058 -a 0 -s 0x08040000 -D duo-system-part2.bin
 
 To update User-Part
 
-$ dfu-util -d 2b04:d058 -a 0 -s 0x08040000 -D duo-system-part2.bin
+$ dfu-util -d 2b04:d058 -a 0 -s 0x080C0000 -D duo-blink.bin
+
+After updating the firmware, press the reset button to run the new firmware.
