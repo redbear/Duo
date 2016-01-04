@@ -26,6 +26,10 @@ To update System-Part2
 
 $ dfu-util -d 2b04:d058 -a 0 -s 0x08040000 -D duo-system-part2.bin
 
+To update factory reset image
+
+$ dfu-util -d 2b04:d058 -a 2 -s 0x140000 -D duo-fac-tinker.bin
+
 To update User-Part
 
 $ dfu-util -d 2b04:d058 -a 0 -s 0x080C0000 -D duo-blink.bin
