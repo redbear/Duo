@@ -10,6 +10,7 @@ The Duo contains both Wi-Fi and BLE capabilities. This means your project 
 ## Features
 
 Duo:
+
     •	STMicroelectronics STM32F205 ARM Cortex-M3 @ 120 MHz, 128 KB SRAM, 1 MB Flash
     •	Broadcom BCM43438 Wi-Fi 802.11n (2.4GHz only) + Bluetooth 4.1 (Dual Mode) combo chip
       (With an upgrade path to Bluetooth 4.2)
@@ -22,6 +23,7 @@ Duo:
     •	20.5 mm x 39 mm
 
 RBLink:
+
     •	Running ST-LINK/V2
     •	USB-based JTAG debugger/programmer
     •	Two JTAG activity LEDs
