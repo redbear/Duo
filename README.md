@@ -13,45 +13,28 @@ With the Red Bear RBLink you can easily attach modules from the Seeed’s Gro
 
 Duo:
 
-  •	STMicroelectronics STM32F205 ARM Cortex-M3 @ 120 MHz, 128 KB SRAM, 1 MB Flash
-  
-  •	Broadcom BCM43438 Wi-Fi 802.11n (2.4GHz only) + Bluetooth 4.1 (Dual Mode) combo chip
-  
-    (With an upgrade path to Bluetooth 4.2)
-  
-  •	On-board 16 Mbit (2 MB) SPI Flash
-  
-  •	Signal chip antenna (option to connect ext. antenna)
-  
-  •	18 I/O pins, 1 user LED
-  
-  •	RGB status LED
-  
-  •	USB, 2 UART, JTAG, 2 SPI, I2C 
-  
-  •	Single-sided PCBA for easy mounting on other PCB
-  
-  •	20.5 mm x 39 mm
+    •	STMicroelectronics STM32F205 ARM Cortex-M3 @ 120 MHz, 128 KB SRAM, 1 MB Flash
+    •	Broadcom BCM43438 Wi-Fi 802.11n (2.4GHz only) + Bluetooth 4.1 (Dual Mode) combo chip
+      (With an upgrade path to Bluetooth 4.2)
+    •	On-board 16 Mbit (2 MB) SPI Flash
+    •	Signal chip antenna (option to connect ext. antenna)
+    •	18 I/O pins, 1 user LED
+    •	RGB status LED
+    •	USB, 2 UART, JTAG, 2 SPI, I2C 
+    •	Single-sided PCBA for easy mounting on other PCB
+    •	20.5 mm x 39 mm
 
 RBLink:
 
-  •	Running ST-LINK/V2
-  
-  •	USB-based JTAG debugger/programmer
-  
-  •	Two JTAG activity LEDs
-  
-  •	Apple MFi autetication coprosessor support (**MFi license is required)
-  
-  •	USB MSD interface – enabling programming the Duo by drag and drop of firmware file
-  
-  •	USB CDC Virtual Serial Port
-  
-  •	STM32 ST-LINK Uility software compatible
-  
-  •	8x Seeed Grove System compatible connectors
-  
-  •	53.5mm x 53.5mm
+    •	Running ST-LINK/V2
+    •	USB-based JTAG debugger/programmer
+    •	Two JTAG activity LEDs
+    •	Apple MFi autetication coprosessor support (**MFi license is required)
+    •	USB MSD interface – enabling programming the Duo by drag and drop of firmware file
+    •	USB CDC Virtual Serial Port
+    •	STM32 ST-LINK Uility software compatible
+    •	8x Seeed Grove System compatible connectors
+    •	53.5mm x 53.5mm
 
 ## Block Diagram
 
