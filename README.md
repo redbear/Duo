@@ -46,6 +46,11 @@ RBLink:
 
 ![image](docs/images/RBLink_Pinout.jpg)
 
+## Memory Map
+
+The Duo's memeory allocation is different from the Photon. The following diagram shows, the Duo has external flash memory while the Photon has not, the flash is for storing the WiFi firmware to be loaded to the BCM43438 chip during boot-up, thus, this design saves the internal flash memory, the sketch for loading the user partition can be up to 256 KB while the Photon has 128 KB for user application only.
+![image](docs/images/Duo_MemMap.png)
+
 ## Resources
 
 For details, please visit:
