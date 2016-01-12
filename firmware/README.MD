@@ -35,3 +35,21 @@ To update User-Part
 $ dfu-util -d 2b04:d058 -a 0 -s 0x080C0000 -D duo-blink.bin
 
 After updating the firmware, press the reset button to run the new firmware.
+
+
+## Version History
+
+0.2.1 (beta) - Work in progress.
+- Mass Production #1.
+- Bug fixes (mainly for Arduino upload sketch)
+- Added BLE APIs
+
+0.2.0
+- PP 2nd run (PP1).
+- Bug fixes.
+- Adds Bluetooth Uart for sending HCI commands.
+
+0.1.1
+- PP first run (PP0).
+- Initial public released version.
+
