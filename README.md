@@ -53,15 +53,19 @@ The Duo's memeory allocation is different from the Photon. The following diagram
 
 ## Resources
 
-For details, please visit:
+#### Product Page
 
-https://www.kickstarter.com/projects/1991736672/redbear-duo-a-small-and-powerful-wi-fi-ble-iot-boa
+http://redbear.cc/duo/
 
-For our beta tester, your board is version ES2. If you want to use Arduino IDE:
+#### Forum
+
+https://redbearlab.zendesk.com/forums/23098916-RedBear-Duo
+
+#### Program with Arduino IDE
 
 https://github.com/redbear/STM32-Arduino
 
-If you want to use Broadcom WICED SDK:
+#### Program with Broadcom WICED SDK
 
 https://github.com/redbear/WICED-SDK
 
