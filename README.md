@@ -1,7 +1,7 @@
 
 ## RedBear Duo
 
-The Red Bear Duo is a thumb-size development board designed to simplify the process of building Internet of Things (IoT) products. The Duo is software compatible with Broadcom WICED SDK and provides everything you need—Wi-Fi, BLE and a powerful Cloud backend, all in a compact form factor that makes it ideal for your first prototype, a finished product, and everything in between. 
+The [Red Bear Duo](http://www.redbear.cc/duo) is a thumb-size development board designed to simplify the process of building Internet of Things (IoT) products. The Duo is software compatible with Broadcom WICED SDK and provides everything you need—Wi-Fi, BLE and a powerful Cloud backend, all in a compact form factor that makes it ideal for your first prototype, a finished product, and everything in between. 
 
 The Duo contains both Wi-Fi and BLE capabilities. This means your project can communicate locally with Bluetooth enabled devices and can also connect to your local Wi-Fi network to interact with anything else on the web. The Duo is built around the Broadcom BCM43438, a Wi-Fi 802.11b/g/n plus Bluetooth 4.1 (Dual Mode) combined chipset. They share the same 2.4GHz antenna and can run at the same time. This gives you the flexibility to utilize the most suitable wireless technology(s) for your project.
 
@@ -42,6 +42,7 @@ The Duo supports Particle's Cloud and WebIDE and it works as same as the Photon 
 * Signal chip antenna (option to connect ext. antenna)
 * 18 I/O pins, 1 user LED
 * RGB status LED
+* RESET and SETUP buttons
 * USB, 2 UART, JTAG, 2 SPI, I2C 
 * Single-sided PCBA for easy mounting on other PCB
 * 20.5 mm x 39 mm
@@ -67,6 +68,15 @@ The Duo supports Particle's Cloud and WebIDE and it works as same as the Photon 
 ##### RBLink:
 
 ![image](docs/images/RBLink_Pinout.jpg)
+
+
+## Development Platforms
+
+The Duo is so flexible since it supports different development platforms. Now, you should define yourself, if you are interested in using Particle's WebIDE for online development or Arduino for offline development, you can continue reading this document.
+
+For professional developers (good at C language) who want to develop projects (e.g. HomeKit) using Broadcom's WICED SDK, the following sessions of this document are not useful and you can refer to our [WICED-SDK](https://github.com/redbear/WICED-SDK) repository directly.
+
+For Web developments who also want to do IoT project with the Duo, you can use our JavaScript interpreter for development (coming soon).
 
 
 ## Internals
@@ -103,21 +113,21 @@ System Part 2 performs a lot of tasks, firstly, it checks the WiFi firmware stor
 When everything are ready, it pass the control to the user partition (your own firmware), ```setup()``` and ```loop()```.
 
 
-## RGB LED, USER Button & USB
+## RGB LED, SETUP Button & USB
 
 #### RGB LED
 
 The bootloader makes use of the onboard RGB LED as a status indicator. When you are pressing and holding the SETUP button and then pressing the reset button (still holding the SETUP button), the Duo will enter to the bootloader for an user action, releasing the SETUP button when the LED is in one of the following state:
 
-* Yellow Flashing	: DFU Mode 
-* Green Flashing	: Factory Reset Mode (not clear the WiFi credentials in DCT)
-* White Flashing	: Factory Reset Mode (copy factory reset image to the user partition and clear the WiFi credential in DCT).
+* [Yellow Flashing](docs/images/Duo-Yellow.gif)	: DFU Mode 
+* [Green Flashing](docs/images/Duo-Green.gif)	: Factory Reset Mode (not clear the WiFi credentials in DCT)
+* [White Flashing](docs/images/Duo-White.gif)	: Factory Reset Mode (copy factory reset image to the user partition and clear the WiFi credential in DCT).
 
 If you need to use the [DFU](docs/dfu.md) to deploy your user-part firmware, read [firmware](firmware/README.md) page for details.
 
-#### USER Button
+#### SETUP Button
 
-When the Duo is running, at any time, you can press and hold the USER button for 3 seconds to enter the WiFi Provisioning mode, the RGB in flashing blue.
+When the Duo is running, at any time, you can press and hold the SETUP button for 3 seconds to enter the WiFi Provisioning mode, the RGB in [flashing blue](docs/images/Duo-Blue.gif).
 
 #### USB
 
@@ -138,7 +148,7 @@ The onboard USB provides two functions, DFU and CDC. DFU is for Device Firmware 
 
 1. System stop function with user firmware runs BLE in firmware v0.2.1
 
-	Symptom: when the user-partion firmware compiled with BLE library, during the runtime, if you want to do WiFi provisioning again (i.e. press USER button for 3 seconds), the Duo will stop working.
+	Symptom: when the user-partion firmware compiled with BLE library, during the runtime, if you want to do WiFi provisioning again (i.e. press SETUP button for 3 seconds), the Duo will stop working.
 
 	Workaround: enter to the bootloader with white LED flashing, then it will load the factory reset firmware from the external memory to the user partition, clear the WiFi settings and reset to run the WiFi provisioning itself. After that, you need to reload your own user firmware again.
 
@@ -155,9 +165,11 @@ The onboard USB provides two functions, DFU and CDC. DFU is for Device Firmware 
 
 * [[4] Particle Forum](https://community.particle.io)
 
-* [[5] Program with Arduino IDE](https://github.com/redbear/STM32-Arduino)
+* [[5] BTstack](https://github.com/bluekitchen/btstack)
 
-* [[6] Program with Broadcom WICED SDK](https://github.com/redbear/WICED-SDK)
+* [[6] Program with Arduino IDE](https://github.com/redbear/STM32-Arduino)
+
+* [[7] Program with Broadcom WICED SDK](https://github.com/redbear/WICED-SDK)
 
 
 ## License
