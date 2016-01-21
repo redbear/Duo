@@ -34,7 +34,7 @@ The Duo supports Particle's Cloud and WebIDE and it works as same as the Photon 
 
 ## Hardware
 
-#### Duo:
+#### Duo
 
 * STMicroelectronics STM32F205 ARM Cortex-M3 @ 120 MHz, 128 KB SRAM, 1 MB Flash
 * Broadcom BCM43438 Wi-Fi 802.11n (2.4GHz only) + Bluetooth 4.1 (Dual Mode) combo chip (With an upgrade path to Bluetooth 4.2)
@@ -46,7 +46,7 @@ The Duo supports Particle's Cloud and WebIDE and it works as same as the Photon 
 * Single-sided PCBA for easy mounting on other PCB
 * 20.5 mm x 39 mm
 
-#### RBLink:
+#### RBLink
 
 * Running ST-LINK/V2
 * USB-based JTAG debugger/programmer
@@ -126,12 +126,12 @@ The onboard USB provides two functions, DFU and CDC. DFU is for Device Firmware 
 
 ## Documentation
 
-* ##### [Getting Started](docs/getting_started.md)
-* ##### [DFU](docs/dfu.md)
-* ##### [Windows Driver](docs/driver.md)
-* ##### [WebIDE](docs/web_ide.md)
-* ##### [Arduino](https://github.com/redbear/STM32-Arduino)
-* ##### [WICED SDK](https://github.com/redbear/WICED-SDK)
+* [Getting Started](docs/getting_started.md)
+* [DFU](docs/dfu.md)
+* [Windows Driver](docs/driver.md)
+* [WebIDE](docs/web_ide.md)
+* [Arduino](https://github.com/redbear/STM32-Arduino)
+* [WICED SDK](https://github.com/redbear/WICED-SDK)
 
 
 ## Known Issues
@@ -147,29 +147,17 @@ The onboard USB provides two functions, DFU and CDC. DFU is for Device Firmware 
 	 
 ## Resources
 
-#### [[1] Product Page](http://redbear.cc/duo/)
+* [[1] Product Page](http://redbear.cc/duo/)
 
-http://redbear.cc/duo/
+* [[2] Duo Firmware Source](https://github.com/redbear/firmware)
 
-#### [[2] Duo Firmware Source](https://github.com/redbear/firmware)
+* [[3] RedBear Duo Forum](https://redbearlab.zendesk.com/forums/23098916-RedBear-Duo)
 
-https://github.com/redbear/firmware
+* [[4] Particle Forum](https://community.particle.io)
 
-#### [[3] RedBear Duo Forum](https://redbearlab.zendesk.com/forums/23098916-RedBear-Duo)
+* [[5] Program with Arduino IDE](https://github.com/redbear/STM32-Arduino)
 
-https://redbearlab.zendesk.com/forums/23098916-RedBear-Duo
-
-#### [[4] Particle Forum](https://community.particle.io)
-
-https://community.particle.io
-
-#### [[5] Program with Arduino IDE](https://github.com/redbear/STM32-Arduino)
-
-https://github.com/redbear/STM32-Arduino
-
-#### [[6] Program with Broadcom WICED SDK](https://github.com/redbear/WICED-SDK)
-
-https://github.com/redbear/WICED-SDK
+* [[6] Program with Broadcom WICED SDK](https://github.com/redbear/WICED-SDK)
 
 
 ## License
