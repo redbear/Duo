@@ -3,13 +3,7 @@
 
 ## Install DFU-UTIL
 
-http://dfu-util.sourceforge.net/
-
-For Windows and Linux, download the binary package.
-
-For OSX, use the command line to install:
-
-$ brew install dfu-util
+* [DFU Installation Guide](../docs/dfu.md)
 
 
 ## Updating Main Firmware
