@@ -4,11 +4,10 @@ Congratulations on being the owner of a brand new [RedBear Duo](http://www.redbe
 
 ![image](images/RBDuo-L.png)
 
-This getting started guide will show you how to use the RedBear Duo IoT development board quickily. There are three topics:
+This getting started guide will show you how to use the RedBear Duo IoT development board quickily. There are two topics:
 
 1. Out of the box test
-2. Connect the board to the Internet
-3. Develop an application using WebIDE or Arduino IDE.
+2. Develop an application using WebIDE or Arduino IDE.
 
 
 ## Prerequisites for Setup
@@ -37,7 +36,6 @@ For Windows, you also need the following software tools:
 
 
 ## Out of the Box Test
----
 
 #### 1. Power-Up the Duo
 
@@ -164,13 +162,16 @@ To be written.
 
 To be written.
 
-#### 8. WebIDE
+
+## WebIDE
 
 To be written.
 
-#### 9. Arduino IDE
+
+## Arduino IDE
 
 Follow [this](https://github.com/redbear/STM32-Arduino) to use Arudino IDE for programming.
 
----
+## 
+
 Copyright (c) 2016 Red Bear, All Rights Reserved.

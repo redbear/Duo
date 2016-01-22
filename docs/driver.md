@@ -1,5 +1,5 @@
 
-## Driver Setup
+## Windows Driver Installation Guide
 
 * Note 1: the driver is required for Windows only.
 

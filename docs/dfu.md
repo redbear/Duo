@@ -3,7 +3,7 @@
 
 [dfu-util](http://dfu-util.sourceforge.net/) is a tool for Device Firmware Upgrade to the Duo via the USB port.
 
-### Enter DFU Mode
+## Enter DFU Mode
 
 * Connect the Duo to your computer via the USB port.
 
@@ -12,7 +12,7 @@
 	![image](images/Duo-Yellow.gif) 
 
 
-### Windows
+## Windows
 
 * To use dfu-util, you need to download an USB library driver for the Duo, we make use of [Zadig](http://zadig.akeo.ie/) to install quickily. There is an [usage guide](https://github.com/pbatard/libwdi/wiki/Zadig) provided.
 
@@ -33,7 +33,7 @@
 	![image](images/DFU.png)
 
 
-### OSX
+## OSX
 
 * Install [brew](http://brew.sh/) or start the Terminal to install it directly:
 
@@ -44,14 +44,14 @@
 		$ brew install dfu-util
 
 
-### Linux
+## Linux
 
 * Download the [dfu-util](http://dfu-util.sourceforge.net/releases/dfu-util-0.8-binaries/linux-i386/).
 	
 * Suggest you to put the dfu-util.exe to your downloaded Duo firmware folder.
 
 
-### Check Version
+## Check Version
 
 * Type in command line box:
 		
