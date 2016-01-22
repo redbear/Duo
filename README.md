@@ -76,7 +76,7 @@ The Duo is so flexible since it supports different development platforms. Now, y
 
 For professional developers (good at C language) who want to develop projects (e.g. HomeKit) using Broadcom's WICED SDK, the following sessions of this document are not useful and you can refer to our [WICED-SDK](https://github.com/redbear/WICED-SDK) repository directly.
 
-For Web developments who also want to do IoT project with the Duo, you can use our JavaScript interpreter for development (coming soon).
+For Web developments who also want to do IoT project with the Duo, you can use our JavaScript interpreter for development (still work in progress and coming soon).
 
 
 ## Internals
@@ -90,7 +90,7 @@ Bootloader and system firmware are stored in the internal flash memory, the sour
 
 #### Bootloader
 
-The Duo MCU boots from the internal memory adress 0x08000000, it means the bootloader will be started. The bootloader keeps track of the firmwares and provides functions for burning firmwares via the USB port. If it has nothing to do during the boot time, it will pass the control to system part 1.
+The Duo MCU boots from the internal memory adress 0x08000000, it means the bootloader will be started. The bootloader keeps track of the firmwares and provides functions for burning firmwares via the USB port (e.g. DFU Mode). If it has nothing to do during the boot time, it will pass the control to system part 1.
 
 #### DCT 1 & 2
 
@@ -121,7 +121,7 @@ The bootloader makes use of the onboard RGB LED as a status indicator. When you 
 
 * [Yellow Flashing](docs/images/Duo-Yellow.gif)	: DFU Mode 
 * [Green Flashing](docs/images/Duo-Green.gif)	: Factory Reset Mode (not clear the WiFi credentials in DCT)
-* [White Flashing](docs/images/Duo-White.gif)	: Factory Reset Mode (copy factory reset image to the user partition and clear the WiFi credential in DCT).
+* [White Flashing](docs/images/Duo-White.gif)	: Factory Reset Mode (copy factory reset image from the external flash to the user partition and clear the WiFi credential in DCT).
 
 If you need to use the [DFU](docs/dfu.md) to deploy your user-part firmware, read [firmware](firmware/README.md) page for details.
 
@@ -131,7 +131,7 @@ When the Duo is running, at any time, you can press and hold the SETUP button fo
 
 #### USB
 
-The onboard USB provides two functions, DFU and CDC. DFU is for Device Firmware Upgrade, CDC is for Serial comunication to PC so that you can print out debug messages. 
+The onboard USB provides two functions, DFU and CDC. DFU is for Device Firmware Upgrade, CDC is for Serial comunication to PC so that you can print out debug messages, e.g. ```Serial.println("Test")```. 
 
 
 ## Documentation

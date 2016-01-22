@@ -1,6 +1,5 @@
 
-# Driver Setup
----
+## Driver Setup
 
 * Note 1: the driver is required for Windows only.
 
