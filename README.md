@@ -110,6 +110,8 @@ Basically, there is no code to be run in partition 1 and it just passes the cont
 
 System Part 2 performs a lot of tasks, firstly, it checks the WiFi firmware stored in the external flash and load it into the AP6216A module (BCM43438 chip). Then it will start BLE and WiFi for doing WiFi provisioning if it has not connected before, otherwise, it will try to associate to a known Wireless Acess Point (e.g. home router). Finally, it will connect to the Particle cloud as well. 
 
+The partition 2 firmware has a copy of bootloader, if it found the bootloader version is lower than the copy, then it will update the bootloader automatically.
+
 When everything are ready, it pass the control to the user partition (your own firmware), ```setup()``` and ```loop()```.
 
 
@@ -121,7 +123,7 @@ The bootloader makes use of the onboard RGB LED as a status indicator. When you 
 
 * [Yellow Flashing](docs/images/Duo-Yellow.gif)	: DFU Mode 
 * [Green Flashing](docs/images/Duo-Green.gif)	: Factory Reset Mode (not clear the WiFi credentials in DCT)
-* [White Flashing](docs/images/Duo-White.gif)	: Factory Reset Mode (copy factory reset image from the external flash to the user partition and clear the WiFi credential in DCT).
+* [White Flashing](docs/images/Duo-White.gif)	: Factory Reset Mode (copy factory reset image from the external flash to the user partition and clear the WiFi credentials in DCT).
 
 If you need to use the [DFU](docs/dfu.md) to deploy your user-part firmware, read [firmware](firmware/README.md) page for details.
 

@@ -1,4 +1,4 @@
-# Firmware
+# Firmware Management
 
 
 ## Install DFU-UTIL

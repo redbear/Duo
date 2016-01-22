@@ -87,7 +87,9 @@ For Windows, you also need the following software tools:
 			system firmware version: 0.1.1
 
 			Your device id is 200027FFFc473530FFF23637
-#### 5. Updating Firmware
+
+	* Note: after using the 'screen' command, type 'reset' to clear the screen.
+	#### 5. Updating Firmware
 * Follow this [DFU](dfu.md installation guide) to install the 'dfu-util' tool.
 
 * Download the zipped Duo firmware (latest version) and unzip it to a folder.
