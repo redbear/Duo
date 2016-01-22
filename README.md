@@ -127,7 +127,7 @@ If you need to use the [DFU](docs/dfu.md) to deploy your user-part firmware, rea
 
 #### SETUP Button
 
-When the Duo is running, at any time, you can press and hold the SETUP button for 3 seconds to enter the WiFi Provisioning mode, the RGB in [flashing blue](docs/images/Duo-Blue.gif).
+When the Duo is running, at any time, you can press and hold the SETUP button for 3 seconds to enter the 'Listening Mode', the RGB in [flashing blue](docs/images/Duo-Blue.gif) for doing WiFi provisioning. For details, read [getting started guide](docs/getting_started.md).
 
 #### USB
 

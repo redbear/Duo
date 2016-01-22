@@ -41,7 +41,7 @@ For Windows, you also need the following software tools:
 
 * Connect the Duo to your PC via the USB port with a micro USB cable.
 
-* The RGB LED will show Blue in color and keep flashing.
+* The RGB LED will show Blue in color and keep flashing (i.e. Listening Mode).
 
 	![image](images/Duo-Blue.gif)
 
@@ -154,18 +154,110 @@ For Windows, you also need the following software tools:
 
 * For more details about the Duo firmware, refer to the [Firmware](../firmware/README.md) folder.
 
+* Now, please write down the device ID, it is required to do registration on Particle website in order to use their Cloud service and online Web IDE for firmware development.
+
 #### 6. Setup WiFi
 
-To be written.
+* Assume you are still in the 'Listening Mode' (i.e. RGB LED in [flashing blue](images/Duo-Blue.gif))
+
+* Connect to the Duo using 'PuTTY' tool or 'screen' command.
+
+* Type 'w', it will ask you to enter the SSID, Security type and password to associate to your AP (or your Internet router).
+
+* Sample input and output:
+
+		system firmware version: 0.2.1
+
+		Your device id is 200027000c47353033323637
+		SSID: AP-01
+		Security 0=unsecured, 1=WEP, 2=WPA, 3=WPA2: 3
+		Password: YOUR_PIN_ONLY_YOU_KNOW
+		Thanks! Wait while I save those credentials...
+
+		Awesome. Now we'll connect!
+
+		If you see a pulsing cyan light, your device
+		has connected to the Cloud and is ready to go!
+
+		If your LED flashes red or you encounter any other problems,
+		visit https://www.particle.io/support to debug.
+
+	    Particle <3 you!
+
+* If everything is ready, it will try to connect your AP and the RGB will flash in Green and then change to Cyan. RGB Color Status:
+		
+		Flashing Green	: Try to connect the AP you entered.
+		Breathing Green	: Connected to the AP.
+		Flashing Cyan	: Trying to connect to the Particle Cloud.
+		Breathing Cyan	: Connected to the Cloud.
 
 #### 7. Testing
 
-To be written.
+* Now, you can test the board. The user part firmware is a Web Server and there a mDNS service running.
+
+* Reset your board and then use 'PuTTY' or 'screen' to connect it.
+
+* The [WebServer Firmware](https://github.com/redbear/STM32-Arduino/blob/master/arduino/libraries/RedBear_Duo/examples/01.Basics/Duo_WebServer/Duo_WebServer.ino) will ask your router for an IP address via DHCP and it will show the following message to the USB CDC (serial) port:
+
+		Arduino sketch started.
+
+		Note: If your Duo hasn't stored a valid WiFi profile, it will enter the listening mode for provisioning first.
+
+		Waiting for an IP address...
+
+		Duo's web server IP Address: 192.168.1.11 
+ 
+		Make sure your smart device acting as web client is connecting to the same AP as Duo.
+		Then open the web browser on your smart device and enter the Duo's web server IP address.
+ 
+		setService
+		mdns.begin
+		mdns/setup success
+
+* Try to use a Web Browser (e.g. Safari or Chrome) to browse the Web Server. If your browser support mDNS, you can just type 'duo.local' as the URL. Otherwisw, type 'http://192.168.1.11' as an example.
+
+	* Note: this is a sample IP address, it should be your own IP address displayed in the 'PuTTY' or 'screen'.
+	
+	![image](images/Web.png)
+
+* Press the 'HIGH' or 'LOW' button to see any effect on your Duo's blue LED.
 
 
 ## WebIDE
 
-To be written.
+* Make sure you are connected to the Cloud (RGB in breathing cyan).
+
+* From you PC, start a Web Browser, navigate to [Particle](https://build.particle.io) build website.
+
+* Create a Particle account if you do not have one.
+
+* Bottom left corner, there is an icon - Devices, click it
+
+	![image](images/Devices.png)
+
+* And then press 'ADD NEW DEVICE'.
+
+	![image](images/AddDevice.png)
+	
+* Enter your device ID to the box to claim your Duo.
+
+	![image](images/ClaimDevice.png)
+
+* Give a name to your Duo and then press the 'save' button.
+
+	![image](images/ClaimDevice.png)
+	
+* Your Duo will be listed in 'Other Devices', refresh the whole page, you will see it correctly. The cyan dot means it is online.
+
+	![image](images/DoneDevice.png)
+
+* Now, try to load the Blink example and flash it to your Duo over the Cloud.
+
+	![image](images/ExampleBlink.png)
+	
+	![image](images/FlashBlink.png)
+
+* Great job! Finally, you can start your own innovative projects!
 
 
 ## Arduino IDE
