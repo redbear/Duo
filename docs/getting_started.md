@@ -245,7 +245,7 @@ For Windows, you also need the following software tools:
 
 * Give a name to your Duo and then press the 'save' button.
 
-	![image](images/ClaimDevice.png)
+	![image](images/NameDevice.png)
 	
 * Your Duo will be listed in 'Other Devices', refresh the whole page, you will see it correctly. The cyan dot means it is online.
 
