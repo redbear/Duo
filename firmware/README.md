@@ -1,9 +1,25 @@
-# Firmware Management
+# Firmware Management Guide
+
+
+## Prerequisites
+
+* Read the Duo system overview [here](../README.md).
 
 
 ## Install DFU-UTIL
 
+To manage firmwares for the Duo, you need to use DFU utility.
+
 * [DFU Installation Guide](../docs/dfu.md)
+
+
+## Bootloader
+
+The bootloader cannot be updated using dfu-util, instead, it will be updated by the partition 2 firmware.
+
+The partition 2 has a copy of bootloader, if it found the bootloader version is lower then the copy, it will update the bootloader partition actomatically.
+
+If you have removed the bootloader with other code (or maybe other bootloader for the ST F205 MCU), you can reload the Duo bootloader by using the RBLink. If you do not have a RBLink, you can use JLink, STLink, FTDI or other flash programmer, but here we will just support using the RBLink.
 
 
 ## Updating Main Firmware

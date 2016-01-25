@@ -45,7 +45,9 @@ The Duo supports Particle's Cloud and WebIDE and it works as same as the Photon 
 * RESET and SETUP buttons
 * USB, 2 UART, JTAG, 2 SPI, I2C 
 * Single-sided PCBA for easy mounting on other PCB
+* Operating voltage is 3.3v
 * 20.5 mm x 39 mm
+* [Schematic](schematic/) is provided
 
 #### RBLink
 

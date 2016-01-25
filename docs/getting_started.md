@@ -23,7 +23,7 @@ You need to prepare the following hardware items:
 
 Software items:
 	
-1. [dfu-til](http://dfu-util.sourceforge.net/)
+1. [dfu-util](http://dfu-util.sourceforge.net/)
 2. Latest Duo Firmware
 	* https://github.com/redbear/Duo/raw/master/firmware/
 	 
@@ -72,11 +72,21 @@ For Windows, you also need the following software tools:
 		
 		![image](images/Terminal.png)
 	
+	* Note: on Linux (e.g. Ubuntu), you may need to install screen by '$ sudo apt-get install screen'.
+	
 	* Type:
 	
-			$ screen /dev/tty.usbmodemXXXXX
+			For OSX:
+			
+				$ screen /dev/tty.usbmodemXXXXX
 		
-			where XXXXX is your Duo device serial port.
+				where XXXXX is your Duo device serial port.
+			
+			For Linux:
+			
+				$ screen /dev/tty.ACMX
+			
+				where ACMX is your Duo device serial port.
 	
 	* Press 'v' to the terminal screen, you will see the firmware version.
 	
