@@ -37,7 +37,7 @@ The Duo supports Particle's Cloud and WebIDE and it works as same as the Photon 
 #### Duo
 
 * STMicroelectronics STM32F205 ARM Cortex-M3 @ 120 MHz, 128 KB SRAM, 1 MB Flash
-* Broadcom BCM43438 Wi-Fi 802.11n (2.4GHz only) + Bluetooth 4.1 (Dual Mode) combo chip (With an upgrade path to Bluetooth 4.2)
+* AMPAK AP6212A (Broadcom BCM43438 chip), Wi-Fi 802.11n (2.4 GHz only) + Bluetooth 4.1 (Dual Mode) combo module (With an upgrade path to Bluetooth 4.2)
 * On-board 16 Mbit (2 MB) SPI Flash
 * Signal chip antenna (option to connect ext. antenna)
 * 18 I/O pins, 1 user LED
@@ -76,7 +76,7 @@ The Duo supports Particle's Cloud and WebIDE and it works as same as the Photon 
 
 The Duo is so flexible since it supports different development platforms. Now, you should define yourself, if you are interested in using Particle's WebIDE for online development or Arduino for offline development, you can continue reading this document.
 
-For professional developers (good at C language) who want to develop projects (e.g. HomeKit) using Broadcom's WICED SDK, the following sessions of this document are not useful and you can refer to our [WICED-SDK](https://github.com/redbear/WICED-SDK) repository directly.
+For professional developers (good at C language) who want to develop projects (e.g. HomeKit) using Broadcom's WICED SDK, the following sections of this document are not useful and you can refer to our [WICED-SDK](https://github.com/redbear/WICED-SDK) repository directly.
 
 For Web developments who also want to do IoT project with the Duo, you can use our JavaScript interpreter for development (still work in progress and coming soon).
 

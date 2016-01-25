@@ -4,7 +4,7 @@ Congratulations on being the owner of a brand new [RedBear Duo](http://www.redbe
 
 ![image](images/RBDuo-L.png)
 
-This getting started guide will show you how to use the RedBear Duo IoT development board quickily. There are two topics:
+This getting started guide will show you how to use the RedBear Duo IoT development board quickily. There are two sections:
 
 1. Out of the box test
 2. Develop an application using WebIDE or Arduino IDE.
@@ -106,7 +106,7 @@ For Windows, you also need the following software tools:
 	
 	* https://github.com/redbear/Duo/raw/master/firmware/
 	
-	* e.g. v0.2.1, [browse](https://github.com/redbear/Duo/raw/master/firmware/v0.2.1) the firmware folder or [click there](https://github.com/redbear/Duo/raw/master/firmware/v0.2.1/duo_fw_v0.2.1-dfu.zip) to direct download directly.
+	* e.g. v0.2.1, [browse](https://github.com/redbear/Duo/raw/master/firmware/v0.2.1) the firmware folder or [click here](https://github.com/redbear/Duo/raw/master/firmware/v0.2.1/duo_fw_v0.2.1_dfu.zip) to download directly.
 	
 * Start the Command Prompt (Windows) or Terminal (OSX)
 	
