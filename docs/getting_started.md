@@ -92,9 +92,11 @@ For Windows, you also need the following software tools:
 	#### 5. Updating Firmware
 * Follow this [DFU](dfu.md installation guide) to install the 'dfu-util' tool.
 
-* Download the zipped Duo firmware (latest version) and unzip it to a folder.
+* Download the zipped Duo firmware (latest version) for DFU with '_dfu' ending in the filename and unzip it to a folder.
 	
 	* https://github.com/redbear/Duo/raw/master/firmware/
+	
+	* e.g. v0.2.1, [browse](https://github.com/redbear/Duo/raw/master/firmware/v0.2.1) the firmware folder or [click there](https://github.com/redbear/Duo/raw/master/firmware/v0.2.1/duo_fw_v0.2.1-dfu.zip) to direct download directly.
 	
 * Start the Command Prompt (Windows) or Terminal (OSX)
 	

@@ -23,7 +23,7 @@ $ dfu-util -d 2b04:d058 -a 0 -s 0x08040000 -D duo-system-part2.bin
 
 ## Clearing DCT
 
-To clear the DCT to factory one:
+If you want to clear the DCT to factory default (e.g. remove WiFi credentials):
   
 $ dfu-util -d 2b04:d058 -a 0 -s 0x08004000 -D duo-dct.bin
 
@@ -44,7 +44,7 @@ $ dfu-util -d 2b04:d058 -a 0 -s 0x080C0000 -D duo-user-part.bin
 
 ## Dumping Firmware
 
-You can dump the firmware to your computer, for example to dump the DCT to a file (duo-dct-dup.bin):
+You can dump the firmware to your computer, for example, to dump the DCT to a file (duo-dct-dup.bin):
 
 $ dfu-util -d 2b04:d058 -a 0 -s 0x08004000 -U duo-dct-dump.bin
 
