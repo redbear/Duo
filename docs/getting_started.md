@@ -195,6 +195,8 @@ For Windows, you also need the following software tools:
 		Flashing Cyan	: Trying to connect to the Particle Cloud.
 		Breathing Cyan	: Connected to the Cloud.
 
+* If you have made the input incorrectly, you can press the 'SETUP' button for 3 seconds (you will see the RGB in blue color) at anytime to start the 'Listening Mode' again.
+
 #### 7. Testing
 
 * Now, you can test the board. The user part firmware is a Web Server and there a mDNS service running.
