@@ -118,7 +118,7 @@ You can use bootloader DFU or the RBLink to update the Duo firmware.
 ###### DFU Mode:
 * Follow this [DFU](dfu.md installation guide) to install the 'dfu-util' tool.
 
-* Download the zipped Duo firmware (latest version) for DFU with '_dfu' ending in the filename and unzip it to a folder.
+* Download the zipped Duo firmware (latest version) for DFU with `'_dfu'` ending in the filename and unzip it to a folder.
 	
 	* https://github.com/redbear/Duo/raw/master/firmware/
 	
@@ -185,7 +185,7 @@ You can use bootloader DFU or the RBLink to update the Duo firmware.
 * Connect the `RBLink USB port` to your PC using a micro USB cable.
 	* Note: not the Duo USB port this time
 
-* Download the zipped Duo firmware (latest version) for DFU with '_rblink' ending in the filename and unzip it to a folder.
+* Download the zipped Duo firmware (latest version) for RBLink with `'_rblink'` ending in the filename and unzip it to a folder.
 	
 	* https://github.com/redbear/Duo/raw/master/firmware/
 	
@@ -256,11 +256,11 @@ You can use bootloader DFU or the RBLink to update the Duo firmware.
 
 #### 8. Testing
 
-* Now, you can test the board. The user part firmware is a Web Server and there a mDNS service running.
+* Now, you can test the board. The user part firmware is a Web Server and there is a mDNS service running.
 
 * Reset your board and then use 'PuTTY' or 'screen' to connect it.
 
-* The [WebServer Firmware](https://github.com/redbear/STM32-Arduino/blob/master/arduino/libraries/RedBear_Duo/examples/01.Basics/Duo_WebServer/Duo_WebServer.ino) will ask your router for an IP address via DHCP and it will show the following message to the USB CDC (serial) port:
+* The [WebServer Firmware](https://github.com/redbear/STM32-Arduino/blob/master/arduino/libraries/RedBear_Duo/examples/01.Basics/Duo_WebServer/Duo_WebServer.ino) will wait your router for an IP address to be assigned via DHCP and it will show the following message to the USB CDC (serial) port:
 
 		Arduino sketch started.
 
