@@ -6,33 +6,45 @@ Congratulations on being the owner of a brand new [RedBear Duo](http://www.redbe
 
 This getting started guide will show you how to use the RedBear Duo IoT development board quickily. There are two sections:
 
-1. Out of the box test
-2. Develop an application using WebIDE or Arduino IDE.
+* Out of the box test
+	* Checking firmware version
+	* Checking device ID
+	* Updating firmware
+	* Assocaiting to an Access Point (AP) or Internet router
+	
+* Develop an application using WebIDE or Arduino IDE.
 
 
 ## Prerequisites for Setup
 
 You need to prepare the following hardware items:
 
-1. PC with Windows, Linux (e.g. Ubuntu) or Mac with OSX
+* PC with Windows, Linux (e.g. Ubuntu) or Mac with OSX
 	* Tested on: Windows 10, OSX 10.11
-2. Access Point (e.g. an Internet router at your home).
+	
+* Access Point (e.g. an Internet router at your home).
 	* For the Duo to have Internet connection
-3. Micro USB cable
+
+* Micro USB cable
 	* Note: some cables only for power, you need a data+power cable for the Duo.
+
+* RBLink (optional, easier with its drag & drop feature)
 
 Software items:
 	
-1. [dfu-util](http://dfu-util.sourceforge.net/)
-2. Latest Duo Firmware
+* [dfu-util](http://dfu-util.sourceforge.net/)
+
+* Latest Duo Firmware
 	* https://github.com/redbear/Duo/raw/master/firmware/
 	 
 For Windows, you also need the following software tools:
 
-1. [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty)
+* [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty)
 	* or you can use other serial port tool (e.g. HyperTerminal)
-2. [Driver](https://github.com/redbear/Duo/raw/master/driver/windows/duo_win_driver.zip)
-3. [Zadig](http://zadig.akeo.ie/)
+
+* [Driver](https://github.com/redbear/Duo/raw/master/driver/windows/duo_win_driver.zip)
+
+* [Zadig](http://zadig.akeo.ie/)
 
 
 ## Out of the Box Test
@@ -100,6 +112,10 @@ For Windows, you also need the following software tools:
 
 	* Note: after using the 'screen' command, type 'reset' to clear the screen.
 	#### 5. Updating Firmware
+
+You can use bootloader DFU or the RBLink to update the Duo firmware.
+
+###### DFU Mode:
 * Follow this [DFU](dfu.md installation guide) to install the 'dfu-util' tool.
 
 * Download the zipped Duo firmware (latest version) for DFU with '_dfu' ending in the filename and unzip it to a folder.
@@ -110,7 +126,7 @@ For Windows, you also need the following software tools:
 	
 * Start the Command Prompt (Windows) or Terminal (OSX)
 	
-* If you are not in the DFU Mode, press and hold the 'SETUP' button on the Duo and then press reset button, when the RGB LED shows yellow and flashing, release the 'SETUP' button, the Duo will enter the DFU Mode.
+* If you are not in the DFU Mode, press and hold the 'SETUP' button on the Duo and then press the 'RESET' button, when the RGB LED shows yellow and flashing, release the 'SETUP' button, the Duo will enter the DFU Mode.
 	
 	![image](images/Duo-Yellow.gif) 
 	
@@ -160,17 +176,48 @@ For Windows, you also need the following software tools:
 		
 * After updating the firmware, press the onboard 'RESET' button to run the new firmware.
 
-* Repeat the step 4 again to check the new firmware version.
+###### RBLink:
+
+* Stack the Duo on top of the RBLink through the connectors.
+
+	![image](images/Duo_RBLink.jpg)
+
+* Connect the `RBLink USB port` to your PC using a micro USB cable.
+	* Note: not the Duo USB port this time
+
+* Download the zipped Duo firmware (latest version) for DFU with '_rblink' ending in the filename and unzip it to a folder.
+	
+	* https://github.com/redbear/Duo/raw/master/firmware/
+	
+	* e.g. v0.2.1, [browse](https://github.com/redbear/Duo/raw/master/firmware/v0.2.1) the firmware folder or [click here](https://github.com/redbear/Duo/raw/master/firmware/v0.2.1/duo_fw_v0.2.1_rblink.zip) to download directly.
+	
+	* The firmware inside the Duo locks the flash for protection, so you need to unlock it first. In your computer, there is a disk drive call 'RBLink', drag & drop the 'duo_unlock.bin' to the RBLink drive.
+	
+		![images](images/DuoUnlock.png)
+	
+	* After that, the RGB will show in green and flashing very fast. Disconnect the USB from your PC and reconnect it again, the RBLink drive will appear again.
+	
+	* Now, drag & drop the new firmware (duo_fw_rblink.bin) to the RBLink drive.
+	
+		![images](images/DuoFW.png)
+	
+	* After that, the Duo will start the new firmware and the RGB will show in blue flashing (i.e. Listening mode for WiFi provisioning).
+	
+	* Note: everytime you use RBLink to updat the firmware, the WiFi settings stored in the DCT will be cleared. So, you need to do the WiFi setup procedure again.
+	
+#### 6. Check Firmware Version Again
+
+* Repeat the `step 4` again to check the new firmware version. Sample screen output:
 
 		system firmware version: 0.2.1
 
 		Your device id is 200027FFFc473530FFF23637
 
-* For more details about the Duo firmware, refer to the [Firmware](../firmware/README.md) folder.
+* For more details about the Duo firmware management, refer to the [Firmware](../firmware/) folder.
 
 * Now, please write down the device ID, it is required to do registration on Particle website in order to use their Cloud service and online Web IDE for firmware development.
 
-#### 6. Setup WiFi
+#### 7. Setup WiFi
 
 * Assume you are still in the 'Listening Mode' (i.e. RGB LED in [flashing blue](images/Duo-Blue.gif))
 
@@ -207,7 +254,7 @@ For Windows, you also need the following software tools:
 
 * If you have made the input incorrectly, you can press the 'SETUP' button for 3 seconds (you will see the RGB in blue color) at anytime to start the 'Listening Mode' again.
 
-#### 7. Testing
+#### 8. Testing
 
 * Now, you can test the board. The user part firmware is a Web Server and there a mDNS service running.
 
