@@ -65,7 +65,7 @@ The Duo supports Particle's Cloud and WebIDE and it works as same as the Photon 
 
 ##### Duo:
 
-![image](docs/images/RBDuo_Pinout.jpg)
+![image](docs/images/RBDuo_Pinout.png)
 
 ##### RBLink:
 
