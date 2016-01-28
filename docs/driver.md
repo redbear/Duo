@@ -1,6 +1,14 @@
 
 ## Windows Driver Installation Guide
 
+There are two drivers to be installed.
+
+* Duo
+* RBLink (if you have)
+
+
+### Duo
+
 * Note 1: the driver is required for Windows only.
 
 * Note 2: for Windows 10, it seems that you may skip this for Windows 10, since it already has a built in driver for Serial port (it shows as USB Serial Device).
@@ -29,4 +37,9 @@
 	![image](images/Complete.png)
 * You will see 'Duo with WiFi and BLE' under Ports.
 	![image](images/Done.png)
+
+### RBLink
+
+For the RBLink, since it is compatible with STLink, download the driver from ST website and follow the instructions provided.
+[STLink Driver](http://www.st.com/web/en/catalog/tools/PF260219)
 
