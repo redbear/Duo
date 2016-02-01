@@ -116,7 +116,7 @@ For Windows, you also need the following software tools:
 You can use bootloader DFU or the RBLink to update the Duo firmware.
 
 ###### DFU Mode:
-* Follow this [DFU](dfu.md installation guide) to install the 'dfu-util' tool.
+* Follow this [DFU Installation Guide](dfu.md) to install the 'dfu-util' tool.
 
 * Download the zipped Duo firmware (latest version) for DFU with `'_dfu'` ending in the filename and unzip it to a folder.
 	
