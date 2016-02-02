@@ -1,7 +1,7 @@
 
 ## RedBear Duo
 
-The [Red Bear Duo](http://www.redbear.cc/duo) is a thumb-size development board designed to simplify the process of building Internet of Things (IoT) products. The Duo is software compatible with Broadcom WICED SDK and provides everything you need—Wi-Fi, BLE and a powerful Cloud backend, all in a compact form factor that makes it ideal for your first prototype, a finished product, and everything in between. 
+The [RedBear Duo](http://www.redbear.cc/duo) is a thumb-size development board designed to simplify the process of building Internet of Things (IoT) products. The Duo is software compatible with Broadcom WICED SDK and provides everything you need—Wi-Fi, BLE and a powerful Cloud backend, all in a compact form factor that makes it ideal for your first prototype, a finished product, and everything in between. 
 
 The Duo contains both Wi-Fi and BLE capabilities. This means your project can communicate locally with Bluetooth enabled devices and can also connect to your local Wi-Fi network to interact with anything else on the web. The Duo is built around the Broadcom BCM43438, a Wi-Fi 802.11b/g/n plus Bluetooth 4.1 (Dual Mode) combined chipset. They share the same 2.4GHz antenna and can run at the same time. This gives you the flexibility to utilize the most suitable wireless technology(s) for your project.
 
@@ -86,7 +86,8 @@ For Web developments who also want to do IoT project with the Duo, you can use o
 #### Memory Map
 
 The Duo's memeory allocation is different from the Photon. The following diagram shows, the Duo has an external flash while the Photon has not, the external flash is for storing the WiFi firmware to be loaded to the BCM43438 chip during boot-up and other recovery firmwares, thus, this design saves the internal flash memory space, therefore, the sketch for loading to the user partition can be up to 256 KB while the Photon has 128 KB only.
-![image](docs/images/Duo_MemMap.png)
+
+![image](docs/images/Duo_MemMap.png)
 
 Bootloader and system firmware are stored in the internal flash memory, the source code for these is on RedBear github repostory - [[2] Firmware](https://github.com/redbear/firmware).
 
