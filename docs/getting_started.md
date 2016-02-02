@@ -10,10 +10,8 @@ This getting started guide will show you how to use the RedBear Duo IoT developm
 	* Checking firmware version
 	* Checking device ID
 	* Updating firmware
-	* Assocaiting to an Access Point (AP) or Internet router
-	
+	* Assocaiting to an Access Point (AP) or Internet route
 * Develop an application using WebIDE or Arduino IDE.
-
 * Backup Particle cloud keys (highly recommended).
 
 
@@ -23,17 +21,14 @@ You need to prepare the following hardware items:
 
 * PC with Windows, Linux (e.g. Ubuntu) or Mac with OSX
 	* Tested on: Windows 10, OSX 10.11
-	
 * Access Point (e.g. an Internet router at your home).
 	* For the Duo to have Internet connection
-
 * Micro USB cable
 	* Note: some cables only for power, you need a data+power cable for the Duo.
 
 Software items:
 	
 * [dfu-util](http://dfu-util.sourceforge.net/)
-
 * Latest Duo Firmware
 	* https://github.com/redbear/Duo/raw/master/firmware/
 	 
@@ -41,9 +36,7 @@ For Windows, you also need the following software tools:
 
 * [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty)
 	* or you can use other serial port tool (e.g. HyperTerminal)
-
 * [Driver](https://github.com/redbear/Duo/raw/master/driver/windows/duo_win_driver.zip)
-
 * [Zadig](http://zadig.akeo.ie/)
 
 
