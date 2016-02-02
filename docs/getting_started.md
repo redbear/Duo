@@ -28,8 +28,6 @@ You need to prepare the following hardware items:
 * Micro USB cable
 	* Note: some cables only for power, you need a data+power cable for the Duo.
 
-* RBLink (optional, easier with its drag & drop feature)
-
 Software items:
 	
 * [dfu-util](http://dfu-util.sourceforge.net/)
@@ -113,7 +111,7 @@ For Windows, you also need the following software tools:
 	* Note: after using the 'screen' command, type 'reset' to clear the screen.
 	#### 5. Updating Firmware
 
-You can use bootloader DFU or the RBLink to update the Duo firmware.
+You can use bootloader DFU to update the Duo firmware.
 
 ###### DFU Mode:
 * Follow this [DFU Installation Guide](dfu.md) to install the 'dfu-util' tool.
@@ -175,35 +173,6 @@ You can use bootloader DFU or the RBLink to update the Duo firmware.
 		File downloaded successfully	
 		
 * After updating the firmware, press the onboard 'RESET' button to run the new firmware.
-
-###### RBLink:
-
-* Stack the Duo on top of the RBLink through the connectors.
-
-	![image](images/Duo_RBLink.jpg)
-
-* Connect the `RBLink USB port` to your PC using a micro USB cable.
-	* Note: not the Duo USB port this time
-
-* Download the zipped Duo firmware (latest version) for RBLink with `'_rblink'` ending in the filename and unzip it to a folder.
-	
-	* https://github.com/redbear/Duo/raw/master/firmware/
-	
-	* e.g. v0.2.1, [browse](https://github.com/redbear/Duo/raw/master/firmware/v0.2.1) the firmware folder or [click here](https://github.com/redbear/Duo/raw/master/firmware/v0.2.1/duo_fw_v0.2.1_rblink.zip) to download directly.
-	
-	* The firmware inside the Duo locks the flash for protection, so you need to unlock it first. In your computer, there is a disk drive call 'RBLink', drag & drop the 'duo_unlock.bin' to the RBLink drive.
-	
-		![images](images/DuoUnlock.png)
-	
-	* After that, the RGB will show in green and flashing very fast. Disconnect the USB from your PC and reconnect it again, the RBLink drive will appear again.
-	
-	* Now, drag & drop the new firmware (duo_fw_rblink.bin) to the RBLink drive.
-	
-		![images](images/DuoFW.png)
-	
-	* After that, the Duo will start the new firmware and the RGB will show in blue flashing (i.e. Listening mode for WiFi provisioning).
-	
-	* Note: everytime you use RBLink to updat the firmware, the WiFi settings stored in the DCT will be cleared. So, you need to do the WiFi setup procedure again.
 	
 #### 6. Check Firmware Version Again
 

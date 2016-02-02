@@ -150,7 +150,7 @@ The onboard USB provides two functions, DFU and CDC. DFU is for Device Firmware 
 
 ## Known Issues
 
-1. System stop function with user firmware runs BLE in firmware v0.2.1
+1. Problem with user firmware runs BLE in firmware v0.2.1
 
 	Symptom: when the user-partion firmware compiled with BLE library, during the runtime, if you want to do WiFi provisioning again (i.e. press SETUP button for 3 seconds), the Duo will stop working.
 
