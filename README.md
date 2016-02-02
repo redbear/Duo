@@ -7,7 +7,7 @@ The Duo contains both Wi-Fi and BLE capabilities. This means your project 
 
 ![image](docs/images/Duo_BlockDiagram.jpg)
 
-With the Red Bear RBLink you can easily attach modules from the Seeed’s Grove System to your project. No need to pull out your soldering iron--just attach your sensors and actuators with jumper wires to the RBLink and you’re ready to go. Looking to attach your own sensor or peripheral? The Duo is breadboard and solder friendly, so you’re never limited in what you can connect to the web.
+With the RedBear RBLink you can easily attach modules from the Seeed’s Grove System to your project. No need to pull out your soldering iron--just attach your sensors and actuators with jumper wires to the RBLink and you’re ready to go. Looking to attach your own sensor or peripheral? The Duo is breadboard and solder friendly, so you’re never limited in what you can connect to the web.
 
 The Duo supports Particle's Cloud and WebIDE and it works as same as the Photon board for the WiFi part. Moreover, the Duo has BLE, more flash memory space and you can make use of them on your innovative projects.
 
