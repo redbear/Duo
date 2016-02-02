@@ -60,7 +60,7 @@ $ dfu-util -d 2b04:d058 -a 0 -s 0x080C0000 -D duo-user-part.bin
 
 ## Dumping Firmware
 
-You can dump the firmware to your computer, for example, to dump the DCT to a file (duo-dct-dup.bin):
+You can dump the firmware to your computer, for example, to backup the DCT to a file (duo-dct-dump.bin):
 
 $ dfu-util -d 2b04:d058 -a 0 -s 0x08004000 -U duo-dct-dump.bin
 
