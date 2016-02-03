@@ -166,7 +166,7 @@ The onboard USB provides two functions, DFU and CDC. DFU is for Device Firmware 
 
 * [[2] Duo Firmware Source](https://github.com/redbear/firmware)
 
-* [[3] RedBear Duo Forum](https://redbearlab.zendesk.com/forums/23098916-RedBear-Duo)
+* [[3] RedBear Duo Forum](http://discuss.redbear.cc)
 
 * [[4] Particle Forum](https://community.particle.io)
 
