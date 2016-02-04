@@ -78,7 +78,7 @@ The Duo is so flexible since it supports different development platforms. Now, y
 
 For professional developers (good at C language) who want to develop projects (e.g. HomeKit) using Broadcom's WICED SDK, the following sections of this document are not useful and you can refer to our [WICED-SDK](https://github.com/redbear/WICED-SDK) repository directly.
 
-For Web developments who also want to do IoT project with the Duo, you can use our JavaScript interpreter for development (still work in progress and coming soon).
+For Web developers who also want to do IoT project with the Duo, you can use our JavaScript interpreter for development (still work in progress and coming soon).
 
 
 ## Internals
@@ -111,11 +111,11 @@ System Part 1 is for storing communication/security dynalib that used for connec
 
 Basically, there is no code to be run in partition 1 and it just passes the control to partition 2.
 
-System Part 2 performs a lot of tasks, firstly, it checks the WiFi firmware stored in the external flash and load it into the AP6216A module (BCM43438 chip). Then it will start BLE and WiFi for doing WiFi provisioning if it has not connected before, otherwise, it will try to associate to a known Wireless Acess Point (e.g. home router). Finally, it will connect to the Particle cloud as well. 
+System Part 2 performs a lot of tasks, firstly, it checks the WiFi firmware stored in the external flash and loads it into the AP6216A module (BCM43438 chip). Then it will start BLE and WiFi for doing WiFi provisioning if it has not connected before, otherwise, it will try to associate to a known Wireless Acess Point (e.g. home router). Finally, it will connect to the Particle cloud as well. 
 
 The partition 2 firmware has a copy of bootloader, if it found the bootloader version is lower than the copy, then it will update the bootloader automatically.
 
-When everything are ready, it pass the control to the user partition (your own firmware), ```setup()``` and ```loop()```.
+When everything are ready, it will pass the control to the user partition (your own firmware), ```setup()``` and ```loop()```.
 
 
 ## RGB LED, SETUP Button & USB
@@ -147,6 +147,13 @@ The onboard USB provides two functions, DFU and CDC. DFU is for Device Firmware 
 * [Firmware Management Guide](firmware/README.md)
 * [Arduino](https://github.com/redbear/STM32-Arduino)
 * [WICED SDK](https://github.com/redbear/WICED-SDK)
+
+
+## ToDo
+
+* Add more BLE examples to the Particle WebIDE and Arduino IDE.
+
+	The BLE examples are not completed yet, for WebIDE, we have not yet added any examples for BLE, if you want to try BLE using WebIDE, please browse [this](https://github.com/redbear/STM32-Arduino/tree/master/arduino/libraries/RedBear_Duo/examples/03.BLE), copy & paste the code to the WebIDE.
 
 
 ## Known Issues
