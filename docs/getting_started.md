@@ -115,7 +115,7 @@ You can use bootloader DFU to update the Duo firmware.
 	
 	* https://github.com/redbear/Duo/raw/master/firmware/
 	
-	* e.g. v0.2.1, [browse](https://github.com/redbear/Duo/raw/master/firmware/v0.2.1) the firmware folder or [click here](https://github.com/redbear/Duo/raw/master/firmware/v0.2.1/duo_fw_v0.2.1_dfu.zip) to download directly.
+	* e.g. v0.2.2, [browse](https://github.com/redbear/Duo/raw/master/firmware/v0.2.2) the firmware folder or [click here](https://github.com/redbear/Duo/raw/master/firmware/v0.2.2/duo_fw_v0.2.2_dfu.zip) to download directly.
 	
 * Start the Command Prompt (Windows) or Terminal (OSX)
 	
@@ -173,7 +173,7 @@ You can use bootloader DFU to update the Duo firmware.
 
 * Repeat the `step 4` again to check the new firmware version. Sample screen output:
 
-		system firmware version: 0.2.1
+		system firmware version: 0.2.2
 
 		Your device id is 200027FFFc473530FFF23637
 
@@ -191,7 +191,7 @@ You can use bootloader DFU to update the Duo firmware.
 
 * Sample input and output:
 
-		system firmware version: 0.2.1
+		system firmware version: 0.2.2
 
 		Your device id is 200027000c47353033323637
 		SSID: AP-01
