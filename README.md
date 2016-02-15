@@ -16,9 +16,9 @@ The Duo supports Particle's Cloud and WebIDE and it works as same as the Photon 
 
 * WiFi + BLE
 * Development – Arduino Sketches, JavaScript, C/C++
-* Cloud – Particle Cloud
-* Support WICED SDK
-* Open-source - BTstack, FreeRTOS, LwIP and others
+* Cloud – [Particle](https://www.particle.io/) Cloud
+* Support [WICED WiFi](https://community.broadcom.com/community/wiced-wifi) SDK
+* Open-source – [BTstack](https://github.com/bluekitchen/btstack), [FreeRTOS](http://www.freertos.org/), [LwIP](http://savannah.nongnu.org/projects/lwip/) and others
 
     
 ## Applications
@@ -154,6 +154,10 @@ The onboard USB provides two functions, DFU and CDC. DFU is for Device Firmware 
 * Add more BLE examples to the Particle WebIDE and Arduino IDE.
 
 	The BLE examples are not completed yet, for WebIDE, we have not yet added any examples for BLE, if you want to try BLE using WebIDE, please browse [this](https://github.com/redbear/STM32-Arduino/tree/master/arduino/libraries/RedBear_Duo/examples/03.BLE), copy & paste the code to the WebIDE.
+
+* Reduce power consumption for BLE
+
+	We will work with Broadcom to reduce the power consumption for the Duo BLE.
 
 
 ## Known Issues
