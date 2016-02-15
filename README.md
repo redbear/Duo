@@ -20,7 +20,7 @@ The Duo supports Particle's Cloud and WebIDE and it works as same as the Photon 
 * Support [WICED WiFi](https://community.broadcom.com/community/wiced-wifi) SDK
 * Open-source – [BTstack](https://github.com/bluekitchen/btstack), [FreeRTOS](http://www.freertos.org/), [LwIP](http://savannah.nongnu.org/projects/lwip/) and others
 
-    
+
 ## Applications
 
 * Industrial Automation
@@ -30,7 +30,7 @@ The Duo supports Particle's Cloud and WebIDE and it works as same as the Photon 
 * IoT Enabled Sensors
 * WiFi/BLE Gateway
 * Beacon Management
-                	
+
 
 ## Hardware
 
@@ -43,7 +43,7 @@ The Duo supports Particle's Cloud and WebIDE and it works as same as the Photon 
 * 18 I/O pins, 1 user LED
 * RGB status LED
 * RESET and SETUP buttons
-* USB, 2 UART, JTAG, 2 SPI, I2C 
+* USB, 2 UART, JTAG, 2 SPI, I2C
 * Single-sided PCBA for easy mounting on other PCB
 * Operating voltage is 3.3v
 * 20.5 mm x 39 mm
@@ -54,10 +54,10 @@ The Duo supports Particle's Cloud and WebIDE and it works as same as the Photon 
 * Running ST-LINK/V2
 * USB-based JTAG debugger/programmer
 * Two JTAG activity LEDs
-* Apple MFi autetication coprosessor support (**MFi license is required)
+* Apple MFi authentication coprocessor support (**MFi license is required)
 * USB MSD interface – enabling programming the Duo by drag and drop of firmware file
 * USB CDC Virtual Serial Port
-* STM32 ST-LINK Uility software compatible
+* STM32 ST-LINK Utility software compatible
 * 8x Seeed Grove System compatible connectors
 * 53.5mm x 53.5mm
 
@@ -85,15 +85,15 @@ For Web developers who also want to do IoT project with the Duo, you can use our
 
 #### Memory Map
 
-The Duo's memeory allocation is different from the Photon. The following diagram shows, the Duo has an external flash while the Photon has not, the external flash is for storing the WiFi firmware to be loaded to the BCM43438 chip during boot-up and other recovery firmwares, thus, this design saves the internal flash memory space, therefore, the sketch for loading to the user partition can be up to 256 KB while the Photon has 128 KB only.
+The Duo's memory allocation is different from the Photon. The following diagram shows that the Duo has an external flash while the Photon does not. The external flash stores the WiFi firmware to be loaded to the BCM43438 chip during boot-up as well as other recovery firmware. Thus, this design allows the entire the internal flash memory space of 256KB to be available for the user sketch, compared to the Photon with only 128KB.
 
 ![image](docs/images/Duo_MemMap.png)
 
-Bootloader and system firmware are stored in the internal flash memory, the source code for these is on RedBear github repostory - [[2] Firmware](https://github.com/redbear/firmware).
+Bootloader and system firmware are stored in the internal flash memory, the source code for these is on RedBear github repository - [[2] Firmware](https://github.com/redbear/firmware).
 
 #### Bootloader
 
-The Duo MCU boots from the internal memory adress 0x08000000, it means the bootloader will be started. The bootloader keeps track of the firmwares and provides functions for burning firmwares via the USB port (e.g. DFU Mode). If it has nothing to do during the boot time, it will pass the control to system part 1.
+The Duo MCU boots from the internal memory address 0x08000000, where the bootloader is located. The bootloader keeps track of the firmware and provides functions to flash firmware via the USB port (e.g. DFU Mode). If it has nothing to do during the boot time, it will pass the control to system part 1.
 
 #### DCT 1 & 2
 
@@ -106,16 +106,16 @@ EEPROM 1 & 2 is to use flash memory to simulate EEPROM for user storage.
 #### System Part 1 & 2
 
 The Duo firmware is modular in structure, as dynamic libraries (dynalib) and are stored in the system partitions of the internal flash memory.
- 
+
 System Part 1 is for storing communication/security dynalib that used for connecting the Duo to the Particle cloud. Originally, for the Photon, the WiFi firmware is stored here but for the Duo, it is not.
 
 Basically, there is no code to be run in partition 1 and it just passes the control to partition 2.
 
-System Part 2 performs a lot of tasks, firstly, it checks the WiFi firmware stored in the external flash and loads it into the AP6216A module (BCM43438 chip). Then it will start BLE and WiFi for doing WiFi provisioning if it has not connected before, otherwise, it will try to associate to a known Wireless Acess Point (e.g. home router). Finally, it will connect to the Particle cloud as well. 
+System Part 2 performs a lot of tasks, firstly, it checks the WiFi firmware stored in the external flash and loads it into the AP6216A module (BCM43438 chip). Then it will start BLE and WiFi for doing WiFi provisioning if it has not connected before, otherwise, it will try to associate to a known Wireless Access Point (e.g. home router). Finally, it will connect to the Particle cloud as well.
 
 The partition 2 firmware has a copy of bootloader, if it found the bootloader version is lower than the copy, then it will update the bootloader automatically.
 
-When everything are ready, it will pass the control to the user partition (your own firmware), ```setup()``` and ```loop()```.
+When everything is ready, it will pass the control to the user partition (your own firmware), `setup()` and `loop()`.
 
 
 ## RGB LED, SETUP Button & USB
@@ -124,7 +124,7 @@ When everything are ready, it will pass the control to the user partition (your 
 
 The bootloader makes use of the onboard RGB LED as a status indicator. When you are pressing and holding the SETUP button and then pressing the reset button (still holding the SETUP button), the Duo will enter to the bootloader for an user action, releasing the SETUP button when the LED is in one of the following state:
 
-* [Yellow Flashing](docs/images/Duo-Yellow.gif)	: DFU Mode 
+* [Yellow Flashing](docs/images/Duo-Yellow.gif)	: DFU Mode
 * [Green Flashing](docs/images/Duo-Green.gif)	: Factory Reset Mode (not clear the WiFi credentials in DCT)
 * [White Flashing](docs/images/Duo-White.gif)	: Factory Reset Mode (copy factory reset image from the external flash to the user partition and clear the WiFi credentials in DCT).
 
@@ -136,7 +136,7 @@ When the Duo is running, at any time, you can press and hold the SETUP button fo
 
 #### USB
 
-The onboard USB provides two functions, DFU and CDC. DFU is for Device Firmware Upgrade, CDC is for Serial comunication to PC so that you can print out debug messages, e.g. ```Serial.println("Test")```. 
+The onboard USB provides two functions, DFU and CDC. DFU is for Device Firmware Upgrade, CDC is for Serial communication to PC so that you can print out debug messages, e.g. ```Serial.println("Test")```.
 
 
 ## Documentation
@@ -170,7 +170,7 @@ The onboard USB provides two functions, DFU and CDC. DFU is for Device Firmware 
 
 	Action: will be fixed in firmware v0.2.2
 
-	 
+
 ## Resources
 
 * [[1] Product Page](http://redbear.cc/duo/)
