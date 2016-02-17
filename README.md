@@ -145,6 +145,7 @@ The onboard USB provides two functions, DFU and CDC. DFU is for Device Firmware 
 * [Windows Driver Installation Guide](docs/driver.md)
 * [DFU Installation Guide](docs/dfu.md)
 * [Firmware Management Guide](firmware/README.md)
+* [Provisioning Guide](docs/provisioning_guide.md)
 * [Arduino](https://github.com/redbear/STM32-Arduino)
 * [WICED SDK](https://github.com/redbear/WICED-SDK)
 

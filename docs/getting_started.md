@@ -4,7 +4,7 @@ Congratulations on being the owner of a brand new [RedBear Duo](http://www.redbe
 
 ![image](images/RBDuo-L.png)
 
-This getting started guide will show you how to use the RedBear Duo IoT development board quickily. There are two sections:
+This getting started guide will show you how to use the RedBear Duo IoT development board quickily. There are three sections:
 
 * Out of the box test
 	* Checking firmware version
