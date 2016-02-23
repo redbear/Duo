@@ -47,7 +47,7 @@ The Duo supports Particle's Cloud and WebIDE and it works as same as the Photon 
 * Single-sided PCBA for easy mounting on other PCB
 * Operating voltage is 3.3v
 * 20.5 mm x 39 mm
-* [Schematic](schematic/) is provided
+* [Schematic](schematic/)
 
 #### RBLink
 
@@ -60,6 +60,7 @@ The Duo supports Particle's Cloud and WebIDE and it works as same as the Photon 
 * STM32 ST-LINK Utility software compatible
 * 8x Seeed Grove System compatible connectors
 * 53.5mm x 53.5mm
+* [Schematic](schematic/)
 
 #### Pinout
 
@@ -148,7 +149,7 @@ The onboard USB provides two functions, DFU and CDC. DFU is for Device Firmware 
 * [Provisioning Guide](docs/provisioning_guide.md)
 * [Arduino](https://github.com/redbear/STM32-Arduino)
 * [WICED SDK](https://github.com/redbear/WICED-SDK)
-
+* [BTstack - BLE API and other documents](https://github.com/bluekitchen/btstack/)
 
 ## ToDo
 
@@ -174,19 +175,14 @@ The onboard USB provides two functions, DFU and CDC. DFU is for Device Firmware 
 
 ## Resources
 
-* [[1] Product Page](http://redbear.cc/duo/)
-
+* [[1] Product Page](http://redbear.cc/duo/) - RedBear Duo
 * [[2] Duo Firmware Source](https://github.com/redbear/firmware)
-
 * [[3] RedBear Duo Forum](http://discuss.redbear.cc)
-
 * [[4] Particle Forum](https://community.particle.io)
-
-* [[5] BTstack](https://github.com/bluekitchen/btstack)
-
-* [[6] Program with Arduino IDE](https://github.com/redbear/STM32-Arduino)
-
-* [[7] Program with Broadcom WICED SDK](https://github.com/redbear/WICED-SDK)
+* [[5] BTstack](https://github.com/bluekitchen/btstack) - BTstack GitHub Repository
+* [[6] BlueKitchen-GmbH](https://bluekitchen-gmbh.com/) - BTstack Official Website
+* [[7] Program with Arduino IDE](https://github.com/redbear/STM32-Arduino)
+* [[8] Program with Broadcom WICED SDK](https://github.com/redbear/WICED-SDK)
 
 
 ## License
