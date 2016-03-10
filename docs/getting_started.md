@@ -52,8 +52,13 @@ For Windows, you also need the following software tools:
 
 #### 2. Install Driver (Only required for Windows)
 
-* Follow [this driver](driver.md) installation guide for details.#### 3. Install PuTTY (Only required for Windows)
-* Note: you can also use other Serial port communication software (e.g. HyperTerminal).* Download and unzip [PuTTY](http://the.earth.li/~sgtatham/putty/latest/x86/putty.zip).
+* Follow [this driver](driver.md) installation guide for details.
+
+#### 3. Install PuTTY (Only required for Windows)
+
+* Note: you can also use other Serial port communication software (e.g. HyperTerminal).
+
+* Download and unzip [PuTTY](http://the.earth.li/~sgtatham/putty/latest/x86/putty.zip).
 
 #### 4. Check firmware version and device ID
 
@@ -92,7 +97,16 @@ For Windows, you also need the following software tools:
 				$ screen /dev/tty.ACMX
 			
 				where ACMX is your Duo device serial port.
-	
+			
+			Note, you can list the device if you are not sure by:
+				
+				$ ls /dev/tty.usbmodem*
+			or
+
+				$ ls /dev/tty.ACM*
+			
+			If not such device, you may need to check your USB cable.
+			
 	* Press 'v' to the terminal screen, you will see the firmware version.
 	
 	* Press 'i', you will see the Device ID of the Duo.
@@ -104,12 +118,14 @@ For Windows, you also need the following software tools:
 			Your device id is 200027FFFc473530FFF23637
 
 	* Note: after using the 'screen' command, type 'reset' to clear the screen.
-	#### 5. Updating Firmware
+	
+#### 5. Updating Firmware
 
 You can use bootloader DFU to update the Duo firmware.
 
 ###### DFU Mode:
-* Follow this [DFU Installation Guide](dfu.md) to install the 'dfu-util' tool.
+
+* Follow this [DFU Installation Guide](dfu.md) to install the 'dfu-util' tool.
 
 * Download the zipped Duo firmware (latest version) for DFU with `'_dfu'` ending in the filename and unzip it to a folder.
 	
