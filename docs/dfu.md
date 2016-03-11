@@ -3,6 +3,7 @@
 
 [dfu-util](http://dfu-util.sourceforge.net/) is a tool for Device Firmware Upgrade to the Duo via the USB port.
 
+
 ## Enter DFU Mode
 
 * Connect the Duo to your computer via the USB port.
@@ -34,6 +35,8 @@
 
 
 ## OSX
+
+Use Brew to install or follow the instructions from [the official website](http://dfu-util.sourceforge.net/).
 
 * Install [brew](http://brew.sh/) or start the Terminal to install it directly:
 
