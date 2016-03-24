@@ -177,7 +177,7 @@ The onboard USB provides two functions, DFU and CDC. DFU is for Device Firmware 
 
 * [[1] Product Page](http://redbear.cc/duo/) - RedBear Duo
 * [[2] Duo Firmware Source](https://github.com/redbear/firmware)
-* [[3] RedBear Duo Forum](http://discuss.redbear.cc)
+* [[3] RedBear Duo Forum](http://discuss.redbear.cc) - Technical support and other discussions
 * [[4] Particle Forum](https://community.particle.io)
 * [[5] BTstack](https://github.com/bluekitchen/btstack) - BTstack GitHub Repository
 * [[6] BlueKitchen-GmbH](https://bluekitchen-gmbh.com/) - BTstack Official Website
