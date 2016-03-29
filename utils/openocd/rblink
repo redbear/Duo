@@ -1,0 +1,4 @@
+#!/bin/bash
+
+openocd -f redbearduo.cfg -c "program $1 verify reset exit 0x80c0000"
+
