@@ -23,6 +23,7 @@ You need to prepare the following hardware items:
 	* Tested on: Windows 10, OSX 10.11
 * Access Point (e.g. an Internet router at your home).
 	* For the Duo to have Internet connection
+	* *NOTE:* if your router supports 2.4/5 GHz at the same time, make sure you enable 2.4 GHz since the Duo operates at 2.4GHz only. See your router user manual for that.
 * Micro USB cable
 	* Note: some cables only for power, you need a data+power cable for the Duo.
 
