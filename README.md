@@ -15,7 +15,7 @@ The Duo supports Particle's Cloud and WebIDE and it works as same as the Photon 
 ## Features
 
 * WiFi + BLE
-* Development – Arduino Sketches, JavaScript, C/C++
+* Development – [Arduino Sketches](https://github.com/redbear/STM32-Arduino), [Espruino - JavaScript](https://github.com/redbear/Espruino), C/C++
 * Cloud – [Particle](https://www.particle.io/) Cloud
 * Support [WICED WiFi](https://community.broadcom.com/community/wiced-wifi) SDK
 * Open-source – [BTstack](https://github.com/bluekitchen/btstack), [FreeRTOS](http://www.freertos.org/), [LwIP](http://savannah.nongnu.org/projects/lwip/) and others
@@ -75,11 +75,11 @@ The Duo supports Particle's Cloud and WebIDE and it works as same as the Photon 
 
 ## Development Platforms
 
-The Duo is so flexible since it supports different development platforms. Now, you should define yourself, if you are interested in using Particle's WebIDE for online development or Arduino for offline development, you can continue reading this document.
+The Duo is so flexible since it supports different development platforms. Now, you should define yourself, if you are interested in using Particle's WebIDE for online development or [Arduino](https://github.com/redbear/STM32-Arduino) for offline development, you can continue reading this document.
 
-For professional developers (good at C language) who want to develop projects (e.g. HomeKit) using Broadcom's WICED SDK, the following sections of this document are not useful and you can refer to our [WICED-SDK](https://github.com/redbear/WICED-SDK) repository directly.
+For professional developers (good at C language) who want to develop projects (e.g. HomeKit) using Broadcom's WICED SDK, the following sections of this document are not useful for you and you can refer to our [WICED-SDK](https://github.com/redbear/WICED-SDK) repository directly.
 
-For Web developers who also want to do IoT project with the Duo, you can use our JavaScript interpreter for development (still work in progress and coming soon).
+For Web developers who also want to do IoT projects with the Duo, you can use our [JavaScript interpreter](javascript) (based on [Espruino](https://github.com/redbear/Espruino) open source project) for development.
 
 
 ## Internals
