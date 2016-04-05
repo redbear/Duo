@@ -16,7 +16,7 @@
 
 ## How to play
 
-* Please use DFU-UTIL to load the binary file to the Duo's user-part.
+* Please use DFU-UTIL to update system firmware to v0.2.3 and load the binary file to the Duo's user-part.[Guide](https://github.com/redbear/Duo/blob/master/firmware/README.md)
 
 * Download and use the [Espruino Web IDE](https://chrome.google.com/webstore/detail/espruino-web-ide) to play
 
