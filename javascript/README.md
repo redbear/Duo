@@ -1,5 +1,6 @@
 # JavaScript
 
+*Note: Only system firmware version v0.2.3 supports running JS engine for now*
 
 ## Features
 
@@ -7,7 +8,7 @@
 * Source code: [Espruino for the Duo](https://github.com/redbear/Espruino).
 * Read/Write Digital Pins (use MCU pinout, e.g. the onboard LED is on pin 13)
 * PWM
-* Analog Read
+* Analog Read/Write
 * Watch pin interrupt
 * Timer
 * Save script to internal flash (EEPROM)
