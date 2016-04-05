@@ -8,6 +8,7 @@
 * Read/Write Digital Pins (use MCU pinout, e.g. the onboard LED is on pin 13)
 * PWM
 * Analog Read
+* Watch pin interrupt
 * Timer
 * Save script to internal flash (EEPROM)
 
