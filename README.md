@@ -75,9 +75,17 @@ The Duo supports Particle's Cloud and WebIDE and it works as same as the Photon 
 
 ## Development Platforms
 
-The Duo is so flexible since it supports different development platforms. Now, you should define yourself, if you are interested in using Particle's WebIDE for online development or [Arduino](https://github.com/redbear/STM32-Arduino) for offline development, you can continue reading this document.
+The Duo is so flexible since it supports different development platforms. Now, you should define yourself here.
+
+#### WebIDE and Arduino
+
+If you are interested in using [Particle's WebIDE](build.particle.io) for online development or [Arduino](https://github.com/redbear/STM32-Arduino) for offline development, you can continue reading this document.
+
+#### WICED SDK
 
 For professional developers (good at C language) who want to develop projects (e.g. HomeKit) using Broadcom's WICED SDK, the following sections of this document are not useful for you and you can refer to our [WICED-SDK](https://github.com/redbear/WICED-SDK) repository directly.
+
+#### JavaScript
 
 For Web developers who also want to do IoT projects with the Duo, you can use our [JavaScript interpreter](javascript) (based on [Espruino](https://github.com/redbear/Espruino) open source project) for development.
 
@@ -137,7 +145,7 @@ When the Duo is running, at any time, you can press and hold the SETUP button fo
 
 #### USB
 
-The onboard USB provides two functions, DFU and CDC. DFU is for Device Firmware Upgrade, CDC is for Serial communication to PC so that you can print out debug messages, e.g. ```Serial.println("Test")```.
+The onboard USB provides two functions, DFU and CDC. DFU is for Device Firmware Upgrade, CDC is for Serial communication to PC so that you can print out debug messages, e.g. `Serial.println("Test")`.
 
 
 ## Documentation
@@ -147,9 +155,11 @@ The onboard USB provides two functions, DFU and CDC. DFU is for Device Firmware 
 * [DFU Installation Guide](docs/dfu.md)
 * [Firmware Management Guide](firmware/README.md)
 * [Provisioning Guide](docs/provisioning_guide.md)
+* [Trouble Shooting](docs/troubleshooting.md)
 * [Arduino](https://github.com/redbear/STM32-Arduino)
 * [WICED SDK](https://github.com/redbear/WICED-SDK)
 * [BTstack - BLE API and other documents](https://github.com/bluekitchen/btstack/)
+
 
 ## ToDo
 
@@ -162,27 +172,17 @@ The onboard USB provides two functions, DFU and CDC. DFU is for Device Firmware 
 	We will work with Broadcom to reduce the power consumption for the Duo BLE.
 
 
-## Known Issues
-
-1. Problem with user firmware runs BLE in firmware v0.2.1
-
-	Symptom: when the user-partion firmware compiled with BLE library, during the runtime, if you want to do WiFi provisioning again (i.e. press SETUP button for 3 seconds), the Duo will stop working.
-
-	Workaround: enter to the bootloader with white LED flashing, then it will load the factory reset firmware from the external memory to the user partition, clear the WiFi settings and reset to run the WiFi provisioning itself. After that, you need to reload your own user firmware again.
-
-	Action: will be fixed in firmware v0.2.2
-
-
 ## Resources
 
 * [[1] Product Page](http://redbear.cc/duo/) - RedBear Duo
-* [[2] Duo Firmware Source](https://github.com/redbear/firmware)
+* [[2] Duo Firmware](https://github.com/redbear/firmware) - RedBear Duo firmware source code
 * [[3] RedBear Duo Forum](http://discuss.redbear.cc)
 * [[4] Particle Forum](https://community.particle.io)
 * [[5] BTstack](https://github.com/bluekitchen/btstack) - BTstack GitHub Repository
 * [[6] BlueKitchen-GmbH](https://bluekitchen-gmbh.com/) - BTstack Official Website
 * [[7] Program with Arduino IDE](https://github.com/redbear/STM32-Arduino)
 * [[8] Program with Broadcom WICED SDK](https://github.com/redbear/WICED-SDK)
+* [[9] Espruino](https://github.com/redbear/Espruino) - JavaScript Interpreter source code
 
 
 ## License
