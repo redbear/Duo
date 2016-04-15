@@ -52,7 +52,5 @@
 
 ## ToDo
 
-* WiFi API
-* BLE API
 * I2C, SPI API
 
