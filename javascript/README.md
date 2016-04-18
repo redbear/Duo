@@ -4,14 +4,17 @@
 
 ## Features
 
-* This is a beta test version for running Espruino, a JavaScript interpreter.
 * Source code: [Espruino for the Duo](https://github.com/redbear/Espruino).
-* Read/Write Digital Pins (use MCU pinout, e.g. the onboard LED is on pin 13)
+* Digital Pin functions (use MCU pinout, e.g. the onboard LED is on pin 13)
 * PWM
 * Analog Read/Write
 * Watch pin interrupt
-* Timer
+* Timer (setInterval / setTime / setTimeout)
 * Save script to internal flash (EEPROM)
+* SPI
+* I2C
+* WiFi
+* BLE
 
 
 ## How to play
@@ -49,8 +52,4 @@
 
 * To save the script to the EEPROM of the Duo, you can use the commnad `save()`.
 
-
-## ToDo
-
-* I2C, SPI API
 
