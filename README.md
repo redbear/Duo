@@ -32,6 +32,13 @@ The Duo supports Particle's Cloud and WebIDE and it works as same as the Photon 
 * Beacon Management
 
 
+## Certifications
+
+The Duo and the RBLink are certified by the FCC & CE certifications, the FCC ID is `2ABXJ-DUO`.
+
+The soft copy of the certifications can be found [here](docs/certs).
+
+
 ## Hardware
 
 #### Duo
