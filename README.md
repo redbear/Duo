@@ -159,7 +159,7 @@ The onboard USB provides two functions, DFU and CDC. DFU is for Device Firmware 
 
 * [Getting Started Guide](docs/getting_started.md)
 * [Windows Driver Installation Guide](docs/driver.md)
-* [DFU Installation Guide](docs/dfu.md)
+* [dfu-util and DFU Driver Installation Guide](docs/dfu.md)
 * [Firmware Management Guide](firmware/README.md)
 * [Provisioning Guide](docs/provisioning_guide.md)
 * [Trouble Shooting](docs/troubleshooting.md)
