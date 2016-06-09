@@ -67,16 +67,16 @@ Operating voltage: 3.3v
 The Duo is built around the Broadcom BCM43438, a Wi-Fi 802.11b/g/n plus Bluetooth 4.1 (Dual Mode) combined chipset. They share the same 2.4GHz antenna and can run at the same time. This gives you the flexibility to utilize the most suitable wireless technology(s) for your project.
 
 
-## Certifications
-
-The Duo and the RBLink are certified by the FCC & CE certifications, the FCC ID is `2ABXJ-DUO`. The soft copy of the certifications can be found [here](docs/certs).
-
 ## Dimension
 
 Length x Wide: 39 mm x 20.5 mm
 
 
 ## References
+
+* RedBear Duo [schematic](https://github.com/redbear/Duo/tree/master/hardware/schematic)
+* On-board components' [datasheet](https://github.com/redbear/Duo/tree/master/hardware/datasheets)
+* FCC & CE [certification](https://github.com/redbear/Duo/tree/master/certs)
 
 
 ## License
