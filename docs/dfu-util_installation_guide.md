@@ -5,6 +5,8 @@
 
 dfu-util uses libusb 1.0 to access your device, so on Windows you have to register the device with the WinUSB driver (alternatively libusb-win32 or libusbK), please see the [libusb wiki](https://github.com/libusb/libusb/wiki/Windows#How_to_use_libusb_on_Windows) for more details.
 
+**Note: Make sure you are installing DFU-Util 0.8**
+
 ## Installation
 
 ### Windows
@@ -13,7 +15,7 @@ dfu-util uses libusb 1.0 to access your device, so on Windows you have to regist
 
 * Rename it to `dfu-util.exe`
 
-* Append the path of the `dfu-util.exe` to the system environment variable `Path`: "My Computer" > "Properties" > "Advanced" > "Environment Variables" > "Path". Please note that paths in the variable `Path` are seperated by semicolon `;`.
+* Append the path of the `dfu-util.exe` to the system environment variable `Path`: "My Computer" > "Properties" > "Advanced" > "Environment Variables" > "Path". Please note that paths in the variable `Path` are seperated by semicolon `;`. This will allow dfu-util to be executed globally in command prompt.
 
 ### OSX
 
@@ -31,6 +33,9 @@ Use Brew to install or follow the instructions from [the official website](http:
 
         export PATH=$PATH:{PATH_TO_DFU_UTIL}
 
+    This will allow dfu-util to be executed globally in command prompt.
+
+
 ### Linux
 
 * Download the [dfu-util](http://dfu-util.sourceforge.net/releases/dfu-util-0.8-binaries/linux-i386/) or use the package manager of your distribution to get the latest version:
@@ -40,6 +45,9 @@ Use Brew to install or follow the instructions from [the official website](http:
 * Add the path of `dfu-util` to `PATH`:
 
         export PATH=$PATH:{PATH_TO_DFU_UTIL}
+
+    This will allow dfu-util to be executed globally in command prompt.
+
 
 
 ## Build from Source ([origin](http://dfu-util.sourceforge.net/build.html))
@@ -175,11 +183,11 @@ The built executables (and DLL) will now be in the build/bin folder.
 
 * Firstly make your Duo enter DFU Mode:  
 
-       - Connect the Duo to your computer via the USB port.
-    - Hold down BOTH buttons
-    - Release only the RESET button, while holding down the SETUP button.
-    - Wait for the LED to start flashing **yellow**
-    - Release the SETUP button <br><br>
+    1. Connect the Duo to your computer via the USB port.
+    2. Hold down BOTH buttons
+    3. Release only the RESET button, while holding down the SETUP button.
+    4. Wait for the LED to start flashing **yellow**
+    5. Release the SETUP button <br><br>
 
         ![image](images/Duo-Yellow.gif) 
 
@@ -199,7 +207,8 @@ The built executables (and DLL) will now be in the build/bin folder.
 
 ## Reference
 
-* dfu-util [home page](http://dfu-util.sourceforge.net/)
+* [dfu-util Home page](http://dfu-util.sourceforge.net/)
+* [DFU device driver installation guide](windows_driver_installation_guide.md)
 
 
 ## License
