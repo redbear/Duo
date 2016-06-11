@@ -1,4 +1,4 @@
-# Duo Firmware Management Guide
+# Duo Firmware Deployment Guide
 ---
 
 The Duo is installed the customed Particle Firmware by default before shipped out. You can manage the firmware using dfu-util, Arduino IDE, Duo App, DuoSetupCLI, Particle CLI, Particle Cloud, Ymodem and OpenOCD.
