@@ -1,4 +1,4 @@
-# Duo Memory Mapping
+# Duo Software Architecture Introduction
 ---
 
 The RedBear Duo supports running Particle firmware based applications and WICED SDK based applications. It is installed the customed Particle firmware by default during manufacturing. The following diagram exactly shows you the memory mapping on the Duo, comparing to the Particle Photon development board.
