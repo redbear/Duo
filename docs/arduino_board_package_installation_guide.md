@@ -1,12 +1,47 @@
 # Arduino Board Package Installation Guide
 ---
 
+The RedBear Duo supports developing applications using Arduino IDE v1.6.7 or aboave. As the Arduino official or third party development boards, you need to install the corresponding board package before you can write your sketch for the target board. Arduino provides a smart and easy way for you to install a board package, i.e. "Boards Manager". 
 
+
+## Installation
+
+We Assume that you have installed Arduino IDE on your computer, or you have to [download](https://www.arduino.cc/en/Main/Software) and install it first. To install the board package for the Duo board, please walk through the following steps.
+
+1. Start Arduino IDE.
+
+2. Navigate to "File > Preferences"
+
+    ![image](images/Arduino_Preferences.png) 
+
+3. Find the "Additional Boards Manager URLs" label and click on the icon on the right. On the pop up window, new a row and fill it with `https://redbearlab.github.io/arduino/package_redbear_index.json`. Click on "OK" to close the preferences window.
+
+    ![image](images/Add_Board_URL.png) 
+
+4. Navigate to "Tools > Board > Boards Manager". Wait until Arduino IDE download the json file we specified before. Then scroll the window to find the RedBear Duo board. Select the version and click on the "Install", it will automatically download and install the board package for the RedBear Duo.
+
+    ![image](images/Boards_Manager.png) 
+
+5. After the board package installed, you will see the column for RedBear Duo is marked as "INSTALLED". Click on "Close" to shut down the Boards Manager.
+
+    ![image](images/Board_Installed.png) 
+
+6. Congratulations! The board package for Duo has been successfully installed. You are now ready to use the built-in examples or code your own sketch to compile and upload it to your Duo!
+
+
+
+## What's Next
+
+[Getting Started with Arduino IDE](duo_getting_started_with_arduino.md)
 
 
 ## Reference
 
-
+* [Duo introduction](duo_introduction.md)
+* [Duo software architecture](duo_software_architecture_introduction.md)
+* [Duo firmware deployment guide](duo_firmware_deployment_guide.md)
+* [Duo system firmware changelog](duo_system_firmware_changelog.md)
+* [Duo board package changelog](duo_arduino_board_package_changelog.md)
 
 
 ## License
