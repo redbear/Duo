@@ -37,10 +37,9 @@ We Assume that you have installed Arduino IDE on your computer, or you have to [
 
 ## Reference
 
+* [Arduino official website](http://www.arduino.cc/)
+* [Arduino unofficial list of 3rd party boards support URLs](https://github.com/arduino/Arduino/wiki/Unofficial-list-of-3rd-party-boards-support-urls)
 * [Duo introduction](duo_introduction.md)
-* [Duo software architecture](duo_software_architecture_introduction.md)
-* [Duo firmware deployment guide](duo_firmware_deployment_guide.md)
-* [Duo system firmware changelog](duo_system_firmware_changelog.md)
 * [Duo board package changelog](duo_arduino_board_package_changelog.md)
 
 
