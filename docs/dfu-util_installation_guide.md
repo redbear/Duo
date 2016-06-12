@@ -5,7 +5,7 @@
 
 dfu-util uses libusb 1.0 to access your device, so on Windows you have to register the device with the WinUSB driver (alternatively libusb-win32 or libusbK), please see the [libusb wiki](https://github.com/libusb/libusb/wiki/Windows#How_to_use_libusb_on_Windows) for more details.
 
-**Note: Make sure you are installing DFU-Util 0.8**
+**Note: Make sure you are installing the dfu-util 0.8**
 
 ## Installation
 
@@ -19,7 +19,7 @@ dfu-util uses libusb 1.0 to access your device, so on Windows you have to regist
 
 ### OSX
 
-Use Brew to install or follow the instructions from [the official website](http://dfu-util.sourceforge.net/).
+Use "brew" to install or follow the instructions from [the official website](http://dfu-util.sourceforge.net/).
 
 * Install [brew](http://brew.sh/) or start the Terminal to install it directly:
 
@@ -183,15 +183,15 @@ The built executables (and DLL) will now be in the build/bin folder.
 
 * Firstly make your Duo enter DFU Mode:  
 
-    1. Connect the Duo to your computer via the USB port.
-    2. Hold down BOTH buttons
-    3. Release only the RESET button, while holding down the SETUP button.
-    4. Wait for the LED to start flashing **yellow**
-    5. Release the SETUP button <br><br>
+    - Connect the Duo to your computer via the USB port.
+    - Hold down BOTH buttons
+    - Release only the RESET button, while holding down the SETUP button.
+    - Wait for the LED to start flashing **yellow**
+    - Release the SETUP button
 
         ![image](images/Duo-Yellow.gif) 
 
-* (Windows only) Follow this [Guide]() to install DFU USB driver
+* (Windows only) Follow this [Windows Driver Installation Guide](windows_driver_installation_guide.md) to install the DFU USB driver
 
 * Type in command line terminal:
 
@@ -205,10 +205,17 @@ The built executables (and DLL) will now be in the build/bin folder.
         Found DFU: [2b04:d058] ver=0200, devnum=3, cfg=1, intf=0, alt=0, name="@Internal Flash   /0x08000000/01*016Ka,02*016Kg,01*016Kg,01*064Kg,07*128Kg", serial="00000000010C"
 
 
+## What's Next
+
+[Duo firmware deployment using dfu-util](duo_firmware_deployment_guide.md)
+
+
 ## Reference
 
+* [Duo introduction](duo_introduction.md)
+* [Duo DFU USB driver installation guide](windows_driver_installation_guide.md)
 * [dfu-util Home page](http://dfu-util.sourceforge.net/)
-* [DFU device driver installation guide](windows_driver_installation_guide.md)
+* [RedBear discussion forum](http://discuss.redbear.cc/)
 
 
 ## License
