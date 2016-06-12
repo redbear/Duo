@@ -26,8 +26,11 @@ We Assume that you have installed Arduino IDE on your computer, or you have to [
 
     ![image](images/Board_Installed.png) 
 
-6. Congratulations! The board package for Duo has been successfully installed. You are now ready to use the built-in examples or code your own sketch to compile and upload it to your Duo!
+6. Congratulations! The board package for Duo has been successfully installed. Naviagte to "Tools > Board", you can now select board "**RedBear Duo (Native USB Port)**" if you connect your Duo to computer via its native USB port or, select "**RedBear Duo (RBLink USB Port)**" if you connect the RBLink with Duo moounted on it to computer. Navigate to "File > Examples > RedBear_Duo", you'll see many examples provided for you.
 
+    **Note: If you don't select RedBear Duo as the target board, you won't see the "RedBear_Duo" listed under "File > Examples".**
+
+You are now ready to use the built-in examples or code your own sketch to compile and upload it to your Duo!
 
 
 ## What's Next
@@ -37,10 +40,12 @@ We Assume that you have installed Arduino IDE on your computer, or you have to [
 
 ## Reference
 
+* [Duo introduction](duo_introduction.md)
+* [Duo board package resources](https://github.com/redbear/STM32-Arduino/tree/master/arduino)
+* [Duo board package change-log](duo_arduino_board_package_changelog.md)
 * [Arduino official website](http://www.arduino.cc/)
 * [Arduino unofficial list of 3rd party boards support URLs](https://github.com/arduino/Arduino/wiki/Unofficial-list-of-3rd-party-boards-support-urls)
-* [Duo introduction](duo_introduction.md)
-* [Duo board package changelog](duo_arduino_board_package_changelog.md)
+* [RedBear discussion forum](http://discuss.redbear.cc/)
 
 
 ## License
