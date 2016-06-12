@@ -61,7 +61,7 @@ Now make your Duo enter DFU Mode:
 
         dfu-util -d 2b04:d058 -a 1 -s 34 -U device_private_key.der
 
-You can also download or dump other configurations to / from DCT using dfu-util. Check the [Duo Memory Mapping](duo_memory_mapping.md) of the Duo to obtain the offset address of each configuration.
+You can also download or dump other configurations to / from DCT using dfu-util. Please refer to the [Duo Firmware Architecture](duo_software_architecture_introduction.md) to obtain the offset address of each configuration.
 
 #### Manage System Firmware
 
@@ -133,9 +133,11 @@ If you mount your Duo onto RBLink and connect the RBLink to your computer, you c
 ## Reference
 
 * [dfu-util installation guide](dfu-util_installation_guide.md)
-* [Windows driver installation guide](windows_driver_installation_guide.md)
+* [Duo DFU USB driver installation guide](windows_driver_installation_guide.md)
 * [Arduino board package installation guide](duo_arduino_board_package_guide.md)
-* [Duo memory mapping](duo_memory_mapping.md)
+* [Duo firmware architecture](duo_firmware_architecture_introduction.md)
+* [Duo firmware source code](https://github.com/redbear/firmware)
+* [RedBear discussion forum](http://discuss.redbear.cc/)
 
 
 ## License
