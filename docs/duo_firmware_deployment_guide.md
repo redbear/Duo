@@ -106,10 +106,10 @@ If you connect your Duo directly to the computer, you can update the system firm
 
 - Connect your Duo to computer and put it in DFU mode:
 
-    1. Hold down BOTH buttons
-    2. Release only the RESET button, while holding down the SETUP button.
-    3. Wait for the LED to start blinking **yellow**
-    4. Release the SETUP button <br><br>
+    - Hold down BOTH buttons
+    - Release only the RESET button, while holding down the SETUP button.
+    - Wait for the LED to start blinking **yellow**
+    - Release the SETUP button <br><br>
 
 - Select the board: "Tools > Board: RedBear Duo (Native USB Port)"
 
@@ -117,7 +117,7 @@ If you connect your Duo directly to the computer, you can update the system firm
 
 - Click on "Tools > Burn Bootloader" to update the system firmware and the default user application.
 
-#### Using RBLinkUSB Port
+#### Using RBLink USB Port
 
 If you mount your Duo onto RBLink and connect the RBLink to your computer, you can update the bootloader, system firmware except the factory reset application and a default user application (blinking LED). Of cource you can upload your own sketch by clicking on the "Upload" icon.
 
