@@ -201,9 +201,9 @@ We always recommend you update your Duo to the latest system firmware, since the
 ## Reference
 
 * [Duo inroduction](duo_introduction.md)
-* [Duo software architecture](duo_software_architecture_introduction.md)
+* [Duo firmware architecture](duo_firmware_architecture_introduction.md)
+* [Duo firmware deployment](duo_firmware_deployment_guide.md)
 * [Duo system firmware change-log](duo_system_firmware_changelog.md)
-* [Duo system firmware deployment](duo_firmware_deployment_guide.md)
 * [Duo provisioning guide](duo_provisioning_guide.md)
 * [dfu-util installation guide](dfu-util_installation_guide.md)
 * [Particle Build](https://build.particle.io)
