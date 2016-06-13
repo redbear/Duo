@@ -109,7 +109,7 @@ If you connect your Duo directly to the computer, you can update the system firm
     - Hold down BOTH buttons
     - Release only the RESET button, while holding down the SETUP button.
     - Wait for the LED to start blinking **yellow**
-    - Release the SETUP button <br><br>
+    - Release the SETUP button
 
 - Select the board: "Tools > Board: RedBear Duo (Native USB Port)"
 
@@ -135,7 +135,7 @@ If you mount your Duo onto RBLink and connect the RBLink to your computer, you c
 * [dfu-util installation guide](dfu-util_installation_guide.md)
 * [Duo DFU USB driver installation guide](windows_driver_installation_guide.md)
 * [Arduino board package installation guide](duo_arduino_board_package_guide.md)
-* [Duo firmware architecture](duo_firmware_architecture_introduction.md)
+* [Duo firmware architecture overview](duo_firmware_architecture_overview.md)
 * [Duo firmware source code](https://github.com/redbear/firmware)
 * [RedBear discussion forum](http://discuss.redbear.cc/)
 
