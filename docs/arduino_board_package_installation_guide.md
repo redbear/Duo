@@ -1,12 +1,15 @@
 # Arduino Board Package Installation Guide
 ---
 
-The RedBear Duo supports developing applications using Arduino IDE v1.6.7 or aboave. As the Arduino official or third party development boards, you need to install the corresponding board package before you can write your sketch for the target board. Arduino provides a smart and easy way for you to install a board package, i.e. "Boards Manager". 
+The RedBear Duo supports developing applications using Arduino IDE v1.6.7 or above. As the Arduino official or third party development boards, you need to install the corresponding board package before you can write your sketch for the target board. Arduino provides a smart and easy way for you to install a board package, i.e. "Boards Manager". 
+
+* [Install Duo Board Package](#install-duo-board-package)
+* [Update Duo Board Package](#update-duo-board-package)
 
 
-## Installation
+## <span id="install-duo-board-package">Install Duo Board Package</span>
 
-We Assume that you have installed Arduino IDE on your computer, or you have to [download](https://www.arduino.cc/en/Main/Software) and install it first. To install the board package for the Duo board, please walk through the following steps.
+We assume that you have installed Arduino IDE on your computer, or you have to [download](https://www.arduino.cc/en/Main/Software) and install it first. To install the board package for the Duo board, please walk through the following steps.
 
 1. Start Arduino IDE.
 
@@ -31,6 +34,19 @@ We Assume that you have installed Arduino IDE on your computer, or you have to [
     **Note: If you don't select RedBear Duo as the target board, you won't see the "RedBear_Duo" listed under "File > Examples".**
 
 You are now ready to use the built-in examples or code your own sketch to compile and upload it to your Duo!
+
+
+## <span id="update-duo-board-package">Update Duo Board Package</span>
+
+Since you have installed a version of the Duo board package already, so updating the package becomes much simple.
+
+1. Navigate to "Tools > Board > Boards Manager". Wait until Arduino IDE updates the boards index. 
+
+2. Scroll the window to find the RedBear Duo board. Select an upper version and click on the "Update", it will automatically download and install the  selected version of the board package.
+
+    ![image](images/Boards_Manager_Update.png) 
+
+3. After the board package updated, click on "Close" to shut down the Boards Manager.
 
 
 ## What's Next

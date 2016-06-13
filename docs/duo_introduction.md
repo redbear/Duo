@@ -47,7 +47,7 @@ The Duo supports several kinds of programming language, particularly like Arduin
 * Beacon Management
 
 
-## Layout
+## Block Diagram
 
 ![image](images/Duo_BlockDiagram.png)
 

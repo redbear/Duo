@@ -7,6 +7,17 @@ Glad you have received the Duo from vendor! Thanks for purchasing the Duo and ho
 * [Set up the Duo using iOS/Android App](#qucik-start-with-serial): *TBD*
 
 
+## User Interface
+
+![image](images/RBDuo-L.png)
+
+* **RESET**: Reset button for resetting the Duo board
+* **SETUP**: User button for setting up the Duo
+* **RGB**: RGB LED for indicating the Duo status
+* **LED**: Single blue LED for user use
+* **USB**: Micro USB connector for communication with the Duo
+
+
 ## <span id="qucik-start-with-serial">Set up the Duo using serial terminal</span>
 ### 1. Power on
 

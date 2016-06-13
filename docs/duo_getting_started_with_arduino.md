@@ -1,126 +1,101 @@
 
-# Duo Getting Started with Arduino
+# Duo Getting Started with Arduino IDE
 ---
 
-Allows Arduino fans to use the Arduino IDE to develop STM32 MCU firmware. Currently, it supports the RedBear Duo (STM32F205) IoT development kit.
-
-The Duo IoT development kit contains two boards, the Duo and the RBLink.
-
-The Duo is a small and powerful IoT development board that has an ARM Cortex-M3 MCU runs at 120 MHz with 1 MB Flash (256 KB for Arduino sketch) and 128 KB SRAM, it comes with Broadcom's BCM43438 connectivity chip so that the Duo has WiFi (802.11n / 2.4 GHz) and Bluetooth features at the same time, the board only requires a single antenna.
-
-The RBLink provides interfaces for Seeed Studio Grove System modules.
-
-You do not really need the RBLink if you are not going to develop firmware using Broadcom's WICED SDK.
-
-Note: unless you want to contribute to the Duo board support package, you do not need to touch the folder 'arduino' because you will use the Arduino Boards Manager to add it to the Arduino IDE. 
-
-![image](docs/images/RBDuo_Pinout.jpg)
-
-![image](docs/images/RBLink_Pinout.jpg)
+The Duo is installed the customed Particle firmware by default during manufacturing, which enables users developing their applications using Arduino IDE. You can directly connect your Duo to computer via its native USB port or, mount your Duo onto RBLink and connect the RBLink to computer via RBLink USB port.
 
 
-# Requirements
+## Requirements
 
-### Hardware
-
-1. RedBear [Duo](http://www.redbear.cc/duo) development board
-
-### Readings
-
-1. Basic [Arduino](http://www.arduino.cc) knowledge
-2. Understand the [Duo System Overview](https://github.com/redbear/Duo)
-3. Go through the Duo [Getting Started Guide](https://github.com/redbear/Duo/blob/master/docs/getting_started.md)
-
-### Software
- 
-1. Arduino IDE (Tested with 1.6.8)
-2. Duo board support package for Arduino (See [version](VERSION.md) for the latest version)
+* Arduino IDE v1.6.7 or above
+* RedBear Duo development board
+* RBLink programmer (optional)
+* Micro USB cable 
 
 
-# Install Driver (only for Windows)
+## Getting Started
 
-### USB CDC
+1. Connect the Duo dierectly to your computer via its native USB port with micro USB cable. Alternatively, if you have a RBLink in hand, you can mount the Duo onto your RBLink and connect the RBLink to your computer via RBLink USB port with micro USB cable. It's fine that you can connect the Duo directly to computer while it is mounted onto RBLink.
 
-Connect the Duo to your Windows PC using the USB port and install the driver from the [driver/windows](driver/windows) folder.
+    ![image](images/Duo_RBLink.png)
 
+2. (Windows Only) Install USB driver. If you connect the Duo directly to computer, then install the Duo application USB driver. If you connect the  RBLink to computer, then install the RBLink USB driver. Please follow the [Windows Driver Installation Guide](windows_driver_installation_guide.md) to install those drivers if you havn't done it before.
 
-# Update udev Rules (only for Linux)
+3. Download and install the corresponding Arduino IDE 1.6.7 or above for the Operating System of your computer.
 
-For Linux (e.g. Ubuntu 14.04) users: ModemManager will try to use the Duo as a modem and this causes the upload process fail using Arduino IDE. To allow Arduino IDE to upload correctly, you need to fix it by modify the UDEV rule, write a simple UDEV rule to ignore it from being handled by modem manager.
+4. Start Arduino IDE. Please follow the [Arduino Board Package Installation Guide](arduino_board_package_installation_guide.md) to install the board package for Duo.
 
-	$ sudo nano /etc/udev/rules.d/77-mm-usb-device-blacklist.rules
+5. (Linux Only) Configure development environment
+
+    - Update UDEV rules
+
+        For Linux (e.g. Ubuntu 14.04) users: Modem Manager will try to use the Duo as a modem, which will cause the upload process fail using Arduino IDE. To allow Arduino IDE to upload correctly, you need to fix it by modifying the UDEV rule -- write a simple UDEV rule to ignore it from being handled by modem manager.
+
+	        $ sudo nano /etc/udev/rules.d/77-mm-usb-device-blacklist.rules
 	
-Simply add this single line:
+        Simply add this single line:
 
-	ATTR{idVendor}=="2b04", ENV{ID_MM_DEVICE_IGNORE}="1"
-
-
-# Install lsb-core (only for Linux)
-
-On Linux, if you cannot compile sketches (the IDE cannot find gcc or g++):
-
-	$ sudo apt-get install lsb-core
+	        ATTR{idVendor}=="2b04", ENV{ID_MM_DEVICE_IGNORE}="1"
 
 
-# Setup Arduino IDE
+    - Install lsb-core
 
-Step 1:
+        On Linux, if you cannot compile sketches because of the gcc or g++ not being found by Arduino IDE:
 
-Download the Arduino IDE, support OSX, Windows and Linux.
+	        $ sudo apt-get install lsb-core
 
-https://www.arduino.cc/en/Main/Software
+6. Navigate to "Tools > Board", select the "**RedBear Duo (Native USB Port)**" as the target board if you connect the Duo via its native USB port, or select "**RedBear Duo (RBLink USB Port)**" if you connect the RBLink with the  Duo mounted onto it.
 
-Step 2:
+7. Navigate to "Tools > Port", select the port for the Duo or RBLink.
 
-Start the IDE and from the menu, Preferences, add the following to "Additional Boards Manager URLs"
+8. Navigate to "File > Examples > RedBear_Duo > 01.Basic", select "**Duo\_Blink**" to open the example.
 
-https://redbearlab.github.io/arduino/package_redbear_index.json
+    ![image](images/Blink_Example.png)
 
-Step 3:
+9. Click on the ![image](images/Upload_icon.png) to compile the sketch followed by automatically uploading this sketch to Duo. After uploadling completed, you will see the on-board blue LED is toggling in every second interval.
 
-From the menu, [ Tools ] > [ Board ], select "Boards Manager" and install the RedBear Duo board support package to the IDE.
-
-Step 4:
-
-Connect the Duo to your computer through the USB port of the Duo.
-
-*** Note that, it is not the RBLink's USB port if you are going to use the RBLink for Grove System components, the following photo shows the setup (connected to Grove RGB LED):
-
-![image](docs/images/mode_grove.jpg)
-
-Step 5:
-
-From the menu, [ Tools ] > [ Board ], select [ RedBear Duo ] under RedBear IoT Boards.
-
-Step 6:
-
-Select the Port under the [ Tools ] -> [ Port ] menu.
+10. Well done! You are supposed to try more other examples that under "File > Examples > RedBear_Duo" or, just code sketch yourself to build your awesome project!
 
 
-# Update Firmware
+## Updating Board Package and System Firmware
 
-### For using Arduino IDE to update
+When there is a new board package available (See the [board package change-log](duo_arduino_board_package_changelog.md)), you can simply follow the [Board Package Installation Guide](arduino_board_package_installation_guide.md) to update it to the latest version. 
 
-![image](docs/images/mode_standalone.jpg)
+There is a copy of system firmware within the Duo board package. You can simply update the Duo's system firmware via the "**Burn Bootloader**" option (supported since board package v0.2.5). 
 
-* Connect the Duo to your PC via the USB port.
-* Select [ Menu ] -> [ Tools ] -> [ Programmer ] -> [ Duo FW Uploader ]
-* Press and hold the `SETUP` button on the board and press the `RESET` button, until it shows in flashing yellow, release the `SETUP` button, it is in DFU mode now.
-* Select [ Menu ] -> [ Tools ] -> [ Burn Bootloader ] to update the system firmware.
-* You will see the Blue LED on the board is flashing.
+### via Native USB Port
 
-### For using DFU-Util
+If you connect your Duo directly to the computer, you can update the system firmware, including system part 1, system part 2 and the factory reset application, and a default user application (blinking LED). Of cource you can upload your own sketch by clicking on the "Upload" icon.
 
-For people want to compile without the Arduino IDE, please use this method to update firmware:
+- Connect your Duo to computer and put it in DFU mode:
 
-* Read the [Firmware Management Guide](https://github.com/redbear/Duo/tree/master/firmware) for the instructions.
+    - Hold down BOTH buttons
+    - Release only the RESET button, while holding down the SETUP button.
+    - Wait for the LED to start blinking **yellow**
+    - Release the SETUP button
+
+- Select the board: "Tools > Board: RedBear Duo (Native USB Port)"
+
+- Select the programmer:  "Tools > Programmer: Duo FW Uploader"
+
+- Click on "Tools > Burn Bootloader" to update the system firmware and the default user application.
+
+### via RBLink USB Port
+
+If you mount your Duo onto RBLink and connect the RBLink to your computer, you can update the bootloader, system firmware except the factory reset application and a default user application (blinking LED). Of cource you can upload your own sketch by clicking on the "Upload" icon.
+
+- Mount your Duo (be aware of the orientation) onto RBlink and connect the RBLink to your computer
+
+- Select the board: "Tools > Board: RedBear Duo (RBLink USB Port)"
+
+- Select the programmer:  "Tools > Programmer: RBLink"
+
+- Click on "Tools > Burn Bootloader" to update the bootloader, system firmware and the default user application.
 
 
-# Upload sketch (e.g. Blink)
+## Reference
 
-From the menu, [ File ] > [ Examples ] > [ RedBear_Duo ] -> [01.Basics], select the example `Duo_Blink` and upload to the board.
 
-The blue LED (D7) on the board is blinking.
 
 
 ## License
@@ -132,4 +107,3 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
