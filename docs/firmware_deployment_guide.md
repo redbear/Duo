@@ -1,4 +1,4 @@
-# Duo Firmware Deployment Guide
+# Duo: Firmware Deployment Guide
 ---
 
 The Duo is installed the customed Particle Firmware by default before shipped out. You can manage the firmware using dfu-util, Arduino IDE, Duo App, DuoSetupCLI, Particle CLI, Particle Cloud, Ymodem and OpenOCD.
@@ -80,6 +80,31 @@ You can also download or dump other configurations to / from DCT using dfu-util.
 
 * Update Wi-Fi firmware:     
 `dfu-util -d 2b04:d058 -a 2 -s 0x180000 -D duo-wifi-r1.bin`
+
+#### Sample Output
+    dfu-util 0.8
+
+    Copyright 2005-2009 Weston Schmidt, Harald Welte and OpenMoko Inc.
+    Copyright 2010-2014 Tormod Volden and Stefan Schmidt
+    This program is Free Software and has ABSOLUTELY NO WARRANTY
+    Please report bugs to dfu-util@lists.gnumonks.org
+
+    dfu-util: Invalid DFU suffix signature
+    dfu-util: A valid DFU suffix will be required in a future dfu-util release!!!
+    Opening DFU capable USB device...
+    ID 2b04:d058
+    Run-time device DFU version 011a
+    Claiming USB DFU Interface...
+    Setting Alternate Setting #0 ...
+    Determining device status: state = dfuIDLE, status = 0
+    dfuIDLE, continuing
+    DFU mode device DFU version 011a
+    Device returned transfer size 4096
+    DfuSe interface name: "Internal Flash   "
+    Downloading to address = 0x08020000, size = 38492
+    Download    [=========================] 100%        38492 bytes
+    Download done.
+    File downloaded successfully  
 
 
 ## <span id="using-arduino-ide">Using Arduino IDE</span>

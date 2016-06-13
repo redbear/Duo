@@ -1,4 +1,4 @@
-# Duo Out-of-Box Experience
+# Duo: Out-of-Box Experience
 ---
 
 Glad you have received the Duo from vendor! Thanks for purchasing the Duo and hope you have a lots of fun with it! Now let's take it out of the box and have your first experience on the Duo.

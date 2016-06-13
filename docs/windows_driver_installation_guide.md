@@ -1,5 +1,5 @@
 
-# Windows Driver Installation Guide
+# Duo: Windows Driver Installation Guide
 ---
 
 **Note: All the drivers mentioned here are for the Duo that running the Particle firmware. For the Duo that running the WICED application hasn't  implemented the USB device capability.**

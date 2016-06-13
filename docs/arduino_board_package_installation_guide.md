@@ -1,4 +1,4 @@
-# Arduino Board Package Installation Guide
+# Duo: Arduino Board Package Installation Guide
 ---
 
 The RedBear Duo supports developing applications using Arduino IDE v1.6.7 or above. As the Arduino official or third party development boards, you need to install the corresponding board package before you can write your sketch for the target board. Arduino provides a smart and easy way for you to install a board package, i.e. "Boards Manager". 

@@ -1,5 +1,4 @@
-
-# Duo Getting Started with Arduino IDE
+# Duo: Getting Started with Arduino IDE
 ---
 
 The Duo is installed the customed Particle firmware by default during manufacturing, which enables users developing their applications using Arduino IDE. You can directly connect your Duo to computer via its native USB port or, mount your Duo onto RBLink and connect the RBLink to computer via RBLink USB port.

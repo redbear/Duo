@@ -1,6 +1,7 @@
-
-# RedBear Duo
+# RedBear Duo Introduction
 ---
+
+![image](images/RBDuo.png)
 
 
 ## Overview

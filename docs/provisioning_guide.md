@@ -1,4 +1,5 @@
-# Provisioning Guide
+# Duo: Provisioning Guide
+---
 
 This guide provides instructions for you to provision your Duo to Particle cloud.
 

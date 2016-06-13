@@ -1,5 +1,5 @@
-
 # Trouble Shooting
+---
 
 1. Unable to associate the Duo to an WiFi Access Point (AP) or router.
 

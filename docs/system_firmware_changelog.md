@@ -1,4 +1,4 @@
-# Duo System Firmware Change-log
+# Duo: System Firmware Change-log
 ---
 
 
