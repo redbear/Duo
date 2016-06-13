@@ -35,74 +35,66 @@ Now make your Duo enter DFU Mode:
 3. Wait for the LED to start blinking **yellow**
 4. Release the SETUP button
 
-#### Manage DCT
+#### Update DCT (Device Configuration Table)
 
-* Update the entire DCT:
+* Update the entire DCT:     
+`dfu-util -d 2b04:d058 -a 0 -s 0x8004000 -D fac-dct-r1.bin`
 
-        dfu-util -d 2b04:d058 -a 0 -s 0x8004000 -D fac-dct-r1.bin
+* Update the server public key:     
+`dfu-util -d 2b04:d058 -a 1 -s 2082 -D server_public_key.der`
 
-* Update the server public key:
+* Update the device private key that you backup before:    
+`dfu-util -d 2b04:d058 -a 1 -s 34 -D device_private_key.der`
 
-        dfu-util -d 2b04:d058 -a 1 -s 2082 -D server_public_key.der 
+* Dump the entire DCT. It may contain the device private key and the Wi-Fi credentials, so you need to keep it privately:     
+`dfu-util -d 2b04:d058 -a 0 -s 0x8004000 -U my_dct.bin`
 
-* Update the device private key that you dumped it from Duo before:
+* Dump the server public key:    
+`dfu-util -d 2b04:d058 -a 1 -s 2082 -U server_public_key.der`
 
-        dfu-util -d 2b04:d058 -a 1 -s 34 -D device_private_key.der
-
-* Dump the entire DCT. It may contain the device private key and the Wi-Fi credentials, so you need to keep it privately:
-
-        dfu-util -d 2b04:d058 -a 0 -s 0x8004000 -U my_dct.bin
-
-* Dump the server public key:
-
-        dfu-util -d 2b04:d058 -a 1 -s 2082 -U server_public_key.der
-
-* Dump the device private key. It's so important and secret that you must keep it privately:
-
-        dfu-util -d 2b04:d058 -a 1 -s 34 -U device_private_key.der
+* Dump the device private key. It's such important and secret that you must keep it privately:     
+`dfu-util -d 2b04:d058 -a 1 -s 34 -U device_private_key.der`
 
 You can also download or dump other configurations to / from DCT using dfu-util. Please refer to the [Duo Firmware Architecture](duo_software_architecture_introduction.md) to obtain the offset address of each configuration.
 
-#### Manage System Firmware
+#### Update System Firmware
 
-* Update system part 1:
+* Update system part 1:    
+`dfu-util -d 2b04:d058 -a 0 -s 0x8020000 -D duo-system-part1-vx.x.x.bin`
 
-        dfu-util -d 2b04:d058 -a 0 -s 0x8020000 -D duo-system-part1-vx.x.x.bin
+* Update system part 2:     
+`dfu-util -d 2b04:d058 -a 0 -s 0x8040000 -D duo-system-part2-vx.x.x.bin`
 
-* Update system part 2:
+* Update factory reset application (FAC):     
+`dfu-util -d 2b04:d058 -a 2 -s 0x140000 -D duo-fac-xxxx.bin`
 
-        dfu-util -d 2b04:d058 -a 0 -s 0x8040000 -D duo-system-part2-vx.x.x.bin
+#### Update User Application
 
-* Update factory reset application (FAC):
+* Update user application:     
+`dfu-util -d 2b04:d058 -a 0 -s 0x80C0000 -D duo-user-part.bin`
 
-        dfu-util -d 2b04:d058 -a 2 -s 0x140000 -D duo-fac-xxxx.bin
+* Dump user application:     
+`dfu-util -d 2b04:d058 -a 0 -s 0x80C0000 -U duo-user-part.bin`
 
-#### Manage User Application
+#### Update Wi-Fi Firmware
 
-* Update user application:
-
-        dfu-util -d 2b04:d058 -a 0 -s 0x80C0000 -D duo-user-part.bin
-
-* Dump user application:
-
-        dfu-util -d 2b04:d058 -a 0 -s 0x80C0000 -U duo-user-part.bin
-
-#### Manage Wi-Fi Firmware
-
-* Update Wi-Fi firmware:
-
-        dfu-util -d 2b04:d058 -a 2 -s 0x180000 -D duo-wifi-r1.bin
+* Update Wi-Fi firmware:     
+`dfu-util -d 2b04:d058 -a 2 -s 0x180000 -D duo-wifi-r1.bin`
 
 
 ## <span id="using-arduino-ide">Using Arduino IDE</span>
 
-For users using Arduino IDE 1.6.7 or above, you can simply update the system firmware via burn the bootloader option (since board package  v0.2.5) and upload user application directly. 
+If this is your first time playing with the Duo using Arduino IDE, you are recommended to follow the [Duo Getting Started with Arduino IDE Guide](duo_getting_started_with_arduino.md) to set up the Arduino environment first.
 
-You should have to install the board package for the Duo first. If you havn't installed one, please follow the [Arduino Board Package Installation Guide](duo_arduino_board_package_guide.md) to install or update the board package to the latest.
+#### Update User Application (aka. Arduino sketch)
 
-#### Using Native USB Port
+To upload your sketch, simply click on the ![image](images/Upload_icon.png) icon.
 
-If you connect your Duo directly to the computer, you can update the system firmware, including system part 1, system part 2 and the factory reset application, and a default user application (blinking LED). Of cource you can upload your own sketch by clicking on the "Upload" icon.
+#### Update System Firmware
+
+##### 1. via Native USB Port
+
+If you connect your Duo directly to the computer, you can update the Duo's system firmware, which includes system part 1, system part 2 and a factory reset application, by using the "**Duo FW Uploader**" programmer.
 
 - Connect your Duo to computer and put it in DFU mode:
 
@@ -115,11 +107,13 @@ If you connect your Duo directly to the computer, you can update the system firm
 
 - Select the programmer:  "Tools > Programmer: Duo FW Uploader"
 
-- Click on "Tools > Burn Bootloader" to update the system firmware and the default user application.
+- Click on "Tools > Burn Bootloader" to update the system firmware.
 
-#### Using RBLink USB Port
+- After the burn bootloader operation completed, the on-board blue LED start blinking rapidly, since it has also downloaded a blink application, in case that your old application is not compatible with the updated system firmware.
 
-If you mount your Duo onto RBLink and connect the RBLink to your computer, you can update the bootloader, system firmware except the factory reset application and a default user application (blinking LED). Of cource you can upload your own sketch by clicking on the "Upload" icon.
+##### 2. via RBLink USB Port
+
+If you mount your Duo onto RBLink and connect the RBLink to your computer, you can update the Duo's bootloader and its system firmware except the factory reset application, by using the "**RBLink**".
 
 - Mount your Duo (be aware of the orientation) onto RBlink and connect the RBLink to your computer
 
@@ -127,11 +121,14 @@ If you mount your Duo onto RBLink and connect the RBLink to your computer, you c
 
 - Select the programmer:  "Tools > Programmer: RBLink"
 
-- Click on "Tools > Burn Bootloader" to update the bootloader, system firmware and the default user application.
+- Click on "Tools > Burn Bootloader" to update the bootloader and system firmware.
+
+- After the burn bootloader operation completed, the on-board blue LED start blinking rapidly, since it has also downloaded a blink application, in case that your old application is not compatible with the updated system firmware.
 
 
 ## Reference
 
+* [Duo introduction](duo_introduction.md)
 * [dfu-util installation guide](dfu-util_installation_guide.md)
 * [Duo DFU USB driver installation guide](windows_driver_installation_guide.md)
 * [Arduino board package installation guide](duo_arduino_board_package_guide.md)

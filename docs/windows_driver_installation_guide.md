@@ -59,7 +59,7 @@ If the follow screen prompt out, select "Install this driver software anyway".
 
 ## Install Duo DFU USB Driver
 
-If you make your Duo enter DFU Mode:
+Connect your Duo to computer and put it in the DFU Mode:
 
 1. Hold down BOTH buttons
 2. Release only the RESET button, while holding down the SETUP button.

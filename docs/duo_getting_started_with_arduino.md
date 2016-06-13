@@ -19,7 +19,7 @@ The Duo is installed the customed Particle firmware by default during manufactur
 
     ![image](images/Duo_RBLink.png)
 
-2. (Windows Only) Install USB driver. If you connect the Duo directly to computer, then install the Duo application USB driver. If you connect the  RBLink to computer, then install the RBLink USB driver. Please follow the [Windows Driver Installation Guide](windows_driver_installation_guide.md) to install those drivers if you havn't done it before.
+2. (Windows Only) Install USB driver. If you connect the Duo directly to computer, then install the Duo application USB driver and the Duo DFU USB driver. If you connect the  RBLink to computer, then install the RBLink USB driver. Please follow the [Windows Driver Installation Guide](windows_driver_installation_guide.md) to install those drivers if you havn't done it before.
 
 3. Download and install the corresponding Arduino IDE 1.6.7 or above for the Operating System of your computer.
 
@@ -52,20 +52,20 @@ The Duo is installed the customed Particle firmware by default during manufactur
 
     ![image](images/Blink_Example.png)
 
-9. Click on the ![image](images/Upload_icon.png) to compile the sketch followed by automatically uploading this sketch to Duo. After uploadling completed, you will see the on-board blue LED is toggling in every second interval.
+9. Click on the ![image](images/Upload_icon.png) icon to compile the sketch followed by automatically uploading this sketch to your Duo. After uploadling completed, you will see the on-board blue LED is toggling in every second interval.
 
-10. Well done! You are supposed to try more other examples that under "File > Examples > RedBear_Duo" or, just code sketch yourself to build your awesome project!
+10. Well done! You are supposed to try more other examples that under "File > Examples > RedBear_Duo" or, just start coding your own sketch to build an awesome project!
 
 
-## Updating Board Package and System Firmware
+## Updating the Duo's System Firmware
 
-When there is a new board package available (See the [board package change-log](duo_arduino_board_package_changelog.md)), you can simply follow the [Board Package Installation Guide](arduino_board_package_installation_guide.md) to update it to the latest version. 
+You are supposed to check the [board package change-log](duo_arduino_board_package_changelog.md) to see if there is a new released version of the board package. If available, you can simply follow the [Board Package Installation Guide](arduino_board_package_installation_guide.md) to update the board package to the latest version. 
 
-There is a copy of system firmware within the Duo board package. You can simply update the Duo's system firmware via the "**Burn Bootloader**" option (supported since board package v0.2.5). 
+Since Duo board package v0.2.5, there is always a copy of the Duo's system firmware within the package, if a new version of the system firmware is included in the updated board package, you can simply update the Duo's system firmware via the "**Burn Bootloader**" option. 
 
 ### via Native USB Port
 
-If you connect your Duo directly to the computer, you can update the system firmware, including system part 1, system part 2 and the factory reset application, and a default user application (blinking LED). Of cource you can upload your own sketch by clicking on the "Upload" icon.
+If you connect your Duo directly to the computer, you can update the Duo's system firmware, which includes system part 1, system part 2 and a factory reset application, by using the "**Duo FW Uploader**" programmer.
 
 - Connect your Duo to computer and put it in DFU mode:
 
@@ -78,11 +78,13 @@ If you connect your Duo directly to the computer, you can update the system firm
 
 - Select the programmer:  "Tools > Programmer: Duo FW Uploader"
 
-- Click on "Tools > Burn Bootloader" to update the system firmware and the default user application.
+- Click on "Tools > Burn Bootloader" to update the system firmware.
+
+- After the burn bootloader operation completed, the on-board blue LED start blinking rapidly, since it has also downloaded a blink application, in case that your old application is not compatible with the updated system firmware.
 
 ### via RBLink USB Port
 
-If you mount your Duo onto RBLink and connect the RBLink to your computer, you can update the bootloader, system firmware except the factory reset application and a default user application (blinking LED). Of cource you can upload your own sketch by clicking on the "Upload" icon.
+If you mount your Duo onto RBLink and connect the RBLink to your computer, you can update the Duo's bootloader and its system firmware except the factory reset application, by using the "**RBLink**".
 
 - Mount your Duo (be aware of the orientation) onto RBlink and connect the RBLink to your computer
 
@@ -90,12 +92,21 @@ If you mount your Duo onto RBLink and connect the RBLink to your computer, you c
 
 - Select the programmer:  "Tools > Programmer: RBLink"
 
-- Click on "Tools > Burn Bootloader" to update the bootloader, system firmware and the default user application.
+- Click on "Tools > Burn Bootloader" to update the bootloader and system firmware.
+
+- After the burn bootloader operation completed, the on-board blue LED start blinking rapidly, since it has also downloaded a blink application, in case that your old application is not compatible with the updated system firmware.
 
 
 ## Reference
 
-
+* [Duo introduction](duo_introduction.md)
+* [Duo board package installation guide](duo_arduino_board_package_guide.md)
+* [Duo board package resources](https://github.com/redbear/STM32-Arduino/tree/master/arduino)
+* [Duo board package change-log](duo_arduino_board_package_changelog.md)
+* [Duo firmware architecture overview](duo_firmware_architecture_overview.md)
+* [Duo firmware source code](https://github.com/redbear/firmware)
+* [RedBear discussion forum](http://discuss.redbear.cc/)
+* [Arduino official website](http://www.arduino.cc/)
 
 
 ## License
