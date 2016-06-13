@@ -8,7 +8,12 @@ This guide aims to show you how to install the driver for Duo, including applica
 
 This guide is for Windows user only. Mac and Linux users need not to install driver for Duo.
 
-## Install Duo Application USB Driver
+* [Install Duo Application USB Driver](#install-duo-application-usb-driver)
+* [Install Duo DFU USB Driver](#install-duo-dfu-usb-driver)
+* [Install RBLink USB Driver](#install-rblink-usb-driver)
+
+
+## <span id="install-duo-application-usb-driver">Install Duo Application USB Driver</span>
 
 After your Duo boots-up to run system firmware, it will appear as USB comport device on your computer. The device name is **"Duo with WiFi and BLE"**.
 
@@ -57,7 +62,7 @@ If the follow screen prompt out, select "Install this driver software anyway".
 ![image](images/Warning.png)
 
 
-## Install Duo DFU USB Driver
+## <span id="install-duo-dfu-usb-driver">Install Duo DFU USB Driver</span>
 
 Connect your Duo to computer and put it in the DFU Mode:
 
@@ -77,13 +82,21 @@ The Duo will appear as "Other Devices" on your computer. The device name is **"D
     ![image](images/Zadig.png)
 
 * It will show "Driver installed successfully".
-## Install RBLink USB Driver
+## <span id="install-rblink-usb-driver">Install RBLink USB Driver</span>
 
 For the RBLink, since it is compatible with STLink, download the driver from ST website and follow the instructions provided.
 [STLink Driver](http://www.st.com/web/en/catalog/tools/PF260219)
 
+
+## What's Next
+
+* [Getting started with Arduino IDE for Duo](duo_getting_started_with_arduino.md)
+* [Getting started with Particle Build (WebIDE)]()
+
+
 ## Reference
 
+* [Duo inroduction](duo_introduction.md)
 * [Disable driver signature on Windows 8 / 10](http://www.howtogeek.com/167723/how-to-disable-driver-signature-verification-on-64-bit-windows-8.1-so-that-you-can-install-unsigned-drivers/) 
 * [Zadig Wiki page](https://github.com/pbatard/libwdi/wiki/Zadig)
 * [ST-Link Utility and driver](http://www.st.com/web/en/catalog/tools/PF260219)
