@@ -3,81 +3,128 @@
 
 ![image](images/RBDuo.png)
 
+* [Description](#description)
+* [Features](#features)
+* [Block Diagram](#block-diagram)
+* [Pinout](#pinout)
+* [Power Supply](#power-supply)
+* [Development](#development)
+* [Package Characteristics](#package-characteristics)
+* [Layout Recommendations](#layout-recommendations)
+* [Ordering Information](#ordering-information)
+* [Resources](#resources)
 
-## Overview
 
-The [RedBear Duo](http://www.redbear.cc/duo) is a thumb-size development board designed to simplify the process of building Internet of Things (IoT) products. It is built with a powerful Cortext-M3 MCU, a wireless module which equips both Wi-Fi and BLE (Bluetooth Low Energy) connectivity, as well as abundant of peripherals. It enables you develop applications to communicate with other wireless accessories or your smart devices, e.g. mobile phone, tablet or computer, through BLE or Wi-Fi. If the Duo is connecting to a router which has internet capability, you can even communicate with the Duo through cloud. For example, you can just sit in your office and monitor the environment data sampled by the Duo at home.
+## <span id="description">Description</span>
+
+The [RedBear Duo](http://www.redbear.cc/duo) is a thumb-size development board designed to simplify the process of building Internet of Things (IoT) products. It is built with a powerful Cortext-M3 MCU, a wireless module which equips both Wi-Fi and BLE (Bluetooth Low Energy) connectivity, as well as abundant of peripherals. 
+
+It enables you develop applications to communicate with other wireless accessories or your smart devices, e.g. mobile phone, tablet or computer, through BLE, Wi-Fi or both BLE and WiFi at the same time. If the Duo is connecting to a router which implemented internet capability, you can even communicate with the Duo through cloud. For example, you can just sit in your office and monitor the environment data sampled by the Duo at home.
 
 The Duo supports several kinds of programming language, particularly like Arduino, C/C++, JavaScript and Python. You can develop the applications for Duo using GCC, Arduino IDE, Particle Web IDE, Espruino Web IDE and Broadcom WICED SDK.
 
-
-## Features
-
-* STMicroelectronics STM32F205 ARM Cortex-M3 @120 MHz, 128 KB SRAM, 1 MB Flash
-* AMPAK AP6212A (Broadcom BCM43438 chip) wireless module with Wi-Fi and Bluetooth built-in
-* Optional signal chip antenna or external antenna
-* 1 x 2MB external SPI Flash
-* 1 x RGB LED
-* 1 x independent LED
-* 1 x RESET button 
-* 1 x user button
-* 18 x digital I/O
-* 8 x analog input
-* 13 x PWM
-* 2 x UART
-* 2 x SPI
-* 1 x I2S
-* 1 x I2C 
-* 1 x High Speed USB
-* JTAG debug port presented
-* Single-sided PCBA for easy mounting on other PCB
-* Optional develop application using Arduino IDE, Particle Web IDE, Espruino Web IDE, Broadcom WICED SDK or ARM GCC
-* Real-time operating system (FreeRTOS)
-* Hardware and software open source
-* FCC and CE certified
-
-
-## Applications
+The Duo is so powerful that you can be applied it many applications, e.g.:
 
 * Industrial Automation
 * Building Automation
 * Smart Home Appliances
 * Smart Toys
 * IoT Enabled Sensors
-* WiFi/BLE Gateway
+* WiFi / BLE Gateway
 * Beacon Management
 
 
-## Block Diagram
+## <span id="features">Features</span>
+
+* STMicroelectronics STM32F205, ARM 32-bit Cortex-M3 @120 MHz
+* AMPAK AP6212A Wireless Module (built around Broadcom BCM43438):
+    - Wi-Fi 802.11b/g/n, working on 2.4 GHz ISM Band
+    - Bluetooth 4.1 (Dual Mode), working on 2.4 GHz ISM Band
+* Memories:
+    - 1MB internal flash
+    - 2MB external SPI flash
+    - 128KB SRAM
+* User Interface:
+    - 1 x RGB LED
+    - 1 x single LED
+    - 1 x RESET button 
+    - 1 x user button
+* 18 x Digital I/O
+* 8 x Analog Input
+* 13 x PWM
+* Connectivity
+    - 2 x UART
+    - 2 x SPI
+    - 1 x I2S
+    - 1 x I2C 
+    - 1 x High Speed USB
+    - JTAG(SWD) debug port
+* Development Platform: 
+    - Arduino IDE
+    - Particle Build(WebIDE)
+    - Espruino WebIDE
+    - Broadcom WICED SDK
+    - ARM GCC
+* Real-time operating system (FreeRTOS)
+* Hardware and software open source
+* Single-sided PCBA for easy mounting on other PCB
+* Alternative signal chip antenna or external antenna
+* FCC and CE certified
+
+
+## <span id="block-diagram">Block Diagram</span>
 
 ![image](images/Duo_BlockDiagram.png)
 
-
-## Pinout
+<span id="pinout">Pinout</span>
+## 
 
 ![image](images/RBDuo_Pinout.png)
 
 
-## Power Supply
+## <span id="power-supply">Power Supply</span>
 
 Operating voltage: 3.3v
 
 
-## Wireless Characteristics
+## <span id="development">Development</span>
 
-The Duo is built around the Broadcom BCM43438, a Wi-Fi 802.11b/g/n plus Bluetooth 4.1 (Dual Mode) combined chipset. They share the same 2.4GHz antenna and can run at the same time. This gives you the flexibility to utilize the most suitable wireless technology(s) for your project.
+* [Out-of-Box Experience](out_of_box_experience.md)
+* [Getting Started with Arduino IDE](getting_started_with_arduino_ide.md)
+* [Getting Started with Particle Build]()
+* [Applications Development Guide](applications_development_guide.md)
+* [Firmware Architecture Overview](firmware_architecture_overview.md)
+* [RedBear discussion forum](http://discuss.redbear.cc/)
 
 
-## Dimension
+## <span id="package-characteristics">Package Characteristics</span>
 
-Length x Wide: 39 mm x 20.5 mm
+![image](images/Duo_Package.png)
 
 
-## References
+## <span id="layout-recommendations">Layout Recommendations</span>
 
-* RedBear Duo [schematic](https://github.com/redbear/Duo/tree/master/hardware/schematic)
-* On-board components' [datasheet](https://github.com/redbear/Duo/tree/master/hardware/datasheets)
-* FCC & CE [certification](https://github.com/redbear/Duo/tree/master/certs)
+![image](images/Duo_Layout_Recommend.png)
+* Dimensions are in millimeters.
+
+
+## <span id="ordering-information">Ordering Information</span>
+
+* [RedBear Store](https://store.redbear.cc/product.html)
+* [Worldwide Resellers](http://redbearlab.com/buy/)
+
+
+## <span id="resources">Resources</span>
+
+* [Modified Particle firmware source code](https://github.com/redbear/firmware)
+* [Arduino board package for Duo](https://github.com/redbear/STM32-Arduino)
+* [Modified Espruino source code](https://github.com/redbear/Espruino)
+* [Modified MicroPython source code](https://github.com/redbear/micropython)
+* [WICED SDK patch for Duo](https://github.com/redbear/WICED-SDK)
+* [BTStack source code](https://github.com/redbear/btstack)
+* [RedBear Duo schematic](https://github.com/redbear/Duo/tree/master/hardware/schematic)
+* [Components datasheet](https://github.com/redbear/Duo/tree/master/hardware/datasheets)
+* [FCC & CE certification](https://github.com/redbear/Duo/tree/master/certs)
 
 
 ## License
