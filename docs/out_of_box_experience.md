@@ -194,11 +194,7 @@ That's why we highly recommend that you backup the device private key after you 
 
 ### <span id="update-system-firmware-if-needed">Update system firmware if needed</span>
 
-We always recommend you update your Duo to the latest system firmware, since there may have new features added and bugfixes included in a new version. You can also take a look at the [system firmware change-log](duo_system_firmware_changelog.md) for reference.
-
-* Go to visit the [GitHub repository](https://github.com/redbear/Duo/tree/master/firmware/system) where we release the system firmware for Duo.
-
-* Follow the [Firmware Deployment Guide](duo_firmware_deployment_guide.md) to update the system firmware.
+We always recommend you update your Duo to the latest system firmware, since there may have new features added and bugfixes with a new released version. You should have known your Duo's current system firmware version at previous steps. Please check the [system firmware change-log](duo_system_firmware_changelog.md) to see if there is new system firmware for an update. If available, follow the [Firmware Deployment Guide](duo_firmware_deployment_guide.md) to update the system firmware.
 
 
 ## <span id="whats-next">What's Next</span>
