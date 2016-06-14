@@ -1,13 +1,21 @@
 # Duo: Out-of-Box Experience
 ---
 
-Glad you have received the Duo from vendor! Thanks for purchasing the Duo and hope you have a lots of fun with it! Now let's take it out of the box and have your first experience on the Duo.
+Glad you've received your Duo from vendor! Thanks for purchasing the Duo and hope you'll have a lots of fun with it! Now let's take it out of the box and have your first experience on the Duo.
 
-* [Set up the Duo using serial terminal](#qucik-start-with-serial)
-* [Set up the Duo using iOS/Android App](#qucik-start-with-serial): *TBD*
+* [User Interface](#user-interface)
+* [Initial Setup](#initial-setup)
+    - [Using iOS/Android App](#using-ios-android-app)
+    - [Using Serial Terminal]()
+* [Toggle the on-board LED using web browser](#toggle-the-on-board-led-using-web-browser)
+* [Further Operations](#further-operations)
+    - [Backup the device private key (Highly Recommended)](#backup-the-device-private-key-highly-recommended)
+    - [Update system firmware if needed](#update-system-firmware-if-needed)
+* [What's Next](#whats-next)
+* [References](#references)
 
 
-## User Interface
+## <span id="user-interface">User Interface</span>
 
 ![image](images/RBDuo-L.png)
 
@@ -18,41 +26,42 @@ Glad you have received the Duo from vendor! Thanks for purchasing the Duo and ho
 * **USB**: Micro USB connector for communication with the Duo
 
 
-## <span id="qucik-start-with-serial">Set up the Duo using serial terminal</span>
-### 1. Power on
+## <span id="initial-setup">Initial Setup</span>
+
+### <span id="using-ios-android-app">Using iOS/Android App</span>
+
+* TBD
+
+### <span id="using-serial-terminal">Using Serial Terminal</span>
+
+#### 1. Power on
 
 Connect your Duo to computer via its native USB port with micro USB cable (ensure that the cable has data exchangement capability). Then the on-board RGB LED will keep flashing **blue**, i.e. the Duo is in Listening Mode for you to set Wi-Fi credentials. You'll learn that the Duo is more versatile when it is in Listening Mode.
 
 ![image](images/Duo-Blue.gif)
 
+#### 2. Start serial terminal
 
-### 2. Start serial terminal
+* For Windows:
 
-##### Windows:
+    - Please follow the [Windows Driver Installation Guide](windows_driver_installation_guide.md) to install the driver for Duo.
 
-* Please follow the [Windows Driver Installation Guide](windows_driver_installation_guide.md) to install the driver for Duo.
+    - Install the [PuTTY](http://the.earth.li/~sgtatham/putty/latest/x86/putty.zip) serial terminal and start it. Change the Serial port to your one and press the "Open" button. You can also install other serial terminal, e.g. HyperTerminal, Tera Term, Arduino Serial Monitor(No line ending) and etc.
 
-* Install the [PuTTY](http://the.earth.li/~sgtatham/putty/latest/x86/putty.zip) serial terminal and start it. Change the Serial port to your one and press the "Open" button. You can also install other serial terminal, e.g. HyperTerminal, Tera Term, Arduino Serial Monitor(No line ending) and etc.
+        ![image](images/PuTTY_01.png)
 
-    ![image](images/PuTTY_01.png)
+* For OSX and Linux:
 
-##### OSX and Linux:
-
-* Start the Terminal and use the "screen" command. On Linux (e.g. Ubuntu), you may need to install screen by `$ sudo apt-get install screen`.
+    - Start the Terminal and use the "screen" command. On Linux (e.g. Ubuntu), you may need to install screen by `$ sudo apt-get install screen`.
 	
-* On OSX, type `$ screen /dev/tty.usbmodemXXXXX`, where `XXXXX` is your Duo device serial port. On Linux, type `$ screen /dev/tty.ACMX`, where `ACMX` is your Duo device serial port. If you are not sure about the serial port, you can list the device by:
+    - On OSX, type `$ screen /dev/tty.usbmodemXXXXX`, where `XXXXX` is your Duo device serial port. On Linux, type `$ screen /dev/tty.ACMX`, where `ACMX` is your Duo device serial port. If you are not sure about the serial port, you can list the device by:   
+  
+        OSX: `$ ls /dev/tty.usbmodem*`    
+        Linux: `$ ls /dev/tty.ACM*`
 			
-    OSX:
-	
-        $ ls /dev/tty.usbmodem* 
+        If there is no such device, you may need to check your USB cable.
 
-    Linux:
-
-        $ ls /dev/tty.ACM*
-			
-    If there is no such device, you may need to check your USB cable.
-
-### 3. Check system firmware version
+#### 3. Check system firmware version
 
 Type in '**v**' on the terminal, it will print the version string, e.g.:
 
@@ -60,7 +69,7 @@ Type in '**v**' on the terminal, it will print the version string, e.g.:
 
 In later chapter, you can check the system firmware change-log to decide if you need an update of the system firmware.
 
-### 4. Fetch unique device ID
+#### 4. Fetch unique device ID
 
 Type in '**i**' on the terminal, it will print the unique 12-bytes device ID, e.g.:
 
@@ -68,7 +77,7 @@ Type in '**i**' on the terminal, it will print the unique 12-bytes device ID, e.
 
 In later chapter, the device ID will be used for claiming your Duo on the Particle Cloud, please have a copy of it.
 
-### 5. Set Wi-Fi Credentials
+#### 5. Set Wi-Fi Credentials
 
 * Type in '**w**' on the terminal, it will ask you to enter the SSID, Security type and password to associate to your AP. Sample input and output:
 
@@ -93,8 +102,7 @@ In later chapter, the device ID will be used for claiming your Duo on the Partic
 
     **Note: If you are using PuTTY or other serial terminal, when the Duo performs a reset, it disconnect from the terminal and the serial port may not be valid any more. You need to close the serial port, then press the on-board RESET button and open the serial port again to restore the communication with Duo.**
 
-
-### 6. Claim your Duo on the Partcile Cloud (optional)
+#### 6. Claim your Duo on the Partcile Cloud (optional)
 
 We work closely with Particle team and the Duo for development, not for production, can free and easily access the Particle Cloud and benifit from the services and tools provided by Particle, e.g., Particle WebIDE, Particle Dashboard, Particle Event System and etc.
 
@@ -124,7 +132,8 @@ We work closely with Particle team and the Duo for development, not for producti
 
 **Congratulations! You have successfully set up your Duo! Now let's try controlling the on-board LED using web browser!**
 
-## Toggle the on-board LED using web browser
+
+## <span id="toggle-the-on-board-led-using-web-browser">Toggle the on-board LED using web browser</span>
 
 A default web server application now is running on your Duo, with broadcasting a mDNS service. From the serial terminal, you can see the following message:
 
@@ -152,9 +161,9 @@ A default web server application now is running on your Duo, with broadcasting a
 * Press on the "HIGH" or "LOW" button to see any effect on your Duo's blue LED.
 
 
-## Further Operations
+## <span id="further-operation">Further Operations</span>
 
-### Backup the device private key (Highly Recommended)
+### <span id="backup-the-device-private-key-highly-recommended">Backup the device private key (Highly Recommended)</span>
 
 The communication between Duo and the Particle Cloud is truely secure. There are three key stored in the DCT(Device Configuration Table): cloud server public key, device private key and device public key. The cloud server public key can be obtained from Particle and has been programmed into DCT during manufacturing. The device private key is generated when first time power on the Duo and then is stored in the DCT. The device public key will be generated according to the device private key when it is asked by the cloud server. 
 
@@ -183,7 +192,7 @@ That's why we highly recommend that you backup the device private key after you 
 
             $ dfu-util -d 2b04:d058 -a 1 -s 34 -D device_private_key.der
 
-### Update system firmware if needed
+### <span id="update-system-firmware-if-needed">Update system firmware if needed</span>
 
 We always recommend you update your Duo to the latest system firmware, since there may have new features added and bugfixes included in a new version. You can also take a look at the [system firmware change-log](duo_system_firmware_changelog.md) for reference.
 
@@ -192,13 +201,13 @@ We always recommend you update your Duo to the latest system firmware, since the
 * Follow the [Firmware Deployment Guide](duo_firmware_deployment_guide.md) to update the system firmware.
 
 
-## What's Next
+## <span id="whats-next">What's Next</span>
 
 * [Getting started with Arduino IDE for Duo](duo_getting_started_with_arduino.md)
 * [Getting started with Particle Build (WebIDE)]()
 
 
-## Reference
+## <span id="references">References</span>
 
 * [Duo inroduction](duo_introduction.md)
 * [Duo firmware architecture](duo_firmware_architecture_introduction.md)
