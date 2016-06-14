@@ -5,8 +5,8 @@ Glad you've received your Duo from vendor! Thanks for purchasing the Duo and hop
 
 * [User Interface](#user-interface)
 * [Initial Setup](#initial-setup)
-    - [Using iOS/Android App](#using-ios-android-app)
-    - [Using Serial Terminal]()
+    - [Using iOS/Android App](#using-iosandroid-app)
+    - [Using Serial Terminal](#using-serial-terminal)
 * [Toggle the on-board LED using web browser](#toggle-the-on-board-led-using-web-browser)
 * [Further Operations](#further-operations)
     - [Backup the device private key (Highly Recommended)](#backup-the-device-private-key-highly-recommended)
@@ -28,7 +28,7 @@ Glad you've received your Duo from vendor! Thanks for purchasing the Duo and hop
 
 ## <span id="initial-setup">Initial Setup</span>
 
-### <span id="using-ios-android-app">Using iOS/Android App</span>
+### <span id="using-iosandroid-app">Using iOS/Android App</span>
 
 * TBD
 
