@@ -32,7 +32,7 @@ Connect your Duo to computer via its native USB port with micro USB cable (ensur
 
 * Please follow the [Windows Driver Installation Guide](windows_driver_installation_guide.md) to install the driver for Duo.
 
-* Install the [PuTTY](http://the.earth.li/~sgtatham/putty/latest/x86/putty.zip) serial terminal and start it. Change the Serial port to your one and press the "Open" button. You can also install other serial terminal, e.g. HyperTerminal, Tera Term etc.
+* Install the [PuTTY](http://the.earth.li/~sgtatham/putty/latest/x86/putty.zip) serial terminal and start it. Change the Serial port to your one and press the "Open" button. You can also install other serial terminal, e.g. HyperTerminal, Tera Term, Arduino Serial Monitor(No line ending) and etc.
 
     ![image](images/PuTTY_01.png)
 
