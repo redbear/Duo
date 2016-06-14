@@ -3,19 +3,19 @@
 
 ![image](images/RBDuo.png)
 
-* [Description](#description)
+* [Descriptions](#descriptions)
 * [Features](#features)
 * [Block Diagram](#block-diagram)
-* [Pinout](#pinout)
+* [Pinouts](#pinouts)
 * [Power Supply](#power-supply)
 * [Development](#development)
 * [Package Characteristics](#package-characteristics)
 * [Layout Recommendations](#layout-recommendations)
-* [Ordering Information](#ordering-information)
+* [Ordering Informations](#ordering-informations)
 * [Resources](#resources)
 
 
-## <span id="description">Description</span>
+## <span id="descriptions">Descriptions</span>
 
 The [RedBear Duo](http://www.redbear.cc/duo) is a thumb-size development board designed to simplify the process of building Internet of Things (IoT) products. It is built with a powerful Cortext-M3 MCU, a wireless module which equips both Wi-Fi and BLE (Bluetooth Low Energy) connectivity, as well as abundant of peripherals. 
 
@@ -23,7 +23,7 @@ It enables you develop applications to communicate with other wireless accessori
 
 The Duo supports several kinds of programming language, particularly like Arduino, C/C++, JavaScript and Python. You can develop the applications for Duo using GCC, Arduino IDE, Particle Web IDE, Espruino Web IDE and Broadcom WICED SDK.
 
-The Duo is so powerful that you can be applied it many applications, e.g.:
+The Duo is so powerful that you can be applied it to many applications, e.g.:
 
 * Industrial Automation
 * Building Automation
@@ -76,15 +76,33 @@ The Duo is so powerful that you can be applied it many applications, e.g.:
 
 ![image](images/Duo_BlockDiagram.png)
 
-<span id="pinout">Pinout</span>
-## 
+
+## <span id="pinouts">Pinouts</span>
 
 ![image](images/RBDuo_Pinout.png)
 
 
 ## <span id="power-supply">Power Supply</span>
 
-Operating voltage: 3.3v
+**!!! Caution: Use only one power source at a time, otherwise you will damage the board!**
+
+To make the Duo board work normally, the board level working voltage (VCC) should range from **3.0v ~ 3.6v**. If the working voltage less than 3.0v, the wireless module would not work well, and if more than 3.6v, the target MCU would be damaged.
+
+#### Power from Micro USB port
+
+Connect the Duo to a 3.5v ~ 8v power source or to a computer via micro USB cable, will power up the Duo. The input voltage from the USB port will be regulated to 3.3v by the on-board regulator first and then supply the whole board circuit units. In this case, the `VIN` pin will output a voltage nearly to the USB port input voltage and the `3V3` pin will output a voltage equal to the board level voltage, i.e. 3.3v. Then the `VIN` pin can be invoked to power other high voltage drivered devices, e.g. Relays, Servers, Motors and etc. As well as the `3V3` pin can be invoked to power other 3.3v devices.
+
+#### Power from VIN pin
+
+Connect the `VIN` pin to a 3.5v ~ 8v power source will power up the Duo. The input voltage from the `VIN` pin will be regulated to 3.3v by the on-board regulator first and then supply the whole board circuit units. In this case, the `3V3` pin will output a voltage equal to the board level voltage, i.e. 3.3v. Then the `3V3` pin can be invoked to power other 3.3v devices.
+
+#### Power from 3V3 pin
+
+Connect the `3V3` pin to a 3.0 ~ 3.6 power source will also power up the Duo. The voltage from this pin directly suppies the whole board circuit units.
+
+#### Power from VBAT pin
+
+The voltage from `VBAT` should range from 1.8v to 3.6v, but it can NOT power up the Duo. According to the STM32F205 technical reference manual, VBAT pin can be connected to an optional standby voltage supplied by a battery or by another source to retain the content of the RTC backup registers, backup SRAM, and supply the RTC when VDD is turned off.
 
 
 ## <span id="development">Development</span>
@@ -108,7 +126,7 @@ Operating voltage: 3.3v
 * Dimensions are in millimeters.
 
 
-## <span id="ordering-information">Ordering Information</span>
+## <span id="ordering-informations">Ordering Informations</span>
 
 * [RedBear Store](https://store.redbear.cc/product.html)
 * [Worldwide Resellers](http://redbearlab.com/buy/)

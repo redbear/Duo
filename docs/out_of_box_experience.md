@@ -171,7 +171,7 @@ That's why we highly recommend that you backup the device private key after you 
     - Hold down BOTH buttons
     - Release only the RESET button, while holding down the SETUP button.
     - Wait for the LED to start blinking **yellow**
-    - Release the SETUP button <br><br>
+    - Release the SETUP button
 
 * Open the command line prompt,
 
