@@ -49,13 +49,13 @@ Now make your Duo enter DFU Mode:
 `dfu-util -d 2b04:d058 -a 1 -s 34 -D device_private_key.der`
 
 * Dump the entire DCT. It may contain the device private key and the Wi-Fi credentials, so you need to keep it privately:     
-`dfu-util -d 2b04:d058 -a 0 -s 0x8004000 -U my_dct.bin`
+`dfu-util -d 2b04:d058 -a 0 -s 0x8004000 -U dct_backup.bin`
 
 * Dump the server public key:    
 `dfu-util -d 2b04:d058 -a 1 -s 2082 -U server_public_key.der`
 
 * Dump the device private key. It's such important and secret that you must keep it privately:     
-`dfu-util -d 2b04:d058 -a 1 -s 34 -U device_private_key.der`
+`dfu-util -d 2b04:d058 -a 1 -s 34 -U device_private_key_backup.der`
 
 You can also download or dump other configurations to / from DCT using dfu-util. Please refer to the [Duo Firmware Architecture](duo_software_architecture_introduction.md) to obtain the offset address of each configuration.
 
@@ -67,8 +67,13 @@ You can also download or dump other configurations to / from DCT using dfu-util.
 * Update system part 2:     
 `dfu-util -d 2b04:d058 -a 0 -s 0x8040000 -D duo-system-part2-vx.x.x.bin`
 
-* Update factory reset application (FAC):     
+#### Update Factory Reset Application (FAC)
+
+* Update factory reset application:     
 `dfu-util -d 2b04:d058 -a 2 -s 0x140000 -D duo-fac-xxxx.bin`
+
+* Dump factory reset application:     
+`dfu-util -d 2b04:d058 -a 2 -s 0x140000 -U duo-fac-xxxx-dump.bin`
 
 #### Update User Application
 
@@ -76,7 +81,7 @@ You can also download or dump other configurations to / from DCT using dfu-util.
 `dfu-util -d 2b04:d058 -a 0 -s 0x80C0000 -D duo-user-part.bin`
 
 * Dump user application:     
-`dfu-util -d 2b04:d058 -a 0 -s 0x80C0000 -U duo-user-part.bin`
+`dfu-util -d 2b04:d058 -a 0 -s 0x80C0000 -U duo-user-part-dump.bin`
 
 #### Update Wi-Fi Firmware
 
@@ -117,11 +122,11 @@ If this is your first time playing with the Duo using Arduino IDE, you are recom
 
 To upload your sketch, simply click on the ![image](images/Upload_icon.png) icon.
 
-#### Update System Firmware
+#### Update System Firmware (since board package v0.2.5)
 
 ##### 1. via Native USB Port
 
-If you connect your Duo directly to the computer, you can update the Duo's system firmware, which includes system part 1, system part 2 and a factory reset application, by using the "**Duo FW Uploader**" programmer.
+If you connect your Duo directly to the computer, you can update the Duo's system firmware, which includes system part 1 and system part 2, by using the "**Duo FW Uploader**" programmer.  The factory reset application will also be updated.
 
 - Connect your Duo to computer and put it in DFU mode:
 
@@ -140,7 +145,7 @@ If you connect your Duo directly to the computer, you can update the Duo's syste
 
 ##### 2. via RBLink USB Port
 
-If you mount your Duo onto RBLink and connect the RBLink to your computer, you can update the Duo's bootloader and its system firmware except the factory reset application, by using the "**RBLink**".
+If you mount your Duo onto RBLink and connect the RBLink to your computer, you can update the Duo's bootloader and its system firmware by using the "**RBLink**" programmer.
 
 - Mount your Duo (be aware of the orientation) onto RBlink and connect the RBLink to your computer
 
@@ -153,15 +158,23 @@ If you mount your Duo onto RBLink and connect the RBLink to your computer, you c
 - After the burn bootloader operation completed, the on-board blue LED start blinking rapidly, since it has also downloaded a blink application, in case that your old application is not compatible with the updated system firmware.
 
 
-## Reference
+## References
 
-* [Duo introduction](duo_introduction.md)
-* [dfu-util installation guide](dfu-util_installation_guide.md)
-* [Duo DFU USB driver installation guide](windows_driver_installation_guide.md)
-* [Arduino board package installation guide](duo_arduino_board_package_guide.md)
-* [Duo firmware architecture overview](duo_firmware_architecture_overview.md)
-* [Duo firmware source code](https://github.com/redbear/firmware)
+* [Duo Introduction](duo_introduction.md)
+* [Firmware Architecture Overview](firmware_architecture_overview.md)
+* [System Firmware Change-log](system_firmware_changelog.md)
+* [dfu-util Installation Guide](dfu-util_installation_guide.md)
+* [Windows Driver Installation Guide](windows_driver_installation_guide.md)
 * [RedBear discussion forum](http://discuss.redbear.cc/)
+
+
+## Resources
+
+* [Firmware Images](https://github.com/redbear/Duo/tree/master/firmware)
+* [Modified Particle firmware source code](https://github.com/redbear/firmware)
+* [Modified Espruino source code](https://github.com/redbear/Espruino)
+* [Modified MicroPython source code](https://github.com/redbear/micropython)
+* [WICED SDK patch for Duo](https://github.com/redbear/WICED-SDK)
 
 
 ## License

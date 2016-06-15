@@ -189,9 +189,9 @@ The built executables (and DLL) will now be in the build/bin folder.
     - Wait for the LED to start flashing **yellow**
     - Release the SETUP button
 
-        ![image](images/Duo-Yellow.gif) 
+    ![image](images/Duo-Yellow.gif) 
 
-* (Windows only) Follow this [Windows Driver Installation Guide](windows_driver_installation_guide.md) to install the DFU USB driver
+* (**Windows only**) Follow this [Windows Driver Installation Guide](windows_driver_installation_guide.md) to install the DFU USB driver
 
 * Type in command line terminal:
 
@@ -207,15 +207,20 @@ The built executables (and DLL) will now be in the build/bin folder.
 
 ## What's Next
 
-[Duo firmware deployment using dfu-util](duo_firmware_deployment_guide.md)
+[Firmware Deployment Guide](firmware_deployment_guide.md)
 
 
-## Reference
+## References
 
-* [Duo introduction](duo_introduction.md)
-* [Duo DFU USB driver installation guide](windows_driver_installation_guide.md)
-* [dfu-util Home page](http://dfu-util.sourceforge.net/)
-* [RedBear discussion forum](http://discuss.redbear.cc/)
+* [Duo Introduction](duo_introduction.md)
+* [Windows Driver Installation Guide](windows_driver_installation_guide.md)
+* [dfu-util Home Page](http://dfu-util.sourceforge.net/)
+* [RedBear Discussion Forum](http://discuss.redbear.cc/)
+
+
+## Resources
+
+* [dfu-util](http://dfu-util.sourceforge.net/releases/)
 
 
 ## License

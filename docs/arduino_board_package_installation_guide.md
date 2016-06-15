@@ -9,7 +9,7 @@ The RedBear Duo supports developing applications using Arduino IDE v1.6.7 or abo
 
 ## <span id="install-duo-board-package">Install Duo Board Package</span>
 
-We assume that you have installed Arduino IDE on your computer, or you have to [download](https://www.arduino.cc/en/Main/Software) and install it first. To install the board package for the Duo board, please walk through the following steps.
+We assume that you have installed Arduino IDE 1.6.7 or above on your computer, or you have to [download](https://www.arduino.cc/en/Main/Software) and install it first. To install the board package for the Duo board, please walk through the following steps.
 
 1. Start Arduino IDE.
 
@@ -51,17 +51,22 @@ Since you have installed a version of the Duo board package already, so updating
 
 ## What's Next
 
-[Getting Started with Arduino IDE](duo_getting_started_with_arduino.md)
+[Getting Started with Arduino IDE](getting_started_with_arduino_ide.md)
 
 
-## Reference
+## References
 
-* [Duo introduction](duo_introduction.md)
-* [Duo board package resources](https://github.com/redbear/STM32-Arduino/tree/master/arduino)
-* [Duo board package change-log](duo_arduino_board_package_changelog.md)
-* [Arduino official website](http://www.arduino.cc/)
-* [Arduino unofficial list of 3rd party boards support URLs](https://github.com/arduino/Arduino/wiki/Unofficial-list-of-3rd-party-boards-support-urls)
-* [RedBear discussion forum](http://discuss.redbear.cc/)
+* [Duo Introduction](duo_introduction.md)
+* [Arduino Board Package Change-log](arduino_board_package_changelog.md)
+* [Arduino Official Website](http://www.arduino.cc/)
+* [Arduino Unofficial List of 3rd Party Boards Support URLs](https://github.com/arduino/Arduino/wiki/Unofficial-list-of-3rd-party-boards-support-urls)
+* [RedBear Discussion Forum](http://discuss.redbear.cc/)
+
+
+## Resources
+
+* [Arduino Board Package source code](https://github.com/redbear/STM32-Arduino/tree/master/arduino)
+* [Arduino IDE](https://www.arduino.cc/en/Main/Software)
 
 
 ## License
