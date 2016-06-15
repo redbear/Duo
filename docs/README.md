@@ -1,7 +1,7 @@
 
 # RedBear Duo Documentation
 
-* [Duo inroduction](duo_introduction.md)
+* [Duo Inroduction](duo_introduction.md)
 * [Out-of-Box Experience](out_of_box_experience.md)
 * [Getting Started with Arduino IDE](getting_started_with_arduino_ide.md)
 * [Getting Started with Particle Build (WebIDE)](getting_started_with_particle_build.md)

@@ -77,30 +77,36 @@ The Duo will appear as "Other Devices" on your computer. The device name is **"D
 
 * Connect your Duo to computer and make it enter DFU mode.
 
-* Run Zadig. Click on "Options > List all devices" and Select "Duo DFU Mode" and 'libusbK' for the driver, press the "Install Driver" button.
+* Run Zadig. Click on "Options > List all devices" and Select "Duo DFU Mode" and "**libusbK**" for the driver, press the "Install Driver" button.
 
     ![image](images/Zadig.png)
 
 * It will show "Driver installed successfully".
 ## <span id="install-rblink-usb-driver">Install RBLink USB Driver</span>
 
-For the RBLink, since it is compatible with STLink, download the driver from ST website and follow the instructions provided.
+For the RBLink, since it is compatible with ST-Link / v2_1, download the ST-Link Utility from ST website and follow the instructions provided.
 [STLink Driver](http://www.st.com/web/en/catalog/tools/PF260219)
 
 
 ## What's Next
 
-* [Getting started with Arduino IDE for Duo](duo_getting_started_with_arduino.md)
-* [Getting started with Particle Build (WebIDE)]()
+* [Getting Started with Arduino IDE](getting_started_with_arduino_ide.md)
+* [Getting Started with Particle Build (WebIDE)](getting_started_with_particle_build.md)
 
 
-## Reference
+## References
 
-* [Duo inroduction](duo_introduction.md)
-* [Disable driver signature on Windows 8 / 10](http://www.howtogeek.com/167723/how-to-disable-driver-signature-verification-on-64-bit-windows-8.1-so-that-you-can-install-unsigned-drivers/) 
+* [Duo Inroduction](duo_introduction.md)
+* [Disable Driver Signature on Windows 8/10](http://www.howtogeek.com/167723/how-to-disable-driver-signature-verification-on-64-bit-windows-8.1-so-that-you-can-install-unsigned-drivers/) 
 * [Zadig Wiki page](https://github.com/pbatard/libwdi/wiki/Zadig)
-* [ST-Link Utility and driver](http://www.st.com/web/en/catalog/tools/PF260219)
-* [dfu-util installation guide](dfu-util_installation_guide.md)
+* [dfu-util Installation Guide](dfu-util_installation_guide.md)
+
+
+## Resources
+
+* [Duo Application USB Driver](https://github.com/redbear/Duo/raw/master/driver/windows/duo_win_driver.zip)
+* [Zadig](http://zadig.akeo.ie/)
+* [ST-Link Utility](http://www.st.com/web/en/catalog/tools/PF260219)
 
 
 ## License

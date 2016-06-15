@@ -167,13 +167,13 @@ A default web server application now is running on your Duo, with broadcasting a
 
 The communication between Duo and the Particle Cloud is truely secure. There are three key stored in the DCT(Device Configuration Table): cloud server public key, device private key and device public key. The cloud server public key can be obtained from Particle and has been programmed into DCT during manufacturing. The device private key is generated when first time power on the Duo and then is stored in the DCT. The device public key will be generated according to the device private key when it is asked by the cloud server. 
 
-Every time your Duo is provisioned, when it is connected to the Particle Cloud, it will ask for the device public key. Once the device public key is submitted to the cloud, it won't change on the cloud side unless you provision your Duo again. Thus, if you modified the device private key by accident, your duo will lose trust to the cloud and no cloud connection will be created, since the device private key and the public key on the cloud are not in pair any more. So you have to invalid the previous device private key and provision your Duo again to let the cloud ask for the new public key. Oh! It's so complicate and annoying, right? 
+Every time your Duo is provisioned, when it is connected to the Particle Cloud, the cloud will ask for the Duo's device public key. Once the device public key is submitted to the cloud, it won't change on the cloud database unless you provision your Duo again. Thus, if you modified the device private key by accident, your duo will lose trust to the cloud and no cloud connection will be established, since the device private key on the Duo and the public key on the cloud do not come in pairs any more. So you have to invalid the previous device private key and provision your Duo again to let the cloud ask for the new public key. Oh! It's so complicate and annoying, right? 
 
-That's why we highly recommend that you backup the device private key after you claiming your Duo on the Particle Cloud, in case you destroy it for any reason. Even if the device private key is destroied, you can simply load the backup key to the DCT to restore the cloud connection.
+That's why we highly recommend that you backup the device private key after you claiming your Duo on the Particle Cloud, in case you destroy it for any reason. With the backup, even if the device private key is destroied, you can simply load the backup key to the DCT to establish the cloud connection.
 
 * Please follow the [dfu-util Installation Guide](dfu-util_installation_guide.md) to install the dfu-util on your computer.
 
-* (Windows only) Please follow the [Windows Driver Installation Guide](windows_driver_installation_guide.md) to install the DFU USB driver first.
+* (**Windows only**) Please follow the [Windows Driver Installation Guide](windows_driver_installation_guide.md) to install the DFU USB driver first.
 
 * Make your Duo enter DFU Mode:
 
@@ -194,26 +194,27 @@ That's why we highly recommend that you backup the device private key after you 
 
 ### <span id="update-system-firmware-if-needed">Update system firmware if needed</span>
 
-We always recommend you update your Duo to the latest system firmware, since there may have new features added and bugfixes with a new released version. You should have known your Duo's current system firmware version at previous steps. Please check the [system firmware change-log](duo_system_firmware_changelog.md) to see if there is new system firmware for an update. If available, follow the [Firmware Deployment Guide](duo_firmware_deployment_guide.md) to update the system firmware.
+We always recommend you update your Duo to the latest system firmware, since there may have new features added and bugfixes with a new released version. You should have known your Duo's current system firmware version at previous steps. Please check the [system firmware change-log](duo_system_firmware_changelog.md) to see if there is new system firmware version for an update. If available, follow the [Firmware Deployment Guide](duo_firmware_deployment_guide.md) to update the system firmware.
 
 
 ## <span id="whats-next">What's Next</span>
 
-* [Getting started with Arduino IDE for Duo](getting_started_with_arduino_ide.md)
-* [Getting started with Particle Build (WebIDE)](getting_started_with_particle_build.md)
+* [Getting Started with Arduino IDE](getting_started_with_arduino_ide.md)
+* [Getting Started with Particle Build (WebIDE)](getting_started_with_particle_build.md)
 
 
 ## <span id="references">References</span>
 
-* [Duo inroduction](duo_introduction.md)
-* [Duo firmware architecture](duo_firmware_architecture_introduction.md)
-* [Duo firmware deployment](duo_firmware_deployment_guide.md)
-* [Duo system firmware change-log](duo_system_firmware_changelog.md)
-* [Duo provisioning guide](duo_provisioning_guide.md)
-* [dfu-util installation guide](dfu-util_installation_guide.md)
-* [Particle Build](https://build.particle.io)
+* [Duo Inroduction](duo_introduction.md)
+* [Applications Development Guide](applications_development_guide.md)
+* [Firmware Architecture Overview](firmware_architecture_overview.md)
+* [Firmware Deployment Guide](firmware_deployment_guide.md)
+* [System Firmware Change-log](system_firmware_changelog.md)
+* [Devices Provisioning Guide](devices_provisioning_guide.md)
+* [dfu-util Installation Guide](dfu-util_installation_guide.md)
+* [Particle Build (WebIDE)](https://build.particle.io)
 * [Particle Dashboard](https://dashboard.particle.io/)
-* [Particle docs](https://docs.particle.io/guide/getting-started/intro/photon/)
+* [Particle Docs](https://docs.particle.io/guide/getting-started/intro/photon/)
 * [RedBear discussion forum](http://discuss.redbear.cc/)
 
 ## License

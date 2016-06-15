@@ -84,16 +84,21 @@ If your Duo's current system version is not the same as the one declared in the 
 [Applications Development Guide](applications_development_guide.md)
 
 
-## Reference
+## References
 
-* [Duo introduction](duo_introduction.md)
-* [Duo board package installation guide](duo_arduino_board_package_guide.md)
-* [Duo board package resources](https://github.com/redbear/STM32-Arduino/tree/master/arduino)
-* [Duo board package change-log](duo_arduino_board_package_changelog.md)
-* [Duo firmware architecture overview](duo_firmware_architecture_overview.md)
-* [Duo firmware source code](https://github.com/redbear/firmware)
-* [RedBear discussion forum](http://discuss.redbear.cc/)
-* [Arduino official website](http://www.arduino.cc/)
+* [Duo Introduction](duo_introduction.md)
+* [Arduino Board Package Installation Guide](arduino_board_package_installation_guide.md)
+* [Arduino Board Package Change-log](arduino_board_package_changelog.md)
+* [Firmware Architecture Overview](firmware_architecture_overview.md)
+* [Arduino Official Website](http://www.arduino.cc/)
+* [RedBear Discussion Forum](http://discuss.redbear.cc/)
+
+
+## Resources
+
+* [Modified Particle firmware Source Code](https://github.com/redbear/firmware)
+* [Arduino Board Package Source Code](https://github.com/redbear/STM32-Arduino/tree/master/arduino)
+* [Arduino IDE](https://www.arduino.cc/en/Main/Software)
 
 
 ## License

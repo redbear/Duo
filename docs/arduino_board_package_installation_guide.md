@@ -65,7 +65,7 @@ Since you have installed a version of the Duo board package already, so updating
 
 ## Resources
 
-* [Arduino Board Package source code](https://github.com/redbear/STM32-Arduino/tree/master/arduino)
+* [Arduino Board Package Source Code](https://github.com/redbear/STM32-Arduino/tree/master/arduino)
 * [Arduino IDE](https://www.arduino.cc/en/Main/Software)
 
 
