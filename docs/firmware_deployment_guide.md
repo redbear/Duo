@@ -14,7 +14,7 @@ Before using the dfu-util, you have to install it first. Please follow the [dfu-
 
 For Windows users, if you havn't install the DFU USB driver for Duo, please follow the [Windows Driver Installation Guide](windows_driver_installation_guide.md) to install the driver first.
 
-All of the firmware images are available on this [GitHub Repository](https://github.com/redbear/Duo/tree/master/firmware). Just download what you need.
+**All of the firmware images are available on this [GitHub Repository](https://github.com/redbear/Duo/tree/master/firmware).** Just download what you need.
 
 dfu-util command line options:
 

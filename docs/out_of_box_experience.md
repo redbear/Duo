@@ -199,8 +199,8 @@ We always recommend you update your Duo to the latest system firmware, since the
 
 ## <span id="whats-next">What's Next</span>
 
-* [Getting started with Arduino IDE for Duo](duo_getting_started_with_arduino.md)
-* [Getting started with Particle Build (WebIDE)]()
+* [Getting started with Arduino IDE for Duo](getting_started_with_arduino_ide.md)
+* [Getting started with Particle Build (WebIDE)](getting_started_with_particle_build.md)
 
 
 ## <span id="references">References</span>
