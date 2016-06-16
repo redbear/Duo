@@ -84,8 +84,31 @@ The Duo will appear as "Other Devices" on your computer. The device name is **"D
 * It will show "Driver installed successfully".
 ## <span id="install-rblink-usb-driver">Install RBLink USB Driver</span>
 
-For the RBLink, since it is compatible with ST-Link / v2_1, download the ST-Link Utility from ST website and follow the instructions provided.
-[STLink Driver](http://www.st.com/web/en/catalog/tools/PF260219)
+For the RBLink, since it is completely compatible with ST-Link/v2-1, they share the same driver and software, i.e., the ST-LINK Utility provided by STMicroelectronics will also works for the RBLink. To install the driver for RBLink, you need to install ST-LINK Utility first. 
+
+* Download [ST-LINK Utility](http://www.st.com/content/st_com/en/products/embedded-software/development-tool-software/stsw-link004.html#getsoftware-scroll) from ST website.
+
+* Unzip the downloaded file and double click on the "**STM32 ST-LINK Utility v3.9.0.exe**" to install the ST-LINK Utility. The installer version may differ from the one you downloaded, but the latest one would be suggested.
+
+* Follow the on-screen prompts to install the STM32 ST-LINK Utility. It will ask for you to install the related drivers, just accept it.
+
+* After the ST-LINK Utility being installed, connect the RBLink to your computer. It will automatically install the drivers for the RBLink. When drivers are installed, navigate to "Control Panel > Hardware and Sound > Device Manager", you'll see a new device under "**Universal Serial Bus Devices**":
+
+    ![image](images/STLink_dongle.png)     
+  
+    And a new comport under "**Ports (COM & LPT)**":
+
+    ![image](images/STLink_port.png)
+
+If you can not see the device and comport in Device Manager or they are under the wrong categories, please install the driver for RBLink manually:
+
+1. Start the Device Manager and find the listed device for RBLink.
+
+2. Uninstall the device, checking the "Suppress the driver for this device" box.
+
+3. Unplug and plug the RBLink. Right click the device and click "Update Driver", and select "Browse for driver software".
+
+4. On the next screen click "Let me pick from a list of device drivers on my computer". Then navigate to the folder you install the ST-LINK Utility, Choose the folder "**ST-LINK\_USB\_V2\_1\_Driver**". Click "Next" to install the driver.
 
 
 ## What's Next
@@ -100,13 +123,14 @@ For the RBLink, since it is compatible with ST-Link / v2_1, download the ST-Link
 * [Disable Driver Signature on Windows 8/10](http://www.howtogeek.com/167723/how-to-disable-driver-signature-verification-on-64-bit-windows-8.1-so-that-you-can-install-unsigned-drivers/) 
 * [Zadig Wiki page](https://github.com/pbatard/libwdi/wiki/Zadig)
 * [dfu-util Installation Guide](dfu-util_installation_guide.md)
+* [ST-LINK Utility User Manual](http://www.st.com/content/ccc/resource/technical/document/user_manual/e6/10/d8/80/d6/1d/4a/f2/CD00262073.pdf/files/CD00262073.pdf/jcr:content/translations/en.CD00262073.pdf)
 
 
 ## Resources
 
 * [Duo Application USB Driver](https://github.com/redbear/Duo/raw/master/driver/windows/duo_win_driver.zip)
 * [Zadig](http://zadig.akeo.ie/)
-* [ST-Link Utility](http://www.st.com/web/en/catalog/tools/PF260219)
+* [ST-Link Utility](http://www.st.com/content/st_com/en/products/embedded-software/development-tool-software/stsw-link004.html#getsoftware-scroll)
 
 
 ## License

@@ -170,7 +170,7 @@ If you mount your Duo onto RBLink and connect the RBLink to your computer, you c
 
 ## Resources
 
-* [Firmware Images](https://github.com/redbear/Duo/tree/master/firmware)
+* [Firmware Binaries](https://github.com/redbear/Duo/tree/master/firmware)
 * [Modified Particle firmware source code](https://github.com/redbear/firmware)
 * [Modified Espruino source code](https://github.com/redbear/Espruino)
 * [Modified MicroPython source code](https://github.com/redbear/micropython)

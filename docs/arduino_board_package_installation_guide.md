@@ -9,7 +9,7 @@ The RedBear Duo supports developing applications using Arduino IDE v1.6.7 or abo
 
 ## <span id="install-duo-board-package">Install Duo Board Package</span>
 
-We assume that you have installed Arduino IDE 1.6.7 or above on your computer, or you have to [download](https://www.arduino.cc/en/Main/Software) and install it first. To install the board package for the Duo board, please walk through the following steps.
+We assume that you have installed Arduino IDE 1.6.7 or above on your computer, or you have to [download](https://www.arduino.cc/en/Main/Software) and install it first. To install the board package for the Duo board, please work through the following steps.
 
 1. Start Arduino IDE.
 
