@@ -4,10 +4,29 @@
 
 ![image](docs/images/RBDuo.png)
 
-The [RedBear Duo](http://www.redbear.cc/duo) is a thumb-size development board designed to simplify the process of building Internet of Things (IoT) products. It provides everything you need -- Wi-Fi, BLE and a powerful Cloud backend, all in a compact form factor that makes it ideal for your first prototype, a finished product, and everything in between. [More...](docs/duo_introduction.md)
+The [RedBear Duo](http://www.redbear.cc/duo) is a thumb-size development board designed to simplify the process of building Internet of Things (IoT) products. It provides everything you need -- Wi-Fi, BLE and a powerful Cloud backend, all in a compact form factor that makes it ideal for your first prototype, a finished product, and everything in between. [More...](docs/duo_introduction.md) 
+
+Purchase your RedBear Duo now: 
+
+* [RedBear Store](https://store.redbear.cc/product.html)
+* [Worldwide Resellers](http://redbearlab.com/buy/)
+
+
+## Directories and Files
+
+* `certs/`: FCC & CE certifications
+* `docs/`: Documentation for RedBear Duo
+* `driver/`: Duo Windows USB driver
+* `firmware/bootloader/`: Released bootloader images
+* `firmware/dct/`: Some configuration files used in Duo's internal DCT
+* `firmware/javascript_interpreter/`: Released JavaScript interpreter images for Duo
+* `firmware/system/`: Released system firmware images
+* `firmware/wifi/`: Wi-Fi firmware for the wireless module 
 
 
 ## Documentation
+
+#### Official
 
 * [Duo Inroduction](docs/duo_introduction.md)
 * [Out-of-Box Experience](docs/out_of_box_experience.md)
@@ -24,36 +43,47 @@ The [RedBear Duo](http://www.redbear.cc/duo) is a thumb-size development board
 * [Devices Provisioning Guide](docs/devices_provisioning_guide.md)
 * [Troubleshooting](docs/troubleshooting.md)
 
+#### 3rd Party
+
+* [Particle Documentation](https://docs.particle.io/guide/getting-started/intro/photon/)
+* [Espruino Documentation](http://www.espruino.com/)
+* [MicroPython Documentation](http://forum.micropython.org/)
+
 
 ## Resources
 
-* [Arduino](https://github.com/redbear/STM32-Arduino)
-* [WICED SDK](https://github.com/redbear/WICED-SDK)
-* [BTstack - BLE API and other documents](https://github.com/bluekitchen/btstack/)
+* [Application Examples](https://github.com/redbear/STM32-Arduino/tree/master/arduino/libraries/RedBear_Duo)
+* [Arduino IDE](https://www.arduino.cc/en/Main/Software)
+* [Particle Build (WebIDE)](https://build.particle.io/)
+* [Particle Dashboard](https://dashboard.particle.io/)
+* [Modified Particle Firmware Source Code](https://github.com/redbear/firmware)
+* [Modified Espruino Source Code](https://github.com/redbear/Espruino)
+* [Modified MicroPython Source Code](https://github.com/redbear/micropython)
+* [WICED SDK](https://community.broadcom.com/community/wiced-wifi/wiced-wifi-documentation)
+* [WICED SDK Patch for Duo](https://github.com/redbear/WICED-SDK)
+* [BTStack Source Code](https://github.com/redbear/btstack)
+
+
+## Supports
+
+* [RedBear Discussion](http://discuss.redbear.cc)
+* [Arduino Forum](https://forum.arduino.cc/)
+* [Particle Community](https://community.particle.io)
+* [Broadcom Community](https://community.broadcom.com/welcome)
+* [Espruino Forum](http://forum.espruino.com/)
+* [MicroPython Forum](http://forum.micropython.org/)
+* [BlueKitchen](https://bluekitchen-gmbh.com/)
 
 
 ## ToDo
 
-* Add more BLE examples to the Particle WebIDE and Arduino IDE.
+* Add more BLE examples to the Particle Build (WebIDE) and Arduino IDE.
 
 	The BLE examples are not completed yet, for WebIDE, we have not yet added any examples for BLE, if you want to try BLE using WebIDE, please browse [this](https://github.com/redbear/STM32-Arduino/tree/master/arduino/libraries/RedBear_Duo/examples/03.BLE), copy & paste the code to the WebIDE.
 
 * Reduce power consumption for BLE
 
 	We will work with Broadcom to reduce the power consumption for the Duo BLE.
-
-
-## Resources
-
-* [[1] Product Page](http://redbear.cc/duo/) - RedBear Duo
-* [[2] Duo Firmware](https://github.com/redbear/firmware) - RedBear Duo firmware source code
-* [[3] RedBear Duo Forum](http://discuss.redbear.cc)
-* [[4] Particle Forum](https://community.particle.io)
-* [[5] BTstack](https://github.com/bluekitchen/btstack) - BTstack GitHub Repository
-* [[6] BlueKitchen-GmbH](https://bluekitchen-gmbh.com/) - BTstack Official Website
-* [[7] Program with Arduino IDE](https://github.com/redbear/STM32-Arduino)
-* [[8] Program with Broadcom WICED SDK](https://github.com/redbear/WICED-SDK)
-* [[9] Espruino](https://github.com/redbear/Espruino) - JavaScript Interpreter source code
 
 
 ## License
