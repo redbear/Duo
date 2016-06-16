@@ -22,6 +22,8 @@ Purchase your RedBear Duo now:
 * `firmware/javascript_interpreter/`: Released JavaScript interpreter images for Duo
 * `firmware/system/`: Released system firmware images
 * `firmware/wifi/`: Wi-Fi firmware for the wireless module 
+* `hardware/`: Hardware design files and related datasheets
+* `scripts/`: Useful scripts for playing with the Duo
 
 
 ## Documentation
