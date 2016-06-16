@@ -150,7 +150,7 @@ The voltage from `VBAT` should range from 1.8v to 3.6v, but it can NOT power up 
 * [WICED SDK Patch for Duo](https://github.com/redbear/WICED-SDK)
 * [BTStack Source Code](https://github.com/redbear/btstack)
 * [RedBear Duo Schematic](https://github.com/redbear/Duo/tree/master/hardware/schematic)
-* [Components Datasheet](https://github.com/redbear/Duo/tree/master/hardware/datasheets)
+* [Hardware Design Files and Datasheets](https://github.com/redbear/Duo/tree/master/hardware)
 * [FCC & CE Certification](https://github.com/redbear/Duo/tree/master/certs)
 
 
