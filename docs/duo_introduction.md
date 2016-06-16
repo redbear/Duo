@@ -118,6 +118,7 @@ The voltage from `VBAT` should range from 1.8v to 3.6v, but it can NOT power up 
 * [Out-of-Box Experience](out_of_box_experience.md)
 * [Getting Started with Arduino IDE](getting_started_with_arduino_ide.md)
 * [Getting Started with Particle Build](getting_started_with_particle_build.md)
+* [Application Examples](https://github.com/redbear/STM32-Arduino/tree/master/arduino/libraries/RedBear_Duo)
 * [Applications Development Guide](applications_development_guide.md)
 * [Firmware Architecture Overview](firmware_architecture_overview.md)
 * [RedBear discussion forum](http://discuss.redbear.cc/)
@@ -142,15 +143,15 @@ The voltage from `VBAT` should range from 1.8v to 3.6v, but it can NOT power up 
 
 ## <span id="resources">Resources</span>
 
-* [Modified Particle firmware source code](https://github.com/redbear/firmware)
-* [Arduino board package for Duo](https://github.com/redbear/STM32-Arduino)
-* [Modified Espruino source code](https://github.com/redbear/Espruino)
-* [Modified MicroPython source code](https://github.com/redbear/micropython)
-* [WICED SDK patch for Duo](https://github.com/redbear/WICED-SDK)
-* [BTStack source code](https://github.com/redbear/btstack)
-* [RedBear Duo schematic](https://github.com/redbear/Duo/tree/master/hardware/schematic)
-* [Components datasheet](https://github.com/redbear/Duo/tree/master/hardware/datasheets)
-* [FCC & CE certification](https://github.com/redbear/Duo/tree/master/certs)
+* [Modified Particle Firmware Source Code](https://github.com/redbear/firmware)
+* [Arduino Board Package](https://github.com/redbear/STM32-Arduino)
+* [Modified Espruino Source Code](https://github.com/redbear/Espruino)
+* [Modified MicroPython Source Code](https://github.com/redbear/micropython)
+* [WICED SDK Patch for Duo](https://github.com/redbear/WICED-SDK)
+* [BTStack Source Code](https://github.com/redbear/btstack)
+* [RedBear Duo Schematic](https://github.com/redbear/Duo/tree/master/hardware/schematic)
+* [Components Datasheet](https://github.com/redbear/Duo/tree/master/hardware/datasheets)
+* [FCC & CE Certification](https://github.com/redbear/Duo/tree/master/certs)
 
 
 ## License

@@ -15,14 +15,14 @@ Purchase your RedBear Duo now:
 ## Directories and Files
 
 * `certs/`: FCC & CE certifications
-* `docs/`: Documentation for RedBear Duo
+* `docs/`: Documentation for improving your experience on the Duo
 * `driver/`: Duo Windows USB driver
-* `firmware/bootloader/`: Released bootloader images
-* `firmware/dct/`: Some configuration files used in Duo's internal DCT
+* `firmware/bootloader/`: Released bootloader images for Duo
+* `firmware/dct/`: Some configuration files can be applied to Duo's internal DCT
 * `firmware/javascript_interpreter/`: Released JavaScript interpreter images for Duo
 * `firmware/system/`: Released system firmware images
 * `firmware/wifi/`: Wi-Fi firmware for the wireless module 
-* `hardware/`: Hardware design files and related datasheets
+* `hardware/`: Hardware design files, datasheets and pin mapping
 * `scripts/`: Useful scripts for playing with the Duo
 
 
