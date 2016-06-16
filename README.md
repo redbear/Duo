@@ -5,7 +5,7 @@ The [RedBear Duo](http://www.redbear.cc/duo) is a thumb-size development board
 
 The Duo contains both Wi-Fi and BLE capabilities. This means your project can communicate locally with Bluetooth enabled devices and can also connect to your local Wi-Fi network to interact with anything else on the web. The Duo is built around the Broadcom BCM43438, a Wi-Fi 802.11b/g/n plus Bluetooth 4.1 (Dual Mode) combined chipset. They share the same 2.4GHz antenna and can run at the same time. This gives you the flexibility to utilize the most suitable wireless technology(s) for your project.
 
-![image](docs/images/Duo_BlockDiagram.jpg)
+![image](docs/images/Duo_BlockDiagram.png)
 
 With the RedBear RBLink you can easily attach modules from the Seeed’s Grove System to your project. No need to pull out your soldering iron--just attach your sensors and actuators with jumper wires to the RBLink and you’re ready to go. Looking to attach your own sensor or peripheral? The Duo is breadboard and solder friendly, so you’re never limited in what you can connect to the web.
 
@@ -26,6 +26,7 @@ The Duo supports Particle's Cloud and WebIDE and it works as same as the Photon 
 * Industrial Automation
 * Building Automation
 * Smart Home Appliances
+	(For Apple [HomeKit](https://developer.apple.com/homekit/), refer to [WICED-SDK](https://github.com/redbear/WICED-SDK))
 * Smart Toys
 * IoT Enabled Sensors
 * WiFi/BLE Gateway
@@ -36,7 +37,7 @@ The Duo supports Particle's Cloud and WebIDE and it works as same as the Photon 
 
 The Duo and the RBLink are certified by the FCC & CE certifications, the FCC ID is `2ABXJ-DUO`.
 
-The soft copy of the certifications can be found [here](docs/certs).
+The soft copy of the certifications can be found [here](/certs).
 
 
 ## Hardware
@@ -201,3 +202,4 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
