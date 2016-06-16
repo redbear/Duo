@@ -21,7 +21,9 @@ The [RedBear Duo](http://www.redbear.cc/duo) is a thumb-size development board
 
 It enables you develop applications to communicate with other wireless accessories or your smart devices, e.g. mobile phone, tablet or computer, through BLE, Wi-Fi or both BLE and WiFi at the same time. If the Duo is connecting to a router which implemented internet capability, you can even communicate with the Duo through cloud. For example, you can just sit in your office and monitor the environment data sampled by the Duo at home.
 
-The Duo supports several kinds of programming language, particularly like Arduino, C/C++, JavaScript and Python. You can develop the applications for Duo using GCC, Arduino IDE, Particle Web IDE, Espruino Web IDE and Broadcom WICED SDK.
+With the [RedBear RBLink](rblink_introduction.md) you can easily attach modules from the [Seeed’s Grove System](https://www.seeedstudio.com/item_list.html?category=45) to your project. No need to pull out your soldering iron--just attach your sensors and actuators with jumper wires to the RBLink and you’re ready to go.
+
+The Duo supports several kinds of programming language, particularly like **Arduino**, **C/C++**, **JavaScript** and **Python**. You can develop the applications for Duo using GCC, Arduino IDE, Particle Web IDE, Espruino Web IDE and Broadcom WICED SDK.
 
 The Duo is so powerful that you can be applied it to many applications, e.g.:
 
@@ -71,6 +73,7 @@ The Duo is so powerful that you can be applied it to many applications, e.g.:
 * Real-time operating system (FreeRTOS)
 * Hardware and software open source
 * Single-sided PCBA for easy mounting on other PCB
+* Breadboard frindly
 * Alternative signal chip antenna or external antenna
 * FCC and CE certified
 
