@@ -26,6 +26,7 @@ The Duo supports Particle's Cloud and WebIDE and it works as same as the Photon 
 * Industrial Automation
 * Building Automation
 * Smart Home Appliances
+	(For Apple [HomeKit](https://developer.apple.com/homekit/), refer to [WICED-SDK](https://github.com/redbear/WICED-SDK))
 * Smart Toys
 * IoT Enabled Sensors
 * WiFi/BLE Gateway
@@ -36,7 +37,7 @@ The Duo supports Particle's Cloud and WebIDE and it works as same as the Photon 
 
 The Duo and the RBLink are certified by the FCC & CE certifications, the FCC ID is `2ABXJ-DUO`.
 
-The soft copy of the certifications can be found [here](docs/certs).
+The soft copy of the certifications can be found [here](/certs).
 
 
 ## Hardware
@@ -201,3 +202,4 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
