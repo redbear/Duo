@@ -25,7 +25,7 @@ With the [RedBear RBLink](rblink_introduction.md) you can easily attach module
 
 The Duo supports several kinds of programming language, particularly like **Arduino**, **C/C++**, **JavaScript** and **Python**. You can develop the applications for Duo using GCC, Arduino IDE, Particle Web IDE, Espruino Web IDE and Broadcom WICED SDK.
 
-The Duo is so powerful that you can be applied it to many applications, e.g.:
+The Duo is so powerful that it can be applied to many applications, e.g.:
 
 * Industrial Automation
 * Building Automation
@@ -90,7 +90,7 @@ The Duo is so powerful that you can be applied it to many applications, e.g.:
 
 ## <span id="power-supply">Power Supply</span>
 
-### Main Power Supply
+#### Main Power Supply
 
 **!!! Caution: Use only one power source as the main power supply at a time, otherwise you will damage the board!**
 
@@ -108,7 +108,7 @@ Connect the `VIN` pin to a 3.5v ~ 8v power source will power up the Duo. The inp
 
 Connect the `3V3` pin to a 3.0 ~ 3.6 power source will also power up the Duo. The voltage from this pin directly suppies the whole board circuit units.
 
-### Backup Power Supply
+#### Backup Power Supply
 
 The voltage from `VBAT` should range from 1.8v to 3.6v, but it can NOT power up the Duo. According to the STM32F205 technical reference manual, VBAT pin can be connected to an optional standby voltage supplied by a battery or by another source to retain the content of the RTC backup registers, backup SRAM, and supply the RTC when VDD is turned off. So It is fine to connect a main power source and a backup power source to the Duo concurrently.
 
