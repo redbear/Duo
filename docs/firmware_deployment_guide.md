@@ -18,17 +18,15 @@ For Windows users, if you havn't install the DFU USB driver for Duo, please foll
 
 dfu-util command line options:
 
-* *-d* : specify the DFU device's USB ID. For Duo it is "2b04:d058"
-* *-a* : specify the interface of the memory. For Duo it has three interfaces.
- 
-    - 0: access the internal memory space, except the bootloader memory space
-    - 1: access the application DCT (not the entire DCT) memory space
-    - 2: access the external SPI flash memory space <br><br>
-
-* *-s* : specify the offset address of the memory space to store the binary file from
-* *-D* : the binary (.bin) file specified is going to be downloaded to the DFU device
-* *-U* : the binary (.bin) file specified is going to store the raw data that is dunmped from DFU device
-* *:leave* : append this option to the offset address will make device exit DFU Mode, e.g. `-s 0x80C0000:leave`.
+* `-d` : specify the DFU device's USB ID. For Duo it is "2b04:d058"
+* `-a` : specify the interface of the memory. For Duo it has three interfaces.
+    - `0` : access the internal memory space, except the bootloader memory space
+    - `1` : access the application DCT (not the entire DCT) memory space
+    - `2` : access the external SPI flash memory space
+* `-s` : specify the offset address of the memory space to store the binary file from
+* `-D` : the binary (.bin) file specified is going to be downloaded to the DFU device
+* `-U` : the binary (.bin) file specified is going to store the raw data that is dunmped from DFU device
+* `:leave` : append this option to the offset address will make device exit DFU Mode, e.g. `-s 0x80C0000:leave`.
 
 Now make your Duo enter DFU Mode:
 

@@ -165,11 +165,9 @@ A default web server application now is running on your Duo, with broadcasting a
 
 ### <span id="backup-the-device-private-key-highly-recommended">Backup the device private key (Highly Recommended)</span>
 
-The communication between Duo and the Particle Cloud is truely secure. There are three key stored in the DCT(Device Configuration Table): cloud server public key, device private key and device public key. The cloud server public key can be obtained from Particle and has been programmed into DCT during manufacturing. The device private key is generated when first time power on the Duo and then is stored in the DCT. The device public key will be generated according to the device private key when it is asked by the cloud server. 
+A device private key used for cloud connection establishment and cloud secure data exchangement is generated during manufacture. We highly recommend that you backup the device private key after your Duo connected to the Particle Cloud successfully, in case you destroy it for any reason. To investigate why you'd better backup the device private key, please read the [Devices Provisioning Guide](devices_provisioning_guide.md). 
 
-Every time your Duo is provisioned, when it is connected to the Particle Cloud, the cloud will ask for the Duo's device public key. Once the device public key is submitted to the cloud, it won't change on the cloud database unless you provision your Duo again. Thus, if you modified the device private key by accident, your duo will lose trust to the cloud and no cloud connection will be established, since the device private key on the Duo and the public key on the cloud do not come in pairs any more. So you have to invalid the previous device private key and provision your Duo again to let the cloud ask for the new public key. Oh! It's so complicate and annoying, right? 
-
-That's why we highly recommend that you backup the device private key after you claiming your Duo on the Particle Cloud, in case you destroy it for any reason. With the backup, even if the device private key is destroied, you can simply load the backup key to the DCT to establish the cloud connection.
+Before you backup the device private key, since such key is so personal that if you don't trust RedBear during manufacture, you can also follow the [Devices Provisioning Guide](devices_provisioning_guide.md) to provision your Duo by yourself -- It will generate a new device private key in your Duo. And then work through the following steps to backup the device private key:
 
 * Please follow the [dfu-util Installation Guide](dfu-util_installation_guide.md) to install the dfu-util on your computer.
 

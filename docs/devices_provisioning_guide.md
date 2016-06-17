@@ -1,68 +1,93 @@
 # Duo: Devices Provisioning Guide
 ---
 
-This guide provides instructions for you to provision your Duo to Particle cloud.
+This Guide is only useful for those users want to connect to the Particle Cloud.
 
-To do this if you:
+## Preliminary Knowledge 
 
-* cleared the DCT or you forgot to backup it before
-* don't trust RedBear and you want to do the provisioning yourself
-* have problems to connect to Particle cloud
+**Convention: All the "cloud" mentioned below is referred to the Particle Cloud**
 
-Note: you can send your device ID to us privately for provisioning if you are not sure how to do.
+#### About the keys
 
- 
-## Prerequisites
+The communication between Duo and the cloud is truely secure. There are three keys stored in the DCT(Device Configuration Table): *cloud server public key*, *device private key* and *device public key*. The cloud server public key can be obtained from Particle (or a [backup](https://github.com/redbear/Duo/tree/master/firmware/dct) from RedBear) and has been programmed into DCT during manufacture. The device private key is generated when the first time power on the Duo and then is stored in the DCT. The device public key will be generated according to the device private key when it is requested by the cloud server and then is stored in the DCT. 
 
-* [DFU-UTIL](dfu.md)
-* [DCT](../firmware/dct) with Particle cert. (public key inside)
-* [Device Provisioning Helper](https://github.com/redbear/device-provisioning-helper) tool (requires Node.js to run)
-* [Particle account](https://build.particle.io/), [your access token](https://build.particle.io/build#settings)
+#### What does provisioning do?
 
+Provision your Duo so that the next time it attempts to connect to the cloud, the cloud will feel FREE to accept the connection and then request for the Duo's device public key that generated according to the device private key in the DCT. Once the device public key is submitted to the cloud, it will not change on the cloud, unless you provisioning your Duo again.
 
-## How it works
+#### Why need provisioning?
 
-Each Duo have an unique ID, it is a secret data and already provisioned in Particle cloud. The DCT includes Particle cert. (pulic key) and is preloaded by factory and the keys (public and private) for your Duo are empty at the moment.
+The cloud connections initiated by the Duo will be established only if the device private key in the DCT and the device public key on the cloud are in pairs. If each of them is modified or destroyed, e.g.,
 
-Once you try the out-of-box test follow the getting started guide, during the handshaking process, your keys will be generated and the public key of your Duo will be encrypted by Particle's public key and then it will be sent to the cloud for storing.
+* The device private key in the DCT is destroyed by accident, but you don't have a backup
+* The device public key is destroyed or lost on the cloud
+* You don't trust RedBear and want to re-generate the device private key
 
-That means, all communication between your Duo and Particle is safe (encryted). Finally, did you backup the DCT (i.e. keys) as told in the getting started guide?
+your Duo will never able to cnnect to the cloud. 
 
-If you clear the DCT, then you will be unable to connect to the Cloud anymore, this time, you need to provision your Duo again.
+*That's why we highly recommend that you backup the device private key after your Duo connected to the Particle Cloud successfully. Even if the device private key is destroied, you can simply load the backup key to the DCT without any provisioning (See [dfu-util Installation Guide](dfu-util_installation_guide.md))*:
 
+    $ dfu-util -d 2b04:d058 -a 1 -s 34 -D device_private_key.der
 
-## Upload DCT.bin
+#### Why need initial provisioning
 
-* To load the DCT:
+Every Duo should be provisioned in an authorised admin account (initial provisioning) once at least during manufacture. The initial provisioning is not only to provision your Duo, but also to add your Duo to the cloud device database. That's why your Duo can connect to the cloud at its first attempt after you received the Duo. Without the initial provisioning, your Duo will never able to connet to the cloud, neither you can provision the Duo by yourself. 
 
-	$ dfu-util -d 2b04:d058 -a 0 -s 0x08004000 -D duo-dct.bin
+As there is always a chance that certain Duos may escape from the initial provisioning before shipped out, when you try provisioning your Duo and get the error "**permission denied**", send your Duo's device ID to [guohui@redbear.cc]() and we'll help process the initial provisioning.
 
 
-## Get Access Token
+## Generate New Device Private Key
 
-* Log into your Particle account, from the 'Settings' icon, copy the 'Access Token'.
+* Please follow the [dfu-util Installation Guide](dfu-util_installation_guide.md) to install the dfu-util first.  
 
-![image](images/Token.png)
+* Make your Duo enter DFU Mode:
 
+    1. Hold down BOTH buttons
+    2. Release only the RESET button, while holding down the SETUP button.
+    3. Wait for the LED to start blinking **yellow**
+    4. Release the SETUP button
 
-## Edit main.js
+* Download the [reset\\_device\\_private\\_key.bin](https://github.com/redbear/Duo/raw/master/firmware/dct/invalid_device_private_key.bin) and load it to DCT using dfu-util to reset the device private key:
 
-* Change YOUR_ACCESS_TOKEN (your own one!) and YOUR_PRODUCT_ID (88 is the Duo product ID assigned by Particle):
+        $ dfu-util -d 2b04:d058 -a 1 -s 34:leave -D reset_device_private_key.bin
 
-		var YOUR_ACCESS_TOKEN = "63796d690652ffffffffffffff66fd5d3d53bce8";
-		var YOUR_PRODUCT_ID = 88;
-
+* After the command executed, your Duo will leave the DFU Mode and reset to blink **white**, which means it is generating a new device private key. Once the key is generated and stored in the DCT, it will reset again and then every thing as usual.
 
 ## Provisioning
 
-Run the command as the following and you will get the similar output:
+**Note: If you have trouble provisioning your Duo by yourself, please send your Duo's device ID to us (guohui@redbear.cc), we'll help provision it for you.**
 
-	$ node main.js 2fff27fffc473530fff23637
-	using generic public key
-	attempting to add a new public key for device 2fff27fffc473530fff23637
-	Success - Device Provisioned!
+* Download and install the [Nodejs](https://nodejs.org/en/download/) on your computer.
 
-After that, your Duo should be able to connect to the Particle Cloud again.
+* Download or clone the [device-provisioning-helper](https://github.com/redbear/device-provisioning-helper) script from GitHub.
+
+* Install related modules:
+
+        $ cd device-provisioning-helper
+        $ npm install
+
+* Get your access token to the cloud. Log into your Particle account, from the "**Settings**" icon, copy the "**Access Token**".
+
+    ![image](images/Token.png)
+
+
+* Edit the `main.js` under the device-provisioning-helper folder. Change  the `YOUR_ACCESS_TOKEN` to your own and change the `YOUR_PRODUCT_ID` to `88`, which assigned by Particle. E.g.:
+
+		var YOUR_ACCESS_TOKEN = "xxxxxxxxxxxxxxxxxxxxxxxxx0570aeafba99d8b";
+		var YOUR_PRODUCT_ID = 88;
+
+
+* Run the following command to provision your Duo:
+
+	    $ node main.js YOUR_DEVICE_ID
+
+    Sample output:
+
+	    using generic public key
+	    attempting to add a new public key for device 2fff27fffc473530fff23637
+	    Success - Device Provisioned!
+
+* If provisioning succeed, the next time your Duo attempts to connect to the cloud will also succeed as expected.
 
 
 ## What's Next
@@ -73,13 +98,14 @@ After that, your Duo should be able to connect to the Particle Cloud again.
 ## References
 
 * [Duo Introduction](duo_introduction.md)
+* [Out-of-Box Experience](out_of_box_experience.md)
 * [dfu-util Installation Guide](dfu-util_installation_guide.md)
 * [RedBear Discussion Forum](http://discuss.redbear.cc/)
 
 
 ## Resources
 
-* [Device Provisioning Helper Script](https://github.com/redbear/device-provisioning-helper)
+* [device-provisioning-helper](https://github.com/redbear/device-provisioning-helper)
 * [Nodejs](https://nodejs.org/en/download/)
 
 

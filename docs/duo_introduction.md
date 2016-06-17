@@ -21,7 +21,7 @@ The [RedBear Duo](http://www.redbear.cc/duo) is a thumb-size development board
 
 It enables you develop applications to communicate with other wireless accessories or your smart devices, e.g. mobile phone, tablet or computer, through BLE, Wi-Fi or both BLE and WiFi at the same time. If the Duo is connecting to a router which implemented internet capability, you can even communicate with the Duo through cloud. For example, you can just sit in your office and monitor the environment data sampled by the Duo at home.
 
-With the [RedBear RBLink](rblink_introduction.md) you can easily attach modules from the [Seeed’s Grove System](https://www.seeedstudio.com/item_list.html?category=45) to your project. No need to pull out your soldering iron--just attach your sensors and actuators with jumper wires to the RBLink and you’re ready to go.
+With the [RedBear RBLink](rblink_introduction.md) you can easily attach modules from the [Seeed’s Grove System](https://www.seeedstudio.com/item_list.html?category=45) to your project. No need to pull out your soldering iron -- just attach your sensors and actuators with jumper wires to the RBLink and you’re ready to go.
 
 The Duo supports several kinds of programming language, particularly like **Arduino**, **C/C++**, **JavaScript** and **Python**. You can develop the applications for Duo using GCC, Arduino IDE, Particle Web IDE, Espruino Web IDE and Broadcom WICED SDK.
 
@@ -98,7 +98,7 @@ To make the Duo board work normally, the board level working voltage (VCC) shoul
 
 ##### Micro USB port
 
-Connect the Duo to a 3.5v ~ 8v power source or to a computer via micro USB cable, will power up the Duo. The input voltage from the USB port will be regulated to 3.3v by the on-board regulator first and then supply the whole board circuit units. In this case, the `VIN` pin will output a voltage nearly to the USB port input voltage and the `3V3` pin will output a voltage equal to the board level voltage, i.e. 3.3v. Then the `VIN` pin can be invoked to power other high voltage drivered devices, e.g. Relays, Servers, Motors and etc. As well as the `3V3` pin can be invoked to power other 3.3v devices.
+Connect the Duo to a 3.5v ~ 8v power source or to a computer via micro USB cable, will power up the Duo. The input voltage from the USB port will be regulated to 3.3v by the on-board regulator first and then supply the whole board circuit units. In this case, the `VIN` pin will output a voltage nearly to the USB port input voltage and the `3V3` pin will output a voltage equal to the board level voltage, i.e. 3.3v. Then the `VIN` pin can be invoked to power other high voltage drived devices, e.g. Relays, Servers, Motors and etc. As well as the `3V3` pin can be invoked to power other 3.3v devices.
 
 ##### VIN pin
 
