@@ -9,7 +9,7 @@ This Guide is only useful for those users want to connect to the Particle Cloud.
 
 #### About the keys
 
-The communication between Duo and the cloud is truely secure. There are three keys stored in the DCT(Device Configuration Table): *cloud server public key*, *device private key* and *device public key*. The cloud server public key can be obtained from Particle (or a [backup](https://github.com/redbear/Duo/tree/master/firmware/dct) from RedBear) and has been programmed into DCT during manufacture. The device private key is generated when the first time power on the Duo and then is stored in the DCT. The device public key will be generated according to the device private key when it is requested by the cloud server and then is stored in the DCT. 
+The communication between Duo and the cloud is truely secure. There are three keys stored in the DCT(Device Configuration Table): **cloud server public key**, **device private key** and **device public key**. The cloud server public key can be obtained from Particle (or a [backup](https://github.com/redbear/Duo/tree/master/firmware/dct) from RedBear) and has been programmed into DCT during manufacture. The device private key is generated when the first time power on the Duo and then is stored in the DCT. The device public key will be generated according to the device private key when it is requested by the cloud server and then is stored in the DCT. 
 
 #### What does provisioning do?
 
@@ -25,7 +25,7 @@ The cloud connections initiated by the Duo will be established only if the devic
 
 your Duo will never able to cnnect to the cloud. 
 
-**That's why we highly recommend that you backup the device private key after your Duo connected to the Particle Cloud successfully. Even if the device private key is destroied, you can simply load the backup key to the DCT without any provisioning (See [dfu-util Installation Guide](dfu-util_installation_guide.md))**:
+**That's why we highly recommend that you backup the device private key after your Duo connected to the Particle Cloud successfully. Even if the device private key is destroied, you can simply load the backup key to the DCT without provisioning your Duo(See [dfu-util Installation Guide](dfu-util_installation_guide.md))**:
 
     $ dfu-util -d 2b04:d058 -a 1 -s 34 -D device_private_key.der
 
@@ -42,10 +42,10 @@ As there is always a chance that certain Duos may escape from the initial provis
 
 * Make your Duo enter DFU Mode:
 
-    1. Hold down BOTH buttons
-    2. Release only the RESET button, while holding down the SETUP button.
-    3. Wait for the LED to start blinking **yellow**
-    4. Release the SETUP button
+    - Hold down BOTH buttons
+    - Release only the RESET button, while holding down the SETUP button.
+    - Wait for the LED to start blinking **yellow**
+    - Release the SETUP button
 
 * Download the [reset\_device\_private\_key.bin](https://github.com/redbear/Duo/raw/master/firmware/dct/reset_device_private_key.bin) and load it to DCT using dfu-util to reset the device private key:
 
@@ -71,7 +71,7 @@ As there is always a chance that certain Duos may escape from the initial provis
     ![image](images/Token.png)
 
 
-* Edit the `main.js` under the device-provisioning-helper folder. Change  the `YOUR_ACCESS_TOKEN` to your own and change the `YOUR_PRODUCT_ID` to `88`, which assigned by Particle. E.g.:
+* Edit the `main.js` under the `device-provisioning-helper` folder. Change  the `YOUR_ACCESS_TOKEN` to your own and change the `YOUR_PRODUCT_ID` to `88`, which assigned by Particle. E.g.:
 
 		var YOUR_ACCESS_TOKEN = "xxxxxxxxxxxxxxxxxxxxxxxxx0570aeafba99d8b";
 		var YOUR_PRODUCT_ID = 88;
