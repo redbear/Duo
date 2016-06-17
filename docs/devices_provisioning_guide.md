@@ -47,11 +47,11 @@ As there is always a chance that certain Duos may escape from the initial provis
     - Wait for the LED to start blinking **yellow**
     - Release the SETUP button
 
-* Download the [reset\_device\_private\_key.bin](https://github.com/redbear/Duo/raw/master/firmware/dct/reset_device_private_key.bin) and load it to DCT using dfu-util to reset the device private key:
+* Download the [reset\_device\_private\_key.bin](https://github.com/redbear/Duo/raw/master/firmware/dct/reset_device_private_key.bin) and load it to the DCT using dfu-util to reset the device private key:
 
         $ dfu-util -d 2b04:d058 -a 1 -s 34:leave -D reset_device_private_key.bin
 
-* After the command executed, your Duo will leave the DFU Mode and reset to **blink white**, which means it is generating a new device private key. Once the key is generated and stored in the DCT, it will reset again and then every thing as usual.
+* After the command executed, your Duo will leave the DFU Mode and reset to begin **blinking white**, which means your Duo is generating a new device private key. Once the key is generated and stored in the DCT, it will reset again and then every thing works as usual.
 
 ## Provisioning
 
