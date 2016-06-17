@@ -25,7 +25,7 @@ The cloud connections initiated by the Duo will be established only if the devic
 
 your Duo will never able to cnnect to the cloud. 
 
-*That's why we highly recommend that you backup the device private key after your Duo connected to the Particle Cloud successfully. Even if the device private key is destroied, you can simply load the backup key to the DCT without any provisioning (See [dfu-util Installation Guide](dfu-util_installation_guide.md))*:
+**That's why we highly recommend that you backup the device private key after your Duo connected to the Particle Cloud successfully. Even if the device private key is destroied, you can simply load the backup key to the DCT without any provisioning (See [dfu-util Installation Guide](dfu-util_installation_guide.md))**:
 
     $ dfu-util -d 2b04:d058 -a 1 -s 34 -D device_private_key.der
 
@@ -47,11 +47,11 @@ As there is always a chance that certain Duos may escape from the initial provis
     3. Wait for the LED to start blinking **yellow**
     4. Release the SETUP button
 
-* Download the [reset\\_device\\_private\\_key.bin](https://github.com/redbear/Duo/raw/master/firmware/dct/invalid_device_private_key.bin) and load it to DCT using dfu-util to reset the device private key:
+* Download the [reset\_device\_private\_key.bin](https://github.com/redbear/Duo/raw/master/firmware/dct/reset_device_private_key.bin) and load it to DCT using dfu-util to reset the device private key:
 
         $ dfu-util -d 2b04:d058 -a 1 -s 34:leave -D reset_device_private_key.bin
 
-* After the command executed, your Duo will leave the DFU Mode and reset to blink **white**, which means it is generating a new device private key. Once the key is generated and stored in the DCT, it will reset again and then every thing as usual.
+* After the command executed, your Duo will leave the DFU Mode and reset to **blink white**, which means it is generating a new device private key. Once the key is generated and stored in the DCT, it will reset again and then every thing as usual.
 
 ## Provisioning
 
