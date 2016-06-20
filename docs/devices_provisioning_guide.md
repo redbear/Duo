@@ -77,7 +77,7 @@ As there is always a chance that certain Duos may escape from the initial provis
 		var YOUR_PRODUCT_ID = 88;
 
 
-* Run the following command to provision your Duo:
+* If you've worked through the [Out-of-Box Experience](out_of_box_experience.md), you should have known your Duo's device ID. Run the following command to provision your Duo:
 
 	    $ node main.js YOUR_DEVICE_ID
 

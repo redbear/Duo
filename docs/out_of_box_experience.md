@@ -52,9 +52,16 @@ Connect your Duo to computer via its native USB port with micro USB cable (ensur
 
 * For OSX and Linux:
 
-    - Start the Terminal and use the "screen" command. On Linux (e.g. Ubuntu), you may need to install screen by `$ sudo apt-get install screen`.
+    - Start the Terminal and use the "screen" command. On Linux (e.g. Ubuntu), you may need to install screen by:     
+    `$ sudo apt-get install screen`.
 	
-    - On OSX, type `$ screen /dev/tty.usbmodemXXXXX`, where `XXXXX` is your Duo device serial port. On Linux, type `$ screen /dev/tty.ACMX`, where `ACMX` is your Duo device serial port. If you are not sure about the serial port, you can list the device by:   
+    - On OSX, type:     
+    `$ screen /dev/tty.usbmodemXXXXX`, where `XXXXX` is your Duo device serial port.     
+
+        On Linux, type:     
+        `$ screen /dev/tty.ACMX`, where `ACMX` is your Duo device serial port. 
+
+        If you are not sure about the serial port, you can list the device by:   
   
         OSX: `$ ls /dev/tty.usbmodem*`    
         Linux: `$ ls /dev/tty.ACM*`
@@ -104,7 +111,7 @@ In later chapter, the device ID will be used for claiming your Duo on the Partic
 
 #### 6. Claim your Duo on the Partcile Cloud (optional)
 
-We work closely with Particle team and the Duo for development, not for production, can free and easily access the Particle Cloud and benifit from the services and tools provided by Particle, e.g., Particle WebIDE, Particle Dashboard, Particle Event System and etc.
+We work closely with Particle team and the Duo for development purpose, can freely and easily access the Particle Cloud and benifit from the services and tools provided by Particle, e.g., Particle WebIDE, Particle Dashboard, Particle Event System and etc. If you want to benefit from these features, you have to work through the following steps to claim your Duo first.
 
 * Make sure that the Duo is connected to the Particle Cloud, i.e. the RGB is breathing **cyan**. If it can not connect to the Cloud, please check out the [Duo Troubleshooting](duo_troubleshooting.md) to fix it first before moving on.
 

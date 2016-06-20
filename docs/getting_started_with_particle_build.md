@@ -1,17 +1,40 @@
 # Duo: Getting Started with Particle Build (WebIDE)
 ---
 
+The Duo is installed the customed Particle firmware by default during manufacturing, which enables you developing applications using the Particle Build (aka. Particle online WebIDE). If you are running an application developed using WICED SDK, you will not able to access any of the services and tools provided by Particle, definitely including the Particle Build.
 
+* [Requirements](#requirements)
+
+
+## <span id="requirements">Requirements</span>
+
+* Particle account
+* RedBear Duo development board
+* Micro USB cable 
+
+
+## Getting Started
+
+1. Please follow the [Out-of-Box Experience](out_of_box_experience.md) to claim your Duo to the Particle Cloud.
+
+2. 
 
 
 ## What's Next
 
-
+[Applications Development Guide](applications_development_guide.md)
 
 
 ## References
 
+* [Duo Introduction](duo_introduction.md)
+* [Firmware Architecture Overview](firmware_architecture_overview.md)
+* [RedBear Discussion Forum](http://discuss.redbear.cc/)
 
+
+## Resources
+
+* [Modified Particle firmware Source Code](https://github.com/redbear/firmware)
 
 
 ## License
