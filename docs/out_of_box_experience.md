@@ -117,9 +117,7 @@ We work closely with Particle team and the Duo for development purpose, can free
 
 * Go to [Particle Build](https://build.particle.io). Creat an account if you don't have one yet, or just login.
 
-* Navigate to the "Devices" tag at the left-bottom corner and click to switch to the devices view.
-
-    ![image](images/Devices.png) 
+* Navigate to the ![image](images/Devices.png) tag at the left-bottom corner and click to switch to the devices view.
 
 * Click on the "ADD NEW DEVICE" button.
 

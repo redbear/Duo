@@ -66,7 +66,7 @@ As there is always a chance that certain Duos may escape from the initial provis
         $ cd device-provisioning-helper
         $ npm install
 
-* Get your access token to the cloud. Log into your Particle account, from the "**Settings**" icon, copy the "**Access Token**".
+* Login Particle Build, from the ![image](images/Settings.png) icon, copy the "**Access Token**".
 
     ![image](images/Token.png)
 
