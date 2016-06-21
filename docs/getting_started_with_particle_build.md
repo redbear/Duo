@@ -4,6 +4,8 @@
 The Duo is installed the customed Particle firmware by default during manufacturing, which enables you developing applications using the Particle Build (aka. Particle online Web IDE). If you are running an application developed using WICED SDK, you will not able to access any of the services and tools provided by Particle, definitely including the Particle Build.
 
 * [Requirements](#requirements)
+* [First Simple Application](#first-simple-application)
+* [Update System Firmware](#update-system-firmware)
 
 
 ## <span id="requirements">Requirements</span>
@@ -13,7 +15,7 @@ The Duo is installed the customed Particle firmware by default during manufactur
 * Micro USB cable 
 
 
-## Getting Started
+## <span id="first-simple-application">First Simple Application</span>
 
 1. Please follow the [Out-of-Box Experience](out_of_box_experience.md) to claim your Duo to the Particle Cloud.
 
@@ -48,11 +50,11 @@ The Duo is installed the customed Particle firmware by default during manufactur
 **More informations about the Particle Build, please read the [Particle's online documentation](https://docs.particle.io/guide/getting-started/build/photon/).**
 
 
-## Update System Firmware
+## <span id="update-system-firmware">Update System Firmware</span>
 
 We always recommend you update your Duo to the latest system firmware, since there may have new features added and bugfixes with a new released version. 
 
-It is very easy to update your Duo's system firmware with the Particle Build. Simply choose an upper firmware version for the application you are going to compile against (see step 3 of the Getting Started section), and then OTA flash the application. It will automatically update your Duo's system firmware Over The Air. More details and other ways to update the system firmware, please refer to the [Firmware Deployment Guide](duo_firmware_deployment_guide.md).
+It is very easy to update your Duo's system firmware with the Particle Build. Simply choose an upper firmware version for the application you are going to compile against (see step 3 of the [First Simple Application](#first-simple-application) section), and then OTA flash the application. It will automatically update your Duo's system firmware Over The Air. More details and other ways to update the system firmware, please refer to the [Firmware Deployment Guide](duo_firmware_deployment_guide.md).
 
 You should note that the Particle Build only supports firmware upgrading, if you choose a lower firmware verison to compile against, it won't downgrade  the Duo's system firmware for you.
 

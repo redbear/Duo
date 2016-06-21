@@ -6,7 +6,7 @@ The Duo is installed the customed Particle firmware by default during manufactur
 * [Requirements](#requirements)
 * [Essential Setup](#essential-setup)
 * [Update System Firmware](#update-system-firmware)
-* [First Simple Application](first-simple-application)
+* [First Simple Application](#first-simple-application)
 
 
 ## <span id="requirements">Requirements</span>
