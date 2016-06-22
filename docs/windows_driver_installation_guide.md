@@ -84,7 +84,7 @@ The Duo will appear as "Other Devices" on your computer. The device name is **"D
 * It will show "Driver installed successfully".
 ## <span id="install-rblink-usb-driver">Install RBLink USB Driver</span>
 
-For the RBLink, since it is completely compatible with ST-Link/v2-1, they share the same driver and software, i.e., the ST-LINK Utility provided by STMicroelectronics will also works for the RBLink. To install the driver for RBLink, you need to install ST-LINK Utility first. 
+For the RBLink, since it is completely compatible with ST-Link/v2, they share the same driver and software, i.e., the ST-LINK Utility provided by STMicroelectronics will also works for the RBLink. To install the driver for RBLink, you need to install ST-LINK Utility first. 
 
 * Download [ST-LINK Utility](http://www.st.com/content/st_com/en/products/embedded-software/development-tool-software/stsw-link004.html#getsoftware-scroll) from ST website.
 
