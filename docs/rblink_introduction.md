@@ -42,6 +42,8 @@ You can use the RBLink with OpenOCD to debug and program the RedBear Duo. We've 
 
 ## <span id="pinouts">Pinouts</span>
 
+**Note: The pinouts of the Grove connectors are mapped to the RedBear Duo board, not to the MCU on RBLink.**
+
 ![image](images/RBLink_Pinout.jpg)
 
 
