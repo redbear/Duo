@@ -31,6 +31,7 @@ Purchase your RedBear Duo now:
 #### Official
 
 * [Duo Inroduction](docs/duo_introduction.md)
+* [RBLink Introduction](docs/rblink_introduction.md)
 * [Out-of-Box Experience](docs/out_of_box_experience.md)
 * [Getting Started with Arduino IDE](docs/getting_started_with_arduino_ide.md)
 * [Getting Started with Particle Build (WebIDE)](docs/getting_started_with_particle_build.md)
