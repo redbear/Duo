@@ -1,10 +1,5 @@
-# Duo: Applications Development Guide
+# Duo: Programming Reference
 ---
-
-
-
-
-## What's Next
 
 
 

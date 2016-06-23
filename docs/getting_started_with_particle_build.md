@@ -6,7 +6,6 @@ The Duo is installed the customed Particle firmware by default during manufactur
 * [Requirements](#requirements)
 * [First Simple Application](#first-simple-application)
 * [Update System Firmware](#update-system-firmware)
-* [What's Next](#whats-next)
 * [References](#references)
 * [Resources](#resources)
 
@@ -62,14 +61,10 @@ It is very easy to update your Duo's system firmware with the Particle Build. Si
 You should note that the Particle Build only supports firmware upgrading, if you choose a lower firmware verison to compile against, it won't downgrade  the Duo's system firmware for you.
 
 
-## <span id="whats-next">What's Next</span>
-
-[Applications Development Guide](applications_development_guide.md)
-
-
 ## <span id="references">References</span>
 
 * [Duo Introduction](duo_introduction.md)
+* [Programming Reference](programming_reference.md)
 * [Firmware Architecture Overview](firmware_architecture_overview.md)
 * [Particle Build](https://build.particle.io)
 * [Particle Documentation](https://docs.particle.io/guide/getting-started/intro/photon/)

@@ -79,14 +79,10 @@ If your Duo's current system version is not the same as the one declared in the 
 5. Well done! You could try more other examples that under "File > Examples > RedBear_Duo" or, just start coding your own sketch to build an awesome project!
 
 
-## What's Next
-
-[Applications Development Guide](applications_development_guide.md)
-
-
 ## References
 
 * [Duo Introduction](duo_introduction.md)
+* [Programming Reference](programming_reference.md)
 * [Arduino Board Package Installation Guide](arduino_board_package_installation_guide.md)
 * [Arduino Board Package Change-log](arduino_board_package_changelog.md)
 * [Firmware Architecture Overview](firmware_architecture_overview.md)

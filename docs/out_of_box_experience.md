@@ -209,7 +209,7 @@ We always recommend you update your Duo to the latest system firmware, since the
 ## <span id="references">References</span>
 
 * [Duo Inroduction](duo_introduction.md)
-* [Applications Development Guide](applications_development_guide.md)
+* [Programming Reference](programming_reference.md)
 * [Firmware Architecture Overview](firmware_architecture_overview.md)
 * [Firmware Deployment Guide](firmware_deployment_guide.md)
 * [System Firmware Change-log](system_firmware_changelog.md)
