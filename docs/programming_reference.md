@@ -1,7 +1,7 @@
 # Duo: Programming Reference
 ---
 
-The Duo is installed the customed Particle firmware by default during manufacturing. You can develop your own applications around the system firmware, which with lots of functions and libraries built-in so that you can invoke them directly in your sketch. The programming language and application architecture are almost Arduino compatible -- all you want is achieved in the `setup()` and `loop()` function.
+The Duo is installed the customed Particle firmware by default during manufacturing. You can build your own applications around the system firmware, which with lots of functions and libraries built-in so that you can invoke them directly in your sketch. The programming language and application architecture are almost Arduino compatible -- all you want should be achieved in the `setup()` and `loop()` function.
 
 * `setup()` - Runs once at the beginning of your program    
 * `loop()` - Runs continuously over and over
@@ -19,15 +19,12 @@ E.g.:
         pinMode(led2, OUTPUT);
     }
 
-    /* Next we have the loop function, the other essential part of a 
-       microcontroller program. This routine gets repeated over and over, 
-       as quickly as possible and as many times as possible, after the 
-       setup function is called.
+    /* Next we have the loop function, the other essential part of a microcontroller program. This routine gets
+       repeated over and over, as quickly as possible and as many times as possible, after the setup function is called.
 
-       Note: Code that blocks for too long (like more than 5 seconds), can
-       make weird things happen (like dropping the network connection).
-       The built-in delay() function shown below safely interleaves required background 
-       activity, so arbitrarily long delays can safely be done if you need them. */
+       Note: Code that blocks for too long (like more than 5 seconds), can make weird things happen 
+       (like dropping the network connection). The built-in delay() function shown below safely interleaves required 
+       background activity, so arbitrarily long delays can safely be done if you need them. */
 
     void loop() {  
         // To blink the LED, first we'll turn it on...
@@ -67,13 +64,13 @@ Since the Duo shares most of the firmware source code with Particle Photon, most
 
 ##### [Input/Output](https://docs.particle.io/reference/firmware/photon/#input-output) -- built-in functions
 
-- [`pinMode()`](https://docs.particle.io/reference/firmware/photon/#pinmode-)
+- [`pinMode()`](https://docs.particle.io/reference/firmware/photon/#pinmode-) - `INPUT`, `INPUT_PULLUP`, `INPUT_PULLDOWN` or `OUTPUT`
 - [`getPinMode()`](https://docs.particle.io/reference/firmware/photon/#getpinmode-pin-)
-- [`digitalWrite()`](https://docs.particle.io/reference/firmware/photon/#digitalwrite-)
+- [`digitalWrite()`](https://docs.particle.io/reference/firmware/photon/#digitalwrite-) - `HIGH` or `LOW`
 - [`digitalRead()`](https://docs.particle.io/reference/firmware/photon/#digitalread-)
-- [`analogWrite()`](https://docs.particle.io/reference/firmware/photon/#analogwrite-pwm-) - PWM
-- [`analogWrite()`](https://docs.particle.io/reference/firmware/photon/#analog-output-dac-) - DAC
-- [`analogRead()`](https://docs.particle.io/reference/firmware/photon/#analogread-adc-)
+- [`analogWrite()`](https://docs.particle.io/reference/firmware/photon/#analogwrite-pwm-) - PWM (0 ~ 255)
+- [`analogWrite()`](https://docs.particle.io/reference/firmware/photon/#analog-output-dac-) - DAC (0 ~ 4095)
+- [`analogRead()`](https://docs.particle.io/reference/firmware/photon/#analogread-adc-) - (0 ~ 4095)
 - [`setADCSampleTime()`](https://docs.particle.io/reference/firmware/photon/#setadcsampletime-)
 
 ##### [Low Level Input/Output](https://docs.particle.io/reference/firmware/photon/#low-level-input-output) -- built-in functions
