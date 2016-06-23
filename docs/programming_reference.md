@@ -58,31 +58,37 @@ E.g.:
 - [Data Types](https://docs.particle.io/reference/firmware/photon/#data-types)
 
 
-## Common Reference
+## Reference
 
 Since the Duo shares most of the firmware source code with Particle Photon, most of the functions and libraries designed for Photon are valid for the Duo as well. Each of these functions and libraries is described extremely in detail on the [Particle Reference](https://docs.particle.io/reference/) website, so we need not to duplicate it here, but only list the APIs for quick reference.
 
-#### [Input/Output](https://docs.particle.io/reference/firmware/photon/#input-output)
+* **Common**
+    - [Input/Output](#inputoutput)
+    - [Low Level Input/Output](#low-level-inputoutput)
+* **Addition**
+    - [SFLAH](#sflash)
 
--- Built-in global functions:    
+### Common
 
-- [`pinMode()`](https://docs.particle.io/reference/firmware/photon/#pinmode-) - `INPUT`, `INPUT_PULLUP`, `INPUT_PULLDOWN` or `OUTPUT`
-- [`getPinMode()`](https://docs.particle.io/reference/firmware/photon/#getpinmode-pin-)
-- [`digitalWrite()`](https://docs.particle.io/reference/firmware/photon/#digitalwrite-) - `HIGH` or `LOW`
-- [`digitalRead()`](https://docs.particle.io/reference/firmware/photon/#digitalread-)
-- [`analogWrite()`](https://docs.particle.io/reference/firmware/photon/#analogwrite-pwm-) - PWM (0 ~ 255)
-- [`analogWrite()`](https://docs.particle.io/reference/firmware/photon/#analog-output-dac-) - DAC (0 ~ 4095)
-- [`analogRead()`](https://docs.particle.io/reference/firmware/photon/#analogread-adc-) - (0 ~ 4095)
-- [`setADCSampleTime()`](https://docs.particle.io/reference/firmware/photon/#setadcsampletime-)
+##### <span id="inputoutput">[Input/Output](https://docs.particle.io/reference/firmware/photon/#input-output)</span>
 
-#### [Low Level Input/Output](https://docs.particle.io/reference/firmware/photon/#low-level-input-output)
+Built-in global functions:      
+[`pinMode()`](https://docs.particle.io/reference/firmware/photon/#pinmode-) - `INPUT`, `INPUT_PULLUP`, `INPUT_PULLDOWN` or `OUTPUT`    
+[`getPinMode()`](https://docs.particle.io/reference/firmware/photon/#getpinmode-pin-)    
+[`digitalWrite()`](https://docs.particle.io/reference/firmware/photon/#digitalwrite-) - `HIGH` or `LOW`    
+[`digitalRead()`](https://docs.particle.io/reference/firmware/photon/#digitalread-)    
+[`analogWrite()`](https://docs.particle.io/reference/firmware/photon/#analogwrite-pwm-) - PWM (0 ~ 255)    
+[`analogWrite()`](https://docs.particle.io/reference/firmware/photon/#analog-output-dac-) - DAC (0 ~ 4095)    
+[`analogRead()`](https://docs.particle.io/reference/firmware/photon/#analogread-adc-) - (0 ~ 4095)    
+[`setADCSampleTime()`](https://docs.particle.io/reference/firmware/photon/#setadcsampletime-)
 
--- Built-in global functions: 
+##### <span id="low-level-inputoutput">[Low Level Input/Output](https://docs.particle.io/reference/firmware/photon/#low-level-input-output)</span>
 
-- [`pinSetFast()`](https://docs.particle.io/reference/firmware/photon/#pinsetfast-)
-- [`pinResetFast()`](https://docs.particle.io/reference/firmware/photon/#pinresetfast-)
-- [`digitalWriteFast()`](https://docs.particle.io/reference/firmware/photon/#digitalwritefast-)
-- [`pinReadFast()`](https://docs.particle.io/reference/firmware/photon/#pinreadfast-)
+Built-in global functions:     
+[`pinSetFast()`](https://docs.particle.io/reference/firmware/photon/#pinsetfast-)    
+[`pinResetFast()`](https://docs.particle.io/reference/firmware/photon/#pinresetfast-)    
+[`digitalWriteFast()`](https://docs.particle.io/reference/firmware/photon/#digitalwritefast-)    
+[`pinReadFast()`](https://docs.particle.io/reference/firmware/photon/#pinreadfast-)    
 
 #### [Advanced I/O](https://docs.particle.io/reference/firmware/photon/#advanced-i-o)
 
@@ -507,12 +513,12 @@ Differing from the Photon, the USART2 is layed out to the side pins and the `Ser
 
 Note that most of the functions in newlib described at [https://sourceware.org/newlib/libc.html](https://sourceware.org/newlib/libc.html) are available for use in addition to the functions outlined above.
 
-#### [Preprocessor](https://docs.particle.io/reference/firmware/photon/#preprocessor)
+##### [Preprocessor](https://docs.particle.io/reference/firmware/photon/#preprocessor)
 
 
-## Extra Reference for Duo
+### <span id="addition">Addition</span> 
 
-
+##### <span id="sflash">SFLASH</span> 
 
 
 ## License
