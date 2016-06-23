@@ -62,7 +62,9 @@ E.g.:
 
 Since the Duo shares most of the firmware source code with Particle Photon, most of the functions and libraries designed for Photon are valid for the Duo as well. Each of these functions and libraries is described extremely in detail on the [Particle Reference](https://docs.particle.io/reference/) website, so we need not to duplicate it here, but only list the APIs for quick reference.
 
-##### [Input/Output](https://docs.particle.io/reference/firmware/photon/#input-output) -- built-in functions
+#### [Input/Output](https://docs.particle.io/reference/firmware/photon/#input-output)
+
+-- Built-in global functions:    
 
 - [`pinMode()`](https://docs.particle.io/reference/firmware/photon/#pinmode-) - `INPUT`, `INPUT_PULLUP`, `INPUT_PULLDOWN` or `OUTPUT`
 - [`getPinMode()`](https://docs.particle.io/reference/firmware/photon/#getpinmode-pin-)
@@ -73,14 +75,18 @@ Since the Duo shares most of the firmware source code with Particle Photon, most
 - [`analogRead()`](https://docs.particle.io/reference/firmware/photon/#analogread-adc-) - (0 ~ 4095)
 - [`setADCSampleTime()`](https://docs.particle.io/reference/firmware/photon/#setadcsampletime-)
 
-##### [Low Level Input/Output](https://docs.particle.io/reference/firmware/photon/#low-level-input-output) -- built-in functions
+#### [Low Level Input/Output](https://docs.particle.io/reference/firmware/photon/#low-level-input-output)
+
+-- Built-in global functions: 
 
 - [`pinSetFast()`](https://docs.particle.io/reference/firmware/photon/#pinsetfast-)
 - [`pinResetFast()`](https://docs.particle.io/reference/firmware/photon/#pinresetfast-)
 - [`digitalWriteFast()`](https://docs.particle.io/reference/firmware/photon/#digitalwritefast-)
 - [`pinReadFast()`](https://docs.particle.io/reference/firmware/photon/#pinreadfast-)
 
-##### [Advanced I/O](https://docs.particle.io/reference/firmware/photon/#advanced-i-o) -- built-in functions
+#### [Advanced I/O](https://docs.particle.io/reference/firmware/photon/#advanced-i-o)
+
+-- Built-in global functions: 
 
 - [`tone()`](https://docs.particle.io/reference/firmware/photon/#tone-)
 - [`noTone()`](https://docs.particle.io/reference/firmware/photon/#notone-)
@@ -88,14 +94,18 @@ Since the Duo shares most of the firmware source code with Particle Photon, most
 - [`shiftIn()`](https://docs.particle.io/reference/firmware/photon/#shiftin-)
 - [`pulseIn()`](https://docs.particle.io/reference/firmware/photon/#pulsein-)
 
-##### [Interrupts](https://docs.particle.io/reference/firmware/photon/#interrupts) -- built-in functions
+#### [Interrupts](https://docs.particle.io/reference/firmware/photon/#interrupts)
+
+-- Built-in global functions: 
 
 - [`attachInterrupt()`](https://docs.particle.io/reference/firmware/photon/#attachinterrupt-)
 - [`detachInterrupt()`](https://docs.particle.io/reference/firmware/photon/#detachinterrupt-)
 - [`interrupts()`](https://docs.particle.io/reference/firmware/photon/#interrupts-)
 - [`noInterrupts()`](https://docs.particle.io/reference/firmware/photon/#nointerrupts-)
 
-##### [Software Timers](https://docs.particle.io/reference/firmware/photon/#software-timers) -- built-in class
+#### [Software Timers](https://docs.particle.io/reference/firmware/photon/#software-timers)
+
+-- Built-in class
 
 - constructor [`Timer`](https://docs.particle.io/reference/firmware/photon/#software-timers)
 - [Class member callbacks](https://docs.particle.io/reference/firmware/photon/#class-member-callbacks)
@@ -110,7 +120,9 @@ Since the Duo shares most of the firmware source code with Particle Photon, most
 - [`dispose()`](https://docs.particle.io/reference/firmware/photon/#dispose-)
 - [`isActive()`](https://docs.particle.io/reference/firmware/photon/#isactive-)
 
-##### [Serial](https://docs.particle.io/reference/firmware/photon/#serial) -- built-in instance `Serial`, `Serial1`, `Serial2`
+#### [Serial](https://docs.particle.io/reference/firmware/photon/#serial)
+
+-- Built-in instance `Serial`, `Serial1`, `Serial2`
     
 Differing from the Photon, the USART2 is layed out to the side pins and the `Serial2` object is constructed in the system firmware, so that you can directly call the methods of `Serial2` without including extra header files.
 
@@ -131,7 +143,9 @@ Differing from the Photon, the USART2 is layed out to the side pins and the `Ser
 - [`halfduplex()`](https://docs.particle.io/reference/firmware/photon/#halfduplex-)
 - [Stream methods](https://docs.particle.io/reference/firmware/photon/#stream-class)
 
-##### [SPI](https://docs.particle.io/reference/firmware/photon/#spi) -- built-in instance `SPI`, `SPI1`
+#### [SPI](https://docs.particle.io/reference/firmware/photon/#spi)
+
+-- Built-in instance `SPI`, `SPI1`
 
 - [`begin()`](https://docs.particle.io/reference/firmware/photon/#begin--1)
 - [`end()`](https://docs.particle.io/reference/firmware/photon/#end--1)
@@ -145,7 +159,9 @@ Differing from the Photon, the USART2 is layed out to the side pins and the `Ser
 - [`onSelect()`](https://docs.particle.io/reference/firmware/photon/#onselect-)
 - [`available()`](https://docs.particle.io/reference/firmware/photon/#available--1)
 
-##### [Wire (I2C)](https://docs.particle.io/reference/firmware/photon/#wire-i2c-) -- built-in instance `I2C`
+#### [Wire (I2C)](https://docs.particle.io/reference/firmware/photon/#wire-i2c-)
+
+-- Built-in instance `I2C`
 
 - [`setSpeed()`](https://docs.particle.io/reference/firmware/photon/#setspeed-)
 - [`stretchClock()`](https://docs.particle.io/reference/firmware/photon/#stretchclock-)
@@ -164,7 +180,9 @@ Differing from the Photon, the USART2 is layed out to the side pins and the `Ser
 - [`onRequest()`](https://docs.particle.io/reference/firmware/photon/#onrequest-)
 - [Stream methods](https://docs.particle.io/reference/firmware/photon/#stream-class)
 
-##### [CAN (CANbus)](https://docs.particle.io/reference/firmware/photon/#can-canbus-) -- built-in class
+#### [CAN (CANbus)](https://docs.particle.io/reference/firmware/photon/#can-canbus-)
+
+-- Built-in class
 
 - constructor [`CANChannel()`](https://docs.particle.io/reference/firmware/photon/#canchannel)
 - [`CANMessage`](https://docs.particle.io/reference/firmware/photon/#canmessage)
@@ -178,7 +196,9 @@ Differing from the Photon, the USART2 is layed out to the side pins and the `Ser
 - [`isEnabled()`](https://docs.particle.io/reference/firmware/photon/#isenabled--1)
 - [`errorStatus()`](https://docs.particle.io/reference/firmware/photon/#errorstatus-)
 
-##### [Servo](https://docs.particle.io/reference/firmware/photon/#servo) -- built-in class
+#### [Servo](https://docs.particle.io/reference/firmware/photon/#servo)
+
+-- Built-in class
 
 - constructor [`Servo()`](https://docs.particle.io/reference/firmware/photon/#servo)
 - [`attach()`](https://docs.particle.io/reference/firmware/photon/#attach-)
@@ -189,7 +209,9 @@ Differing from the Photon, the USART2 is layed out to the side pins and the `Ser
 - [`detach()`](https://docs.particle.io/reference/firmware/photon/#detach-)
 - [`setTrim()`](https://docs.particle.io/reference/firmware/photon/#settrim-)
 
-##### [On-Board RGB](https://docs.particle.io/reference/firmware/photon/#rgb) -- built-in instance `RGB`
+#### [RGB](https://docs.particle.io/reference/firmware/photon/#rgb)
+
+-- Built-in instance `RGB`
 
 - [`control()`](https://docs.particle.io/reference/firmware/photon/#control-user_control-)
 - [`controlled()`](https://docs.particle.io/reference/firmware/photon/#controlled-)
@@ -197,7 +219,9 @@ Differing from the Photon, the USART2 is layed out to the side pins and the `Ser
 - [`brightness()`](https://docs.particle.io/reference/firmware/photon/#brightness-val-)
 - [`onChange()`](https://docs.particle.io/reference/firmware/photon/#onchange-handler-)
 
-##### [EEPROM Emulation](https://docs.particle.io/reference/firmware/photon/#eeprom) -- built-in instance `EEPROM`
+#### [EEPROM Emulation](https://docs.particle.io/reference/firmware/photon/#eeprom)
+
+-- Built-in instance `EEPROM`
 
 - [`length()`](https://docs.particle.io/reference/firmware/photon/#length-)
 - [`put()`](https://docs.particle.io/reference/firmware/photon/#put-)
@@ -208,18 +232,22 @@ Differing from the Photon, the USART2 is layed out to the side pins and the `Ser
 - [`hasPendingErase()`](https://docs.particle.io/reference/firmware/photon/#haspendingerase-)
 - [`performPendingErase()`](https://docs.particle.io/reference/firmware/photon/#performpendingerase-)
 
-##### [Backup RAM (SRAM)](https://docs.particle.io/reference/firmware/photon/#backup-ram-sram-)
+#### [Backup RAM (SRAM)](https://docs.particle.io/reference/firmware/photon/#backup-ram-sram-)
 
 - [Storing data in Backup RAM (SRAM)](https://docs.particle.io/reference/firmware/photon/#storing-data-in-backup-ram-sram-)
 - [Enabling Backup RAM (SRAM)](https://docs.particle.io/reference/firmware/photon/#enabling-backup-ram-sram-)
 - [Making changes to the layout or bytes of retained variables](https://docs.particle.io/reference/firmware/photon/#making-changes-to-the-layout-or-types-of-retained-variables)
 
-##### [Application Watchdog](https://docs.particle.io/reference/firmware/photon/#application-watchdog) -- built-in class
+#### [Application Watchdog](https://docs.particle.io/reference/firmware/photon/#application-watchdog)
+
+-- Built-in class
 
 - constructor [`ApplicationWatchdog()`](https://docs.particle.io/reference/firmware/photon/#application-watchdog)
 - [`checkin()`](https://docs.particle.io/reference/firmware/photon/#application-watchdog)
 
-##### [Time](https://docs.particle.io/reference/firmware/photon/#time) -- built-in instance `Time`
+#### [Time](https://docs.particle.io/reference/firmware/photon/#time)
+
+-- Built-in instance `Time`
 
 - [`hour()`](https://docs.particle.io/reference/firmware/photon/#hour-)
 - [`hourFormat12()`](https://docs.particle.io/reference/firmware/photon/#hourformat12-)
@@ -244,7 +272,9 @@ Differing from the Photon, the USART2 is layed out to the side pins and the `Ser
 - [`delay()`](https://docs.particle.io/reference/firmware/photon/#delay-)
 - [`delayMicroseconds()`](https://docs.particle.io/reference/firmware/photon/#delaymicroseconds-)
 
-##### [Math](https://docs.particle.io/reference/firmware/photon/#math) -- built-in functions
+#### [Math](https://docs.particle.io/reference/firmware/photon/#math)
+
+-- Built-in global functions
 
 - [`min()`](https://docs.particle.io/reference/firmware/photon/#min-)
 - [`max()`](https://docs.particle.io/reference/firmware/photon/#max-)
@@ -254,12 +284,16 @@ Differing from the Photon, the USART2 is layed out to the side pins and the `Ser
 - [`pow()`](https://docs.particle.io/reference/firmware/photon/#pow-)
 - [`sqrt()`](https://docs.particle.io/reference/firmware/photon/#sqrt-)
 
-##### [Random Numbers](https://docs.particle.io/reference/firmware/photon/#random-numbers) -- built-in functions
+#### [Random Numbers](https://docs.particle.io/reference/firmware/photon/#random-numbers)
+
+-- Built-in global functions
 
 - [`random()`](https://docs.particle.io/reference/firmware/photon/#random-)
 - [`randomSeed()`](https://docs.particle.io/reference/firmware/photon/#randomseed-)
 
-##### [String](https://docs.particle.io/reference/firmware/photon/#string-class) -- built-in class
+#### [String](https://docs.particle.io/reference/firmware/photon/#string-class)
+
+-- Built-in class
 
 - constructor [`String()`](https://docs.particle.io/reference/firmware/photon/#string-)
 - [`charAt()`](https://docs.particle.io/reference/firmware/photon/#charat-)
@@ -286,7 +320,9 @@ Differing from the Photon, the USART2 is layed out to the side pins and the `Ser
 - [`toUpperCase()`](https://docs.particle.io/reference/firmware/photon/#touppercase-)
 - [`trim()`](https://docs.particle.io/reference/firmware/photon/#trim-)
 
-##### [WiFi](https://docs.particle.io/reference/firmware/photon/#wifi) -- built-in instance `WiFi`
+#### [WiFi](https://docs.particle.io/reference/firmware/photon/#wifi)
+
+-- Built-in instance `WiFi`
 
 - [`on()`](https://docs.particle.io/reference/firmware/photon/#on-)
 - [`off()`](https://docs.particle.io/reference/firmware/photon/#off-)
@@ -317,7 +353,9 @@ Differing from the Photon, the USART2 is layed out to the side pins and the `Ser
 - [`useStaticIP()`](https://docs.particle.io/reference/firmware/photon/#usestaticip-)
 - [`useDynamicIP()`](https://docs.particle.io/reference/firmware/photon/#usedynamicip-)
 
-##### [IPAddress](https://docs.particle.io/reference/firmware/photon/#ipaddress) -- built-in class
+#### [IPAddress](https://docs.particle.io/reference/firmware/photon/#ipaddress)
+
+-- Built-in class
 
 - constructor [`IPAddress()`](https://docs.particle.io/reference/firmware/photon/#ipaddress)
 - operator [`=`](https://docs.particle.io/reference/firmware/photon/#ipaddress)
@@ -325,7 +363,9 @@ Differing from the Photon, the USART2 is layed out to the side pins and the `Ser
 - operator [`!=`](https://docs.particle.io/reference/firmware/photon/#ipaddress)
 - operator [`[]`](https://docs.particle.io/reference/firmware/photon/#ipaddress)
 
-##### [TCPServer](https://docs.particle.io/reference/firmware/photon/#tcpserver) -- built-in class
+#### [TCPServer](https://docs.particle.io/reference/firmware/photon/#tcpserver)
+
+-- Built-in class
 
 - constructor [`TCPServer()`](https://docs.particle.io/reference/firmware/photon/#tcpserver)
 - [`begin()`](https://docs.particle.io/reference/firmware/photon/#begin--4)
@@ -334,7 +374,9 @@ Differing from the Photon, the USART2 is layed out to the side pins and the `Ser
 - [`print()`](https://docs.particle.io/reference/firmware/photon/#print--1)
 - [`println()`](https://docs.particle.io/reference/firmware/photon/#println--1)
 
-##### [TCPClient](https://docs.particle.io/reference/firmware/photon/#tcpclient) -- built-in class
+#### [TCPClient](https://docs.particle.io/reference/firmware/photon/#tcpclient)
+
+-- Built-in class
 
 - constructor [`TCPClient()`](https://docs.particle.io/reference/firmware/photon/#tcpclient)
 - [`connected()`](https://docs.particle.io/reference/firmware/photon/#connected-)
@@ -349,7 +391,9 @@ Differing from the Photon, the USART2 is layed out to the side pins and the `Ser
 - [`stop()`](https://docs.particle.io/reference/firmware/photon/#stop-)
 - [Stream methods](https://docs.particle.io/reference/firmware/photon/#stream-class)
 
-##### [UDP](https://docs.particle.io/reference/firmware/photon/#udp) -- built-in class
+#### [UDP](https://docs.particle.io/reference/firmware/photon/#udp)
+
+-- Built-in class
 
 - constructor [`UDP()`](https://docs.particle.io/reference/firmware/photon/#udp)
 - [`begin()`](https://docs.particle.io/reference/firmware/photon/#begin--5)
@@ -369,7 +413,9 @@ Differing from the Photon, the USART2 is layed out to the side pins and the `Ser
 - [`leaveMulticast()`](https://docs.particle.io/reference/firmware/photon/#leavemulticast-)
 - [Stream methods](https://docs.particle.io/reference/firmware/photon/#stream-class)
 
-##### [Stream](https://docs.particle.io/reference/firmware/photon/#stream-class) -- built-in class, inherited by `Serial`, `Wire`, `TCPClient`, `UDP`
+#### [Stream](https://docs.particle.io/reference/firmware/photon/#stream-class)
+
+-- Built-in class, inherited by `Serial`, `Wire`, `TCPClient`, `UDP`
 
 - [`setTimeout()`](https://docs.particle.io/reference/firmware/photon/#settimeout-)
 - [`find()`](https://docs.particle.io/reference/firmware/photon/#find-)
@@ -381,7 +427,7 @@ Differing from the Photon, the USART2 is layed out to the side pins and the `Ser
 - [`parseInt()`](https://docs.particle.io/reference/firmware/photon/#parseint-)
 - [`parseFloat()`](https://docs.particle.io/reference/firmware/photon/#parsefloat-)
 
-##### [SoftAP HTTP Pages](https://docs.particle.io/reference/firmware/photon/#softap-http-pages)
+#### [SoftAP HTTP Pages](https://docs.particle.io/reference/firmware/photon/#softap-http-pages)
 
 - [The page callback function](https://docs.particle.io/reference/firmware/photon/#the-page-callback-function)
 - [Retrieving the request data](https://docs.particle.io/reference/firmware/photon/#retrieving-the-request-data)
@@ -389,7 +435,9 @@ Differing from the Photon, the USART2 is layed out to the side pins and the `Ser
 - [The default page](https://docs.particle.io/reference/firmware/photon/#the-default-page)
 - [Sending a Redirect](https://docs.particle.io/reference/firmware/photon/#sending-a-redirect)
 
-##### [Cloud](https://docs.particle.io/reference/firmware/photon/#cloud-functions) -- built-in instance `Particle`
+#### [Cloud](https://docs.particle.io/reference/firmware/photon/#cloud-functions)
+
+-- Built-in instance `Particle`
 
 - [`connect()`](https://docs.particle.io/reference/firmware/photon/#particle-connect-)
 - [`connected()`](https://docs.particle.io/reference/firmware/photon/#particle-connected-)
@@ -405,7 +453,9 @@ Differing from the Photon, the USART2 is layed out to the side pins and the `Ser
 - [Get Device name](https://docs.particle.io/reference/firmware/photon/#get-device-name)
 - [Get Random seed](https://docs.particle.io/reference/firmware/photon/#get-random-seed)
 
-##### [System](https://docs.particle.io/reference/firmware/photon/#system-calls) -- built-in instance `System`
+#### [System](https://docs.particle.io/reference/firmware/photon/#system-calls)
+
+-- Built-in instance `System`
 
 - [`version()`](https://docs.particle.io/reference/firmware/photon/#version-)
 - [`versionNumber()`](https://docs.particle.io/reference/firmware/photon/#versionnumber-)
@@ -425,14 +475,14 @@ Differing from the Photon, the USART2 is layed out to the side pins and the `Ser
 - [`updatesEnabled()`](https://docs.particle.io/reference/firmware/photon/#system-updatesenabled-)
 - [`updatesPending()`](https://docs.particle.io/reference/firmware/photon/#system-updatespending-)
 
-##### [System Modes](https://docs.particle.io/reference/firmware/photon/#system-modes)
+#### [System Modes](https://docs.particle.io/reference/firmware/photon/#system-modes)
 
 - [`SYSTEM_MODE()`](https://docs.particle.io/reference/firmware/photon/#system-modes) - default to `AUTOMATIC` mode    
     - [`AUTOMATIC`](https://docs.particle.io/reference/firmware/photon/#automatic-mode): Automatically try to connect to Wi-Fi and the Particle Cloud and handle the cloud messages.    
     - [`SEMI_AUTOMATIC`](https://docs.particle.io/reference/firmware/photon/#semi-automatic-mode): Manually connect to Wi-Fi and the Particle Cloud, but automatically handle the cloud messages.    
     - [`MANUAL`](https://docs.particle.io/reference/firmware/photon/#manual-mode): Manually connect to Wi-Fi and the Particle Cloud and handle the cloud messages.
 
-##### [System Thread](https://docs.particle.io/reference/firmware/photon/#system-thread)
+#### [System Thread](https://docs.particle.io/reference/firmware/photon/#system-thread)
 
 - [`SYSTEM_THREAD()`](https://docs.particle.io/reference/firmware/photon/#system-thread)
 - [`SINGLE_THREADED_BLOCK()`](https://docs.particle.io/reference/firmware/photon/#single_threaded_block-)
@@ -443,21 +493,21 @@ Differing from the Photon, the USART2 is layed out to the side pins and the `Ser
 - [Synchronizing Access to Shared System Resources](https://docs.particle.io/reference/firmware/photon/#synchronizing-access-to-shared-system-resources)
 - [Waiting for the system](https://docs.particle.io/reference/firmware/photon/#waiting-for-the-system)
 
-##### [System Events](https://docs.particle.io/reference/firmware/photon/#system-events)
+#### [System Events](https://docs.particle.io/reference/firmware/photon/#system-events)
 
 - [System Events Overview](https://docs.particle.io/reference/firmware/photon/#system-events-overview)
 - [System Events Reference](https://docs.particle.io/reference/firmware/photon/#system-events-reference)
 
-##### [Macros](https://docs.particle.io/reference/firmware/photon/#macros)
+#### [Macros](https://docs.particle.io/reference/firmware/photon/#macros)
 
 - [`STARTUP()`](https://docs.particle.io/reference/firmware/photon/#startup-)
 - [`PRODUCT_ID()`](https://docs.particle.io/reference/firmware/photon/#product_id-)
 
-##### [Other Functions](https://docs.particle.io/reference/firmware/photon/#other-functions)
+#### [Other Functions](https://docs.particle.io/reference/firmware/photon/#other-functions)
 
 Note that most of the functions in newlib described at [https://sourceware.org/newlib/libc.html](https://sourceware.org/newlib/libc.html) are available for use in addition to the functions outlined above.
 
-##### [Preprocessor](https://docs.particle.io/reference/firmware/photon/#preprocessor)
+#### [Preprocessor](https://docs.particle.io/reference/firmware/photon/#preprocessor)
 
 
 ## Extra Reference for Duo
