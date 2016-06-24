@@ -48,7 +48,7 @@ E.g.:
 
 ## Reference
 
-Since the Duo shares most of the firmware source code with Particle Photon, most of the functions and libraries designed for Photon are valid for the Duo as well. Each of these functions and libraries is described extremely in detail on the [Particle Reference](https://docs.particle.io/reference/) website, so we need not to duplicate it here, but only list the APIs for quick reference.
+Since the Duo shares most of the firmware source code with Particle Photon, most of the functions and libraries designed for Photon are valid for the Duo as well. Each of these functions and libraries is described extremely in detail on the [Particle Reference](https://docs.particle.io/reference/) website, so we're not going to duplicate it here, but only list the APIs for quick reference. Regarding to the reference on the unique features of the Duo, we will document it here in detail.
 
 ### Summary
 
@@ -85,7 +85,7 @@ Since the Duo shares most of the firmware source code with Particle Photon, most
 - [System Events](#system-events)
 - [Macros](#macros)
 - [Other Functions](#other-functions)
-- [Preprocessor](#preprocessor)
+- [Preprocessor](https://docs.particle.io/reference/firmware/photon/#preprocessor)
 
 ##### Addition Reference
 
@@ -515,8 +515,6 @@ Built-in instance `System`.
 ### <span id="other-functions">[Other Functions](https://docs.particle.io/reference/firmware/photon/#other-functions)</span>
 
 Note that most of the functions in newlib described at [https://sourceware.org/newlib/libc.html](https://sourceware.org/newlib/libc.html) are available for use in addition to the functions outlined above.
-
-### <span id="preprocessor">[Preprocessor](https://docs.particle.io/reference/firmware/photon/#preprocessor)</span>
 
 ### <span id="external-spi-flash">External SPI Flash</span> 
 
