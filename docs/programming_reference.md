@@ -548,7 +548,7 @@ For example:
 
 ##### <span id="writebuffer">`writeBuffer()`</span>   
 
-This method stores a bulk of data to the external flash. The data is stored from a given address and the address grows automatically after one byte is stored. If the address reachs the end address of the available memory, the rest data will be aborted.
+This method stores a bulk of data to the external flash. The data is stored from a given address and the address grows automatically after one byte is stored. If the address reaches the end address of the available memory, the rest data will be aborted.
 
 Parameters:    
 
@@ -595,25 +595,95 @@ Return: An `int` value. Test success if 0, otherwise failed.
 For example:
 
     void setup() {
-        Serial.begin(115200);
-        delay(5000);
+      Serial.begin(115200);
+      delay(5000);
 
-        if( selfTest() == 0 ) {
-            Serial.println("The external SPI flash functions well.");
-        }
-        else {
-            Serial.print("There is something wrong with the external SPI flash!");
-        }
+      if( selfTest() == 0 ) {
+        Serial.println("The external SPI flash functions well.");
+      }
+      else {
+        Serial.print("There is something wrong with the external SPI flash!");
+      }
     }
 
     void loop() {
-
     }
 
 ### <span id="bluetooth-low-energy-ble">Bluetooth Low Energy (BLE)</span> 
 
+Built-in instance `ble`.     
 
+General methods:    
+[`init()`](#init)    
+[`deInit()`](#deinit)    
+[`setTimer()`](#settimer)    
+[`setTimerHandler()`](#settimerhandler)    
+[`addTimer()`](#addtimer)     
+[`removeTimer()`](#removetimer)    
+[`getTimeMs()`](#gettimems)    
+[`debugLogger()`](#debuglogger)    
+[`debugError()`](#debugerror)    
+[`enablePacketLogger()`](#enablepacketlogger)    
+[`setRandomAddrMode()`](#setrandomaddrmode)    
+[`setRandomAddr()`](#setrandomaddr)    
+[`setPublicBDAddr()`](#setpublicbdaddr)    
+[`getLocalBdAddr()`](#getlocalbdaddr)    
+[`onConnectedCallback()`](#onconnectedcallback)    
+[`onDisconnectedCallback()`](#ondisconnectedcallback)    
 
+BLE Central role methods:    
+[`setScanParams()`](#setscanparams)    
+[`startScanning()`](#startscanning)    
+[`stopScanning()`](#stopscanning)    
+[`getAddrOfAdvertisement()`](#getaddrofadvertisement)    
+[`connect()`](#connect)    
+[`disconnect()`](#disconnect)    
+[`discoverPrimaryServices()`](#discoverprimaryservices)    
+[`discoverCharacteristics()`](#discovercharacteristics)    
+[`discoverCharacteristicDescriptors()`](#discovercharacteristicdescriptors)    
+[`readValue()`](#readvalue)    
+[`readLongValue()`](#readlongvalue)    
+[`readLongValueWithOffset()`](#readlongvaluewithoffset)    
+[`writeValueWithoutResponse()`](#writevaluewithoutresponse)    
+[`writeValue()`](#writevalue)    
+[`writeLongValue()`](#writelongvalue)    
+[`writeLongValueWithOffset()`](#writelongvaluewithoffset)    
+[`readDescriptorValue()`](#readdescriptorvalue)    
+[`readLongDescriptorValue()`](#readlongdescriptorvalue)    
+[`readLongDescriptorValueWithOffset()`](#readlongdescriptorvaluewithoffset)    
+[`writeDescriptorValue()`](#writedescriptorvalue)    
+[`writeLongDescriptorValue()`](#writelongdescriptorvalue)    
+[`writeLongDescriptorValueWithOffset()`](#writelongdescriptorvaluewithoffset)    
+[`writeClientCharsConfigDescriptor()`](#writeclientcharsconfigdescriptor)    
+[`onScanReportCallback()`](#onscanreportcallback)    
+[`onServiceDiscoveredCallback()`](#onservicediscoveredcallback)    
+[`onCharacteristicDiscoveredCallback()`](#oncharacteristicdiscoveredcallback)    
+[`onDescriptorDiscoveredCallback()`](#ondescriptordiscoveredcallback)    
+[`onGattCharacteristicReadCallback()`](#ongattcharacteristicreadcallback)    
+[`onGattCharacteristicWrittenCallback()`](#ongattcharacteristicwrittencallback)    
+[`onGattDescriptorReadCallback()`](#ongattdescriptorreadcallback)    
+[`onGattDescriptorWrittenCallback()`](#ongattdescriptorwrittencallback)    
+[`onGattWriteClientCharacteristicConfigCallback()`](#ongattwriteclientcharacteristicconfigcallback)    
+[`onGattNotifyUpdateCallback()`](#ongattnotifyupdatecallback)    
+[`onGattIndicateUpdateCallback()`](#ongattindicateupdatecallback)  
+
+BLE Peripheral role methods:    
+[`addService()`](#addservice)    
+[`addCharacteristic()`](#addcharacteristic)     
+[`addCharacteristicDynamic()`](#addcharacteristicdynamic)    
+[`setLocalName()`](#setlocalname)    
+[`setConnParams()`](#setconnparams)    
+[`setAdvertisementParams()`](#setadvertisementparams)    
+[`setAdvertisementData()`](#setadvertisementdata)    
+[`setScanResponseData()`](#setscanresponsedata)    
+[`startAdvertising()`](#startadvertising)    
+[`stopAdvertising()`](#stopadvertising)    
+[`attServerCanSendPacket()`](#attservercansendpacket)    
+[`sendNotify()`](#sendnotify)    
+[`sendIndicate()`](#sendindicate)    
+[`onDataReadCallback()`](#ondatareadcallback)    
+[`onDataWriteCallback()`](#ondatawritecallback)    
+  
 
 ## Support
 
