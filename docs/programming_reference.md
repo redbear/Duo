@@ -90,7 +90,7 @@ Since the Duo shares most of the firmware source code with Particle Photon, most
 ##### Addition Reference
 
 - [External SPI Flash](#external-spi-flash)
-- [Bluetooth Low Energy](#bluetooth-low-energy)
+- [Bluetooth Low Energy (BLE)](#bluetooth-low-energy-ble)
 
 ---
 
@@ -147,12 +147,11 @@ constructor [`Timer`](https://docs.particle.io/reference/firmware/photon/#softwa
 [`dispose()`](https://docs.particle.io/reference/firmware/photon/#dispose-)    
 [`isActive()`](https://docs.particle.io/reference/firmware/photon/#isactive-)   
 
-### <span id="serial">[Serial](https://docs.particle.io/reference/firmware/photon/#serial)</span>
-
-Built-in instance `Serial`, `Serial1`, `Serial2`.    
+### <span id="serial">[Serial](https://docs.particle.io/reference/firmware/photon/#serial)</span>   
     
 Differing from the Photon, the USART2 is layed out to the side pins and the `Serial2` object is constructed in the system firmware, so that you can directly call the methods of `Serial2` without including extra header files.
 
+Built-in instance `Serial`, `Serial1`, `Serial2`.     
 [`begin()`](https://docs.particle.io/reference/firmware/photon/#begin-)    
 [`end()`](https://docs.particle.io/reference/firmware/photon/#end-)    
 [`available()`](https://docs.particle.io/reference/firmware/photon/#available-)    
@@ -518,9 +517,100 @@ Note that most of the functions in newlib described at [https://sourceware.org/n
 
 ### <span id="external-spi-flash">External SPI Flash</span> 
 
+The Duo is soldered with an external non-volatile SPI flash, which memory is up to 2MB and every sector is made up of 4K bytes. But only the first 768KB (192 sectors) are available for user use, the rest memory space are reserved for system use, see the [Firmware Architecture Overview](firmware_architecture_overview.md).
 
+Built-in instance `sFLASH`.      
+[`eraseSector()`](#erasesector)      
+[`writeBuffer()`](#writebuffer)    
+[`readBuffer()`](#readbuffer)    
+[`selfTest()`](#selftest)
 
-### <span id="bluetooth-low-energy">Bluetooth Low Energy</span> 
+##### <span id="erasesector">`eraseSector()`</span> 
+
+This method erases a given sector of the external flash.
+
+Parameters:    
+ 
+* `uint32_t SectorAddr` It can be any of the address as long as it is located in the sector, i.e. the sector you are going to erase is (`SectorAddr >> 3`). Operation to the reserved sectors makes no effect.
+
+Return: void  
+
+For example:
+
+    // Erase the sector 18.
+    sFLASH.eraseSector(0x12000); 
+    
+    // It will also erase the sector 18.
+    sFLASH.eraseSector(0x12345);
+
+    // Erase the sector 103.
+    sFLASH.eraseSector(0x67890); 
+
+##### <span id="writebuffer">`writeBuffer()`</span>   
+
+This method stores a bulk of data to the external flash. The data is stored from a given address and the address grows automatically after one byte is stored. If the address reachs the end address of the available memory, the rest data will be aborted.
+
+Parameters:    
+
+* `const uint8_t *pBuffer` The buffer that contains the data to be stored.
+* `uint32_t WriteAddr` The begining address from which to store the data.
+* `uint32_t NumByteToWrite` The number of bytes to be stored.
+
+Return: void
+
+*Note: The memory space you are going to store the data must has been well erased before, or the data you read out afterwards might not the same as you wrote.*
+
+For example:
+
+    uint8_t buf[256] = { 0x55 };
+    
+    // Store first 128 bytes of the buf to external flash from address 0.
+    sFLASH.writeBuffer( buf, 0, 128 );
+
+##### <span id="readbuffer">`readBuffer()`</span>
+
+This method reads specified length of data from a given address of the external flash. The reserved memory space can not be read out using this method.
+
+Parameters:   
+
+* `uint8_t *pBuffer` The buffer that to hold the data being read out.
+* `uint32_t ReadAddr` The begining address from which to read out the data.
+* `uint32_t NumByteToRead` The number of bytes you want to read out.
+
+For example:
+
+    uint8_t buf[256];
+
+    // Read 128 bytes from address 0 of the external flash to the buf.    
+    sFLASH.readBuffer( buf, 0, 128 );
+
+##### <span id="selftest">`selfTest()`</span>
+
+Check if the external flash functions well or not.
+
+Parameters: void
+
+Return: An `int` value. Test success if 0, otherwise failed.
+
+For example:
+
+    void setup() {
+        Serial.begin(115200);
+        delay(5000);
+
+        if( selfTest() == 0 ) {
+            Serial.println("The external SPI flash functions well.");
+        }
+        else {
+            Serial.print("There is something wrong with the external SPI flash!");
+        }
+    }
+
+    void loop() {
+
+    }
+
+### <span id="bluetooth-low-energy-ble">Bluetooth Low Energy (BLE)</span> 
 
 
 
