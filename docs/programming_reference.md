@@ -647,16 +647,32 @@ General methods:
 [`setRandomAddr()`](#setrandomaddr)    
 [`setPublicBDAddr()`](#setpublicbdaddr)    
 [`getLocalBdAddr()`](#getlocalbdaddr)    
+
+#### Generic Access Profile (GAP) 
+
 [`onConnectedCallback()`](#onconnectedcallback)    
 [`onDisconnectedCallback()`](#ondisconnectedcallback)    
 
-BLE Central role methods:    
+BLE Central:    
 [`setScanParams()`](#setscanparams)    
 [`startScanning()`](#startscanning)    
 [`stopScanning()`](#stopscanning)    
 [`getAddrOfAdvertisement()`](#getaddrofadvertisement)    
 [`connect()`](#connect)    
 [`disconnect()`](#disconnect)    
+
+BLE Peripheral:    
+[`setLocalName()`](#setlocalname)    
+[`setConnParams()`](#setconnparams)    
+[`setAdvertisementParams()`](#setadvertisementparams)    
+[`setAdvertisementData()`](#setadvertisementdata)    
+[`setScanResponseData()`](#setscanresponsedata)    
+[`startAdvertising()`](#startadvertising)    
+[`stopAdvertising()`](#stopadvertising)  
+
+#### Generic Attribute Profile (GATT)
+
+GATT Client:    
 [`discoverPrimaryServices()`](#discoverprimaryservices)    
 [`discoverCharacteristics()`](#discovercharacteristics)    
 [`discoverCharacteristicDescriptors()`](#discovercharacteristicdescriptors)    
@@ -686,17 +702,10 @@ BLE Central role methods:
 [`onGattNotifyUpdateCallback()`](#ongattnotifyupdatecallback)    
 [`onGattIndicateUpdateCallback()`](#ongattindicateupdatecallback)  
 
-BLE Peripheral role methods:    
+GATT Server:    
 [`addService()`](#addservice)    
 [`addCharacteristic()`](#addcharacteristic)     
 [`addCharacteristicDynamic()`](#addcharacteristicdynamic)    
-[`setLocalName()`](#setlocalname)    
-[`setConnParams()`](#setconnparams)    
-[`setAdvertisementParams()`](#setadvertisementparams)    
-[`setAdvertisementData()`](#setadvertisementdata)    
-[`setScanResponseData()`](#setscanresponsedata)    
-[`startAdvertising()`](#startadvertising)    
-[`stopAdvertising()`](#stopadvertising)    
 [`attServerCanSendPacket()`](#attservercansendpacket)    
 [`sendNotify()`](#sendnotify)    
 [`sendIndicate()`](#sendindicate)    
@@ -705,13 +714,294 @@ BLE Peripheral role methods:
 
 ##### <span id="init">`init()`</span> 
 
-Initialize the BLE HCI interface and the controller state. It creates a thread to deal with the HCI commands and events. It **MUST** be called before calling any other BLE methods.
+Initialize the BLE HCI interface and the controller state. It will create a thread to deal with the HCI commands and events. It **MUST** be called before calling any other BLE methods.
 
 ```
 // Initialize BLE HCI interface and the controller
-ble.init()
+ble.init();
 ```
-  
+
+##### <span id="deinit">`deInit()`</span> 
+
+Disable the BLE HCI interface and reset the controller. It will destroy the thread created by `init()`. 
+
+```
+// Disable the BLE functionality
+ble.deInit();
+```
+
+##### <span id="settimer">`setTimer()`</span> 
+
+Set a BTStack timer's expiration time.
+
+```
+// Create a BTStack timer
+btstack_timer_source_t bt_timer;
+
+// Set the timer's expiration time to 10s
+ble.setTimer(&bt_timer, 10000);
+```
+
+##### <span id="settimerhandler">`setTimerHandler()`</span> 
+
+Set the callback function when a BTStack timer expires.
+
+```
+// Create a BTStack timer
+btstack_timer_source_t bt_timer;
+
+// Callback function when the BTStack timer expired
+void btTimerCB(btstack_timer_source_t *ts) {
+
+}
+
+// Set the callback function when the timer expires.
+ble.setTimerHandler(&bt_timer, btTimerCB);
+```
+
+You can also set the timer handler directly:
+
+```
+bt_timer.process = btTimerCB;
+```
+
+##### <span id="addtimer">`addTimer()`</span> 
+
+Start a BTStack timer.
+
+```
+btstack_timer_source_t bt_timer;
+
+// Callback function when the BTStack timer expired
+void characteristic_notify(btstack_timer_source_t *ts) {
+  // Notify the characteristic value to BLE central.
+
+  // Restart timer to send the next notification after 10s.
+  ble.setTimer(ts, 10000);
+  ble.addTimer(ts);
+}
+
+// Set an 10s one-shot timer
+bt_timer.process = characteristic_notify;
+ble.setTimer(&bt_timer, 10000);
+ble.addTimer(&bt_timer);
+```
+
+##### <span id="removetimer">`removeTimer()`</span> 
+
+Remove a BTStack timer.
+
+```
+// Remove a created BTStack timer
+ble.removeTimer(&bt_timer);
+```
+
+##### <span id="gettimerms">`getTimeMs()`</span> 
+
+Check how long a BTStack timer has been worked since it is started. It returns a `uint32_t` value as the time in millisecond.
+
+```
+uint32_t ms = ble.getTimerMs(&bt_timer);
+```
+
+##### <span id="debuglogger">`debugLogger()`</span> 
+
+##### <span id="debugerror">`debugError()`</span> 
+
+##### <span id="enablepacketlogger">`enablePacketLogger()`</span>
+
+##### <span id="setrandomaddrmode">`setRandomAddrMode()`</span>
+
+Set the device's bluetooth random address mode.
+
+##### <span id="setrandomaddr">`setRandomAddr()`</span>
+
+Set the device's bluetooth random address.
+
+##### <span id="setpublicbdaddr">`setPublicBDAddr()`</span>
+
+Set the device's bluetooth public address.
+
+##### <span id="getlocalbdaddr">`getLocalBdAddr()`</span>
+
+Get the device's bluetooth MAC address
+
+##### <span id="onconnectedcallback">`onConnectedCallback()`</span>
+
+Register the callback function when device connects to a remote device.
+
+##### <span id="ondisconnectedcallback">`onDisconnectedCallback()`</span>
+
+Register the callback function when device disconects from a remote device
+
+##### <span id="setscanparams">`setScanParams()`</span>
+
+Set the BLE scan parameters.
+
+##### <span id="startscanning">`startScanning()`</span>
+
+Start scanning around BLE devices.
+
+##### <span id="stopscanning">`stopScanning()`</span>
+
+Stop scanning around BLE devices
+
+##### <span id="getaddrofadvertisement">`getAddrOfAdvertisement()`</span>
+
+Get the remote device's address in the advertisement packet.
+
+##### <span id="connect">`connect()`</span>
+
+Connect to remote BLE device.
+
+##### <span id="disconnect">`disconnect()`</span>
+
+Disconnect from remote BLE device.
+
+##### <span id="discoverprimaryservices">`discoverPrimaryServices()`</span>
+
+Discovery the primary services in the remote BLE device.
+
+##### <span id="discovercharacteristics">`discoverCharacteristics()`</span>
+
+Discovery the characteristics in the remote BLE device.
+
+##### <span id="discovercharacteristicdescriptors">`discoverCharacteristicDescriptors()`</span>
+
+Discovery the characteristic descriptors in the remote device.
+
+##### <span id="readvalue">`readValue()`</span>
+
+Read the remote device's characteristic value.
+
+##### <span id="readlongvalue">`readLongValue()`</span>
+
+Read the remote device's long characteristic value.
+
+##### <span id="readlongvaluewithoffset">`readLongValueWithOffset()`</span>
+
+Read the remote device's long characteristic value by the offset.
+
+##### <span id="writevaluewithoutresponse">`writeValueWithoutResponse()`</span>
+
+Write the remote device's characteristic value without response.
+
+##### <span id="writevalue">`writeValue()`</span>
+
+Write the remote device's characteristic value with response.
+
+##### <span id="writelongvalue">`writeLongValue()`</span>
+
+Write the remote device's long characteristic value.
+
+##### <span id="writelongvaluewithoffset">`writeLongValueWithOffset()`</span>
+
+Write the remote device's long characteristic value by offset.
+
+##### <span id="onscanreportcallback">`onScanReportCallback()`</span>
+
+Register the callback function when new BLE device found.
+
+##### <span id="onservicediscoveredcallback">`onServiceDiscoveredCallback()`</span>
+
+Register the callback function when new service being discovered.
+
+##### <span id="oncharacteristicdiscoveredcallback">`onCharacteristicDiscoveredCallback()`</span>
+
+Register the callback function when new characteristic being discovered.
+
+##### <span id="ondescriptordiscoveredcallback">`onDescriptorDiscoveredCallback()`</span>
+
+Register the callback function when new descriptor being discovered.
+
+##### <span id="ongattcharacteristicreadcallback">`onGattCharacteristicReadCallback()`</span>
+
+Register the callback function when a reading characteristic value operation completed.
+
+##### <span id="ongattcharacteristicwrittencallback">`onGattCharacteristicWrittenCallback()`</span>
+
+Register the callback function when a writing characteristic value operation completed.
+
+##### <span id="ongattdescriptorreadcallback">`onGattDescriptorReadCallback()`</span>
+
+Register the callback function when a reading descriptor operation completed.
+
+##### <span id="ongattdescriptorwrittencallback">`onGattDescriptorWrittenCallback()`</span>
+
+Register the callback function when a writing descriptor operation completed.
+
+##### <span id="ongattwriteclientcharacteristicconfigcallback">`onGattWriteClientCharacteristicConfigCallback()`</span>
+
+Register the callback function when a writing the Client Characteristic Configration Descriptor (CCCD) operation completed.
+
+##### <span id="ongattnotifyupdatecallback">`onGattNotifyUpdateCallback()`</span>
+
+Register the callback function when received a notification from remote device.
+
+##### <span id="ongattindicateupdatecallback">`onGattIndicateUpdateCallback()`</span>
+
+Register the callback function when received a indication from remote device.
+
+##### <span id="addservice">`addService()`</span>
+
+Add a BLE service to the GATT server.
+
+##### <span id="addcharacteristic">`addCharacteristic()`</span>
+
+Add a BLE characteristic to the GATT server.
+
+##### <span id="addcharacteristicdynamic">`addCharacteristicDynamic()`</span>
+
+Add a dynamic BLE characteristic to the GATT server.
+
+##### <span id="setlocalname">`setLocalName()`</span>
+
+Set the local name of the BLE device.
+
+##### <span id="setconnparams">`setConnParams()`</span>
+
+Set the preferred connection parameters.
+
+##### <span id="setadvertisementparams">`setAdvertisementParams()`</span>
+
+Set the advertising parameters.
+
+##### <span id="setadvertisementdata">`setAdvertisementData()`</span>
+
+Set the advertising data.
+
+##### <span id="setscanresponsedata">`setScanResponseData()`</span>
+
+Set the scan respond data.
+
+##### <span id="startadvertising">`startAdvertising()`</span>
+
+Start advertising.
+
+##### <span id="stopadvertising">`stopAdvertising()`</span>
+
+Stop advertising.
+
+##### <span id="attservercansendpacket">`attServerCanSendPacket()`</span>
+
+Check if the device can send notification or indication to remote device.
+
+##### <span id="sendnotify">`sendNotify()`</span>
+
+Send a notification to remote device.
+
+##### <span id="sendindicate">`sendIndicate()`</span>
+
+Send an indication to remote device.
+
+##### <span id="ondatareadcallback">`onDataReadCallback()`</span>
+
+Register the callback function when characteristic value is read by remote device.
+
+##### <span id="ondatawritecallback">`onDataWriteCallback()`</span>
+
+Register the call back function when characteristic value is written by remote device.
+
 
 ## Support
 
