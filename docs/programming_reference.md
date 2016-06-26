@@ -6,31 +6,31 @@ The Duo is installed the customed Particle firmware by default during manufactur
 * `setup()` - Runs once at the beginning of your program    
 * `loop()` - Runs continuously over and over
 
-E.g.:
+```
+int led1 = D0; // Instead of writing D0 over and over again, we'll write led1
 
-    int led1 = D0; // Instead of writing D0 over and over again, we'll write led1
+/* The setup function is a standard part of any microcontroller program.
+   It runs only once when the device boots up or is reset. */
 
-    /* The setup function is a standard part of any microcontroller program.
-       It runs only once when the device boots up or is reset. */
+void setup() {
+  pinMode(led1, OUTPUT);
+}
 
-    void setup() {
-        pinMode(led1, OUTPUT);
-    }
+/* Next we have the loop function, the other essential part of a microcontroller program. This routine gets
+   repeated over and over, as quickly as possible and as many times as possible, after the setup function is called.
 
-    /* Next we have the loop function, the other essential part of a microcontroller program. This routine gets
-       repeated over and over, as quickly as possible and as many times as possible, after the setup function is called.
+   Note: Code that blocks for too long (like more than 5 seconds), can make weird things happen 
+   (like dropping the network connection). The built-in delay() function shown below safely interleaves required 
+   background activity, so arbitrarily long delays can safely be done if you need them. */
 
-       Note: Code that blocks for too long (like more than 5 seconds), can make weird things happen 
-       (like dropping the network connection). The built-in delay() function shown below safely interleaves required 
-       background activity, so arbitrarily long delays can safely be done if you need them. */
-
-    void loop() {  
-        digitalWrite(led1, HIGH);  // To blink the LED, first we'll turn it on...
-        delay(1000);               // We'll leave it on for 1 second...
-        digitalWrite(led1, LOW);   // Then we'll turn it off...
-        delay(1000);               // Wait 1 second...
-        // And repeat!
-    }
+void loop() {  
+  digitalWrite(led1, HIGH);  // To blink the LED, first we'll turn it on...
+  delay(1000);               // We'll leave it on for 1 second...
+  digitalWrite(led1, LOW);   // Then we'll turn it off...
+  delay(1000);               // Wait 1 second...
+  // And repeat!
+}
+```
 
 
 ## Language Syntax
@@ -625,7 +625,7 @@ void setup() {
 }
 
 void loop() {
- }
+}
 ```
 
 ### <span id="bluetooth-low-energy-ble">Bluetooth Low Energy (BLE)</span> 
