@@ -683,7 +683,7 @@ GATT Client:
 [`writeValue()`](#writevalue)    
 [`writeLongValue()`](#writelongvalue)    
 [`writeLongValueWithOffset()`](#writelongvaluewithoffset)    
-[`readDescriptorValue()`](#readDescriptorValue)    
+[`readDescriptorValue()`](#readdescriptorvalue)    
 [`readLongDescriptorValue()`](#readlongdescriptorvalue)    
 [`readLongDescriptorValueWithOffset()`](#readlongdescriptorvaluewithoffset)    
 [`writeDescriptorValue()`](#writedescriptorvalue)    
