@@ -94,9 +94,10 @@ Since the Duo shares most of the firmware source code with Particle Photon, most
 
 ---
 
-### <span id="inputoutput">[Input/Output](https://docs.particle.io/reference/firmware/photon/#input-output)</span>
+### <span id="inputoutput">Input/Output</span>
 
-Built-in global function.        
+Built-in global functions. [Details...](https://docs.particle.io/reference/firmware/photon/#input-output)        
+
 [`pinMode()`](https://docs.particle.io/reference/firmware/photon/#pinmode-) - `INPUT`, `INPUT_PULLUP`, `INPUT_PULLDOWN` or `OUTPUT`    
 [`getPinMode()`](https://docs.particle.io/reference/firmware/photon/#getpinmode-pin-)    
 [`digitalWrite()`](https://docs.particle.io/reference/firmware/photon/#digitalwrite-) - `HIGH` or `LOW`    
@@ -106,35 +107,38 @@ Built-in global function.
 [`analogRead()`](https://docs.particle.io/reference/firmware/photon/#analogread-adc-) - (0 ~ 4095)    
 [`setADCSampleTime()`](https://docs.particle.io/reference/firmware/photon/#setadcsampletime-)
 
-### <span id="low-level-inputoutput">[Low Level Input/Output](https://docs.particle.io/reference/firmware/photon/#low-level-input-output)</span>
+### <span id="low-level-inputoutput">Low Level Input/Output</span>
 
-Built-in global function.       
+Built-in global functions. [Details...](https://docs.particle.io/reference/firmware/photon/#low-level-input-output)       
+
 [`pinSetFast()`](https://docs.particle.io/reference/firmware/photon/#pinsetfast-)    
 [`pinResetFast()`](https://docs.particle.io/reference/firmware/photon/#pinresetfast-)    
 [`digitalWriteFast()`](https://docs.particle.io/reference/firmware/photon/#digitalwritefast-)     
 [`pinReadFast()`](https://docs.particle.io/reference/firmware/photon/#pinreadfast-)   
 
-### <span id="advanced-io">[Advanced I/O](https://docs.particle.io/reference/firmware/photon/#advanced-i-o)</span> 
+### <span id="advanced-io">Advanced I/O</span> 
 
-Built-in global function.       
+Built-in global functions. [Details...](https://docs.particle.io/reference/firmware/photon/#advanced-i-o)       
+
 [`tone()`](https://docs.particle.io/reference/firmware/photon/#tone-)    
 [`noTone()`](https://docs.particle.io/reference/firmware/photon/#notone-)    
 [`shiftOut()`](https://docs.particle.io/reference/firmware/photon/#shiftout-)    
 [`shiftIn()`](https://docs.particle.io/reference/firmware/photon/#shiftin-)          
 [`pulseIn()`](https://docs.particle.io/reference/firmware/photon/#pulsein-)         
  
-### <span id="interrupts">[Interrupts](https://docs.particle.io/reference/firmware/photon/#interrupts)</span>
+### <span id="interrupts">Interrupts</span>
 
-Built-in global function.     
+Built-in global functions. [Details...](https://docs.particle.io/reference/firmware/photon/#interrupts)     
+
 [`attachInterrupt()`](https://docs.particle.io/reference/firmware/photon/#attachinterrupt-)    
 [`detachInterrupt()`](https://docs.particle.io/reference/firmware/photon/#detachinterrupt-)    
 [`interrupts()`](https://docs.particle.io/reference/firmware/photon/#interrupts-)    
 [`noInterrupts()`](https://docs.particle.io/reference/firmware/photon/#nointerrupts-)    
 
-### <span id="software-timers">[Software Timers](https://docs.particle.io/reference/firmware/photon/#software-timers)</span>
+### <span id="software-timers">Software Timers</span>
 
-Built-in class.      
-constructor [`Timer`](https://docs.particle.io/reference/firmware/photon/#software-timers)    
+Built-in class `Timer`. [Details...](https://docs.particle.io/reference/firmware/photon/#software-timers)      
+
 [Class member callbacks](https://docs.particle.io/reference/firmware/photon/#class-member-callbacks)    
 [`start()`](https://docs.particle.io/reference/firmware/photon/#start-)    
 [`stop()`](https://docs.particle.io/reference/firmware/photon/#stop--2)    
@@ -147,11 +151,12 @@ constructor [`Timer`](https://docs.particle.io/reference/firmware/photon/#softwa
 [`dispose()`](https://docs.particle.io/reference/firmware/photon/#dispose-)    
 [`isActive()`](https://docs.particle.io/reference/firmware/photon/#isactive-)   
 
-### <span id="serial">[Serial](https://docs.particle.io/reference/firmware/photon/#serial)</span>   
+### <span id="serial">Serial</span>   
     
-Differing from the Photon, the USART2 is layed out to the side pins and the `Serial2` object is constructed in the system firmware, so that you can directly call the methods of `Serial2` without including extra header files.
+Differing from the Photon, the USART2 on the Duo is layed out to the side pins and the `Serial2` object is constructed in the system firmware, so that you can directly call the methods of `Serial2` without including extra header files.
 
-Built-in instance `Serial`, `Serial1`, `Serial2`.     
+Built-in instances `Serial`, `Serial1`, `Serial2`. [Details...](https://docs.particle.io/reference/firmware/photon/#serial)     
+
 [`begin()`](https://docs.particle.io/reference/firmware/photon/#begin-)    
 [`end()`](https://docs.particle.io/reference/firmware/photon/#end-)    
 [`available()`](https://docs.particle.io/reference/firmware/photon/#available-)    
@@ -169,9 +174,10 @@ Built-in instance `Serial`, `Serial1`, `Serial2`.
 [`halfduplex()`](https://docs.particle.io/reference/firmware/photon/#halfduplex-)    
 Inherited [Stream](#stream) methods 
 
-### <span id="spi">[SPI](https://docs.particle.io/reference/firmware/photon/#spi)</span>
+### <span id="spi">SPI</span>
 
-Built-in instance `SPI`, `SPI1`.    
+Built-in instances `SPI`, `SPI1`. [Details...](https://docs.particle.io/reference/firmware/photon/#spi)    
+
 [`begin()`](https://docs.particle.io/reference/firmware/photon/#begin--1)    
 [`end()`](https://docs.particle.io/reference/firmware/photon/#end--1)    
 [`setBitOrder()`](https://docs.particle.io/reference/firmware/photon/#setbitorder-)    
@@ -184,9 +190,10 @@ Built-in instance `SPI`, `SPI1`.
 [`onSelect()`](https://docs.particle.io/reference/firmware/photon/#onselect-)    
 [`available()`](https://docs.particle.io/reference/firmware/photon/#available--1)    
 
-### <span id="wire-i2c">[Wire (I2C)](https://docs.particle.io/reference/firmware/photon/#wire-i2c-)</span>
+### <span id="wire-i2c">Wire (I2C)</span>
 
-Built-in instance `I2C`.     
+Built-in instance `I2C`. [Details...](https://docs.particle.io/reference/firmware/photon/#wire-i2c-)     
+
 [`setSpeed()`](https://docs.particle.io/reference/firmware/photon/#setspeed-)    
 [`stretchClock()`](https://docs.particle.io/reference/firmware/photon/#stretchclock-)    
 [`begin()`](https://docs.particle.io/reference/firmware/photon/#begin--2)    
@@ -204,10 +211,10 @@ Built-in instance `I2C`.
 [`onRequest()`](https://docs.particle.io/reference/firmware/photon/#onrequest-)    
 Inherited [Stream](#stream) methods  
 
-### <span id="can-canbus">[CAN (CANbus)](https://docs.particle.io/reference/firmware/photon/#can-canbus-)</span>
+### <span id="can-canbus">CAN (CANbus)</span>
 
-Built-in class.    
-constructor [`CANChannel()`](https://docs.particle.io/reference/firmware/photon/#canchannel)    
+Built-in class `CANChannel`. [Details...](https://docs.particle.io/reference/firmware/photon/#can-canbus-)     
+
 [`CANMessage`](https://docs.particle.io/reference/firmware/photon/#canmessage)    
 [`begin()`](https://docs.particle.io/reference/firmware/photon/#begin--3)    
 [`end()`](https://docs.particle.io/reference/firmware/photon/#end--3)     
@@ -219,10 +226,10 @@ constructor [`CANChannel()`](https://docs.particle.io/reference/firmware/photon/
 [`isEnabled()`](https://docs.particle.io/reference/firmware/photon/#isenabled--1)    
 [`errorStatus()`](https://docs.particle.io/reference/firmware/photon/#errorstatus-)    
 
-### <span id="servo">[Servo](https://docs.particle.io/reference/firmware/photon/#servo)</span>
+### <span id="servo">Servo</span>
 
-Built-in class.     
-constructor [`Servo()`](https://docs.particle.io/reference/firmware/photon/#servo)    
+Built-in class `Servo`. [Details...](https://docs.particle.io/reference/firmware/photon/#servo)     
+
 [`attach()`](https://docs.particle.io/reference/firmware/photon/#attach-)     
 [`attached()`](https://docs.particle.io/reference/firmware/photon/#attached-)    
 [`detach()`](https://docs.particle.io/reference/firmware/photon/#detach-)           
@@ -231,18 +238,20 @@ constructor [`Servo()`](https://docs.particle.io/reference/firmware/photon/#serv
 [`read()`](https://docs.particle.io/reference/firmware/photon/#read--4)          
 [`setTrim()`](https://docs.particle.io/reference/firmware/photon/#settrim-)    
 
-### <span id="rgb">[RGB](https://docs.particle.io/reference/firmware/photon/#rgb)</span>
+### <span id="rgb">RGB</span>
 
-Built-in instance `RGB`.    
+Built-in instance `RGB`. [Details...](https://docs.particle.io/reference/firmware/photon/#rgb)    
+
 [`control()`](https://docs.particle.io/reference/firmware/photon/#control-user_control-)    
 [`controlled()`](https://docs.particle.io/reference/firmware/photon/#controlled-)    
 [`color()`](https://docs.particle.io/reference/firmware/photon/#color-red-green-blue-)    
 [`brightness()`](https://docs.particle.io/reference/firmware/photon/#brightness-val-)    
 [`onChange()`](https://docs.particle.io/reference/firmware/photon/#onchange-handler-)    
 
-### <span id="eeprom-emulation">[EEPROM Emulation](https://docs.particle.io/reference/firmware/photon/#eeprom)</span>
+### <span id="eeprom-emulation">EEPROM Emulation</span>
 
-Built-in instance `EEPROM`.    
+Built-in instance `EEPROM`. [Details...](https://docs.particle.io/reference/firmware/photon/#eeprom)    
+
 [`length()`](https://docs.particle.io/reference/firmware/photon/#length-)    
 [`put()`](https://docs.particle.io/reference/firmware/photon/#put-)    
 [`get()`](https://docs.particle.io/reference/firmware/photon/#get-)    
@@ -252,21 +261,24 @@ Built-in instance `EEPROM`.
 [`hasPendingErase()`](https://docs.particle.io/reference/firmware/photon/#haspendingerase-)    
 [`performPendingErase()`](https://docs.particle.io/reference/firmware/photon/#performpendingerase-)    
 
-### <span id="backup-ram-sram">[Backup RAM (SRAM)](https://docs.particle.io/reference/firmware/photon/#backup-ram-sram-)</span>
+### <span id="backup-ram-sram">Backup RAM (SRAM)</span>
 
-[Storing data in Backup RAM (SRAM)](https://docs.particle.io/reference/firmware/photon/#storing-data-in-backup-ram-sram-)    
-[Enabling Backup RAM (SRAM)](https://docs.particle.io/reference/firmware/photon/#enabling-backup-ram-sram-)    
-[Making changes to the layout or bytes of retained variables](https://docs.particle.io/reference/firmware/photon/#making-changes-to-the-layout-or-types-of-retained-variables)    
+Backup RAM. [Details...](https://docs.particle.io/reference/firmware/photon/#backup-ram-sram-)    
 
-### <span id="application-watchdog">[Application Watchdog](https://docs.particle.io/reference/firmware/photon/#application-watchdog)</span>
+* [Storing data in Backup RAM (SRAM)](https://docs.particle.io/reference/firmware/photon/#storing-data-in-backup-ram-sram-)    
+* [Enabling Backup RAM (SRAM)](https://docs.particle.io/reference/firmware/photon/#enabling-backup-ram-sram-)    
+* [Making changes to the layout or bytes of retained variables](https://docs.particle.io/reference/firmware/photon/#making-changes-to-the-layout-or-types-of-retained-variables)    
 
-Built-in class.    
-constructor [`ApplicationWatchdog()`](https://docs.particle.io/reference/firmware/photon/#application-watchdog)    
+### <span id="application-watchdog">Application Watchdog</span>
+
+Built-in class `ApplicationWatchdog`. [Details...](https://docs.particle.io/reference/firmware/photon/#application-watchdog)    
+ 
 [`checkin()`](https://docs.particle.io/reference/firmware/photon/#application-watchdog)    
 
-### <span id="time">[Time](https://docs.particle.io/reference/firmware/photon/#time)</span>
+### <span id="time">Time</span>
 
-Built-in instance `Time`.    
+Built-in instance `Time`. [Details...](https://docs.particle.io/reference/firmware/photon/#time)    
+
 [`hour()`](https://docs.particle.io/reference/firmware/photon/#hour-)    
 [`hourFormat12()`](https://docs.particle.io/reference/firmware/photon/#hourformat12-)    
 [`isAM()`](https://docs.particle.io/reference/firmware/photon/#isam-)    
@@ -290,9 +302,10 @@ Built-in instance `Time`.
 [`delay()`](https://docs.particle.io/reference/firmware/photon/#delay-)    
 [`delayMicroseconds()`](https://docs.particle.io/reference/firmware/photon/#delaymicroseconds-)    
 
-### <span id="math">[Math](https://docs.particle.io/reference/firmware/photon/#math)</span>
+### <span id="math">Math</span>
 
-Built-in global function.    
+Built-in global functions. [Details...](https://docs.particle.io/reference/firmware/photon/#math)    
+
 [`min()`](https://docs.particle.io/reference/firmware/photon/#min-)    
 [`max()`](https://docs.particle.io/reference/firmware/photon/#max-)    
 [`abs()`](https://docs.particle.io/reference/firmware/photon/#abs-)    
@@ -301,16 +314,17 @@ Built-in global function.
 [`pow()`](https://docs.particle.io/reference/firmware/photon/#pow-)    
 [`sqrt()`](https://docs.particle.io/reference/firmware/photon/#sqrt-)    
 
-### <span id="random-numbers">[Random Numbers](https://docs.particle.io/reference/firmware/photon/#random-numbers)</span>
+### <span id="random-numbers">Random Numbers</span>
 
-Built-in global function.    
+Built-in global functions. [Details...](https://docs.particle.io/reference/firmware/photon/#random-numbers)    
+
 [`random()`](https://docs.particle.io/reference/firmware/photon/#random-)    
 [`randomSeed()`](https://docs.particle.io/reference/firmware/photon/#randomseed-)    
 
-### <span id="string">[String](https://docs.particle.io/reference/firmware/photon/#string-class)</span>
+### <span id="string">String</span>
 
-Built-in class.    
-constructor [`String()`](https://docs.particle.io/reference/firmware/photon/#string-)    
+Built-in class `String`. [Details...](https://docs.particle.io/reference/firmware/photon/#string-class)    
+
 [`charAt()`](https://docs.particle.io/reference/firmware/photon/#charat-)    
 [`compareTo()`](https://docs.particle.io/reference/firmware/photon/#compareto-)    
 [`concat()`](https://docs.particle.io/reference/firmware/photon/#concat-)    
@@ -335,9 +349,10 @@ constructor [`String()`](https://docs.particle.io/reference/firmware/photon/#str
 [`toUpperCase()`](https://docs.particle.io/reference/firmware/photon/#touppercase-)    
 [`trim()`](https://docs.particle.io/reference/firmware/photon/#trim-)    
 
-### <span id="wifi">[WiFi](https://docs.particle.io/reference/firmware/photon/#wifi)</span>
+### <span id="wifi">WiFi</span>
 
-Built-in instance `WiFi`.    
+Built-in instance `WiFi`. [Details...](https://docs.particle.io/reference/firmware/photon/#wifi)    
+
 [`on()`](https://docs.particle.io/reference/firmware/photon/#on-)    
 [`off()`](https://docs.particle.io/reference/firmware/photon/#off-)    
 [`connect()`](https://docs.particle.io/reference/firmware/photon/#connect-)    
@@ -367,29 +382,29 @@ Built-in instance `WiFi`.
 [`useStaticIP()`](https://docs.particle.io/reference/firmware/photon/#usestaticip-)    
 [`useDynamicIP()`](https://docs.particle.io/reference/firmware/photon/#usedynamicip-)    
 
-### <span id="ipaddress">[IPAddress](https://docs.particle.io/reference/firmware/photon/#ipaddress)</span>
+### <span id="ipaddress">IPAddress</span>
 
-Built-in class.    
-constructor [`IPAddress()`](https://docs.particle.io/reference/firmware/photon/#ipaddress)    
+Built-in class `IPAddress`. [Details...](https://docs.particle.io/reference/firmware/photon/#ipaddress)    
+
 [`=`](https://docs.particle.io/reference/firmware/photon/#ipaddress)    
 [`==`](https://docs.particle.io/reference/firmware/photon/#ipaddress)    
 [`!=`](https://docs.particle.io/reference/firmware/photon/#ipaddress)    
 [`[]`](https://docs.particle.io/reference/firmware/photon/#ipaddress)    
 
-### <span id="tcpserver">[TCPServer](https://docs.particle.io/reference/firmware/photon/#tcpserver)</span>
+### <span id="tcpserver">TCPServer</span>
 
-Built-in class.    
-constructor [`TCPServer()`](https://docs.particle.io/reference/firmware/photon/#tcpserver)    
+Built-in class `TCPServer`. [Details...](https://docs.particle.io/reference/firmware/photon/#tcpserver)    
+
 [`begin()`](https://docs.particle.io/reference/firmware/photon/#begin--4)    
 [`available()`](https://docs.particle.io/reference/firmware/photon/#available--4)    
 [`write()`](https://docs.particle.io/reference/firmware/photon/#write--2)    
 [`print()`](https://docs.particle.io/reference/firmware/photon/#print--1)    
 [`println()`](https://docs.particle.io/reference/firmware/photon/#println--1)    
 
-### <span id="tcpclient">[TCPClient](https://docs.particle.io/reference/firmware/photon/#tcpclient)</span>
+### <span id="tcpclient">TCPClient</span>
 
-Built-in class.    
-constructor [`TCPClient()`](https://docs.particle.io/reference/firmware/photon/#tcpclient)    
+Built-in class `TCPClient`. [Details...](https://docs.particle.io/reference/firmware/photon/#tcpclient)    
+
 [`connect()`](https://docs.particle.io/reference/firmware/photon/#connect--1)    
 [`connected()`](https://docs.particle.io/reference/firmware/photon/#connected-)    
 [`stop()`](https://docs.particle.io/reference/firmware/photon/#stop-)     
@@ -402,10 +417,10 @@ constructor [`TCPClient()`](https://docs.particle.io/reference/firmware/photon/#
 [`remoteIP()`](https://docs.particle.io/reference/firmware/photon/#remoteip-)     
 Inherited [Stream](#stream) methods   
 
-### <span id="udp">[UDP](https://docs.particle.io/reference/firmware/photon/#udp)</span>
+### <span id="udp">UDP</span>
 
-Built-in class.    
-constructor [`UDP()`](https://docs.particle.io/reference/firmware/photon/#udp)    
+Built-in class `UDP`. [Details...](https://docs.particle.io/reference/firmware/photon/#udp)    
+  
 [`begin()`](https://docs.particle.io/reference/firmware/photon/#begin--5)    
 [`stop()`](https://docs.particle.io/reference/firmware/photon/#stop--1)     
 [`available()`](https://docs.particle.io/reference/firmware/photon/#available--6)    
@@ -423,9 +438,10 @@ constructor [`UDP()`](https://docs.particle.io/reference/firmware/photon/#udp)
 [`leaveMulticast()`](https://docs.particle.io/reference/firmware/photon/#leavemulticast-)    
 Inherited [Stream](#stream) methods 
 
-### <span id="stream">[Stream](https://docs.particle.io/reference/firmware/photon/#stream-class)</span>
+### <span id="stream">Stream</span>
 
-Built-in class, inherited by `Serial`, `Wire`, `TCPClient`, `UDP`.    
+Built-in class `Stream`, inherited by `Serial`, `Wire`, `TCPClient` and `UDP`. [Details...](https://docs.particle.io/reference/firmware/photon/#stream-class)    
+
 [`setTimeout()`](https://docs.particle.io/reference/firmware/photon/#settimeout-)    
 [`find()`](https://docs.particle.io/reference/firmware/photon/#find-)    
 [`findUntil()`](https://docs.particle.io/reference/firmware/photon/#finduntil-)    
@@ -436,17 +452,20 @@ Built-in class, inherited by `Serial`, `Wire`, `TCPClient`, `UDP`.
 [`parseInt()`](https://docs.particle.io/reference/firmware/photon/#parseint-)    
 [`parseFloat()`](https://docs.particle.io/reference/firmware/photon/#parsefloat-)    
 
-### <span id="softap-http-pages">[SoftAP HTTP Pages](https://docs.particle.io/reference/firmware/photon/#softap-http-pages)</span>
+### <span id="softap-http-pages">SoftAP HTTP Pages</span>
 
-[The page callback function](https://docs.particle.io/reference/firmware/photon/#the-page-callback-function)    
-[Retrieving the request data](https://docs.particle.io/reference/firmware/photon/#retrieving-the-request-data)    
-[Sending a response](https://docs.particle.io/reference/firmware/photon/#sending-a-response)    
-[The default page](https://docs.particle.io/reference/firmware/photon/#the-default-page)    
-[Sending a Redirect](https://docs.particle.io/reference/firmware/photon/#sending-a-redirect)    
+SoftAP HTTP pages. [Details...](https://docs.particle.io/reference/firmware/photon/#softap-http-pages)
 
-### <span id="cloud-functions">[Cloud Functions](https://docs.particle.io/reference/firmware/photon/#cloud-functions)</span>
+* [The page callback function](https://docs.particle.io/reference/firmware/photon/#the-page-callback-function)    
+* [Retrieving the request data](https://docs.particle.io/reference/firmware/photon/#retrieving-the-request-data)    
+* [Sending a response](https://docs.particle.io/reference/firmware/photon/#sending-a-response)    
+* [The default page](https://docs.particle.io/reference/firmware/photon/#the-default-page)    
+* [Sending a Redirect](https://docs.particle.io/reference/firmware/photon/#sending-a-redirect)    
 
-Built-in instance `Particle`.    
+### <span id="cloud-functions">Cloud Functions</span>
+
+Built-in instance `Particle`. [Details...](https://docs.particle.io/reference/firmware/photon/#cloud-functions)    
+
 [`connect()`](https://docs.particle.io/reference/firmware/photon/#particle-connect-)    
 [`connected()`](https://docs.particle.io/reference/firmware/photon/#particle-connected-)    
 [`process()`](https://docs.particle.io/reference/firmware/photon/#particle-process-)    
@@ -457,13 +476,15 @@ Built-in instance `Particle`.
 [`subscribe()`](https://docs.particle.io/reference/firmware/photon/#particle-subscribe-) - Subscribe to events published by devices    
 [`unsubscribe()`](https://docs.particle.io/reference/firmware/photon/#particle-unsubscribe-) - Removes all subscription handlers previously registered with `Particle.subscribe()`    
 [`syncTime()`](https://docs.particle.io/reference/firmware/photon/#particle-synctime-)    
-[Get Public IP](https://docs.particle.io/reference/firmware/photon/#get-public-ip)    
-[Get Device name](https://docs.particle.io/reference/firmware/photon/#get-device-name)    
-[Get Random seed](https://docs.particle.io/reference/firmware/photon/#get-random-seed)    
 
-### <span id="system-calls">[System Calls](https://docs.particle.io/reference/firmware/photon/#system-calls)</span>
+* [Get Public IP](https://docs.particle.io/reference/firmware/photon/#get-public-ip)    
+* [Get Device name](https://docs.particle.io/reference/firmware/photon/#get-device-name)    
+* [Get Random seed](https://docs.particle.io/reference/firmware/photon/#get-random-seed)    
 
-Built-in instance `System`.    
+### <span id="system-calls">System Calls</span>
+
+Built-in instance `System`. [Details...](https://docs.particle.io/reference/firmware/photon/#system-calls)    
+
 [`version()`](https://docs.particle.io/reference/firmware/photon/#version-)    
 [`versionNumber()`](https://docs.particle.io/reference/firmware/photon/#versionnumber-)    
 [`buttonPushed()`](https://docs.particle.io/reference/firmware/photon/#buttonpushed-)    
@@ -482,7 +503,9 @@ Built-in instance `System`.
 [`updatesEnabled()`](https://docs.particle.io/reference/firmware/photon/#system-updatesenabled-)    
 [`updatesPending()`](https://docs.particle.io/reference/firmware/photon/#system-updatespending-)    
 
-### <span id="system-modes">[System Modes](https://docs.particle.io/reference/firmware/photon/#system-modes)</span>
+### <span id="system-modes">System Modes</span>
+
+System modes. [Details...](https://docs.particle.io/reference/firmware/photon/#system-modes)
 
 [`SYSTEM_MODE()`](https://docs.particle.io/reference/firmware/photon/#system-modes) - default to `AUTOMATIC` mode        
 
@@ -490,28 +513,35 @@ Built-in instance `System`.
 - [`SEMI_AUTOMATIC`](https://docs.particle.io/reference/firmware/photon/#semi-automatic-mode): Manually connect to Wi-Fi and the Particle Cloud, but automatically handle the cloud messages.    
 - [`MANUAL`](https://docs.particle.io/reference/firmware/photon/#manual-mode): Manually connect to Wi-Fi and the Particle Cloud and handle the cloud messages.
 
-### <span id="system-thread">[System Thread](https://docs.particle.io/reference/firmware/photon/#system-thread)</span>
+### <span id="system-thread">System Thread</span>
+
+System thread. [Details...](https://docs.particle.io/reference/firmware/photon/#system-thread)
 
 [`SYSTEM_THREAD()`](https://docs.particle.io/reference/firmware/photon/#system-thread)    
 [`SINGLE_THREADED_BLOCK()`](https://docs.particle.io/reference/firmware/photon/#single_threaded_block-)    
 [`AUTOMIC_BLOCK()`](https://docs.particle.io/reference/firmware/photon/#atomic_block-)    
-[System Threading Behavior](https://docs.particle.io/reference/firmware/photon/#system-threading-behavior)    
-[System Functions](https://docs.particle.io/reference/firmware/photon/#system-functions)    
-[Task Switching](https://docs.particle.io/reference/firmware/photon/#task-switching)    
-[Synchronizing Access to Shared System Resources](https://docs.particle.io/reference/firmware/photon/#synchronizing-access-to-shared-system-resources)    
-[Waiting for the system](https://docs.particle.io/reference/firmware/photon/#waiting-for-the-system)    
 
-### <span id="system-events">[System Events](https://docs.particle.io/reference/firmware/photon/#system-events)</span>
+* [System Threading Behavior](https://docs.particle.io/reference/firmware/photon/#system-threading-behavior)    
+* [System Functions](https://docs.particle.io/reference/firmware/photon/#system-functions)    
+* [Task Switching](https://docs.particle.io/reference/firmware/photon/#task-switching)    
+* [Synchronizing Access to Shared System Resources](https://docs.particle.io/reference/firmware/photon/#synchronizing-access-to-shared-system-resources)    
+* [Waiting for the system](https://docs.particle.io/reference/firmware/photon/#waiting-for-the-system)    
 
-[System Events Overview](https://docs.particle.io/reference/firmware/photon/#system-events-overview)    
-[System Events Reference](https://docs.particle.io/reference/firmware/photon/#system-events-reference)    
+### <span id="system-events">System Events</span>
 
-### <span id="macros">[Macros](https://docs.particle.io/reference/firmware/photon/#macros)</span>
+System events. [Details...](https://docs.particle.io/reference/firmware/photon/#system-events)
+
+* [System Events Overview](https://docs.particle.io/reference/firmware/photon/#system-events-overview)    
+* [System Events Reference](https://docs.particle.io/reference/firmware/photon/#system-events-reference)    
+
+### <span id="macros">Macros</span>
+
+Macros. [Details...](https://docs.particle.io/reference/firmware/photon/#macros)
 
 [`STARTUP()`](https://docs.particle.io/reference/firmware/photon/#startup-)    
 [`PRODUCT_ID()`](https://docs.particle.io/reference/firmware/photon/#product_id-)    
 
-### <span id="other-functions">[Other Functions](https://docs.particle.io/reference/firmware/photon/#other-functions)</span>
+### <span id="other-functions">Other Functions</span>
 
 Note that most of the functions in newlib described at [https://sourceware.org/newlib/libc.html](https://sourceware.org/newlib/libc.html) are available for use in addition to the functions outlined above.
 
@@ -520,6 +550,7 @@ Note that most of the functions in newlib described at [https://sourceware.org/n
 The Duo is soldered with an external non-volatile SPI flash, which memory is up to 2MB and every sector is made up of 4K bytes. But only the first 768KB (192 sectors) are available for user use, the rest memory space are reserved for system use, see the [Firmware Architecture Overview](firmware_architecture_overview.md).
 
 Built-in instance `sFLASH`.      
+
 [`eraseSector()`](#erasesector)      
 [`writeBuffer()`](#writebuffer)    
 [`readBuffer()`](#readbuffer)    
@@ -591,10 +622,10 @@ void setup() {
   else {
     Serial.print("There is something wrong with the external SPI flash!");
   }
-  }
+}
 
-  void loop() {
-  }
+void loop() {
+ }
 ```
 
 ### <span id="bluetooth-low-energy-ble">Bluetooth Low Energy (BLE)</span> 
