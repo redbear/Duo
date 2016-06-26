@@ -683,7 +683,7 @@ GATT Client:
 [`writeValue()`](#writevalue)    
 [`writeLongValue()`](#writelongvalue)    
 [`writeLongValueWithOffset()`](#writelongvaluewithoffset)    
-[`readDescriptorValue()`](#readdescriptorvalue)    
+[`readDescriptorValue()`](#readDescriptorValue)    
 [`readLongDescriptorValue()`](#readlongdescriptorvalue)    
 [`readLongDescriptorValueWithOffset()`](#readlongdescriptorvaluewithoffset)    
 [`writeDescriptorValue()`](#writedescriptorvalue)    
@@ -897,6 +897,34 @@ Write the remote device's long characteristic value.
 ##### <span id="writelongvaluewithoffset">`writeLongValueWithOffset()`</span>
 
 Write the remote device's long characteristic value by offset.
+
+##### <span id="readdescriptorvalue">`readDescriptorValue()`</span>
+
+Read remote device's descriptor value.
+
+##### <span id="readlongdescriptorvalue">`readLongDescriptorValue()`</span>
+
+Read remote device's long descriptor value.
+
+##### <span id="readlongdescriptorvaluewithoffset">`readLongDescriptorValueWithOffset()`</span>
+
+Read remote device's long descriptor value by offset.
+
+##### <span id="writedescriptorvalue">`writeDescriptorValue()`</span>
+
+Write remote device's descriptor value.
+
+##### <span id="writelongdescriptorvalue">`writeLongDescriptorValue()`</span>
+
+Write remote device's long descriptor value.
+
+##### <span id="writelongdescriptorvaluewithoffset">`writeLongDescriptorValueWithOffset()`</span>
+
+Write remote device's long descriptor value by offset.
+
+##### <span id="writeclientcharsconfigdescriptor">`writeClientCharsConfigDescriptor()`</span>
+
+Write remote device's Client Characteristic Configuration Descriptor (CCCD) value.
 
 ##### <span id="onscanreportcallback">`onScanReportCallback()`</span>
 
