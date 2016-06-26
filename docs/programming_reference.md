@@ -527,87 +527,75 @@ Built-in instance `sFLASH`.
 
 ##### <span id="erasesector">`eraseSector()`</span> 
 
-This method erases a given sector of the external flash.
-
-Parameters:    
+This method erases a given sector of the external flash. The pass in parameter `uint32_t SectorAddr` can be any of the address as long as it is located in the sector, i.e. the sector you are going to erase is (`SectorAddr >> 3`). Operation to the reserved sectors makes no effect.
  
-* `uint32_t SectorAddr` It can be any of the address as long as it is located in the sector, i.e. the sector you are going to erase is (`SectorAddr >> 3`). Operation to the reserved sectors makes no effect.
-
-Return: void  
-
-For example:
-
-    // Erase the sector 18.
-    sFLASH.eraseSector(0x12000); 
+```      
+// Erase the sector 18.
+sFLASH.eraseSector(0x12000); 
     
-    // It will also erase the sector 18.
-    sFLASH.eraseSector(0x12345);
+// It will also erase the sector 18.
+sFLASH.eraseSector(0x12345);
 
-    // Erase the sector 103.
-    sFLASH.eraseSector(0x67890); 
+// Erase the sector 103.
+sFLASH.eraseSector(0x67890);     
+```
 
 ##### <span id="writebuffer">`writeBuffer()`</span>   
 
 This method stores a bulk of data to the external flash. The data is stored from a given address and the address grows automatically after one byte is stored. If the address reaches the end address of the available memory, the rest data will be aborted.
 
-Parameters:    
+It should pass in three parameters:    
 
 * `const uint8_t *pBuffer` The buffer that contains the data to be stored.
 * `uint32_t WriteAddr` The begining address from which to store the data.
 * `uint32_t NumByteToWrite` The number of bytes to be stored.
 
-Return: void
-
 *Note: The memory space you are going to store the data must has been well erased before, or the data you read out afterwards might not the same as you wrote.*
 
-For example:
-
-    uint8_t buf[256] = { 0x55 };
+```
+uint8_t buf[256] = { 0x55 };
     
-    // Store first 128 bytes of the buf to external flash from address 0.
-    sFLASH.writeBuffer( buf, 0, 128 );
+// Store first 128 bytes of the buf to external flash from address 0.
+sFLASH.writeBuffer( buf, 0, 128 );
+```
 
 ##### <span id="readbuffer">`readBuffer()`</span>
 
 This method reads specified length of data from a given address of the external flash. The reserved memory space can not be read out using this method.
 
-Parameters:   
+It should pass in three parameters:   
 
 * `uint8_t *pBuffer` The buffer that to hold the data being read out.
 * `uint32_t ReadAddr` The begining address from which to read out the data.
 * `uint32_t NumByteToRead` The number of bytes you want to read out.
 
-For example:
+```
+uint8_t buf[256];
 
-    uint8_t buf[256];
-
-    // Read 128 bytes from address 0 of the external flash to the buf.    
-    sFLASH.readBuffer( buf, 0, 128 );
+// Read 128 bytes from address 0 of the external flash to the buf.    
+sFLASH.readBuffer( buf, 0, 128 );
+```
 
 ##### <span id="selftest">`selfTest()`</span>
 
-Check if the external flash functions well or not.
+Check if the external flash functions well or not. It returns 0 if success, otherwise return -1.
 
-Parameters: void
+```
+void setup() {
+  Serial.begin(115200);
+  delay(5000);
 
-Return: An `int` value. Test success if 0, otherwise failed.
+  if( selfTest() == 0 ) {
+    Serial.println("The external SPI flash functions well.");
+  }
+  else {
+    Serial.print("There is something wrong with the external SPI flash!");
+  }
+  }
 
-For example:
-
-    void setup() {
-      Serial.begin(115200);
-      delay(5000);
-
-      if( selfTest() == 0 ) {
-        Serial.println("The external SPI flash functions well.");
-      }
-      else {
-        Serial.print("There is something wrong with the external SPI flash!");
-      }
-    }
-
-    void loop() {
-    }
+  void loop() {
+  }
+```
 
 ### <span id="bluetooth-low-energy-ble">Bluetooth Low Energy (BLE)</span> 
 
@@ -683,6 +671,15 @@ BLE Peripheral role methods:
 [`sendIndicate()`](#sendindicate)    
 [`onDataReadCallback()`](#ondatareadcallback)    
 [`onDataWriteCallback()`](#ondatawritecallback)    
+
+##### <span id="init">`init()`</span> 
+
+Initialize the BLE HCI interface and the controller state. It creates a thread to deal with the HCI commands and events. It **MUST** be called before calling any other BLE methods.
+
+```
+// Initialize BLE HCI interface and the controller
+ble.init()
+```
   
 
 ## Support
