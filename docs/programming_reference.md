@@ -630,6 +630,8 @@ void loop() {
 
 ### <span id="bluetooth-low-energy-ble">Bluetooth Low Energy (BLE)</span> 
 
+**Note: The BLE API names are unstable and may be changed before the first major release of the firmware.**
+
 Built-in instance `ble`.     
 
 General methods:    
@@ -714,7 +716,7 @@ GATT Server:
 
 ##### <span id="init">`init()`</span> 
 
-Initialize the BLE HCI interface and the controller state. It will create a thread to deal with the HCI commands and events. It **MUST** be called before calling any other BLE methods.
+Enable the HCI interface between Host and Controller, as well as initialize the Controller to the default state. It will create a thread to deal with the HCI commands and events. It **MUST** be called before calling any other BLE methods.
 
 ```
 // Initialize BLE HCI interface and the controller
@@ -723,7 +725,7 @@ ble.init();
 
 ##### <span id="deinit">`deInit()`</span> 
 
-Disable the BLE HCI interface and reset the controller. It will destroy the thread created by `init()`. 
+Disable the BLE HCI interface and reset the controller. It will destroy the thread created by `ble.init()`. 
 
 ```
 // Disable the BLE functionality
@@ -732,34 +734,34 @@ ble.deInit();
 
 ##### <span id="settimer">`setTimer()`</span> 
 
-Set a BTStack timer's expiration time.
+Set the timeout of a timer that is running under BTStack. It takes two parameters: `btstack_timer_source_t` variable and the timeout value in milliseconds.
 
 ```
-// Create a BTStack timer
+// Create an one-shot BTStack timer
 btstack_timer_source_t bt_timer;
 
-// Set the timer's expiration time to 10s
+// Set the timeout to 10s
 ble.setTimer(&bt_timer, 10000);
 ```
 
 ##### <span id="settimerhandler">`setTimerHandler()`</span> 
 
-Set the callback function when a BTStack timer expires.
+Set the callback function called when the BTStack timer fired. The callback function takes one parameter `btstack_timer_source_t` showing which timer calls the function.
 
 ```
 // Create a BTStack timer
 btstack_timer_source_t bt_timer;
 
-// Callback function when the BTStack timer expired
+// BTStack timer callback function
 void btTimerCB(btstack_timer_source_t *ts) {
 
 }
 
-// Set the callback function when the timer expires.
+// Set the callback function for the timer
 ble.setTimerHandler(&bt_timer, btTimerCB);
 ```
 
-You can also set the timer handler directly:
+You can also set the callback function directly:
 
 ```
 bt_timer.process = btTimerCB;
@@ -767,7 +769,7 @@ bt_timer.process = btTimerCB;
 
 ##### <span id="addtimer">`addTimer()`</span> 
 
-Start a BTStack timer.
+Start the created BTStack timer. The timer you are going to start is passed in as the only parameter.
 
 ```
 btstack_timer_source_t bt_timer;
@@ -789,7 +791,7 @@ ble.addTimer(&bt_timer);
 
 ##### <span id="removetimer">`removeTimer()`</span> 
 
-Remove a BTStack timer.
+Remove a BTStack timer. The only parameter is the timer you are going to remove.
 
 ```
 // Remove a created BTStack timer
@@ -798,13 +800,15 @@ ble.removeTimer(&bt_timer);
 
 ##### <span id="gettimerms">`getTimeMs()`</span> 
 
-Check how long a BTStack timer has been worked since it is started. It returns a `uint32_t` value as the time in millisecond.
+Check how long the device has been running after power on. It returns a `uint32_t` value in millisecond.
 
 ```
-uint32_t ms = ble.getTimerMs(&bt_timer);
+uint32_t ms = ble.getTimerMs();
 ```
 
 ##### <span id="debuglogger">`debugLogger()`</span> 
+
+
 
 ##### <span id="debugerror">`debugError()`</span> 
 
