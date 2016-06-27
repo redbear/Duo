@@ -21,7 +21,7 @@
 
 RedBear Duo 是由红熊电子（深圳）有限公司（RedBear）研发的一款只有拇指般大小的面向物联网应用的开发板。 它集成了强大的 ARM Cortext-M3 主控芯片、蓝牙双模（同时支持传统蓝牙和蓝牙4.1）与 Wi-Fi 一体化的无线模块， 以及 RGB，LED，按键，2MB SPI Flash，高速USB接口。 该开发板目前已经成功在国外著名的 [Kickstarter](https://www.kickstarter.com/projects/1991736672/redbear-duo-a-small-and-powerful-wi-fi-ble-iot-boa/description) 众筹网站筹到 $104,332 美元。
 
-通过 Duo 开发板，你可以有效地通过蓝牙或者 Wi-Fi 或者同时开启与其他无线设备进行无线连接，比如笔记本电脑、智能手机、平板电脑， 以及其他支持蓝牙或 Wi-Fi 的配件。 但是只支持本地的无线连接已经无法满足物联网应用的需要，Duo 不仅满足了本地蓝牙与 Wi-Fi 的双无线连接需求，更具有强大的云端支持（默认支持 Particle 云），只要 Duo 连上了由支持访问互联网能力的设备（比如路由器、手机、电脑等）广播出来的 Wi-Fi 热点，那么你就可以在世界的另外一个角落联网控制你的 Duo 板，或者读取它采集到的数据。比如，即使你坐在办公室也可以远程控制家里的电器设备，可以检测家里是否有人闯入，可以采集家里的温湿度等环境因素，等等。
+通过 Duo 开发板，你可以有效地通过蓝牙或者 Wi-Fi 或者同时开启与其他无线设备进行无线连接，比如笔记本电脑、智能手机、平板电脑， 以及其他支持蓝牙或 Wi-Fi 的配件。 但是只支持本地的无线连接已经无法满足物联网应用的需要，Duo 不仅满足了本地蓝牙与 Wi-Fi 的双无线连接需求，更具有强大的云端支持（默认支持 Particle 云），只要 Duo 连上了由具备互联网访问能力的设备（比如路由器、手机、电脑等）广播出来的 Wi-Fi 热点，那么你就可以在世界的另外一个角落联网控制你的 Duo 板，或者读取它采集到的数据。比如，即使你坐在办公室也可以远程控制家里的电器设备，可以检测家里是否有人闯入，可以采集家里的温湿度等环境因素，等等。
 
 如果配合同样由RedBear生产的 [RBLink](rblink_introduction.md) 一起使用，无需任何焊接，你就可以轻松的使用由深圳矽递（[SeeedStudio](https://www.seeedstudio.com/item_list.html?category=45)）提供的各种各样的外设模块。这些模块的驱动完全开源，且简单易用。
 
@@ -75,18 +75,18 @@ Duo 可以应用于很多领域，比如：
 * 软硬件开源
 * 可当模块贴在自己设计的PCB板上
 * 可插在面包板上
-* 可选择的片上芯片或外置天线
+* 可选择的片上天线或外置天线
 * 已通过 FCC 和 CE 验证
 
 
 ## <span id="模块组成">模块组成</span>
 
-![image](images/Duo_BlockDiagram.png)
+![image](docs/images/Duo_BlockDiagram.png)
 
 
 ## <span id="引脚分布">引脚分布</span>
 
-![image](images/RBDuo_Pinout.png)
+![image](docs/images/RBDuo_Pinout.png)
 
 
 ## <span id="电源">电源</span>
@@ -159,12 +159,12 @@ Duo 可以应用于很多领域，比如：
 
 ## <span id="封装尺寸">封装尺寸</span>
 
-![image](images/Duo_Package.png)
+![image](docs/images/Duo_Package.png)
 
 
 ## <span id="Layout建议">Layout建议</span>
 
-![image](images/Duo_Layout_Recommend.png)
+![image](docs/images/Duo_Layout_Recommend.png)
 * Dimensions are in millimeters.
 
 
