@@ -2,7 +2,7 @@
 # RedBear Duo
 ---
 
-![image](docs/images/RBDuo.png)
+![image](docs/images/RB_Duo.png)
 
 The [RedBear Duo](http://www.redbear.cc/duo) is a thumb-size development board designed to simplify the process of building Internet of Things (IoT) products. It provides everything you need -- Wi-Fi, BLE and a powerful Cloud backend, all in a compact form factor that makes it ideal for your first prototype, a finished product, and everything in between. [More...](docs/duo_introduction.md) 
 

@@ -1,7 +1,7 @@
 # RedBear Duo Introduction
 ---
 
-![image](images/RBDuo.png)
+![image](images/RB_Duo.png)
 
 * [Descriptions](#descriptions)
 * [Features](#features)
