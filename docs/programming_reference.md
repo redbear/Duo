@@ -868,7 +868,7 @@ Fetches the device own bluetooth MAC address.
 
 ##### <span id="onconnectedcallback">`onConnectedCallback()`</span>
 
-Registers a function to be called when the procedure that connecting to peer BLE device completed. 
+Registers a function to be called when the procedure that establishing connection to a peer device completed. 
 
 The callback function should take two parameters and return nothing. One of the parameters **`BLEStatus_t`** reflects the connection status, it should be either of the following value:
 
@@ -877,11 +877,16 @@ The callback function should take two parameters and return nothing. One of the 
 
 The another parameter is an **`uint16_t`** handle assigned for the connection if established successfully. An invalid connection handle should be **0xFFFF**. E.g. **`void deviceConnectedCallback(BLEStatus_t status, uint16_t handle)`**
 
+User should keep the connection handle in case of used for further opertions to the peer device.
+
+    static uint16_t conn_handle = 0xFFFF;
+
 	void deviceConnectedCallback(BLEStatus_t status, uint16_t handle) {
 	  switch (status) {
 	    case BLE_STATUS_OK:
 	      Serial.print("BLE device connection established! Connection handle: ");
 	      Serial.println(handle, HEX);
+          conn_handle = handle;
 	      break;
 	    default: 
 	      Serial.println("Failed to establish connection with peer device!");
@@ -954,7 +959,7 @@ E.g.,
 
 ##### <span id="startscanning">`startScanning()`</span>
 
-Starts scanning the BLE devices that is advertising around the scanner. Once the function executed, it will keep scanning until you call the [**`stopScanning()`**](#stopscannig) function to terminate the operation. The scan result will be handled in a callback function that is registered by [**`onscanreportcallback()`**](#onscanreportcallback).
+Starts scanning the BLE devices that is advertising around the scanner. Once the function executed, it will keep scanning until you call the [**`ble.stopScanning()`**](#stopscannig) function to terminate the operation. The scan result will be handled in a callback function that is registered by [**`ble.onscanreportcallback()`**](#onscanreportcallback).
 
 	// Start scanning BLE devices
 	ble.startScanning();
@@ -968,15 +973,76 @@ Stops scanning BLE devices around the scanner.
 
 ##### <span id="connect">`connect()`</span>
 
-Initiates the connection establishment with a peer BLE device procedure.
+Initiates establishing the connection to a peer BLE device. It takes two parameters: the peer device address and the peer device address type. The value of both parameters can be obtained by parsing the peer device's advertising packet in the BLE scan callback function.
+
+A callback function registered by [**`ble.onConnectedCallback()`**](#onconnectedcallback) will be called once the connection establishment procedure completed.
+
+	void bleScanCallback(advertisementReport_t *report) {
+	  uint8_t index;
+
+	  Serial.print("Peer device address type: ");
+      if(report->peerAddrType == BD_ADDR_TYPE_LE_PUBLIC)
+	    Serial.println("Public.");
+      else if(report->peerAddrType == BD_ADDR_TYPE_LE_RANDOM)
+        Serial.println("Random");
+      else
+        return;
+
+	  Serial.print("Peer device address: ");
+	  for (index = 0; index < 6; index++) {
+	    Serial.print(report->peerAddr[index], HEX);
+	    Serial.print(" ");
+	  }
+	  Serial.println(" ");
+	
+	  ble.stopScanning();
+	
+	  ble.connect(report->peerAddr, report->peerAddrType);
+	}
+	
+	void setup() {
+	  Serial.begin(115200);
+	  delay(5000);
+	
+	  ble.init();
+	    
+	  // Register callback functions.
+	  ble.onScanReportCallback(bleScanCallback);
+	
+	  // Set scan parameters.
+	  ble.setScanParams(0, 0x0030, 0x0030);
+	
+	  // Start scanning.
+	  ble.startScanning();
+	}
 
 ##### <span id="disconnect">`disconnect()`</span>
 
-Disconnect from remote BLE device.
+Disconnects from the peer device that is connected through [**`ble.connect()`**](#connect). It takes a single parameter - the connection handle that is assigned when connection established before.
+
+A callback function registered by [**`ble.onDisconnectedCallback()`**](#ondisconnectedcallback) will be called once the connection disconnected.
+
+	ble.disconnect(conn_handle);
 
 ##### <span id="discoverprimaryservices">`discoverPrimaryServices()`</span>
 
-Discovery the primary services in the remote BLE device.
+Discovers the primary services on the peer device GATT server. Only the peer device that is connected then you can discover its primary services. 
+
+The connection handle should be passed in as the essential parameter. You can discover all the primary services on the GATT server or, just discover the primary service specified by 16-bits or 128-bits service UUID. It returns an **`uint8_t`** value which indicates the result of the discovery operation - **0** for success, others for failure.
+
+A callback function registered by [**`ble.onServiceDiscoveredCallback()`**](#onservicediscoveredcallback) will called once a primary service is discovered on the GATT server of peer device.
+
+	static uint16_t service_uuid_16 = 0x1234;
+	static const uin8_t service_uuid_128[16] = {0x12, 0x34, ..., 0xEE, 0xFF};
+
+    // Discovers all primary services
+	ble.discoverPrimaryServices(con_handle);
+
+	// Discovers only the primary service which UUID matches the given 16-bits UUID
+	ble.discoverPrimaryServices(con_handle, service_uuid_16);
+
+	// Discovers only the primary service which UUID matches the given 128-bits UUID
+	ble.discoverPrimaryServices(uint16_t con_handle, service_uuid_128);
 
 ##### <span id="discovercharacteristics">`discoverCharacteristics()`</span>
 
