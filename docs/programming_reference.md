@@ -6,31 +6,31 @@ The Duo is installed the customed Particle firmware by default during manufactur
 * **`setup()`** - Runs once at the beginning of your program    
 * **`loop()`** - Runs continuously over and over
 
-```
-int led1 = D0; // Instead of writing D0 over and over again, we'll write led1
+For example:
 
-/* The setup function is a standard part of any microcontroller program.
-   It runs only once when the device boots up or is reset. */
-
-void setup() {
-  pinMode(led1, OUTPUT);
-}
-
-/* Next we have the loop function, the other essential part of a microcontroller program. This routine gets
-   repeated over and over, as quickly as possible and as many times as possible, after the setup function is called.
-
-   Note: Code that blocks for too long (like more than 5 seconds), can make weird things happen 
-   (like dropping the network connection). The built-in delay() function shown below safely interleaves required 
-   background activity, so arbitrarily long delays can safely be done if you need them. */
-
-void loop() {  
-  digitalWrite(led1, HIGH);  // To blink the LED, first we'll turn it on...
-  delay(1000);               // We'll leave it on for 1 second...
-  digitalWrite(led1, LOW);   // Then we'll turn it off...
-  delay(1000);               // Wait 1 second...
-  // And repeat!
-}
-```
+	int led1 = D0; // Instead of writing D0 over and over again, we'll write led1
+	
+	/* The setup function is a standard part of any microcontroller program.
+	   It runs only once when the device boots up or is reset. */
+	
+	void setup() {
+	  pinMode(led1, OUTPUT);
+	}
+	
+	/* Next we have the loop function, the other essential part of a microcontroller program. This routine gets
+	   repeated over and over, as quickly as possible and as many times as possible, after the setup function is called.
+	
+	   Note: Code that blocks for too long (like more than 5 seconds), can make weird things happen 
+	   (like dropping the network connection). The built-in delay() function shown below safely interleaves required 
+	   background activity, so arbitrarily long delays can safely be done if you need them. */
+	
+	void loop() {  
+	  digitalWrite(led1, HIGH);  // To blink the LED, first we'll turn it on...
+	  delay(1000);               // We'll leave it on for 1 second...
+	  digitalWrite(led1, LOW);   // Then we'll turn it off...
+	  delay(1000);               // Wait 1 second...
+	  // And repeat!
+	}
 
 
 ## Language Syntax
@@ -560,16 +560,14 @@ Built-in instance **`sFLASH`**.
 
 This method erases a given sector of the external flash. The pass in parameter **`uint32_t SectorAddr`** can be any of the address as long as it is located in the sector, i.e. the sector you are going to erase is (**`SectorAddr >> 3`**). Operation to the reserved sectors makes no effect.
  
-```      
-// Erase the sector 18.
-sFLASH.eraseSector(0x12000); 
-    
-// It will also erase the sector 18.
-sFLASH.eraseSector(0x12345);
-
-// Erase the sector 103.
-sFLASH.eraseSector(0x67890);     
-```
+	// Erase the sector 18.
+	sFLASH.eraseSector(0x12000); 
+	    
+	// It will also erase the sector 18.
+	sFLASH.eraseSector(0x12345);
+	
+	// Erase the sector 103.
+	sFLASH.eraseSector(0x67890);     
 
 ##### <span id="writebuffer">`writeBuffer()`</span>   
 
@@ -583,12 +581,10 @@ It should pass in three parameters:
 
 *Note: The memory space you are going to store the data must has been well erased before, or the data you read out afterwards might not the same as you wrote.*
 
-```
-uint8_t buf[256] = { 0x55 };
-    
-// Store first 128 bytes of the buf to external flash from address 0.
-sFLASH.writeBuffer( buf, 0, 128 );
-```
+	uint8_t buf[256] = { 0x55 };
+	    
+	// Store first 128 bytes of the buf to external flash from address 0.
+	sFLASH.writeBuffer( buf, 0, 128 );
 
 ##### <span id="readbuffer">`readBuffer()`</span>
 
@@ -598,35 +594,33 @@ It should pass in three parameters:
 
 * **`uint8_t *pBuffer`** The buffer that to hold the data being read out.
 * **`uint32_t ReadAddr`** The begining address from which to read out the data.
-* **`uint32_t NumByteToRead`** The number of bytes you want to read out.
+* **`uint32_t NumByteToRead`** The number of bytes you want to read out.    
 
-```
-uint8_t buf[256];
+E.g.,
 
-// Read 128 bytes from address 0 of the external flash to the buf.    
-sFLASH.readBuffer( buf, 0, 128 );
-```
+	uint8_t buf[256];
+	
+	// Read 128 bytes from address 0 of the external flash to the buf.    
+	sFLASH.readBuffer( buf, 0, 128 );
 
 ##### <span id="selftest">`selfTest()`</span>
 
 Check if the external flash functions well or not. It returns **0** if success, otherwise return **-1**.
 
-```
-void setup() {
-  Serial.begin(115200);
-  delay(5000);
-
-  if( selfTest() == 0 ) {
-    Serial.println("The external SPI flash functions well.");
-  }
-  else {
-    Serial.print("There is something wrong with the external SPI flash!");
-  }
-}
-
-void loop() {
-}
-```
+	void setup() {
+	  Serial.begin(115200);
+	  delay(5000);
+	
+	  if( selfTest() == 0 ) {
+	    Serial.println("The external SPI flash functions well.");
+	  }
+	  else {
+	    Serial.print("There is something wrong with the external SPI flash!");
+	  }
+	}
+	
+	void loop() {
+	}
 
 ### <span id="bluetooth-low-energy-ble">Bluetooth Low Energy (BLE)</span> 
 
@@ -661,10 +655,10 @@ General methods:
 BLE Central:    
 [**`setScanParams()`**](#setscanparams)    
 [**`startScanning()`**](#startscanning)    
-[**`stopScanning()`**](#stopscanning)    
-[**`getAddrOfAdvertisement()`**](#getaddrofadvertisement)    
+[**`stopScanning()`**](#stopscanning)       
 [**`connect()`**](#connect)    
 [**`disconnect()`**](#disconnect)    
+[**`onScanReportCallback()`**](#onscanreportcallback) 
 
 BLE Peripheral:    
 [**`setLocalName()`**](#setlocalname)    
@@ -694,8 +688,7 @@ GATT Client:
 [**`writeDescriptorValue()`**](#writedescriptorvalue)    
 [**`writeLongDescriptorValue()`**](#writelongdescriptorvalue)    
 [**`writeLongDescriptorValueWithOffset()`**](#writelongdescriptorvaluewithoffset)    
-[**`writeClientCharsConfigDescriptor()`**](#writeclientcharsconfigdescriptor)    
-[**`onScanReportCallback()`**](#onscanreportcallback)    
+[**`writeClientCharsConfigDescriptor()`**](#writeclientcharsconfigdescriptor)       
 [**`onServiceDiscoveredCallback()`**](#onservicediscoveredcallback)    
 [**`onCharacteristicDiscoveredCallback()`**](#oncharacteristicdiscoveredcallback)    
 [**`onDescriptorDiscoveredCallback()`**](#ondescriptordiscoveredcallback)    
@@ -721,127 +714,104 @@ GATT Server:
 
 Enables the HCI interface between Host and Controller, as well as initialize the Controller to the default state. It will create a thread to deal with the HCI commands and events. It **MUST** be called before calling any other BLE methods.
 
-```
-// Initialize BLE HCI interface and the controller
-ble.init();
-```
+	// Initialize BLE HCI interface and the controller
+	ble.init();
 
 ##### <span id="deinit">`deInit()`</span> 
 
 Disables the BLE HCI interface and reset the controller. It will destroy the thread created by **`ble.init()`**. 
 
-```
-// Disable the BLE functionality
-ble.deInit();
-```
+	// Disable the BLE functionality
+	ble.deInit();
 
 ##### <span id="settimer">`setTimer()`</span> 
 
 Sets the timeout of a timer that is running under BTStack. It takes two parameters: **`btstack_timer_source_t`** variable and the timeout value in milliseconds.
 
-```
-// Create an one-shot BTStack timer
-btstack_timer_source_t bt_timer;
-
-// Set the timeout to 10s
-ble.setTimer(&bt_timer, 10000);
-```
+	// Create an one-shot BTStack timer
+	btstack_timer_source_t bt_timer;
+	
+	// Set the timeout to 10s
+	ble.setTimer(&bt_timer, 10000);
 
 ##### <span id="settimerhandler">`setTimerHandler()`</span> 
 
 Registers a function to be called when the BTStack timer fired. The callback function takes one parameter **`btstack_timer_source_t`** showing which timer calls the function.
 
-```
-// Create a BTStack timer
-btstack_timer_source_t bt_timer;
+	// Create a BTStack timer
+	btstack_timer_source_t bt_timer;
+	
+	// BTStack timer callback function
+	void btTimerCB(btstack_timer_source_t *ts) {
+	
+	}
+	
+	// Set the callback function for the timer
+	ble.setTimerHandler(&bt_timer, btTimerCB);
 
-// BTStack timer callback function
-void btTimerCB(btstack_timer_source_t *ts) {
+You can also set the callback function directly: 
 
-}
-
-// Set the callback function for the timer
-ble.setTimerHandler(&bt_timer, btTimerCB);
-```
-
-You can also set the callback function directly:
-
-```
-bt_timer.process = btTimerCB;
-```
+	bt_timer.process = btTimerCB;
 
 ##### <span id="addtimer">`addTimer()`</span> 
 
 Starts the created BTStack timer. The timer you are going to start is passed in as the only parameter.
 
-```
-btstack_timer_source_t bt_timer;
-
-// Callback function when the BTStack timer expired
-void characteristic_notify(btstack_timer_source_t *ts) {
-  // Notify the characteristic value to BLE central.
-
-  // Restart timer to send the next notification after 10s.
-  ble.setTimer(ts, 10000);
-  ble.addTimer(ts);
-}
-
-// Set an 10s one-shot timer
-bt_timer.process = characteristic_notify;
-ble.setTimer(&bt_timer, 10000);
-ble.addTimer(&bt_timer);
-```
+	btstack_timer_source_t bt_timer;
+	
+	// Callback function when the BTStack timer expired
+	void characteristic_notify(btstack_timer_source_t *ts) {
+	  // Notify the characteristic value to BLE central.
+	
+	  // Restart timer to send the next notification after 10s.
+	  ble.setTimer(ts, 10000);
+	  ble.addTimer(ts);
+	}
+	
+	// Set an 10s one-shot timer
+	bt_timer.process = characteristic_notify;
+	ble.setTimer(&bt_timer, 10000);
+	ble.addTimer(&bt_timer);
 
 ##### <span id="removetimer">`removeTimer()`</span> 
 
 Removes a BTStack timer. The only parameter is the timer you are going to remove.
 
-```
-// Remove a created BTStack timer
-ble.removeTimer(&bt_timer);
-```
+	// Remove a created BTStack timer
+	ble.removeTimer(&bt_timer);
 
 ##### <span id="gettimerms">`getTimeMs()`</span> 
 
 Checks how long the device has been running after power on. It returns an **`uint32_t`** value in millisecond.
 
-```
-uint32_t ms = ble.getTimerMs();
-```
+	uint32_t ms = ble.getTimerMs();
 
 ##### <span id="debuglogger">`debugLogger()`</span> 
 
 Enables or disables printing the BTStack **DEBUG** level message via the device's native USB port.
 
-```
-// Enable printing debug level message
-ble.debugLogger(true);
-
-// Disable printing debug level message
-ble.debuglogger(false);
-
-```
+	// Enable printing debug level message
+	ble.debugLogger(true);
+	
+	// Disable printing debug level message
+	ble.debuglogger(false);
 
 ##### <span id="debugerror">`debugError()`</span> 
 
 Enables or disables printing the BTStack **ERROR** level message via the device's native USB port.
 
-```
-// Enable printing error level message
-ble.debugError(true);
-
-// Disable printing error level message
-ble.debugError(false);
-```
+	// Enable printing error level message
+	ble.debugError(true);
+	
+	// Disable printing error level message
+	ble.debugError(false);
 
 ##### <span id="enablepacketlogger">`enablePacketLogger()`</span>
 
 Enables printing the raw data of all kinds of the BTStack packets via the device's native USB port.
 
-```
-// Enable printing the raw data of the BTStack packets
-ble.enablePacketLogger();
-```
+	// Enable printing the raw data of the BTStack packets
+	ble.enablePacketLogger();
 
 ##### <span id="setrandomaddrmode">`setRandomAddrMode()`</span>
 
@@ -855,16 +825,14 @@ The parameter of this function should be one of the following value:
 
 If you want to use a random device address, you should set the random device address manually using **`ble.setRandomAddr()`**. 
 
-```
-// Do not use random device address
-ble.setRandomAddrMode(GAP_RANDOM_ADDRESS_TYPE_OFF);
-
-// Use random non-resolvable device address
-ble.setRandomAddrMode(GAP_RANDOM_ADDRESS_NON_RESOLVABLE);
-
-// Use random resolvable device address
-ble.setRandomAddrMode(GAP_RANDOM_ADDRESS_RESOLVABLE);
-```
+	// Do not use random device address
+	ble.setRandomAddrMode(GAP_RANDOM_ADDRESS_TYPE_OFF);
+	
+	// Use random non-resolvable device address
+	ble.setRandomAddrMode(GAP_RANDOM_ADDRESS_NON_RESOLVABLE);
+	
+	// Use random resolvable device address
+	ble.setRandomAddrMode(GAP_RANDOM_ADDRESS_RESOLVABLE);
 
 ##### <span id="setrandomaddr">`setRandomAddr()`</span>
 
@@ -874,88 +842,133 @@ The Bluetooth device address is a **`bd_addr_t`** variable. The definition of **
 
 **`typedef uint8_t bd_addr_t[BD_ADDR_LEN];`**
 
-```
-bd_addr_t random_addr;
-
-// Procedure to generate the random device address
-
-ble.setRandomAddr(random_addr);
-```
+	bd_addr_t random_addr;
+	
+	// Procedure to generate the random device address
+	
+	ble.setRandomAddr(random_addr);
 
 ##### <span id="setpublicbdaddr">`setPublicBDAddr()`</span>
 
 Sets the bluetooth public device address. The 48-bits public device address made up of 24-bits least significant company_assigned and 24-bits most significant company_id. See Bluetooth Core Specification **[Vol 6] Part B, Section 1.3.1**.
 
-```
-bd_addr_t public_addr;
-
-// Procedure to generate the public device address
-
-ble.setRandomAddr(public_addr);
-```
+	bd_addr_t public_addr;
+	
+	// Procedure to generate the public device address
+	
+	ble.setRandomAddr(public_addr);
 
 ##### <span id="getlocalbdaddr">`getLocalBdAddr()`</span>
 
 Fetches the device own bluetooth MAC address.
 
-```
-bd_addr_t mac_addr;
-
-ble.getLocalBdAddr(mac_addr);
-```
+	bd_addr_t mac_addr;
+	
+	ble.getLocalBdAddr(mac_addr);
 
 ##### <span id="onconnectedcallback">`onConnectedCallback()`</span>
 
-Registers a function to be called when device connects to a peer BLE device successfully. The callback function should take two parameters and return nothing. One of the parameters **`BLEStatus_t`** reflects the connection status, it should be either of the following value:
+Registers a function to be called when the procedure that connecting to peer BLE device completed. 
+
+The callback function should take two parameters and return nothing. One of the parameters **`BLEStatus_t`** reflects the connection status, it should be either of the following value:
 
 * **`BLE_STATUS_CONNECTION_ERROR`**
 * **`BLE_STATUS_OK`**
 
-The another parameter is an **`uint16_t`** value assigned as the connection handle if connection established successfully. An invalid connection handle should be **0xFFFF**. E.g. **`void deviceConnectedCallback(BLEStatus_t status, uint16_t handle)`**
+The another parameter is an **`uint16_t`** handle assigned for the connection if established successfully. An invalid connection handle should be **0xFFFF**. E.g. **`void deviceConnectedCallback(BLEStatus_t status, uint16_t handle)`**
 
-```
-void deviceConnectedCallback(BLEStatus_t status, uint16_t handle) {
-  switch (status) {
-    case BLE_STATUS_OK:
-      Serial.println("Device connected!");
-      break;
-    default: break;
-  }
-}
-
-void setup() {
-  Serial.begin(115200);
-
-  ble.init();
-  ble.onConnectedCallback(deviceConnectedCallback);
-
-  // Other initialization functions
-}
-```
+	void deviceConnectedCallback(BLEStatus_t status, uint16_t handle) {
+	  switch (status) {
+	    case BLE_STATUS_OK:
+	      Serial.print("BLE device connection established! Connection handle: ");
+	      Serial.println(handle, HEX);
+	      break;
+	    default: 
+	      Serial.println("Failed to establish connection with peer device!");
+	      break;
+	  }
+	}
+	
+	void setup() {
+	  Serial.begin(115200);
+	
+	  ble.init();
+	  ble.onConnectedCallback(deviceConnectedCallback);
+	
+	  // Other initialization functions
+	}
 
 ##### <span id="ondisconnectedcallback">`onDisconnectedCallback()`</span>
 
-Register the callback function when device disconects from a remote device
+Registers a function to be called when device disconnects from peer BLE device. 
+
+The callback function takes a single **`uint16_t`**parameter and return nothing. The parameter is the connection handle indicating which connection has been disconnected. E.g. **`void deviceDisconnectedCallback(uint16_t handle)`**.
+
+	void deviceDisconnectedCallback(uint16_t handle) {
+	  Serial.print("Disconnected from peer BLE device. Connection handle: ");
+	  Serial.println(handle, HEX);
+	}
+	
+	void setup() {
+	  Serial.begin(115200);
+	
+	  ble.init();
+	  ble.onDisconnectedCallback(deviceDisconnectedCallback);
+	
+	  // Other initialization functions
+	}
 
 ##### <span id="setscanparams">`setScanParams()`</span>
 
-Set the BLE scan parameters.
+Sets the BLE scan parameters. See Bluetooth Core Specification **[Vol 2] Part E, Section 7.8.10**.
+
+This function takes the following three parameters:
+
+* ***LE\_Scan\_Type***:
+    - 0x00: Passive scanning, no scan request packets shall be sent.(default)
+    - 0x01: Active scanning, scan request packets may be sent.
+    - 0x02 - 0xFF: Reserved for future use.
+* ***LE\_Scan\_Interval***: This is defined as the time interval from when the Controller started its last LE scan until it begins the subsequent LE scan.
+    - Range: 0x0004 to 0x4000
+    - Default: 0x0010 (10 ms)
+    - Time = N * 0.625 msec
+    - Time Range: 2.5 msec to 10.24 seconds
+* ***LE\_Scan\_Window***: The duration of the LE scan. The scan window shall be less than or equal to the scan interval.
+    - Range: 0x0004 to 0x4000
+    - Default: 0x0010 (10 ms)
+    - Time = N * 0.625 msec
+    - Time Range: 2.5 msec to 10240 msec
+
+E.g.,
+
+	#define BLE_SCAN_TYPE        0x00   // Passive scanning
+	#define BLE_SCAN_INTERVAL    0x0060 // 60 ms
+	#define BLE_SCAN_WINDOW      0x0030 // 30 ms
+	
+	void setup() {
+	  ble.init();
+	
+	  // Set scan parameters.
+	  ble.setScanParams(BLE_SCAN_TYPE, BLE_SCAN_INTERVAL, BLE_SCAN_WINDOW);
+	}
 
 ##### <span id="startscanning">`startScanning()`</span>
 
-Start scanning around BLE devices.
+Starts scanning the BLE devices that is advertising around the scanner. Once the function executed, it will keep scanning until you call the [**`stopScanning()`**](#stopscannig) function to terminate the operation. The scan result will be handled in a callback function that is registered by [**`onscanreportcallback()`**](#onscanreportcallback).
+
+	// Start scanning BLE devices
+	ble.startScanning();
 
 ##### <span id="stopscanning">`stopScanning()`</span>
 
-Stop scanning around BLE devices
+Stops scanning BLE devices around the scanner.
 
-##### <span id="getaddrofadvertisement">`getAddrOfAdvertisement()`</span>
-
-Get the remote device's address in the advertisement packet.
+	// Stop scanning BLE devices
+	ble.stopScanning();
 
 ##### <span id="connect">`connect()`</span>
 
-Connect to remote BLE device.
+Initiates the connection establishment with a peer BLE device procedure.
 
 ##### <span id="disconnect">`disconnect()`</span>
 
