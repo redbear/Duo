@@ -858,63 +858,6 @@ Fetches the device own bluetooth MAC address.
 	
 	ble.getLocalBdAddr(mac_addr);
 
-##### <span id="onconnectedcallback">`onConnectedCallback()`</span>
-
-Registers a function to be called when the procedure that establishing connection to a peer device completed. 
-
-The callback function should take two parameters and return nothing. One of the parameters **`BLEStatus_t`** reflects the connection status, it should be either of the following value:
-
-* **`BLE_STATUS_CONNECTION_ERROR`**
-* **`BLE_STATUS_OK`**
-
-The another parameter is an **`uint16_t`** handle assigned for the connection if established successfully. An invalid connection handle should be **0xFFFF**. E.g. **`void deviceConnectedCallback(BLEStatus_t status, uint16_t handle)`**
-
-User should keep the connection handle in case of used for further opertions to the peer device.
-
-    static uint16_t conn_handle = 0xFFFF;
-
-	void deviceConnectedCallback(BLEStatus_t status, uint16_t handle) {
-	  switch (status) {
-	    case BLE_STATUS_OK:
-	      Serial.print("BLE device connection established! Connection handle: ");
-	      Serial.println(handle, HEX);
-          conn_handle = handle;
-	      break;
-	    default: 
-	      Serial.println("Failed to establish connection with peer device!");
-	      break;
-	  }
-	}
-	
-	void setup() {
-	  Serial.begin(115200);
-	
-	  ble.init();
-	  ble.onConnectedCallback(deviceConnectedCallback);
-	
-	  // Other initialization functions
-	}
-
-##### <span id="ondisconnectedcallback">`onDisconnectedCallback()`</span>
-
-Registers a function to be called when device disconnects from peer BLE device. 
-
-The callback function takes a single **`uint16_t`**parameter and return nothing. The parameter is the connection handle indicating which connection has been disconnected. E.g. **`void deviceDisconnectedCallback(uint16_t handle)`**.
-
-	void deviceDisconnectedCallback(uint16_t handle) {
-	  Serial.print("Disconnected from peer BLE device. Connection handle: ");
-	  Serial.println(handle, HEX);
-	}
-	
-	void setup() {
-	  Serial.begin(115200);
-	
-	  ble.init();
-	  ble.onDisconnectedCallback(deviceDisconnectedCallback);
-	
-	  // Other initialization functions
-	}
-
 ##### <span id="setscanparams">`setScanParams()`</span>
 
 Sets the BLE scan parameters. See Bluetooth Core Specification **[Vol 2] Part E, Section 7.8.10**.
@@ -956,6 +899,84 @@ Starts scanning the BLE devices that is advertising around the scanner. Once the
 	// Start scanning BLE devices
 	ble.startScanning();
 
+##### <span id="onscanreportcallback">`onScanReportCallback()`</span>
+
+Registers a function to be called when there is a new advertising packet or scan response packet from peer device is received.
+
+The callback function takes a single **`advertisementReport_t`** parameter and returns nothing, e.g. **`void reportCallback(advertisementReport_t *report)`**. 
+
+The **`advertisementReport_t`** is defined as:
+
+	typedef struct{
+      uint8_t   peerAddrType;
+      bd_addr_t peerAddr;
+      int       rssi;
+      uint8_t   advEventType;
+      uint8_t   advDataLen;
+      uint8_t   advData[31];
+	} advertisementReport_t;
+
+The **`peerAddrType`** should be one of the following value:
+
+* **`BD_ADDR_TYPE_LE_PUBLIC`**
+* **`BD_ADDR_TYPE_LE_RANDOM`**
+
+The **`advEventType`** should be one of the following value:
+
+* **`0x00`**: Connectable undirected advertising
+* **`0x01`**: Connectable directed advertising
+* **`0x02`**: Scannable undirected advertising
+* **`0x03`**: Non connectable undirected advertising
+* **`0x04`**: Scan Response
+
+For example:
+
+	static void bleScanCallback(advertisementReport_t *report) {
+	  uint8_t index;
+	
+	  Serial.println("BLE scan callback: ");
+	
+	  Serial.print("Advertising event type: ");
+	  Serial.println(report->advEventType, HEX);
+	
+	  Serial.print("Peer device address type: ");
+	  Serial.println(report->peerAddrType, HEX);
+	
+	  Serial.print("Peer device address: ");
+	  for (index = 0; index < 6; index++) {
+	    Serial.print(report->peerAddr[index], HEX);
+	    Serial.print(" ");
+	  }
+	  Serial.println(" ");
+	
+	  Serial.print("RSSI: ");
+	  Serial.println(report->rssi, DEC);
+	
+	  Serial.print("Advertising/Scan response data packet: ");
+	  for (index = 0; index < report->advDataLen; index++) {
+	    Serial.print(report->advData[index], HEX);
+	    Serial.print(" ");
+	  }
+	  Serial.println(" ");
+	  Serial.println(" ");
+	}
+
+	void setup() {
+	  Serial.begin(115200);
+	  delay(5000);
+	
+	  ble.init();
+	    
+	  // Register callback functions.
+	  ble.onScanReportCallback(bleScanCallback);
+	
+	  // Set scan parameters.
+	  ble.setScanParams(0, 0x0030, 0x0030);
+	
+	  // Start scanning.
+	  ble.startScanning();
+	}
+
 ##### <span id="stopscanning">`stopScanning()`</span>
 
 Stops scanning BLE devices around the scanner.
@@ -965,28 +986,11 @@ Stops scanning BLE devices around the scanner.
 
 ##### <span id="connect">`connect()`</span>
 
-Initiates establishing the connection to a peer BLE device. It takes two parameters: the peer device address and the peer device address type. The value of both parameters can be obtained by parsing the peer device's advertising packet in the BLE scan callback function.
+Initiates establishing the connection to a peer device. It takes two parameters: the peer device address and the peer device address type. The value of both parameters can be obtained by parsing the peer device's advertising packet in the BLE scan callback function.
 
 A callback function registered by [**`ble.onConnectedCallback()`**](#onconnectedcallback) will be called once the connection establishment procedure completed.
 
-	void bleScanCallback(advertisementReport_t *report) {
-	  uint8_t index;
-
-	  Serial.print("Peer device address type: ");
-      if(report->peerAddrType == BD_ADDR_TYPE_LE_PUBLIC)
-	    Serial.println("Public.");
-      else if(report->peerAddrType == BD_ADDR_TYPE_LE_RANDOM)
-        Serial.println("Random");
-      else
-        return;
-
-	  Serial.print("Peer device address: ");
-	  for (index = 0; index < 6; index++) {
-	    Serial.print(report->peerAddr[index], HEX);
-	    Serial.print(" ");
-	  }
-	  Serial.println(" ");
-	
+	static void bleScanCallback(advertisementReport_t *report) {
 	  ble.stopScanning();
 	
 	  ble.connect(report->peerAddr, report->peerAddrType);
@@ -1008,6 +1012,43 @@ A callback function registered by [**`ble.onConnectedCallback()`**](#onconnected
 	  ble.startScanning();
 	}
 
+##### <span id="onconnectedcallback">`onConnectedCallback()`</span>
+
+Registers a function to be called when the procedure that establishing connection to a peer device completed. 
+
+The callback function should take two parameters and returns nothing. One of the parameters **`BLEStatus_t`** reflects the connection status, it should be either of the following value:
+
+* **`BLE_STATUS_CONNECTION_ERROR`**
+* **`BLE_STATUS_OK`**
+
+The another parameter is an **`uint16_t`** handle assigned for the connection if established successfully. An invalid connection handle should be **0xFFFF**. E.g. **`void deviceConnectedCallback(BLEStatus_t status, uint16_t handle)`**
+
+User should keep the connection handle in case of used for further opertions to the peer device.
+
+    static uint16_t conn_handle = 0xFFFF;
+
+	static void deviceConnectedCallback(BLEStatus_t status, uint16_t handle) {
+	  switch (status) {
+	    case BLE_STATUS_OK:
+	      Serial.print("BLE device connection established! Connection handle: ");
+	      Serial.println(handle, HEX);
+          conn_handle = handle;
+	      break;
+	    default: 
+	      Serial.println("Failed to establish connection with peer device!");
+	      break;
+	  }
+	}
+	
+	void setup() {
+	  Serial.begin(115200);
+	
+	  ble.init();
+	  ble.onConnectedCallback(deviceConnectedCallback);
+	
+	  // Other initialization functions
+	}
+
 ##### <span id="disconnect">`disconnect()`</span>
 
 Disconnects from the peer device that is connected through [**`ble.connect()`**](#connect). It takes a single parameter - the connection handle that is assigned when connection established before.
@@ -1017,6 +1058,29 @@ A callback function registered by [**`ble.onDisconnectedCallback()`**](#ondiscon
 	static uint16_t conn_handle; // Can be obtained in the connected callback function
 
 	ble.disconnect(conn_handle);
+
+##### <span id="ondisconnectedcallback">`onDisconnectedCallback()`</span>
+
+Registers a function to be called when device disconnects from peer device. 
+
+The callback function takes a single **`uint16_t`**parameter and returns nothing. The parameter is the connection handle indicating which connection has been disconnected. E.g. **`void deviceDisconnectedCallback(uint16_t handle)`**.
+
+	static uint16_t conn_handle = 0xFFFF;
+
+	static void deviceDisconnectedCallback(uint16_t handle) {
+	  Serial.print("Disconnected from peer BLE device. Connection handle: ");
+	  Serial.println(handle, HEX);
+	  conn_handle = 0xFFFF;
+	}
+	
+	void setup() {
+	  Serial.begin(115200);
+	
+	  ble.init();
+	  ble.onDisconnectedCallback(deviceDisconnectedCallback);
+	
+	  // Other initialization functions
+	}
 
 ##### <span id="discoverprimaryservices">`discoverPrimaryServices()`</span>
 
@@ -1038,6 +1102,54 @@ The connection handle should be passed in as the essential parameter. Other para
 
 	// Discovers only the primary service which UUID matches the given 128-bits service UUID
 	ble.discoverPrimaryServices(conn_handle, service_uuid_128);
+
+##### <span id="onservicediscoveredcallback">`onServiceDiscoveredCallback()`</span>
+
+Registers a function to be called when a new service being discovered.
+
+The callback function takes three parameters and returns nothing:
+
+* **`BLEStatus_t`** BLE status, which should be one of the following:
+    - **`BLE_STATUS_OK`**
+    - **`BLE_STATUS_DONE`**
+    - **`BLE_STATUS_CONNECTION_TIMEOUT`**
+    - **`BLE_STATUS_CONNECTION_ERROR`**
+    - **`BLE_STATUS_OTHER_ERROR`**
+* **`uint16_t`** The connection handle
+* **`gatt_client_service_t`** The discovered service
+
+E.g. **`void serviceDiscoveredCallback(BLEStatus_t status, uint16_t conn_handle, gatt_client_service_t *service)`**
+
+	static gatt_client_service_t discovered_service;
+
+	static void serviceDiscoveredCallback(BLEStatus_t status, uint16_t conn_handle, gatt_client_service_t *service) {
+	  uint8_t index;
+	  if (status == BLE_STATUS_OK) {   // Found a service.
+	    Serial.println(" ");
+	    Serial.print("Service start handle: ");
+	    Serial.println(service->start_group_handle, HEX);
+
+	    Serial.print("Service end handle: ");
+	    Serial.println(service->end_group_handle, HEX);
+
+	    Serial.print("16-bits service UUID: ");
+	    Serial.println(service->uuid16, HEX);
+
+	    Serial.print("128-bits service UUID: ");
+	    for (index = 0; index < 16; index++) {
+	      Serial.print(service->uuid128[index], HEX);
+	      Serial.print(" ");
+	    }
+	    Serial.println(" ");
+
+	    discovered_service[service_index++] = *service;
+	  }
+	  else if (status == BLE_STATUS_DONE) {
+	    Serial.println("Discovers service completed");
+
+	    // Discovers other services or start to discover characteristics under the service.
+	  }
+	}
 
 ##### <span id="discovercharacteristics">`discoverCharacteristics()`</span>
 
@@ -1078,6 +1190,60 @@ The connection handle should be passed in as the essential parameter. Other para
 	// Discovers only the characteristic which UUID matches the given 128-bits characteristic UUID under the specified service
 	ble.discoverCharacteristics(conn_handle, &service, char_uuid_128);
 
+##### <span id="oncharacteristicdiscoveredcallback">`onCharacteristicDiscoveredCallback()`</span>
+
+Registers a function to be called when a new characteristic being discovered.
+
+The callback function takes three parameters and returns nothing:
+
+* **`BLEStatus_t`** BLE status, which should be one of the following:
+    - **`BLE_STATUS_OK`**
+    - **`BLE_STATUS_DONE`**
+    - **`BLE_STATUS_CONNECTION_TIMEOUT`**
+    - **`BLE_STATUS_CONNECTION_ERROR`**
+    - **`BLE_STATUS_OTHER_ERROR`**
+* **`uint16_t`** The connection handle
+* **`gatt_client_characteristic_t`** The discovered characteristic
+
+E.g. **`void charsDiscoveredCallback(BLEStatus_t status, uint16_t con_handle, gatt_client_characteristic_t *characteristic)`**
+
+	static gatt_client_characteristic_t discovered_char;
+
+	static void charsDiscoveredCallback(BLEStatus_t status, uint16_t conn_handle, gatt_client_characteristic_t *characteristic) {
+	  uint8_t index;
+	  if (status == BLE_STATUS_OK) {   // Found a characteristic.
+	    Serial.println(" ");
+	    Serial.print("Characteristic start handle: ");
+	    Serial.println(characteristic->start_handle, HEX);
+
+	    Serial.print("Characteristic value handle: ");
+	    Serial.println(characteristic->value_handle, HEX);
+
+	    Serial.print("Characteristic end_handle: ");
+	    Serial.println(characteristic->end_handle, HEX);
+
+	    Serial.print("Characteristic properties: ");
+	    Serial.println(characteristic->properties, HEX);
+
+	    Serial.print("16-bits characteristic UUID: ");
+	    Serial.println(characteristic->uuid16, HEX);
+
+	    Serial.print("128-bits characteristic UUID: ");
+	    for (index = 0; index < 16; index++) {
+	      Serial.print(characteristic->uuid128[index], HEX);
+	      Serial.print(" ");
+	    }
+	    Serial.println(" ");
+
+	    discovered_char = *characteristic;
+	  }
+	  else if (status == BLE_STATUS_DONE) {
+	    Serial.println("Discovers characteristic completed.");
+
+	    // Discover other characteristics or start to discover descriptors.
+	  }
+	}
+
 ##### <span id="discovercharacteristicdescriptors">`discoverCharacteristicDescriptors()`</span>
 
 Discovers the descriptor of the specified characteristic. Only if the peer device is connected and the characteristic discovery procedure (initiated by [**`ble.discoverCharacteristics()`**](#discovercharacteristics)) has been completed, then you can discover its descriptor.
@@ -1094,9 +1260,55 @@ The connection handle should be passed in as the essential parameter. The anothe
 
 	ble.discoverCharacteristicDescriptors(conn_handle,  &characteristic);
 
+##### <span id="ondescriptordiscoveredcallback">`onDescriptorDiscoveredCallback()`</span>
+
+Registers a function to be called when a new descriptor being discovered.
+
+The callback function takes three parameters and returns nothing:
+
+* **`BLEStatus_t`** BLE status, which should be one of the following:
+    - **`BLE_STATUS_OK`**
+    - **`BLE_STATUS_DONE`**
+    - **`BLE_STATUS_CONNECTION_TIMEOUT`**
+    - **`BLE_STATUS_CONNECTION_ERROR`**
+    - **`BLE_STATUS_OTHER_ERROR`**
+* **`uint16_t`** The connection handle
+* **`gatt_client_characteristic_t`** The discovered descriptor
+
+E.g. **`void discoveredCharsDescriptorsCallback(BLEStatus_t status, uint16_t con_handle, gatt_client_characteristic_descriptor_t *descriptor)`**
+
+	static gatt_client_characteristic_descriptor_t char_descriptor;
+
+	static void discoveredCharsDescriptorsCallback(BLEStatus_t status, uint16_t con_handle, gatt_client_characteristic_descriptor_t *descriptor) {
+	  uint8_t index;
+	  if (status == BLE_STATUS_OK) {   // Found a descriptor.
+	    Serial.println(" ");
+	    Serial.print("Descriptor handle: ");
+	    Serial.println(descriptor->handle, HEX);
+
+	    Serial.print("16-bits descriptor UUID: ");
+	    Serial.println(descriptor->uuid16, HEX);
+
+	    Serial.print("128-bits descriptor UUID: ");
+	    for (index = 0; index < 16; index++) {
+	      Serial.print(descriptor->uuid128[index], HEX);
+	      Serial.print(" ");
+	    }
+	    Serial.println(" ");
+
+	    char_descriptor = *descriptor;
+	  }
+	  else if (status == BLE_STATUS_DONE) {
+	    // finish.
+	    Serial.println("Discovers descriptor completed");
+	    
+	    // Discover other characteristics' descriptor
+	  }
+	}
+
 ##### <span id="readvalue">`readValue()`</span>
 
-Reads specified characteristic value on peer device. Only if the peer device is connected and the characteristic discovery procedure (initiated by [**`ble.discoverCharacteristics()`**](#discovercharacteristics)) has been completed, then you can read a characteristic value if it is presented.
+Reads specified characteristic value on peer device. Only if the peer device is connected and the characteristic discovery procedure (initiated by [**`ble.discoverCharacteristics()`**](#discovercharacteristics)) has been completed, then you can read a characteristic value if the characteristic has **READ** property.
 
 A callback function registered by [**`ble.onGattCharacteristicReadCallback()`**](#ongattcharacteristicreadcallback) will be called once the reading value operation completed.
 
@@ -1130,9 +1342,13 @@ The connection handle should be passed in as the essential parameter. The charac
 	// Read according to the 128-bits characteristic UUID and the characteristic attribute handle range
 	ble.readValue(conn_handle, start_handle, end_handle, *uuid128);
 
+##### <span id="ongattcharacteristicreadcallback">`onGattCharacteristicReadCallback()`</span>
+
+Register the callback function when a reading characteristic value operation completed.
+
 ##### <span id="writevaluewithoutresponse">`writeValueWithoutResponse()`</span>
 
-Writes specified characteristic value on peer device **without** response. Only if the peer device is connected and the characteristic discovery procedure (initiated by [**`ble.discoverCharacteristics()`**](#discovercharacteristics)) has been completed, then you can write a characteristic value if it is presented.
+Writes specified characteristic value on peer device without response. Only if the peer device is connected and the characteristic discovery procedure (initiated by [**`ble.discoverCharacteristics()`**](#discovercharacteristics)) has been completed, then you can write a characteristic value if the characteristic has **WRITE\_WITHOUT\_RESPOND** property.
 
 Since this kind of writing operation has no response from peer device, it doesn't ensure that the data is sent to the peer device successfully, but in return, it can send more data in per unit time.
 
@@ -1150,7 +1366,7 @@ It takes four parameters: the connection handle, the value attribute handle, the
 
 ##### <span id="writevalue">`writeValue()`</span>
 
-Writes specified characteristic value on peer device **with** response. Only if the peer device is connected and the characteristic discovery procedure (initiated by [**`ble.discoverCharacteristics()`**](#discovercharacteristics)) has been completed, then you can write a characteristic value if it is presented.
+Writes specified characteristic value on peer device with response. Only if the peer device is connected and the characteristic discovery procedure (initiated by [**`ble.discoverCharacteristics()`**](#discovercharacteristics)) has been completed, then you can write a characteristic value if the characteristic has **WRITE** property.
 
 A callback function registered by [**`ble.onGattCharacteristicWrittenCallback()`**](#ongattcharacteristicwrittencallback) will be called once the writing value operation completed.
 
@@ -1212,27 +1428,32 @@ The connection handle should be passed in as the essential parameter. The rest t
 
 ##### <span id="writeclientcharsconfigdescriptor">`writeClientCharsConfigDescriptor()`</span>
 
-Write remote device's Client Characteristic Configuration Descriptor (CCCD) value.
+Write specified characteristic's Client Characteristic Configuration Descriptor (CCCD) value. Only if the peer device is connected and the characteristic discovery procedure (initiated by [**`ble.discoverCharacteristics()`**](#discovercharacteristics)) has been completed, then you can write a characteristic's CCCD if the characteristic has **NOTIFY** or **INDICATE** property. If you want to receive the notification or indication the characteristic, you have to write its CCCD to enable the ability first.
 
-##### <span id="onscanreportcallback">`onScanReportCallback()`</span>
+A callback function registered by [**`ble.onGattWriteClientCharacteristicConfigCallback()`**](#ongattwriteclientcharacteristicconfigcallback) will be called once the writing CCCD operation completed.
 
-Registers a function to be called when new BLE device found.
+The connection handle should be passed in as the essential parameter. The second parameter is the characteristic which has NOTIFY or INDICATE property. The third parameter is the CCCD value, which to enable/disable the notification or indication. It should be one of the following value:
 
-##### <span id="onservicediscoveredcallback">`onServiceDiscoveredCallback()`</span>
+* **`GATT_CLIENT_CHARACTERISTICS_CONFIGURATION_NONE`** - Disable notification and indication
+* **`GATT_CLIENT_CHARACTERISTICS_CONFIGURATION_NOTIFICATION`** - Enable notification
+* **`GATT_CLIENT_CHARACTERISTICS_CONFIGURATION_INDICATION`** - Enable indication
 
-Register the callback function when new service being discovered.
+If the peer device characteristic has the NOTIFY property, then you should use **`GATT_CLIENT_CHARACTERISTICS_CONFIGURATION_NOTIFICATION`** to enable notification. If the peer device characteristic has the INDICATE property, then you should use **`GATT_CLIENT_CHARACTERISTICS_CONFIGURATION_INDICATION`** to enable indication.
 
-##### <span id="oncharacteristicdiscoveredcallback">`onCharacteristicDiscoveredCallback()`</span>
+	// The connection handle can be obtained in the connected callback function
+	static uint16_t conn_handle;
 
-Register the callback function when new characteristic being discovered.
+	// The characteristic can be obtained in the characteristic discovered callback function
+	static gatt_client_characteristic_t characteristic; 
 
-##### <span id="ondescriptordiscoveredcallback">`onDescriptorDiscoveredCallback()`</span>
+	// Disable the characteristic notification and indication
+	writeClientCharsConfigDescritpor(conn_handle, &characteristic, GATT_CLIENT_CHARACTERISTICS_CONFIGURATION_NONE);
 
-Register the callback function when new descriptor being discovered.
+	// Enable the characteristic notification
+	writeClientCharsConfigDescritpor(conn_handle, &characteristic, GATT_CLIENT_CHARACTERISTICS_CONFIGURATION_NOTIFICATION);
 
-##### <span id="ongattcharacteristicreadcallback">`onGattCharacteristicReadCallback()`</span>
-
-Register the callback function when a reading characteristic value operation completed.
+	// Enable the characteristic indication
+	writeClientCharsConfigDescritpor(conn_handle, &characteristic, GATT_CLIENT_CHARACTERISTICS_CONFIGURATION_INDICATION);
 
 ##### <span id="ongattcharacteristicwrittencallback">`onGattCharacteristicWrittenCallback()`</span>
 
