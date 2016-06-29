@@ -1022,39 +1022,121 @@ Disconnects from the peer device that is connected through [**`ble.connect()`**]
 
 A callback function registered by [**`ble.onDisconnectedCallback()`**](#ondisconnectedcallback) will be called once the connection disconnected.
 
+	static uint16_t conn_handle; // Can be obtained in the connected callback function
+
 	ble.disconnect(conn_handle);
 
 ##### <span id="discoverprimaryservices">`discoverPrimaryServices()`</span>
 
-Discovers the primary services on the peer device GATT server. Only the peer device that is connected then you can discover its primary services. 
+Discovers the primary services on the peer device GATT server. Only if the peer device that is connected then you can discover its primary services. 
 
-The connection handle should be passed in as the essential parameter. You can discover all the primary services on the GATT server or, just discover the primary service specified by 16-bits or 128-bits service UUID. It returns an **`uint8_t`** value which indicates the result of the discovery operation - **0** for success, others for failure.
+A callback function registered by [**`ble.onServiceDiscoveredCallback()`**](#onservicediscoveredcallback) will be called once a primary service on the GATT server being discovered.
 
-A callback function registered by [**`ble.onServiceDiscoveredCallback()`**](#onservicediscoveredcallback) will called once a primary service is discovered on the GATT server of peer device.
+The connection handle should be passed in as the essential parameter. Other parameters determine the way you discovering primary services. It returns an **`uint8_t`** value which indicates the result of the discovery operation - **0** for success, others for failure.
 
+	static uint16_t conn_handle; // Can be obtained in the connected callback function
 	static uint16_t service_uuid_16 = 0x1234;
 	static const uin8_t service_uuid_128[16] = {0x12, 0x34, ..., 0xEE, 0xFF};
 
-    // Discovers all primary services
+	// Discovers all primary services on the GATT server
 	ble.discoverPrimaryServices(con_handle);
 
-	// Discovers only the primary service which UUID matches the given 16-bits UUID
+	// Discovers only the primary service which UUID matches the given 16-bits service UUID
 	ble.discoverPrimaryServices(con_handle, service_uuid_16);
 
-	// Discovers only the primary service which UUID matches the given 128-bits UUID
-	ble.discoverPrimaryServices(uint16_t con_handle, service_uuid_128);
+	// Discovers only the primary service which UUID matches the given 128-bits service UUID
+	ble.discoverPrimaryServices(con_handle, service_uuid_128);
 
 ##### <span id="discovercharacteristics">`discoverCharacteristics()`</span>
 
-Discovery the characteristics in the remote BLE device.
+Discovers the characteristics on the peer device GATT server. Only if the peer device that is connected and the service discovery procedure (initiated by [**`ble.discoverPrimaryServices()`**](#discoverprimaryservices)) has been completed, then you can discover its characteristics.
+
+A callback function registered by [**`ble.onCharacteristicDiscoveredCallback()`**](#oncharacteristicdiscoveredcallback) will be called once a characteristic on the GATT server being discovered.
+
+The connection handle should be passed in as the essential parameter. Other parameters determine the way you discovering characteristics. It returns an **`uint8_t`** value which indicates the result of the discovery operation - **0** for success, others for failure.
+
+	// The connection handle can be obtained in the connected callback function
+	static uint16_t conn_handle; 
+
+	// The service can be obtained in the service discovered callback function
+	static gatt_client_service_t service; 
+
+	// A valid attribute handle should range from 0x0001 to 0xFFFF.
+	// The service start/end attribute handle can be obtained in the service discovered callback function
+	static uint16_t service_start_handle; 
+	static uint16_t service_end_handle;
+
+	static uint16_t char_uuid_16 = 0x1234; 
+	static uint8_t char_uuid_128[16] = {0x12, 0x34, ... , 0xEE, 0xFF};
+
+	// Discovers all characteristics under a service
+	ble.discoverCharacteristics(con_handle, &service);
+
+	// Discovers only the characteristic which UUID matches the given 16-bits characteristic UUID
+	// and which attribute handle is in the given service attribute handle range as well
+	ble.discoverCharacteristics(con_handle, service_start_handle, service_end_handle, char_uuid_16);
+	
+	// Discovers only the characteristic which UUID matches the given 128-bits characteristic UUID 
+	// and which attribute handle is in the given service attribute handle range as well
+	ble.discoverCharacteristics(con_handle, service_start_handle, service_end_handle, char_uuid_128);
+	
+	// Discovers only the characteristic which UUID matches the given 16-bits characteristic UUID under the specified service
+	ble.discoverCharacteristics(con_handle, &service, char_uuid_16);
+	
+	// Discovers only the characteristic which UUID matches the given 128-bits characteristic UUID under the specified service
+	ble.discoverCharacteristics(con_handle, &service, char_uuid_128);
 
 ##### <span id="discovercharacteristicdescriptors">`discoverCharacteristicDescriptors()`</span>
 
-Discovery the characteristic descriptors in the remote device.
+Discovers the descriptor of the specified characteristic. Only if the peer device that is connected and the characteristic discovery procedure (initiated by [**`ble.discoverCharacteristics()`**](#discovercharacteristics)) has been completed, then you can discover its descriptor.
+
+A callback function registered by [**`ble.onDescriptorDiscoveredCallback()`**](#ondescriptordiscoveredcallback) will called once the descriptor under a characteristic being discovered.
+
+The connection handle should be passed in as the essential parameter. The another parameter is the characteristic, the descriptor of which you are going to discover. It returns an **`uint8_t`** value which indicates the result of the discovery operation - **0** for success, others for failure.
+
+	// The connection handle can be obtained in the connected callback function
+	static uint16_t conn_handle; 
+
+	// The characteristic can be obtained in the characteristic discovered callback function
+	static gatt_client_characteristic_t characteristic; 
+
+	ble.discoverCharacteristicDescriptors(conn_handle,  &characteristic);
 
 ##### <span id="readvalue">`readValue()`</span>
 
-Read the remote device's characteristic value.
+Reads specified characteristic value. Only if the peer device that is connected and the characteristic discovery procedure (initiated by [**`ble.discoverCharacteristics()`**](#discovercharacteristics)) has been completed, then you can read characteristic value.
+
+A callback function registered by [**`ble.onGattCharacteristicReadCallback()`**](#ongattcharacteristicreadcallback) will called once the descriptor under a characteristic being discovered.
+
+The connection handle should be passed in as the essential parameter. The characteristic which value you are going to read can be specified by other different parameters. It returns an **`uint8_t`** value which indicates the result of the read operation - **0** for success, others for failure.
+
+	// The connection handle can be obtained in the connected callback function
+	static uint16_t conn_handle; 
+
+	// The characteristic can be obtained in the characteristic discovered callback function
+	static gatt_client_characteristic_t characteristic;
+
+	// The characteristic value attribute handle can be obtained in the characteristic discovered callback function
+	static uint16_t char_value_handle;
+
+	// The characteristic start/end attribute handle can be obtained in the characteristic discovered callback function
+	static uint16_t char_start_handle;
+	static uint16_t char_end_handle;
+
+	static uint16_t char_uuid_16 = 0x1234; 
+	static uint8_t char_uuid_128[16] = {0x12, 0x34, ... , 0xEE, 0xFF};
+
+	// Read according to the characteristic
+	ble.readValue(con_handle, &characteristic);
+	
+	// Read according to the value attribute handle
+	ble.readValue(con_handle, characteristic_value_handle);
+	
+	// Read according to the 16-bits characteristic UUID and the characteristic attribute handle range
+	ble.readValue(con_handle, start_handle, end_handle, uuid16);
+	
+	// Read according to the 128-bits characteristic UUID and the characteristic attribute handle range
+	ble.readValue(con_handle, start_handle, end_handle, *uuid128);
 
 ##### <span id="readlongvalue">`readLongValue()`</span>
 
