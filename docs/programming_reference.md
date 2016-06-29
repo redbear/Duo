@@ -676,18 +676,10 @@ GATT Client:
 [**`discoverCharacteristics()`**](#discovercharacteristics)    
 [**`discoverCharacteristicDescriptors()`**](#discovercharacteristicdescriptors)    
 [**`readValue()`**](#readvalue)    
-[**`readLongValue()`**](#readlongvalue)    
-[**`readLongValueWithOffset()`**](#readlongvaluewithoffset)    
 [**`writeValueWithoutResponse()`**](#writevaluewithoutresponse)    
-[**`writeValue()`**](#writevalue)    
-[**`writeLongValue()`**](#writelongvalue)    
-[**`writeLongValueWithOffset()`**](#writelongvaluewithoffset)    
-[**`readDescriptorValue()`**](#readdescriptorvalue)    
-[**`readLongDescriptorValue()`**](#readlongdescriptorvalue)    
-[**`readLongDescriptorValueWithOffset()`**](#readlongdescriptorvaluewithoffset)    
-[**`writeDescriptorValue()`**](#writedescriptorvalue)    
-[**`writeLongDescriptorValue()`**](#writelongdescriptorvalue)    
-[**`writeLongDescriptorValueWithOffset()`**](#writelongdescriptorvaluewithoffset)    
+[**`writeValue()`**](#writevalue)     
+[**`readDescriptorValue()`**](#readdescriptorvalue)     
+[**`writeDescriptorValue()`**](#writedescriptorvalue)      
 [**`writeClientCharsConfigDescriptor()`**](#writeclientcharsconfigdescriptor)       
 [**`onServiceDiscoveredCallback()`**](#onservicediscoveredcallback)    
 [**`onCharacteristicDiscoveredCallback()`**](#oncharacteristicdiscoveredcallback)    
@@ -1028,7 +1020,7 @@ A callback function registered by [**`ble.onDisconnectedCallback()`**](#ondiscon
 
 ##### <span id="discoverprimaryservices">`discoverPrimaryServices()`</span>
 
-Discovers the primary services on the peer device GATT server. Only if the peer device that is connected then you can discover its primary services. 
+Discovers the primary services on the peer device GATT server. Only if the peer device is connected then you can discover its primary services. 
 
 A callback function registered by [**`ble.onServiceDiscoveredCallback()`**](#onservicediscoveredcallback) will be called once a primary service on the GATT server being discovered.
 
@@ -1039,17 +1031,17 @@ The connection handle should be passed in as the essential parameter. Other para
 	static const uin8_t service_uuid_128[16] = {0x12, 0x34, ..., 0xEE, 0xFF};
 
 	// Discovers all primary services on the GATT server
-	ble.discoverPrimaryServices(con_handle);
+	ble.discoverPrimaryServices(conn_handle);
 
 	// Discovers only the primary service which UUID matches the given 16-bits service UUID
-	ble.discoverPrimaryServices(con_handle, service_uuid_16);
+	ble.discoverPrimaryServices(conn_handle, service_uuid_16);
 
 	// Discovers only the primary service which UUID matches the given 128-bits service UUID
-	ble.discoverPrimaryServices(con_handle, service_uuid_128);
+	ble.discoverPrimaryServices(conn_handle, service_uuid_128);
 
 ##### <span id="discovercharacteristics">`discoverCharacteristics()`</span>
 
-Discovers the characteristics on the peer device GATT server. Only if the peer device that is connected and the service discovery procedure (initiated by [**`ble.discoverPrimaryServices()`**](#discoverprimaryservices)) has been completed, then you can discover its characteristics.
+Discovers the characteristics on the peer device GATT server. Only if the peer device is connected and the service discovery procedure (initiated by [**`ble.discoverPrimaryServices()`**](#discoverprimaryservices)) has been completed, then you can discover its characteristics.
 
 A callback function registered by [**`ble.onCharacteristicDiscoveredCallback()`**](#oncharacteristicdiscoveredcallback) will be called once a characteristic on the GATT server being discovered.
 
@@ -1070,27 +1062,27 @@ The connection handle should be passed in as the essential parameter. Other para
 	static uint8_t char_uuid_128[16] = {0x12, 0x34, ... , 0xEE, 0xFF};
 
 	// Discovers all characteristics under a service
-	ble.discoverCharacteristics(con_handle, &service);
+	ble.discoverCharacteristics(conn_handle, &service);
 
 	// Discovers only the characteristic which UUID matches the given 16-bits characteristic UUID
 	// and which attribute handle is in the given service attribute handle range as well
-	ble.discoverCharacteristics(con_handle, service_start_handle, service_end_handle, char_uuid_16);
+	ble.discoverCharacteristics(conn_handle, service_start_handle, service_end_handle, char_uuid_16);
 	
 	// Discovers only the characteristic which UUID matches the given 128-bits characteristic UUID 
 	// and which attribute handle is in the given service attribute handle range as well
-	ble.discoverCharacteristics(con_handle, service_start_handle, service_end_handle, char_uuid_128);
+	ble.discoverCharacteristics(conn_handle, service_start_handle, service_end_handle, char_uuid_128);
 	
 	// Discovers only the characteristic which UUID matches the given 16-bits characteristic UUID under the specified service
-	ble.discoverCharacteristics(con_handle, &service, char_uuid_16);
+	ble.discoverCharacteristics(conn_handle, &service, char_uuid_16);
 	
 	// Discovers only the characteristic which UUID matches the given 128-bits characteristic UUID under the specified service
-	ble.discoverCharacteristics(con_handle, &service, char_uuid_128);
+	ble.discoverCharacteristics(conn_handle, &service, char_uuid_128);
 
 ##### <span id="discovercharacteristicdescriptors">`discoverCharacteristicDescriptors()`</span>
 
-Discovers the descriptor of the specified characteristic. Only if the peer device that is connected and the characteristic discovery procedure (initiated by [**`ble.discoverCharacteristics()`**](#discovercharacteristics)) has been completed, then you can discover its descriptor.
+Discovers the descriptor of the specified characteristic. Only if the peer device is connected and the characteristic discovery procedure (initiated by [**`ble.discoverCharacteristics()`**](#discovercharacteristics)) has been completed, then you can discover its descriptor.
 
-A callback function registered by [**`ble.onDescriptorDiscoveredCallback()`**](#ondescriptordiscoveredcallback) will called once the descriptor under a characteristic being discovered.
+A callback function registered by [**`ble.onDescriptorDiscoveredCallback()`**](#ondescriptordiscoveredcallback) will be called once the descriptor under a characteristic being discovered.
 
 The connection handle should be passed in as the essential parameter. The another parameter is the characteristic, the descriptor of which you are going to discover. It returns an **`uint8_t`** value which indicates the result of the discovery operation - **0** for success, others for failure.
 
@@ -1104,11 +1096,11 @@ The connection handle should be passed in as the essential parameter. The anothe
 
 ##### <span id="readvalue">`readValue()`</span>
 
-Reads specified characteristic value. Only if the peer device that is connected and the characteristic discovery procedure (initiated by [**`ble.discoverCharacteristics()`**](#discovercharacteristics)) has been completed, then you can read characteristic value.
+Reads specified characteristic value on peer device. Only if the peer device is connected and the characteristic discovery procedure (initiated by [**`ble.discoverCharacteristics()`**](#discovercharacteristics)) has been completed, then you can read a characteristic value if it is presented.
 
-A callback function registered by [**`ble.onGattCharacteristicReadCallback()`**](#ongattcharacteristicreadcallback) will called once the descriptor under a characteristic being discovered.
+A callback function registered by [**`ble.onGattCharacteristicReadCallback()`**](#ongattcharacteristicreadcallback) will be called once the reading value operation completed.
 
-The connection handle should be passed in as the essential parameter. The characteristic which value you are going to read can be specified by other different parameters. It returns an **`uint8_t`** value which indicates the result of the read operation - **0** for success, others for failure.
+The connection handle should be passed in as the essential parameter. The characteristic which value you are going to read can be specified by other different parameters. It returns an **`uint8_t`** value which indicates the result of the reading operation - **0** for success, others for failure.
 
 	// The connection handle can be obtained in the connected callback function
 	static uint16_t conn_handle; 
@@ -1127,64 +1119,96 @@ The connection handle should be passed in as the essential parameter. The charac
 	static uint8_t char_uuid_128[16] = {0x12, 0x34, ... , 0xEE, 0xFF};
 
 	// Read according to the characteristic
-	ble.readValue(con_handle, &characteristic);
+	ble.readValue(conn_handle, &characteristic);
 	
 	// Read according to the value attribute handle
-	ble.readValue(con_handle, characteristic_value_handle);
+	ble.readValue(conn_handle, characteristic_value_handle);
 	
 	// Read according to the 16-bits characteristic UUID and the characteristic attribute handle range
-	ble.readValue(con_handle, start_handle, end_handle, uuid16);
+	ble.readValue(conn_handle, start_handle, end_handle, uuid16);
 	
 	// Read according to the 128-bits characteristic UUID and the characteristic attribute handle range
-	ble.readValue(con_handle, start_handle, end_handle, *uuid128);
-
-##### <span id="readlongvalue">`readLongValue()`</span>
-
-Read the remote device's long characteristic value.
-
-##### <span id="readlongvaluewithoffset">`readLongValueWithOffset()`</span>
-
-Read the remote device's long characteristic value by the offset.
+	ble.readValue(conn_handle, start_handle, end_handle, *uuid128);
 
 ##### <span id="writevaluewithoutresponse">`writeValueWithoutResponse()`</span>
 
-Write the remote device's characteristic value without response.
+Writes specified characteristic value on peer device **without** response. Only if the peer device is connected and the characteristic discovery procedure (initiated by [**`ble.discoverCharacteristics()`**](#discovercharacteristics)) has been completed, then you can write a characteristic value if it is presented.
+
+Since this kind of writing operation has no response from peer device, it doesn't ensure that the data is sent to the peer device successfully, but in return, it can send more data in per unit time.
+
+It takes four parameters: the connection handle, the value attribute handle, the data length and the data to be sent. The maximum length of the data is limited to **20** bytes. It returns an **`uint8_t`** value which indicates the result of the writing operation - **0** for success, others for failure.
+
+	// The connection handle can be obtained in the connected callback function
+	static uint16_t conn_handle; 
+
+	// The characteristic value attribute handle can be obtained in the characteristic discovered callback function
+	static uint16_t char_value_handle;
+
+	static uint8_t data[20] = { ... };
+
+	ble.writeValueWithoutResponse(conn_handle, char_value_handle, 20, data);
 
 ##### <span id="writevalue">`writeValue()`</span>
 
-Write the remote device's characteristic value with response.
+Writes specified characteristic value on peer device **with** response. Only if the peer device is connected and the characteristic discovery procedure (initiated by [**`ble.discoverCharacteristics()`**](#discovercharacteristics)) has been completed, then you can write a characteristic value if it is presented.
 
-##### <span id="writelongvalue">`writeLongValue()`</span>
+A callback function registered by [**`ble.onGattCharacteristicWrittenCallback()`**](#ongattcharacteristicwrittencallback) will be called once the writing value operation completed.
 
-Write the remote device's long characteristic value.
+It takes four parameters: the connection handle, the value attribute handle, the data length and the data to be sent. The maximum length of the data is limited to **20** bytes. It returns an **`uint8_t`** value which indicates the result of the writing operation - **0** for success, others for failure.
 
-##### <span id="writelongvaluewithoffset">`writeLongValueWithOffset()`</span>
+	// The connection handle can be obtained in the connected callback function
+	static uint16_t conn_handle; 
 
-Write the remote device's long characteristic value by offset.
+	// The characteristic value attribute handle can be obtained in the characteristic discovered callback function
+	static uint16_t char_value_handle;
+
+	static uint8_t data[20] = { ... };
+
+	ble.writeValue(conn_handle, char_value_handle, 20, data);
 
 ##### <span id="readdescriptorvalue">`readDescriptorValue()`</span>
 
-Read remote device's descriptor value.
+Reads specified descriptor value on peer device. Only if the peer device is connected and the characteristic discovery procedure (initiated by [**`ble.discoverCharacteristics()`**](#discovercharacteristics)) has been completed, then you can read a characteristic descriptor if it is presented.
 
-##### <span id="readlongdescriptorvalue">`readLongDescriptorValue()`</span>
+A callback function registered by [**`ble.onGattDescriptorReadCallback()`**](#ongattdescriptorreadcallback) will be called once the reading descriptor operation completed.
 
-Read remote device's long descriptor value.
+The connection handle should be passed in as the essential parameter. The characteristic which descriptor you are going to read can be specified by other different parameters. It returns an **`uint8_t`** value which indicates the result of the reading operation - **0** for success, others for failure.
 
-##### <span id="readlongdescriptorvaluewithoffset">`readLongDescriptorValueWithOffset()`</span>
+	// The connection handle can be obtained in the connected callback function
+	static uint16_t conn_handle; 
 
-Read remote device's long descriptor value by offset.
+	// The characteristic descriptor can be obtained in the descriptor discovered callback function
+	static gatt_client_characteristic_descriptor_t descriptor;
+
+	// The characteristic descriptor attribute handle can be obtained in the descriptor discovered callback function
+	static uint16_t char_desc_handle;
+
+	ble.readDescriptorValue(conn_handle, &descriptor);
+	
+	ble.readDescriptorValue(conn_handle, char_desc_handle);
 
 ##### <span id="writedescriptorvalue">`writeDescriptorValue()`</span>
 
-Write remote device's descriptor value.
+Writes specified characteristic descriptor value on peer device. Only if the peer device is connected and the characteristic discovery procedure (initiated by [**`ble.discoverCharacteristics()`**](#discovercharacteristics)) has been completed, then you can write a characteristic descriptor if it is presented.
 
-##### <span id="writelongdescriptorvalue">`writeLongDescriptorValue()`</span>
+A callback function registered by [**`ble.onGattDescriptorWrittenCallback()`**](#ongattdescriptorwrittencallback) will be called once the writing descriptor operation completed.
 
-Write remote device's long descriptor value.
+The connection handle should be passed in as the essential parameter. The rest three parameters are: the descriptor or descriptor attribute handle, the data length and the data to be sent. The maximum length of the data is limited to **20** bytes. It returns an **`uint8_t`** value which indicates the result of the writing operation - **0** for success, others for failure.
 
-##### <span id="writelongdescriptorvaluewithoffset">`writeLongDescriptorValueWithOffset()`</span>
+	// The connection handle can be obtained in the connected callback function
+	static uint16_t conn_handle; 
 
-Write remote device's long descriptor value by offset.
+	// The characteristic descriptor can be obtained in the descriptor discovered callback function
+	static gatt_client_characteristic_descriptor_t descriptor;
+
+	// The characteristic descriptor attribute handle can be obtained in the descriptor discovered callback function
+	static uint16_t char_desc_handle;
+
+	static uint8_t data[20] = { ... };
+
+	ble.writeDescriptorValue(conn_handle, &descriptor, 20, data);
+	
+	ble.writeDescriptorValue(conn_handle, char_desc_handle, 20, data);
 
 ##### <span id="writeclientcharsconfigdescriptor">`writeClientCharsConfigDescriptor()`</span>
 
