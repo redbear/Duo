@@ -82,7 +82,7 @@ If your Duo's current system version is not the same as the one declared in the 
 ## References
 
 * [Duo Introduction](duo_introduction.md)
-* [Programming Reference](programming_reference.md)
+* [Programming Reference Manual](programming_reference_manual.md)
 * [Arduino Board Package Installation Guide](arduino_board_package_installation_guide.md)
 * [Arduino Board Package Change-log](arduino_board_package_changelog.md)
 * [Firmware Architecture Overview](firmware_architecture_overview.md)

@@ -35,7 +35,7 @@ Purchase your RedBear Duo now:
 * [Out-of-Box Experience](docs/out_of_box_experience.md)
 * [Getting Started with Arduino IDE](docs/getting_started_with_arduino_ide.md)
 * [Getting Started with Particle Build (WebIDE)](docs/getting_started_with_particle_build.md)
-* [Programming Reference](docs/programming_reference.md)
+* [Programming Reference Manual](docs/programming_reference_manual.md)
 * [Firmware Architecture Overview](docs/firmware_architecture_overview.md)
 * [Firmware Deployment Guide](docs/firmware_deployment_guide.md)
 * [System Firmware Change-log](docs/system_firmware_changelog.md)

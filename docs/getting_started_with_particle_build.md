@@ -64,7 +64,7 @@ You should note that the Particle Build only supports firmware upgrading, if you
 ## <span id="references">References</span>
 
 * [Duo Introduction](duo_introduction.md)
-* [Programming Reference](programming_reference.md)
+* [Programming Reference Manual](programming_reference_manual.md)
 * [Firmware Architecture Overview](firmware_architecture_overview.md)
 * [Particle Build](https://build.particle.io)
 * [Particle Documentation](https://docs.particle.io/guide/getting-started/intro/photon/)

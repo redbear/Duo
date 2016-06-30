@@ -119,11 +119,11 @@ Duo 可以应用于很多领域，比如：
 #### 官方文档
 
 * [RBLink 简介](docs/rblink_introduction.md)
-* [开箱体验](out_of_box_experience.md)
-* [快速入门使用 Arduino IDE](getting_started_with_arduino_ide.md)
-* [快速入门使用 Particle Build](getting_started_with_particle_build.md)
-* [编程参考手册](programming_reference.md)
-* [固件架构概览](firmware_architecture_overview.md)
+* [开箱体验](docs/out_of_box_experience.md)
+* [快速入门使用 Arduino IDE](docs/getting_started_with_arduino_ide.md)
+* [快速入门使用 Particle Build](docs/getting_started_with_particle_build.md)
+* [编程参考手册](docs/programming_reference_manual.md)
+* [固件架构概览](docs/firmware_architecture_overview.md)
 * [固件及应用程序下载指南](docs/firmware_deployment_guide.md)
 * [固件版本历史](docs/system_firmware_changelog.md)
 * [Arduino Duo板安装包版本历史](docs/arduino_board_package_changelog.md)

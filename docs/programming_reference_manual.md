@@ -1,5 +1,7 @@
-# Duo: Programming Reference
+# Duo: Programming Reference Manual
 ---
+
+## Overview
 
 The Duo is installed the customed Particle firmware by default during manufacturing. You can build your own applications around the system firmware, which with lots of functions and libraries built-in so that you can invoke them directly in your sketch. The programming language and application architecture are almost Arduino compatible -- all you want should be achieved in the **`setup()`** and **`loop()`** function.
 
