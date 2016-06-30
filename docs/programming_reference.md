@@ -654,15 +654,14 @@ General methods:
 
 BLE Central:    
 [**`setScanParams()`**](#setscanparams)    
+[**`setConnParams()`**](#setconnparams)    
 [**`startScanning()`**](#startscanning)    
 [**`stopScanning()`**](#stopscanning)       
 [**`connect()`**](#connect)    
 [**`disconnect()`**](#disconnect)    
 [**`onScanReportCallback()`**](#onscanreportcallback) 
 
-BLE Peripheral:    
-[**`setLocalName()`**](#setlocalname)    
-[**`setConnParams()`**](#setconnparams)    
+BLE Peripheral:     
 [**`setAdvertisementParams()`**](#setadvertisementparams)    
 [**`setAdvertisementData()`**](#setadvertisementdata)    
 [**`setScanResponseData()`**](#setscanresponsedata)    
@@ -1109,14 +1108,14 @@ Registers a function to be called when a new service being discovered.
 
 The callback function takes three parameters and returns nothing:
 
-* **`BLEStatus_t`** BLE status, which should be one of the following:
+* **`status`**: the operation status which type is **`BLEStatus_t`**. It should be one of the following value:
     - **`BLE_STATUS_OK`**
     - **`BLE_STATUS_DONE`**
     - **`BLE_STATUS_CONNECTION_TIMEOUT`**
     - **`BLE_STATUS_CONNECTION_ERROR`**
     - **`BLE_STATUS_OTHER_ERROR`**
-* **`uint16_t`** The connection handle
-* **`gatt_client_service_t`** The discovered service
+* **`conn_handle`**: the connection handle which type is **`uint16_t`**.
+* **`service`**: the discovered service which type is **`gatt_client_service_t`**.
 
 E.g. **`void serviceDiscoveredCallback(BLEStatus_t status, uint16_t conn_handle, gatt_client_service_t *service)`**
 
@@ -1199,14 +1198,14 @@ Registers a function to be called when a new characteristic being discovered.
 
 The callback function takes three parameters and returns nothing:
 
-* **`BLEStatus_t`** BLE status, which should be one of the following:
+* **`status`**: the operation status which type is **`BLEStatus_t`**. It should be one of the following value:
     - **`BLE_STATUS_OK`**
     - **`BLE_STATUS_DONE`**
     - **`BLE_STATUS_CONNECTION_TIMEOUT`**
     - **`BLE_STATUS_CONNECTION_ERROR`**
     - **`BLE_STATUS_OTHER_ERROR`**
-* **`uint16_t`** The connection handle
-* **`gatt_client_characteristic_t`** The discovered characteristic
+* **`conn_handle`**: the connection handle which type is **`uint16_t`**.
+* **`characteristic`**: the discovered characteristic which type is **`gatt_client_characteristic_t`**.
 
 E.g. **`void charsDiscoveredCallback(BLEStatus_t status, uint16_t con_handle, gatt_client_characteristic_t *characteristic)`**
 
@@ -1272,14 +1271,14 @@ Registers a function to be called when a new descriptor being discovered.
 
 The callback function takes three parameters and returns nothing:
 
-* **`BLEStatus_t`** BLE status, which should be one of the following:
+* **`status`**: the operation status which type is **`BLEStatus_t`**. It should be one of the following value:
     - **`BLE_STATUS_OK`**
     - **`BLE_STATUS_DONE`**
     - **`BLE_STATUS_CONNECTION_TIMEOUT`**
     - **`BLE_STATUS_CONNECTION_ERROR`**
     - **`BLE_STATUS_OTHER_ERROR`**
-* **`uint16_t`** The connection handle
-* **`gatt_client_characteristic_t`** The discovered descriptor
+* **`conn_handle`**: the connection handle which type is **`uint16_t`**.
+* **`descriptor`**: the discovered descriptor which type is **`gatt_client_characteristic_descriptor_t`**.
 
 E.g. **`void discoveredCharsDescriptorsCallback(BLEStatus_t status, uint16_t con_handle, gatt_client_characteristic_descriptor_t *descriptor)`**
 
@@ -1357,16 +1356,16 @@ Registers a function to be called when the reading characteristic value operatio
 
 The callback function takes five parameters and returns nothing:
 
-* **`BLEStatus_t`** BLE status, which should be one of the following:
+* **`status`**: the operation status which type is **`BLEStatus_t`**. It should be one of the following value:
     - **`BLE_STATUS_OK`**
     - **`BLE_STATUS_DONE`**
     - **`BLE_STATUS_CONNECTION_TIMEOUT`**
     - **`BLE_STATUS_CONNECTION_ERROR`**
     - **`BLE_STATUS_OTHER_ERROR`**
-* **`uint16_t`** The connection handle
-* **`uint16_t`** The characteristic value attribute handle
-* **`uint8_t *`** A pointer to the buffer that holds the read back data
-* **`uint16_t`** The length of the read back data
+* **`conn_handle`**: the connection handle which type is **`uint16_t`**.
+* **`value_handle`**: the characteristic value attribute handle which type is **`uint16_t`**.
+* **`value`**: an **`uint8_t`** pointer to the buffer that holds the read back data
+* **`length`**: an **`uint16_t`** value indicates the length of the read back data
 
 E.g. **`void gattReadCallback(BLEStatus_t status, uint16_t conn_handle, uint16_t value_handle, uint8_t *value, uint16_t length)`**
 
@@ -1438,13 +1437,13 @@ Registers a function to be called when the writing characteristic value operatio
 
 The callback function takes two parameters and returns nothing:
 
-* **`BLEStatus_t`** BLE status, which should be one of the following:
+* **`status`**: the operation status which type is **`BLEStatus_t`**. It should be one of the following value:
     - **`BLE_STATUS_OK`**
     - **`BLE_STATUS_DONE`**
     - **`BLE_STATUS_CONNECTION_TIMEOUT`**
     - **`BLE_STATUS_CONNECTION_ERROR`**
     - **`BLE_STATUS_OTHER_ERROR`**
-* **`uint16_t`** The connection handle
+* **`conn_handle`**: the connection handle which type is **`uint16_t`**.
 
 E.g. **`void gattWrittenCallback(BLEStatus_t status, uint16_t conn_handle)`**
 
@@ -1485,16 +1484,16 @@ Registers a function to be called when the reading descriptor operation complete
 
 The callback function takes five parameters and returns nothing:
 
-* **`BLEStatus_t`** BLE status, which should be one of the following:
+* **`status`**: the operation status which type is **`BLEStatus_t`**. It should be one of the following value:
     - **`BLE_STATUS_OK`**
     - **`BLE_STATUS_DONE`**
     - **`BLE_STATUS_CONNECTION_TIMEOUT`**
     - **`BLE_STATUS_CONNECTION_ERROR`**
     - **`BLE_STATUS_OTHER_ERROR`**
-* **`uint16_t`** The connection handle
-* **`uint16_t`** The characteristic descriptor attribute handle
-* **`uint8_t *`** A pointer to the buffer that holds the read back data
-* **`uint16_t`** The length of the read back data
+* **`conn_handle`**: the connection handle which type is **`uint16_t`**.
+* **`value_handle`**: the characteristic descriptor attribute handle which type is **`uint16_t`**.
+* **`value`**: an **`uint8_t`** pointer to the buffer that holds the read back data
+* **`length`**: an **`uint16_t`** value indicates the length of the read back data
 
 E.g. **`void gattReadDescriptorCallback(BLEStatus_t status, uint16_t conn_handle, uint16_t value_handle, uint8_t *value, uint16_t length)`**
 
@@ -1551,13 +1550,13 @@ Registers a function to be called when the writing descriptor operation complete
 
 The callback function takes two parameters and returns nothing:
 
-* **`BLEStatus_t`** BLE status, which should be one of the following:
+* **`status`**: the operation status which type is **`BLEStatus_t`**. It should be one of the following value:
     - **`BLE_STATUS_OK`**
     - **`BLE_STATUS_DONE`**
     - **`BLE_STATUS_CONNECTION_TIMEOUT`**
     - **`BLE_STATUS_CONNECTION_ERROR`**
     - **`BLE_STATUS_OTHER_ERROR`**
-* **`uint16_t`** The connection handle
+* **`conn_handle`**: the connection handle which type is **`uint16_t`**.
 
 E.g. **`void gattWriteDescriptorCallback(BLEStatus_t status, uint16_t conn_handle)`**
 
@@ -1606,13 +1605,13 @@ Registers a function to be called when the writing Client Characteristic Configr
 
 The callback function takes two parameters and returns nothing:
 
-* **`BLEStatus_t`** BLE status, which should be one of the following:
+* **`status`**: the operation status which type is **`BLEStatus_t`**. It should be one of the following value:
     - **`BLE_STATUS_OK`**
     - **`BLE_STATUS_DONE`**
     - **`BLE_STATUS_CONNECTION_TIMEOUT`**
     - **`BLE_STATUS_CONNECTION_ERROR`**
     - **`BLE_STATUS_OTHER_ERROR`**
-* **`uint16_t`** The connection handle
+* **`conn_handle`**: the connection handle which type is **`uint16_t`**.
 
 E.g. **`void gattWriteCCCDCallback(BLEStatus_t status, uint16_t conn_handle)`**
 
@@ -1631,16 +1630,16 @@ Registers a function to be called when the local device received a notification 
 
 The callback function takes five parameters and returns nothing:
 
-* **`BLEStatus_t`** BLE status, which should be one of the following:
+* **`status`**: the operation status which type is **`BLEStatus_t`**. It should be one of the following value:
     - **`BLE_STATUS_OK`**
     - **`BLE_STATUS_DONE`**
     - **`BLE_STATUS_CONNECTION_TIMEOUT`**
     - **`BLE_STATUS_CONNECTION_ERROR`**
     - **`BLE_STATUS_OTHER_ERROR`**
-* **`uint16_t`** The connection handle
-* **`uint16_t`** The characteristic value attribute handle
-* **`uint8_t *`** A pointer to the buffer that holds the notified data
-* **`uint16_t`** The length of the notified data
+* **`conn_handle`**: the connection handle which type is **`uint16_t`**.
+* **`value_handle`**: the characteristic value attribute handle which type is **`uint16_t`**.
+* **`value`**: an **`uint8_t`** pointer to the buffer that holds the notified data
+* **`length`**: an **`uint16_t`** value indicates the length of the notified data
 
 E.g. **`void gattNotifyUpdateCallback(BLEStatus_t status, uint16_t conn_handle, uint16_t value_handle, uint8_t *value, uint16_t length)`**
 
@@ -1672,16 +1671,16 @@ Registers a function to be called when the local device received an indication f
 
 The callback function takes five parameters and returns nothing:
 
-* **`BLEStatus_t`** BLE status, which should be one of the following:
+* **`status`**: the operation status which type is **`BLEStatus_t`**. It should be one of the following value:
     - **`BLE_STATUS_OK`**
     - **`BLE_STATUS_DONE`**
     - **`BLE_STATUS_CONNECTION_TIMEOUT`**
     - **`BLE_STATUS_CONNECTION_ERROR`**
     - **`BLE_STATUS_OTHER_ERROR`**
-* **`uint16_t`** The connection handle
-* **`uint16_t`** The characteristic value attribute handle
-* **`uint8_t *`** A pointer to the buffer that holds the indicated data
-* **`uint16_t`** The length of the indicated data
+* **`conn_handle`**: the connection handle which type is **`uint16_t`**.
+* **`value_handle`**: the characteristic descriptor attribute handle which type is **`uint16_t`**.
+* **`value`**: an **`uint8_t`** pointer to the buffer that holds the indicated data
+* **`length`**: an **`uint16_t`** value indicates the length of the indicated data
 
 E.g. **`void gattReceivedIndicationCallback(BLEStatus_t status, uint16_t conn_handle, uint16_t value_handle, uint8_t *value, uint16_t length)`**
 
@@ -1709,63 +1708,329 @@ E.g. **`void gattReceivedIndicationCallback(BLEStatus_t status, uint16_t conn_ha
 
 ##### <span id="addservice">`addService()`</span>
 
-Adds a BLE service to the GATT server.
+Adds a BLE service to the GATT server, the UUID of which can be either 16-bits or 128 bits. It takes a single parameter (the service UUID) and returns nothing. The following added characteristics belong to this service until a new service is added.
+
+	static uint16_t service1_uuid = 0x1234;
+	static uint8_t service2_uuid[16] = {0x12, 0x34, ... , 0xFF};
+	
+	void setup() {
+	  ble.init();
+	
+	  ble.addService(service1_uuid);
+	
+	  // The following added characteristics belong to the BLE service1
+	
+	  ble.addService(service2_uuid);
+	
+	  // The following added characteristics belong to the BLE service2
+	}
 
 ##### <span id="addcharacteristic">`addCharacteristic()`</span>
 
-Add a BLE characteristic to the GATT server.
+Adds a characteristic to the GATT server, the value of which should NOT be changed by GATT client. It takes four parameters:
+
+* **`uuid`**: either a 16-bits UUID or 128-bits UUID.
+* **`flags`**: the characteristic property which should be the combination of the following value:
+    - **`ATT_PROPERTY_BROADCAST`**
+    - **`ATT_PROPERTY_READ`**
+    - **`ATT_PROPERTY_WRITE_WITHOUT_RESPONSE`**
+    - **`ATT_PROPERTY_WRITE`**
+    - **`ATT_PROPERTY_NOTIFY`**
+    - **`ATT_PROPERTY_INDICATE`**
+    - **`ATT_PROPERTY_AUTHENTICATED_SIGNED_WRITE`**
+    - **`ATT_PROPERTY_EXTENDED_PROPERTIES`**
+* **`data`**: an **`uint8_t`** pointer to the characteristic value
+* **`data_len`**: the maximum length of the characteristic value.
+
+It returns an **`uint16_t`** value which is the characteristic value attribute handle. The added characteristic will belong to the latest added service.
+
+	static uint16_t service1_uuid = 0x1234;
+	static uint8_t service2_uuid[16] = {0x12, 0x34, ... , 0xFF};
+	static uint16_t char1_uuid = 0x5678;
+	static uint8_t char2_uuid[16] = {0x11, 0x22, ..., 0xFF};
+
+	static uint8_t char1_value[20];
+	static uint16_t char1_handle;
+	static uint8_t char2_value[20];
+	static uint16_t char2_handle;
+	
+	void setup() {
+	  ble.init();
+	
+	  ble.addService(service1_uuid);
+	
+	  // The following added characteristics belong to the BLE service1
+	  char1_handle = ble.addCharacteristic(char1_uuid, ATT_PROPERTY_READ, char1_value, sizeof(char1_value));
+	
+	  ble.addService(service2_uuid);
+	
+	  // The following added characteristics belong to the BLE service2
+	  char2_handle = ble.addCharacteristic(char2_uuid, ATT_PROPERTY_READ, char2_value, sizeof(char2_value))
+	}
 
 ##### <span id="addcharacteristicdynamic">`addCharacteristicDynamic()`</span>
 
-Add a dynamic BLE characteristic to the GATT server.
-
-##### <span id="setlocalname">`setLocalName()`</span>
-
-Set the local name of the BLE device.
+Adds a general characteristic to the GATT server, the value of which can be changed by GATT client. The parameters and return value are the same as [**`addCharacteristic()`**](#addcharacteristic). The added characteristic will belong to the latest added service.
 
 ##### <span id="setconnparams">`setConnParams()`</span>
 
-Set the preferred connection parameters.
+Sets the connection parameters tange. It takes a single parameter which type is **`le_connection_parameter_range_t`**:
+
+	typedef struct le_connection_parameter_range{
+	    uint16_t le_conn_interval_min;
+	    uint16_t le_conn_interval_max;
+	    uint16_t le_conn_latency_min;
+	    uint16_t le_conn_latency_max;
+	    uint16_t le_supervision_timeout_min;
+	    uint16_t le_supervision_timeout_max;
+	} le_connection_parameter_range_t;
 
 ##### <span id="setadvertisementparams">`setAdvertisementParams()`</span>
 
-Set the advertising parameters.
+Sets the peripheral advertising parameters:
+
+* **Minimum advertising interval**: ranges from 0x0020 to 0x4000, default is 0x0800, unit: 0.625 msec
+* **Maximum advertising_interval**: ranges from 0x0020 to 0x4000, default: is0x0800, unit: 0.625 msec
+* **Advertising event type**: 
+    - **`BLE_GAP_ADV_TYPE_ADV_IND`** 
+    - **`BLE_GAP_ADV_TYPE_ADV_DIRECT_IND`**
+    - **`BLE_GAP_ADV_TYPE_ADV_SCAN_IND`**
+    - **`BLE_GAP_ADV_TYPE_ADV_NONCONN_IND`**
+* **Own device address type**: 
+    - **`BLE_GAP_ADDR_TYPE_PUBLIC`**
+    - **`BLE_GAP_ADDR_TYPE_RANDOM`**
+* **Advertising channel map**: 
+    - **`BLE_GAP_ADV_CHANNEL_MAP_37`**
+    - **`BLE_GAP_ADV_CHANNEL_MAP_38`**
+    - **`BLE_GAP_ADV_CHANNEL_MAP_39`**
+    - **`BLE_GAP_ADV_CHANNEL_MAP_ALL`**
+* **Filter policies**: 
+    - **`BLE_GAP_ADV_FP_ANY`**
+    - **`BLE_GAP_ADV_FP_FILTER_SCANREQ`**
+    - **`BLE_GAP_ADV_FP_FILTER_CONNREQ`**
+    - **`BLE_GAP_ADV_FP_FILTER_BOTH`**
+  
+Note: If the **Advertising event type** is set to **`BLE_GAP_ADV_TYPE_ADV_SCAN_IND`** or **`BLE_GAP_ADV_TYPE_ADV_NONCONN_IND`**, then the **Minimum advertising interval** and **Maximum advertising_interval** should not be set to less than 0x00A0.
+
+	// BLE peripheral advertising parameters
+	static advParams_t adv_params = {
+	  .adv_int_min   = 0x0030,
+	  .adv_int_max   = 0x0030,
+	  .adv_type      = BLE_GAP_ADV_TYPE_ADV_IND,
+	  .dir_addr_type = BLE_GAP_ADDR_TYPE_PUBLIC,
+	  .dir_addr      = {0,0,0,0,0,0},
+	  .channel_map   = BLE_GAP_ADV_CHANNEL_MAP_ALL,
+	  .filter_policy = BLE_GAP_ADV_FP_ANY
+	};
+	
+	void setup() {
+	  ble.init();
+	
+	  // Set BLE advertising parameters
+	  ble.setAdvertisementParams(&adv_params);
+	}
 
 ##### <span id="setadvertisementdata">`setAdvertisementData()`</span>
 
-Set the advertising data.
+Sets the peripheral advertising data. The advertising data is essential and is limited to **31** bytes and must follow the format as defined in Bluetooth Core Specification **[Vol 3] Part C, Section 11**. Usually a unit in the advertising data is made up of "length + AD type + AD data". Regarding to BLE devices, the AD type of the first unit must be **`BLE_GAP_AD_TYPE_FLAGS`** and the followed AD data should be **`BLE_GAP_ADV_FLAGS_LE_ONLY_GENERAL_DISC_MODE`**:
+
+	// BLE peripheral advertising data
+	static uint8_t adv_data[] = {
+	  0x02,
+	  BLE_GAP_AD_TYPE_FLAGS,
+	  BLE_GAP_ADV_FLAGS_LE_ONLY_GENERAL_DISC_MODE,   
+	  
+	  0x11,
+	  BLE_GAP_AD_TYPE_128BIT_SERVICE_UUID_COMPLETE,
+	  0x1e, 0x94, 0x8d, 0xf1, 0x48, 0x31, 0x94, 0xba, 0x75, 0x4c, 0x3e, 0x50, 0x00, 0x00, 0x3d, 0x71 
+	};
+
+	void setup() {
+	  ble.init();
+	
+	  // Set BLE advertising and scan respond data
+	  ble.setAdvertisementData(sizeof(adv_data), adv_data);
+	}
 
 ##### <span id="setscanresponsedata">`setScanResponseData()`</span>
 
-Set the scan respond data.
+Sets the peripheral scan response data. The scan response data is optional and is limited to **31** bytes and must follow the format as defined in Bluetooth Core Specification **[Vol 3] Part C, Section 11**. Usually a unit in the scan response data is made up of "length + AD type + AD data".
+
+	// BLE peripheral scan response data
+	static uint8_t scan_response[] = {
+	  0x08,
+	  BLE_GAP_AD_TYPE_COMPLETE_LOCAL_NAME,
+	  'R', 'B',  'L', '-', 'D', 'U', 'O'
+	};
+
+	void setup() {
+	  ble.init();
+	
+	  // Set BLE advertising and scan respond data
+	  ble.setAdvertisementData(sizeof(adv_data), adv_data);
+	}
 
 ##### <span id="startadvertising">`startAdvertising()`</span>
 
-Start advertising.
+Starts advertising to make the device discoverable to BLE scanners. Before calling this function, you need to set the advertising data by calling [**`ble.setAdvertisementData()`**](#setadvertisementdata) first.
+
+	// BLE peripheral advertising data
+	static uint8_t adv_data[] = {
+	  0x02,
+	  BLE_GAP_AD_TYPE_FLAGS,
+	  BLE_GAP_ADV_FLAGS_LE_ONLY_GENERAL_DISC_MODE,   
+	  
+	  0x11,
+	  BLE_GAP_AD_TYPE_128BIT_SERVICE_UUID_COMPLETE,
+	  0x1e, 0x94, 0x8d, 0xf1, 0x48, 0x31, 0x94, 0xba, 0x75, 0x4c, 0x3e, 0x50, 0x00, 0x00, 0x3d, 0x71 
+	};
+
+	void setup() {
+	  ble.init();
+	
+	  // Set BLE advertising and scan respond data
+	  ble.setAdvertisementData(sizeof(adv_data), adv_data);
+
+	  // Starts advertising
+	  ble.startAdvertising();
+	}
 
 ##### <span id="stopadvertising">`stopAdvertising()`</span>
 
-Stop advertising.
+Stops advertising. When the device is advertising, you can call this function to stop it so that it is not discoverable to BLE scanners.
+
+	ble.stopAdvertising();
 
 ##### <span id="attservercansendpacket">`attServerCanSendPacket()`</span>
 
-Check if the device can send notification or indication to remote device.
+Checks if the device can send notification or indication to peer device. Only if the GATT client has subscribed the notification or indication by [**`ble.writeClientCharsConfigDescriptor()`**](#writeClientCharsConfigDescriptor), then you can send it. It returns an **`int`** value indicating if you can send notification or indication.
+
+	// The characteristic value attribute handle can be obtained when you add the characteristic
+	static uint16_t char_value_handle;
+
+	static uint8_t data[20];
+
+	if(ble.attServerCanSendPacket()) {
+	  ble.sendNotify(char_value_handle, data, sizeof(data));
+	}
 
 ##### <span id="sendnotify">`sendNotify()`</span>
 
-Send a notification to remote device.
+Notifis the peer device that the characteristic value has been changed. Only if the GATT client has subscribed the notification [**`ble.writeClientCharsConfigDescriptor()`**](#writeClientCharsConfigDescriptor), then you can send it. 
+
+It takes three parameters: the characteristic value attribute handle, the data to be sent and the length of the data. The maximum length of the data is limited to **20** bytes.
+
+	// The characteristic value attribute handle can be obtained when you add the characteristic
+	static uint16_t char_value_handle;
+
+	static uint8_t data[20];
+
+	if(ble.attServerCanSendPacket()) {
+	  ble.sendNotify(char_value_handle, data, sizeof(data));
+	}
 
 ##### <span id="sendindicate">`sendIndicate()`</span>
 
-Send an indication to remote device.
+Indicates the peer device that the characteristic value has been changed.  Only if the GATT client has subscribed the indication [**`ble.writeClientCharsConfigDescriptor()`**](#writeClientCharsConfigDescriptor), then you can send it. 
 
+It takes three parameters: the characteristic value attribute handle, the data to be sent and the length of the data. The maximum length of the data is limited to **20** bytes. A reponse from the GATT client is necessary.
+
+	// The characteristic value attribute handle can be obtained when you add the characteristic
+	static uint16_t char_value_handle;
+
+	static uint8_t data[20];
+
+	if(ble.attServerCanSendPacket()) {
+	  ble.sendIndicate(char_value_handle, data, sizeof(data));
+	}
+	
 ##### <span id="ondatareadcallback">`onDataReadCallback()`</span>
 
-Register the callback function when characteristic value is read by remote device.
+Registers a function to be called when a characteristic value is read by peer device.
+
+The callback function takes three parameters and returns an **`uint16_t`** value:
+
+* **`value_handle`**: the attribute handle specifying which attribute being read.
+* **`buffer`**: an **`uint8_t`** pointer to the buffer that will be read by peer device.
+* **`buffer_size`**: an **`uint16_t`** value indicates the length of the buffer.
+
+E.g. **`uint16_t gattReadCallback(uint16_t value_handle, uint8_t * buffer, uint16_t buffer_size)`**
+
+	// The characteristic value attribute handle can be obtained when you add the characteristic
+	static uint16_t char1_handle;
+	static uint16_t char2_handle;
+
+	static uint8_t char1_data[20];
+	static uint8_t char2_data[20];
+
+	static uint16_t gattReadCallback(uint16_t value_handle, uint8_t * buffer, uint16_t buffer_size) {   
+	  uint8_t ret_len = 0;
+	
+	  Serial.print("Reads attribute value, handle: ");
+	  Serial.println(value_handle, HEX);
+	
+	  if (char1_handle == value_handle) {   // Characteristic value handle.
+	    memcpy(buffer, char1_data, sizeof(char1_data));
+	    ret_len = sizeof(char1_data);
+	  }
+	  else if (char2_handle == value_handle) {
+	    memcpy(buffer, char2_data, sizeof(char2_data));
+	    ret_len = sizeof(char2_data);
+	  }
+
+	  return ret_len;
+	}
+
+	// Registers the callback function
+	ble.onDataReadCallback(gattReadCallback);
 
 ##### <span id="ondatawritecallback">`onDataWriteCallback()`</span>
 
-Register the call back function when characteristic value is written by remote device.
+Registers a function to be called when a characteristic value is written by peer device.
+
+The callback function takes three parameters and returns the an **`int`** value:
+
+* **`value_handle`**: the attribute handle specifying which attribute being written.
+* **`buffer`**: an **`uint8_t`** pointer to the buffer that holds the data from peer device.
+* **`buffer_size`**: an **`uint16_t`** value indicates the length of the data.
+
+E.g. **`int gattWriteCallback(uint16_t value_handle, uint8_t *buffer, uint16_t buffer_size)`**
+
+	// The characteristic value attribute handle can be obtained when you add the characteristic
+	static uint16_t char1_handle;
+	static uint16_t char2_handle;
+
+	static uint8_t char1_data[20];
+	static uint8_t char2_data[20];
+
+	static int gattWriteCallback(uint16_t value_handle, uint8_t *buffer, uint16_t buffer_size) {
+	  Serial.print("Write attribute value, handler: ");
+	  Serial.println(value_handle, HEX);
+	
+	  if (char1_handle == value_handle) {
+	    memcpy(char1_data, buffer, size);
+	    Serial.print("Written value: ");
+	    for (uint8_t index = 0; index < buffer_size; index++) {
+	      Serial.print(char1_data[index], HEX);
+	      Serial.print(" ");
+	    }
+	    Serial.println(" ");
+	  }
+	  else if (character2_handle == value_handle) {
+	    memcpy(char2_data, buffer, size);
+	    Serial.print("Written value: ");
+	    for (uint8_t index = 0; index < buffer_size; index++) {
+	      Serial.print(char2_data[index], HEX);
+	      Serial.print(" ");
+	    }
+	    Serial.println(" ");
+	  }
+
+	  return 0;
+	}
+
+	// Registers the callback function
+	ble.onDataWriteCallback(gattWriteCallback);
 
 
 ## Support
