@@ -642,13 +642,13 @@ General methods:
 [**`debugLogger()`**](#debuglogger)    
 [**`debugError()`**](#debugerror)    
 [**`enablePacketLogger()`**](#enablepacketlogger)    
-[**`setRandomAddrMode()`**](#setrandomaddrmode)    
-[**`setRandomAddr()`**](#setrandomaddr)    
-[**`setPublicBDAddr()`**](#setpublicbdaddr)    
-[**`getLocalBdAddr()`**](#getlocalbdaddr)    
+[**`setPublicBDAddr()`**](#setpublicbdaddr)        
 
 #### Generic Access Profile (GAP) 
 
+[**`setRandomAddrMode()`**](#setrandomaddrmode)    
+[**`setRandomAddr()`**](#setrandomaddr)    
+[**`getLocalBdAddr()`**](#getlocalbdaddr)
 [**`onConnectedCallback()`**](#onconnectedcallback)    
 [**`onDisconnectedCallback()`**](#ondisconnectedcallback)    
 
@@ -703,7 +703,7 @@ GATT Server:
 
 ##### <span id="init">`init()`</span> 
 
-Enables the HCI interface between Host and Controller, as well as initialize the Controller to the default state. It will create a thread to deal with the HCI commands and events. It **MUST** be called before calling any other BLE methods.
+Enables the HCI interface between Host and Controller, as well as initialize the Controller to the default state. It will create a thread to deal with the HCI commands and events. It **MUST** be called before calling any other GAP and GATT methods.
 
 	// Initialize BLE HCI interface and the controller
 	ble.init();
@@ -1115,33 +1115,22 @@ The callback function takes three parameters and returns nothing:
     - **`BLE_STATUS_CONNECTION_ERROR`**
     - **`BLE_STATUS_OTHER_ERROR`**
 * **`conn_handle`**: the connection handle which type is **`uint16_t`**.
-* **`service`**: the discovered service which type is **`gatt_client_service_t`**.
+* **`service`**: the discovered service which type is **`gatt_client_service_t`**:
+
+		typedef struct {
+		    uint16_t start_group_handle;
+		    uint16_t end_group_handle;
+		    uint16_t uuid16;
+		    uint8_t  uuid128[16];
+		} gatt_client_service_t;
 
 E.g. **`void serviceDiscoveredCallback(BLEStatus_t status, uint16_t conn_handle, gatt_client_service_t *service)`**
 
 	static gatt_client_service_t discovered_service;
 
 	static void serviceDiscoveredCallback(BLEStatus_t status, uint16_t conn_handle, gatt_client_service_t *service) {
-	  uint8_t index;
 	  if (status == BLE_STATUS_OK) {   // Found a service.
-	    Serial.println(" ");
-	    Serial.print("Service start handle: ");
-	    Serial.println(service->start_group_handle, HEX);
-
-	    Serial.print("Service end handle: ");
-	    Serial.println(service->end_group_handle, HEX);
-
-	    Serial.print("16-bits service UUID: ");
-	    Serial.println(service->uuid16, HEX);
-
-	    Serial.print("128-bits service UUID: ");
-	    for (index = 0; index < 16; index++) {
-	      Serial.print(service->uuid128[index], HEX);
-	      Serial.print(" ");
-	    }
-	    Serial.println(" ");
-
-	    discovered_service[service_index++] = *service;
+	    discovered_service = *service;
 	  }
 	  else if (status == BLE_STATUS_DONE) {
 	    Serial.println("Discovers service completed");
@@ -1205,38 +1194,23 @@ The callback function takes three parameters and returns nothing:
     - **`BLE_STATUS_CONNECTION_ERROR`**
     - **`BLE_STATUS_OTHER_ERROR`**
 * **`conn_handle`**: the connection handle which type is **`uint16_t`**.
-* **`characteristic`**: the discovered characteristic which type is **`gatt_client_characteristic_t`**.
+* **`characteristic`**: the discovered characteristic which type is **`gatt_client_characteristic_t`**:
+
+		typedef struct {
+		    uint16_t start_handle;
+		    uint16_t value_handle;
+		    uint16_t end_handle;
+		    uint16_t properties;
+		    uint16_t uuid16;
+		    uint8_t  uuid128[16];
+		} gatt_client_characteristic_t;
 
 E.g. **`void charsDiscoveredCallback(BLEStatus_t status, uint16_t con_handle, gatt_client_characteristic_t *characteristic)`**
 
 	static gatt_client_characteristic_t discovered_char;
 
 	static void charsDiscoveredCallback(BLEStatus_t status, uint16_t conn_handle, gatt_client_characteristic_t *characteristic) {
-	  uint8_t index;
 	  if (status == BLE_STATUS_OK) {   // Found a characteristic.
-	    Serial.println(" ");
-	    Serial.print("Characteristic start handle: ");
-	    Serial.println(characteristic->start_handle, HEX);
-
-	    Serial.print("Characteristic value handle: ");
-	    Serial.println(characteristic->value_handle, HEX);
-
-	    Serial.print("Characteristic end_handle: ");
-	    Serial.println(characteristic->end_handle, HEX);
-
-	    Serial.print("Characteristic properties: ");
-	    Serial.println(characteristic->properties, HEX);
-
-	    Serial.print("16-bits characteristic UUID: ");
-	    Serial.println(characteristic->uuid16, HEX);
-
-	    Serial.print("128-bits characteristic UUID: ");
-	    for (index = 0; index < 16; index++) {
-	      Serial.print(characteristic->uuid128[index], HEX);
-	      Serial.print(" ");
-	    }
-	    Serial.println(" ");
-
 	    discovered_char = *characteristic;
 	  }
 	  else if (status == BLE_STATUS_DONE) {
@@ -1278,29 +1252,20 @@ The callback function takes three parameters and returns nothing:
     - **`BLE_STATUS_CONNECTION_ERROR`**
     - **`BLE_STATUS_OTHER_ERROR`**
 * **`conn_handle`**: the connection handle which type is **`uint16_t`**.
-* **`descriptor`**: the discovered descriptor which type is **`gatt_client_characteristic_descriptor_t`**.
+* **`descriptor`**: the discovered descriptor which type is **`gatt_client_characteristic_descriptor_t`**:
+
+		typedef struct {
+		    uint16_t handle;
+		    uint16_t uuid16;
+		    uint8_t  uuid128[16];
+		} gatt_client_characteristic_descriptor_t;
 
 E.g. **`void discoveredCharsDescriptorsCallback(BLEStatus_t status, uint16_t con_handle, gatt_client_characteristic_descriptor_t *descriptor)`**
 
 	static gatt_client_characteristic_descriptor_t char_descriptor;
 
 	static void discoveredCharsDescriptorsCallback(BLEStatus_t status, uint16_t con_handle, gatt_client_characteristic_descriptor_t *descriptor) {
-	  uint8_t index;
 	  if (status == BLE_STATUS_OK) {   // Found a descriptor.
-	    Serial.println(" ");
-	    Serial.print("Descriptor handle: ");
-	    Serial.println(descriptor->handle, HEX);
-
-	    Serial.print("16-bits descriptor UUID: ");
-	    Serial.println(descriptor->uuid16, HEX);
-
-	    Serial.print("128-bits descriptor UUID: ");
-	    for (index = 0; index < 16; index++) {
-	      Serial.print(descriptor->uuid128[index], HEX);
-	      Serial.print(" ");
-	    }
-	    Serial.println(" ");
-
 	    char_descriptor = *descriptor;
 	  }
 	  else if (status == BLE_STATUS_DONE) {
@@ -1374,8 +1339,6 @@ E.g. **`void gattReadCallback(BLEStatus_t status, uint16_t conn_handle, uint16_t
 	  if (status == BLE_STATUS_OK) {
 	    Serial.println(" ");
 	    Serial.println("Reads characteristic value successfully");
-	    Serial.print("Connection handle: ");
-	    Serial.println(conn_handle, HEX);
 
 	    Serial.print("Characteristic value attribute handle: ");
 	    Serial.println(value_handle, HEX);
@@ -1502,9 +1465,6 @@ E.g. **`void gattReadDescriptorCallback(BLEStatus_t status, uint16_t conn_handle
 	  if(status == BLE_STATUS_OK) {
 	    Serial.println(" ");
 	    Serial.println("Reads descriptor successfully.");
-
-	    Serial.print("Connection handle: ");
-	    Serial.println(conn_handle, HEX);
 
 	    Serial.print("Characteristic descriptor attribute handle: ");
 	    Serial.println(value_handle, HEX);
@@ -1648,9 +1608,6 @@ E.g. **`void gattNotifyUpdateCallback(BLEStatus_t status, uint16_t conn_handle, 
 	  Serial.println(" ");
 	  Serial.println("Received new notification:");
 
-	  Serial.print("Connection handle: ");
-	  Serial.println(con_handle, HEX);
-
 	  Serial.print("Characteristic value attribute handle: ");
 	  Serial.println(value_handle, HEX);
 
@@ -1688,9 +1645,6 @@ E.g. **`void gattReceivedIndicationCallback(BLEStatus_t status, uint16_t conn_ha
 	  uint8_t index;
 	  Serial.println(" ");
 	  Serial.println("Receive new indication:");
-
-	  Serial.print("Connection handle: ");
-	  Serial.println(con_handle, HEX);
 
 	  Serial.print("Characteristic value attribute handle: ");
 	  Serial.println(value_handle, HEX);
