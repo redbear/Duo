@@ -1151,6 +1151,9 @@ E.g. **`void serviceDiscoveredCallback(BLEStatus_t status, uint16_t conn_handle,
 	  }
 	}
 
+	// Registers the callback function
+	ble.onServiceDiscoveredCallback(serviceDiscoveredCallback);
+
 ##### <span id="discovercharacteristics">`discoverCharacteristics()`</span>
 
 Discovers the characteristics on the peer device GATT server. Only if the peer device is connected and the service discovery procedure (initiated by [**`ble.discoverPrimaryServices()`**](#discoverprimaryservices)) has been completed, then you can discover its characteristics.
@@ -1244,6 +1247,9 @@ E.g. **`void charsDiscoveredCallback(BLEStatus_t status, uint16_t con_handle, ga
 	  }
 	}
 
+	// Registers the callback function
+	ble.onCharacteristicDiscoveredCallback(charsDiscoveredCallback);
+
 ##### <span id="discovercharacteristicdescriptors">`discoverCharacteristicDescriptors()`</span>
 
 Discovers the descriptor of the specified characteristic. Only if the peer device is connected and the characteristic discovery procedure (initiated by [**`ble.discoverCharacteristics()`**](#discovercharacteristics)) has been completed, then you can discover its descriptor.
@@ -1306,6 +1312,9 @@ E.g. **`void discoveredCharsDescriptorsCallback(BLEStatus_t status, uint16_t con
 	  }
 	}
 
+	// Registers the callback function
+	ble.onDescriptorDiscoveredCallback(discoveredCharsDescriptorsCallback);
+
 ##### <span id="readvalue">`readValue()`</span>
 
 Reads specified characteristic value on peer device. Only if the peer device is connected and the characteristic discovery procedure (initiated by [**`ble.discoverCharacteristics()`**](#discovercharacteristics)) has been completed, then you can read a characteristic value if the characteristic has **READ** property.
@@ -1344,7 +1353,48 @@ The connection handle should be passed in as the essential parameter. The charac
 
 ##### <span id="ongattcharacteristicreadcallback">`onGattCharacteristicReadCallback()`</span>
 
-Register the callback function when a reading characteristic value operation completed.
+Registers a function to be called when the reading characteristic value operation completed.
+
+The callback function takes five parameters and returns nothing:
+
+* **`BLEStatus_t`** BLE status, which should be one of the following:
+    - **`BLE_STATUS_OK`**
+    - **`BLE_STATUS_DONE`**
+    - **`BLE_STATUS_CONNECTION_TIMEOUT`**
+    - **`BLE_STATUS_CONNECTION_ERROR`**
+    - **`BLE_STATUS_OTHER_ERROR`**
+* **`uint16_t`** The connection handle
+* **`uint16_t`** The characteristic value attribute handle
+* **`uint8_t *`** A pointer to the buffer that holds the read back data
+* **`uint16_t`** The length of the read back data
+
+E.g. **`void gattReadCallback(BLEStatus_t status, uint16_t conn_handle, uint16_t value_handle, uint8_t *value, uint16_t length)`**
+
+	static void gattReadCallback(BLEStatus_t status, uint16_t conn_handle, uint16_t value_handle, uint8_t *value, uint16_t length) {
+	  uint8_t index;
+	  if (status == BLE_STATUS_OK) {
+	    Serial.println(" ");
+	    Serial.println("Reads characteristic value successfully");
+	    Serial.print("Connection handle: ");
+	    Serial.println(conn_handle, HEX);
+
+	    Serial.print("Characteristic value attribute handle: ");
+	    Serial.println(value_handle, HEX);
+	        
+	    Serial.print("Characteristic value : ");
+	    for (index = 0; index < length; index++) {
+	      Serial.print(value[index], HEX);
+	      Serial.print(" ");
+	    }
+	    Serial.println(" ");
+	  }
+	  else if (status != BLE_STATUS_DONE) {
+	    Serial.println("Reads characteristic value failed.");
+	  }
+	}
+
+	// Registers the callback function
+	ble.onGattCharacteristicReadCallback(gattReadCallback);
 
 ##### <span id="writevaluewithoutresponse">`writeValueWithoutResponse()`</span>
 
@@ -1382,6 +1432,32 @@ It takes four parameters: the connection handle, the value attribute handle, the
 
 	ble.writeValue(conn_handle, char_value_handle, 20, data);
 
+##### <span id="ongattcharacteristicwrittencallback">`onGattCharacteristicWrittenCallback()`</span>
+
+Registers a function to be called when the writing characteristic value operation completed.
+
+The callback function takes two parameters and returns nothing:
+
+* **`BLEStatus_t`** BLE status, which should be one of the following:
+    - **`BLE_STATUS_OK`**
+    - **`BLE_STATUS_DONE`**
+    - **`BLE_STATUS_CONNECTION_TIMEOUT`**
+    - **`BLE_STATUS_CONNECTION_ERROR`**
+    - **`BLE_STATUS_OTHER_ERROR`**
+* **`uint16_t`** The connection handle
+
+E.g. **`void gattWrittenCallback(BLEStatus_t status, uint16_t conn_handle)`**
+
+	static void gattWrittenCallback(BLEStatus_t status, uint16_t conn_handle) {
+	  if (status == BLE_STATUS_DONE) {
+	    Serial.println(" ");
+	    Serial.println("Writes characteristic value successfully.");
+	  }
+	}
+
+	// Registers the callback function
+	ble.onGattCharacteristicWrittenCallback(gattWrittenCallback);
+
 ##### <span id="readdescriptorvalue">`readDescriptorValue()`</span>
 
 Reads specified descriptor value on peer device. Only if the peer device is connected and the characteristic discovery procedure (initiated by [**`ble.discoverCharacteristics()`**](#discovercharacteristics)) has been completed, then you can read a characteristic descriptor if it is presented.
@@ -1402,6 +1478,49 @@ The connection handle should be passed in as the essential parameter. The charac
 	ble.readDescriptorValue(conn_handle, &descriptor);
 	
 	ble.readDescriptorValue(conn_handle, char_desc_handle);
+
+##### <span id="ongattdescriptorreadcallback">`onGattDescriptorReadCallback()`</span>
+
+Registers a function to be called when the reading descriptor operation completed.
+
+The callback function takes five parameters and returns nothing:
+
+* **`BLEStatus_t`** BLE status, which should be one of the following:
+    - **`BLE_STATUS_OK`**
+    - **`BLE_STATUS_DONE`**
+    - **`BLE_STATUS_CONNECTION_TIMEOUT`**
+    - **`BLE_STATUS_CONNECTION_ERROR`**
+    - **`BLE_STATUS_OTHER_ERROR`**
+* **`uint16_t`** The connection handle
+* **`uint16_t`** The characteristic descriptor attribute handle
+* **`uint8_t *`** A pointer to the buffer that holds the read back data
+* **`uint16_t`** The length of the read back data
+
+E.g. **`void gattReadDescriptorCallback(BLEStatus_t status, uint16_t conn_handle, uint16_t value_handle, uint8_t *value, uint16_t length)`**
+
+	static void gattReadDescriptorCallback(BLEStatus_t status, uint16_t conn_handle, uint16_t value_handle, uint8_t *value, uint16_t length) {
+	  uint8_t index;
+	  if(status == BLE_STATUS_OK) {
+	    Serial.println(" ");
+	    Serial.println("Reads descriptor successfully.");
+
+	    Serial.print("Connection handle: ");
+	    Serial.println(conn_handle, HEX);
+
+	    Serial.print("Characteristic descriptor attribute handle: ");
+	    Serial.println(value_handle, HEX);
+
+	    Serial.print("Characteristic descriptor: ");
+	    for (index = 0; index < length; index++) {
+	      Serial.print(value[index], HEX);
+	      Serial.print(" ");
+	    }
+	    Serial.println(" ");
+	  }
+	}
+
+	// Registers the callback function
+	ble.onGattDescriptorReadCallback(gattReadDescriptorCallback);
 
 ##### <span id="writedescriptorvalue">`writeDescriptorValue()`</span>
 
@@ -1426,9 +1545,35 @@ The connection handle should be passed in as the essential parameter. The rest t
 	
 	ble.writeDescriptorValue(conn_handle, char_desc_handle, 20, data);
 
+##### <span id="ongattdescriptorwrittencallback">`onGattDescriptorWrittenCallback()`</span>
+
+Registers a function to be called when the writing descriptor operation completed.
+
+The callback function takes two parameters and returns nothing:
+
+* **`BLEStatus_t`** BLE status, which should be one of the following:
+    - **`BLE_STATUS_OK`**
+    - **`BLE_STATUS_DONE`**
+    - **`BLE_STATUS_CONNECTION_TIMEOUT`**
+    - **`BLE_STATUS_CONNECTION_ERROR`**
+    - **`BLE_STATUS_OTHER_ERROR`**
+* **`uint16_t`** The connection handle
+
+E.g. **`void gattWriteDescriptorCallback(BLEStatus_t status, uint16_t conn_handle)`**
+
+	static void gattWriteDescriptorCallback(BLEStatus_t status, uint16_t conn_handle) {
+	  if (status == BLE_STATUS_DONE) {
+	    Serial.println(" ");
+	    Serial.println("Writes characteristic descriptor successfully.");
+	  }
+	}
+
+	// Registers the callback function
+	ble.onGattDescriptorWrittenCallback(gattWriteDescriptorCallback);
+
 ##### <span id="writeclientcharsconfigdescriptor">`writeClientCharsConfigDescriptor()`</span>
 
-Write specified characteristic's Client Characteristic Configuration Descriptor (CCCD) value. Only if the peer device is connected and the characteristic discovery procedure (initiated by [**`ble.discoverCharacteristics()`**](#discovercharacteristics)) has been completed, then you can write a characteristic's CCCD if the characteristic has **NOTIFY** or **INDICATE** property. If you want to receive the notification or indication the characteristic, you have to write its CCCD to enable the ability first.
+Write specified characteristic's Client Characteristic Configuration Descriptor (CCCD) value on peer device to subscribe/unsubscribe its notification/indication. Only if the peer device is connected and the characteristic discovery procedure (initiated by [**`ble.discoverCharacteristics()`**](#discovercharacteristics)) has been completed, then you can write a characteristic's CCCD if the characteristic has **NOTIFY** or **INDICATE** property. If you want to receive the notification or indication the characteristic, you have to write its CCCD to subscribe the notification/indication first.
 
 A callback function registered by [**`ble.onGattWriteClientCharacteristicConfigCallback()`**](#ongattwriteclientcharacteristicconfigcallback) will be called once the writing CCCD operation completed.
 
@@ -1438,7 +1583,7 @@ The connection handle should be passed in as the essential parameter. The second
 * **`GATT_CLIENT_CHARACTERISTICS_CONFIGURATION_NOTIFICATION`** - Enable notification
 * **`GATT_CLIENT_CHARACTERISTICS_CONFIGURATION_INDICATION`** - Enable indication
 
-If the peer device characteristic has the NOTIFY property, then you should use **`GATT_CLIENT_CHARACTERISTICS_CONFIGURATION_NOTIFICATION`** to enable notification. If the peer device characteristic has the INDICATE property, then you should use **`GATT_CLIENT_CHARACTERISTICS_CONFIGURATION_INDICATION`** to enable indication.
+If the peer device characteristic has the **NOTIFY** property, then you should use **`GATT_CLIENT_CHARACTERISTICS_CONFIGURATION_NOTIFICATION`** to subscribe notification, which means that the local device should NOT send reponse to peer device after receiving a notification. If the peer device characteristic has the **INDICATE** property, then you should use **`GATT_CLIENT_CHARACTERISTICS_CONFIGURATION_INDICATION`** to subscribe indication, which means that the local device should send a reponse to peer device after receiving an indication.
 
 	// The connection handle can be obtained in the connected callback function
 	static uint16_t conn_handle;
@@ -1455,33 +1600,116 @@ If the peer device characteristic has the NOTIFY property, then you should use *
 	// Enable the characteristic indication
 	writeClientCharsConfigDescritpor(conn_handle, &characteristic, GATT_CLIENT_CHARACTERISTICS_CONFIGURATION_INDICATION);
 
-##### <span id="ongattcharacteristicwrittencallback">`onGattCharacteristicWrittenCallback()`</span>
-
-Register the callback function when a writing characteristic value operation completed.
-
-##### <span id="ongattdescriptorreadcallback">`onGattDescriptorReadCallback()`</span>
-
-Register the callback function when a reading descriptor operation completed.
-
-##### <span id="ongattdescriptorwrittencallback">`onGattDescriptorWrittenCallback()`</span>
-
-Register the callback function when a writing descriptor operation completed.
-
 ##### <span id="ongattwriteclientcharacteristicconfigcallback">`onGattWriteClientCharacteristicConfigCallback()`</span>
 
-Register the callback function when a writing the Client Characteristic Configration Descriptor (CCCD) operation completed.
+Registers a function to be called when the writing Client Characteristic Configration Descriptor (CCCD) operation completed.
+
+The callback function takes two parameters and returns nothing:
+
+* **`BLEStatus_t`** BLE status, which should be one of the following:
+    - **`BLE_STATUS_OK`**
+    - **`BLE_STATUS_DONE`**
+    - **`BLE_STATUS_CONNECTION_TIMEOUT`**
+    - **`BLE_STATUS_CONNECTION_ERROR`**
+    - **`BLE_STATUS_OTHER_ERROR`**
+* **`uint16_t`** The connection handle
+
+E.g. **`void gattWriteCCCDCallback(BLEStatus_t status, uint16_t conn_handle)`**
+
+	static void gattWriteCCCDCallback(BLEStatus_t status, uint16_t conn_handle) {
+	  if (status == BLE_STATUS_DONE) {
+	    Serial.println("Writes characteristic CCCD successfully.");
+	  }
+	}
+
+	// Registers the callback function
+	ble.onGattWriteClientCharacteristicConfigCallback(gattWriteCCCDCallback);
 
 ##### <span id="ongattnotifyupdatecallback">`onGattNotifyUpdateCallback()`</span>
 
-Register the callback function when received a notification from remote device.
+Registers a function to be called when the local device received a notification from peer device.
+
+The callback function takes five parameters and returns nothing:
+
+* **`BLEStatus_t`** BLE status, which should be one of the following:
+    - **`BLE_STATUS_OK`**
+    - **`BLE_STATUS_DONE`**
+    - **`BLE_STATUS_CONNECTION_TIMEOUT`**
+    - **`BLE_STATUS_CONNECTION_ERROR`**
+    - **`BLE_STATUS_OTHER_ERROR`**
+* **`uint16_t`** The connection handle
+* **`uint16_t`** The characteristic value attribute handle
+* **`uint8_t *`** A pointer to the buffer that holds the notified data
+* **`uint16_t`** The length of the notified data
+
+E.g. **`void gattNotifyUpdateCallback(BLEStatus_t status, uint16_t conn_handle, uint16_t value_handle, uint8_t *value, uint16_t length)`**
+
+	static void gattReceivedNotificationCallback(BLEStatus_t status, uint16_t conn_handle, uint16_t value_handle, uint8_t *value, uint16_t length) {
+	  uint8_t index;
+	  Serial.println(" ");
+	  Serial.println("Received new notification:");
+
+	  Serial.print("Connection handle: ");
+	  Serial.println(con_handle, HEX);
+
+	  Serial.print("Characteristic value attribute handle: ");
+	  Serial.println(value_handle, HEX);
+
+	  Serial.print("Notified data: ");
+	  for (index = 0; index < length; index++) {
+	    Serial.print(value[index], HEX);
+	    Serial.print(" ");
+	  }
+	  Serial.println(" ");
+	}
+
+	// Registers the callback function
+	ble.onGattNotifyUpdateCallback(gattReceivedNotificationCallback);
 
 ##### <span id="ongattindicateupdatecallback">`onGattIndicateUpdateCallback()`</span>
 
-Register the callback function when received a indication from remote device.
+Registers a function to be called when the local device received an indication from peer device.
+
+The callback function takes five parameters and returns nothing:
+
+* **`BLEStatus_t`** BLE status, which should be one of the following:
+    - **`BLE_STATUS_OK`**
+    - **`BLE_STATUS_DONE`**
+    - **`BLE_STATUS_CONNECTION_TIMEOUT`**
+    - **`BLE_STATUS_CONNECTION_ERROR`**
+    - **`BLE_STATUS_OTHER_ERROR`**
+* **`uint16_t`** The connection handle
+* **`uint16_t`** The characteristic value attribute handle
+* **`uint8_t *`** A pointer to the buffer that holds the indicated data
+* **`uint16_t`** The length of the indicated data
+
+E.g. **`void gattReceivedIndicationCallback(BLEStatus_t status, uint16_t conn_handle, uint16_t value_handle, uint8_t *value, uint16_t length)`**
+
+	static void gattReceivedIndicationCallback(BLEStatus_t status, uint16_t conn_handle, uint16_t value_handle, uint8_t *value, uint16_t length) {
+	  uint8_t index;
+	  Serial.println(" ");
+	  Serial.println("Receive new indication:");
+
+	  Serial.print("Connection handle: ");
+	  Serial.println(con_handle, HEX);
+
+	  Serial.print("Characteristic value attribute handle: ");
+	  Serial.println(value_handle, HEX);
+
+	  Serial.print("Indicated data: ");
+	  for (index = 0; index < length; index++) {
+	    Serial.print(value[index], HEX);
+	    Serial.print(" ");
+	  }
+	  Serial.println(" ");
+	}
+
+	// Registers the callback function
+	ble.onGattIndicateUpdateCallback(gattReceivedIndicationCallback);
 
 ##### <span id="addservice">`addService()`</span>
 
-Add a BLE service to the GATT server.
+Adds a BLE service to the GATT server.
 
 ##### <span id="addcharacteristic">`addCharacteristic()`</span>
 
