@@ -57,7 +57,7 @@ Since you have installed a version of the Duo board package already, so updating
 ## References
 
 * [Duo Introduction](duo_introduction.md)
-* [Arduino Board Package Change-log](arduino_board_package_changelog.md)
+* [Arduino Board Package Change-log](https://github.com/redbear/STM32-Arduino/blob/master/CHANGELOG.md)
 * [Arduino Official Website](http://www.arduino.cc/)
 * [Arduino Unofficial List of 3rd Party Boards Support URLs](https://github.com/arduino/Arduino/wiki/Unofficial-list-of-3rd-party-boards-support-urls)
 * [RedBear Discussion Forum](http://discuss.redbear.cc/)

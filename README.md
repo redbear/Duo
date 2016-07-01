@@ -39,7 +39,7 @@ Purchase your RedBear Duo now:
 * [Firmware Architecture Overview](docs/firmware_architecture_overview.md)
 * [Firmware Deployment Guide](docs/firmware_deployment_guide.md)
 * [System Firmware Change-log](docs/system_firmware_changelog.md)
-* [Arduino Board Package Change-log](docs/arduino_board_package_changelog.md)
+* [Arduino Board Package Change-log](https://github.com/redbear/STM32-Arduino/blob/master/CHANGELOG.md)
 * [Arduino Board Package Installation Guide](docs/arduino_board_package_installation_guide.md)
 * [dfu-util Installation Guide](docs/dfu-util_installation_guide.md)
 * [Windows Driver Installation Guide](docs/windows_driver_installation_guide.md)

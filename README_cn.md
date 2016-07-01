@@ -126,7 +126,7 @@ Duo 可以应用于很多领域，比如：
 * [固件架构概览](docs/firmware_architecture_overview.md)
 * [固件及应用程序下载指南](docs/firmware_deployment_guide.md)
 * [固件版本历史](docs/system_firmware_changelog.md)
-* [Arduino Duo板安装包版本历史](docs/arduino_board_package_changelog.md)
+* [Arduino Duo板安装包版本历史](https://github.com/redbear/STM32-Arduino/blob/master/CHANGELOG.md)
 * [Arduino Duo板安装包安装指南](docs/arduino_board_package_installation_guide.md)
 * [dfu-util 安装指南](docs/dfu-util_installation_guide.md)
 * [Windows 驱动安装指南](docs/windows_driver_installation_guide.md)

@@ -144,7 +144,7 @@ The voltage from `VBAT` should range from 1.8v to 3.6v, but it can NOT power up 
 ## <span id="resources">Resources</span>
 
 * [Modified Particle Firmware Source Code](https://github.com/redbear/firmware)
-* [Arduino Board Package](https://github.com/redbear/STM32-Arduino)
+* [Arduino Board Package Origin Files](https://github.com/redbear/STM32-Arduino)
 * [Modified Espruino Source Code](https://github.com/redbear/Espruino)
 * [Modified MicroPython Source Code](https://github.com/redbear/micropython)
 * [WICED SDK Patch for Duo](https://github.com/redbear/WICED-SDK)
