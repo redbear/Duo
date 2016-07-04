@@ -1,36 +1,5 @@
-# JavaScript #
-
-*Note: Only system firmware version v0.2.3 supports running JS engine for now*
-
-View source code: [Espruino for the Duo](https://github.com/redbear/Espruino).
-
-
-## How to play ##
-
-* Please use DFU-UTIL to update system firmware to v0.2.3 and load the binary file to the Duo's user-part.Here is the [Guide](https://github.com/redbear/Duo/blob/master/firmware/README.md).
-
-* Download and use the [Espruino Web IDE](https://chrome.google.com/webstore/detail/espruino-web-ide) to play.
-
-	![image](espruino_web_ide.png)
-
-* To upload to the RAM space of the Duo
-
-	* Start the Espruino Web IDE
-	* Write your JavaScript and upload to the board using the **`Send to Esrpruino`** button
-
-	    *Sample JavaScript: Using JavaScript to blink the LED on the Duo.*     
-		
-            var on = true;
-
-		    function toggle() {
-  			  on = !on;
-  			  digitalWrite(LED4, on); // LED4 is the blue LED near to the reset button.
-		    }
-
-		    var interval = setInterval(toggle, 300);
-
-
-* To save the script to the EEPROM of the Duo, you can use the commnad `save()`.
+# Duo: JavaScript Programming Reference Manual
+---
 
 ## Console Interfaces ##
 
@@ -43,7 +12,7 @@ If you have stored WiFi credentials before, after power on, the Duo will try con
 
 ## Reference
 
-The bellowing functions, classes and libraries are mostly implemented and some need to be tested.
+The following reference is inherited from the Espruino official website:
 
 * [Global functions](http://www.espruino.com/Reference#_global)
 * [Array](http://www.espruino.com/Reference#t_Array)
@@ -98,10 +67,14 @@ The bellowing functions, classes and libraries are mostly implemented and some n
 * [url](http://www.espruino.com/Reference#url)
 * [Waveform](http://www.espruino.com/Reference#Waveform)
 
+The following reference is for Duo only:
 
-## Duo specified functions, classes and libraries##
+* [WiFi Class](#wifi-class)
+* [BLE Class](#ble-class)
 
-### WiFi Class ###
+---
+
+### <span id="wifi-class">WiFi Class</span>
 
 The WiFi class for Duo is different from which is printed on the Espruino Reference site.
 
@@ -160,7 +133,7 @@ Ping to the specified host. Error will be caught if Duo is not in connection wit
 Scan the nearby AP. It will print each AP's SSID, security and RSSI. Error will be caught if WiFi is off. The callback is optional. If the callback is presented, it will be called with a JS object passing in, which including the scanned AP details.  
 
 
-### BLE Class ###
+### <span id="ble-class">BLE Class</span>
 
 The BLE class for Duo is different from which is printed on the Espruino Reference site.  
 
@@ -169,5 +142,22 @@ Make Duo stop advertising.
 
 - **RBLE.wake()** - static method
 Make Duo start advertising again.
+
+
+## Support
+
+* [RedBear Discussion](http://discuss.redbear.cc)
+* [Espruino Forum](http://forum.espruino.com/)
+
+
+## License
+
+Copyright (c) 2016 Red Bear
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 

@@ -121,6 +121,7 @@ The voltage from `VBAT` should range from 1.8v to 3.6v, but it can NOT power up 
 * [Application Examples](https://github.com/redbear/STM32-Arduino/tree/master/arduino/libraries/RedBear_Duo)
 * [Programming Reference Manual](programming_reference_manual.md)
 * [Firmware Architecture Overview](firmware_architecture_overview.md)
+* [JavaScript Programming Reference Manual](javascript_programming_reference_manual.md)
 * [RedBear discussion forum](http://discuss.redbear.cc/)
 
 
