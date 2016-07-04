@@ -10,38 +10,47 @@ The Duo's memory allocation is different from the Photon. The Duo has an externa
 
 ## Bootloader
 
-The Duo MCU boots from the internal memory address 0x08000000, where the bootloader is located. The bootloader keeps track of the firmware and provides functions to flash firmware via the USB port (e.g. DFU Mode). If it has nothing to do during the boot time, it will pass the control to system part 1.
+The bootloader ranges from internal flash address **`0x08000000`** to **`0x08003FFFF`**, the size of which is 16 KB. The bootloader is versatile. It determines whether to run the Particle firmware or WICED applications. If neither of them are valid, then it enters DFU mode for firmware uploading.
 
-The bootloader cannot be updated using dfu-util, instead, it will be updated by the partition 2 firmware.
-
-The partition 2 has a copy of bootloader, if it found the bootloader version is lower then the copy, it will update the bootloader partition actomatically.
-
-If you have removed the bootloader with other code (or maybe other bootloader for the ST F205 MCU), you can reload the Duo bootloader by using the RBLink. If you do not have a RBLink, you can use JLink, STLink, FTDI or other flash programmer, but here we will just support using the RBLink.
+Besides, if the Duo is running Particle firmware, the bootloader is responsible for the factory application reset, applying the OTA downloaded user application, making the Duo enter Safe mode, clearing Wi-Fi credentials and etc.
 
 
 ## DCT (Device Configuration Table)
 
-Device Configuration Table (DCT), is a non-volatile flash storage space for storing board configuration such as WiFi credentials (SSID, PIN, etc.).
+The DCT (Device Configuration Table) ranges from internal flash address **`0x08004000`** to **`0x0800BFFFF`**, the size of which is 32 KB. It is separated into two partitions (DCT1 and DCT2) and each size is 16K. Only one of the DCTs is valid at a time and the another one is standby for swapping data. They are used alternately to keep the data integrate, in case of power down during changing the device configuration.
+
+The DCT is made up of two partitions:
+
+* The Platform DCT, starting from the begining address of DCT1 or DCT2. See the [Platform DCT](https://github.com/redbear/firmware/blob/duo/hal/src/duo/wiced/platform/include/platform_dct.h#L257) details.
+* The Application DCT immediately following the Platform DCT. Regarding to the Particle firmware architecture, the Application DCT details are listed [here](https://github.com/redbear/firmware/blob/duo/platform/MCU/STM32F2xx/SPARK_Firmware_Driver/inc/dct.h#L54).
 
 
-## Simulate EEPROM
+## EEPROM Emulation
 
-EEPROM 1 & 2 is to use flash memory to simulate EEPROM for user storage.
+*Note: Particle Firmware architecture only*
+
+The EEPROM emulation is used to store user's non-volatile data, the size of which is 80 KB. It ranges from internal flash address **`0x0800C000`** to **`0x0801FFFF`**. The working mechanism of the EEPROM emulation is the same as DCT, it is separated into two partitions and only one is valid at a time:
+
+* EEPROM emulation bank 1, 16 KB
+* EEPROM emulation bank 2, only 16 KB of the rest 64 KB is used
 
 
-## System Part 1 & 2
+## System Part 1
 
-The Duo firmware is modular in structure, as dynamic libraries (dynalib) and are stored in the system partitions of the internal flash memory.
+*Note: Particle Firmware architecture only*
 
-System Part 1 is for storing communication/security dynalib that used for connecting the Duo to the Particle cloud. Originally, for the Photon, the WiFi firmware is stored here but for the Duo, it is not.
+System part 1 ranges from internal flash address **`0x08020000`** to **`0x0803FFFF`**, the size of which is 128 KB. It is part of the Particle system firmware, which implements the cloud communication and services functions. These functions can be invoked by system part 2 and user application, so they are so called "dynalibs" (dynamic libraries).
 
-Basically, there is no code to be run in partition 1 and it just passes the control to partition 2.
 
-System Part 2 performs a lot of tasks, firstly, it checks the WiFi firmware stored in the external flash and loads it into the AP6216A module (BCM43438 chip). Then it will start BLE and WiFi for doing WiFi provisioning if it has not connected before, otherwise, it will try to associate to a known Wireless Access Point (e.g. home router). Finally, it will connect to the Particle cloud as well.
+## System Part 2
+
+*Note: Particle Firmware architecture only*
+
+System part 2 ranges from internal flash address **`0x08040000`** to **`0x080BFFFF`**, the size of which is 512 KB. It is the mayor part of the Particle system firmware, which implements all of the Hardware Abstract Layer functions, including internal peripherals, WiFi, BLE and etc. They can be invoked by user application in the way of dynalibs.
+
+It is the core of Particle firmware which initialises the platform and runs the FreeRTOS real-time operating system. It is responsible for dealing with system events, and invoking the `setup()` and `loop()` functions in the user application.
 
 The partition 2 firmware has a copy of bootloader, if it found the bootloader version is lower than the copy, then it will update the bootloader automatically.
-
-When everything is ready, it will pass the control to the user partition (your own firmware), `setup()` and `loop()`.
 
 
 ## User Part
