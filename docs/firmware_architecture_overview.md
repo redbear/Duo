@@ -34,48 +34,86 @@ The EEPROM emulation is used to store user's non-volatile data, the size of whic
 * EEPROM emulation bank 1, 16 KB
 * EEPROM emulation bank 2, only 16 KB of the rest 64 KB is used
 
+See the [EEPROM Emulation APIs](https://github.com/redbear/Duo/blob/master/docs/programming_reference_manual.md#eeprom-emulation).
+
 
 ## System Part 1
 
 *Note: Particle Firmware architecture only*
 
-System part 1 ranges from internal flash address **`0x08020000`** to **`0x0803FFFF`**, the size of which is 128 KB. It is part of the Particle system firmware, which implements the cloud communication and services functions. These functions can be invoked by system part 2 and user application, so they are so called "dynalibs" (dynamic libraries).
+System part 1 ranges from internal flash address **`0x08020000`** to **`0x0803FFFF`**, the size of which is up to 128 KB. It is part of the Particle system firmware, which implements the cloud communication and services functions. These functions can be invoked by system part 2 and user application, so they are so called "dynalibs" (dynamic libraries).
 
 
 ## System Part 2
 
 *Note: Particle Firmware architecture only*
 
-System part 2 ranges from internal flash address **`0x08040000`** to **`0x080BFFFF`**, the size of which is 512 KB. It is the mayor part of the Particle system firmware, which implements all of the Hardware Abstract Layer functions, including internal peripherals, WiFi, BLE and etc. They can be invoked by user application in the way of dynalibs.
+System part 2 ranges from internal flash address **`0x08040000`** to **`0x080BFFFF`**, the size of which is up to 512 KB. It is the mayor part of the Particle system firmware, which implements all of the Hardware Abstract Layer functions, including internal peripherals, WiFi, BLE and etc. They can be invoked by user application in the way of dynalibs.
 
-It is the core of Particle firmware which initialises the platform and runs the FreeRTOS real-time operating system. It is responsible for dealing with system events, and invoking the `setup()` and `loop()` functions in the user application.
+It is the core of Particle firmware which initialises the platform and runs the FreeRTOS real-time operating system. It is responsible for dealing with system events, OTA updating firmware and user application, configuring Wi-Fi credentials and invoking the `setup()` and `loop()` functions in the user application.
 
 The partition 2 firmware has a copy of bootloader, if it found the bootloader version is lower than the copy, then it will update the bootloader automatically.
 
 
 ## User Part
 
+The user part is the user application. 
 
+Regarding to the user application based on Particle firmware, it ranges from the internal flash address **`0x080C0000`** to **`0x080FFFFF`**, the size of which is up to 256 KB. It is made up of the `setup()` and `loop()` functions, the same as the Arduino sketch.
+
+Regarding to the user application based on WICED SDK, it ranges from the internal flash address **`0x0800C000`** to **`0x080FFFFF`**, the size of which is up to 976 KB.
 
 
 ## OTA Image
 
+*Note: Particle Firmware architecture only*
 
+The OTA Image ranges from external flash address **`0xC000`** to **`0x13FFFF`**, the size of which is up to 512 KB. It is the OTA downloaded system firmware or user application. The OTA downloaded images will be applied to internal flash during the next boot up.
 
 
 ## Factory Reset Image
 
+*Note: Particle Firmware architecture only*
 
+The Factory Reset image (FAC) ranges from external flash address **`0x140000`** to **`0x17FFFF`**, the size of which is up to 256 KB. It should be a validated user application so that even if you have loaded a bad user application to internal flash, you can simply copy the factory reset image to where the user application locates by performing a factory reset action.
 
 
 ## Wi-Fi Firmware
 
+*Note: Particle Firmware architecture only*
 
+The Wi-Fi firmware ranges from external flash address **`0x180000`** to the end of the external flash, the size of which is up to 512 KB. It will be loaded to the BCM43438 wireless chip in system part 2 during initialization.
+
+
+## User Data
+
+*Note: Particle Firmware architecture only*
+
+The user data region ranges from external flash address **`0x0`** to **`0xBFFFF`**, the size of which is up to 768 KB. It is also used to store user's non-volatile data.
+
+See the [External SPI Flash APIs](https://github.com/redbear/Duo/blob/master/docs/programming_reference_manual.md#external-spi-flash).
+
+
+## WICED
+
+*Note: WICED architecture only*
+
+This region is to store the  WICED application relevant data, e.g the factory reset application, Wi-Fi firmware and etc.
 
 
 ## References
 
+* [Getting Started with Arduino IDE](getting_started_with_arduino_ide.md)
+* [Getting Started with Particle Build (WebIDE)](getting_started_with_particle_build.md)
+* [Firmware Deployment Guide](firmware_deployment_guide.md)
+* [Programming Reference Manual](programming_reference_manual.md)
 
+
+## Resources
+
+* [Modified Particle Firmware Source Code](https://github.com/redbear/firmware)
+* [WICED SDK](https://community.broadcom.com/community/wiced-wifi/wiced-wifi-documentation)
+* [WICED SDK Patch for Duo](https://github.com/redbear/WICED-SDK)
 
 
 ## License
