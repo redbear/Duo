@@ -28,24 +28,27 @@ Purchase your RedBear Duo now:
 
 ## Documentation
 
-#### Official
+#### References
 
 * [Duo Introduction](docs/duo_introduction.md)
 * [RBLink Introduction](docs/rblink_introduction.md)
+* [Programming Reference Manual](docs/programming_reference_manual.md)
+* [Firmware Architecture Overview](docs/firmware_architecture_overview.md)
+* [System Firmware Change-log](docs/system_firmware_changelog.md)
+* [Arduino Board Package Change-log](https://github.com/redbear/STM32-Arduino/blob/master/CHANGELOG.md)
+* [JavaScript Programming Reference Manual](docs/javascript_programming_reference_manual.md)
+* [Troubleshooting](docs/troubleshooting.md)
+
+#### Tutorials
+
 * [Out-of-Box Experience](docs/out_of_box_experience.md)
 * [Getting Started with Arduino IDE](docs/getting_started_with_arduino_ide.md)
 * [Getting Started with Particle Build (WebIDE)](docs/getting_started_with_particle_build.md)
-* [Programming Reference Manual](docs/programming_reference_manual.md)
-* [Firmware Architecture Overview](docs/firmware_architecture_overview.md)
 * [Firmware Deployment Guide](docs/firmware_deployment_guide.md)
-* [System Firmware Change-log](docs/system_firmware_changelog.md)
-* [Arduino Board Package Change-log](https://github.com/redbear/STM32-Arduino/blob/master/CHANGELOG.md)
 * [Arduino Board Package Installation Guide](docs/arduino_board_package_installation_guide.md)
-* [JavaScript Programming Reference Manual](docs/javascript_programming_reference_manual.md)
 * [dfu-util Installation Guide](docs/dfu-util_installation_guide.md)
 * [Windows Driver Installation Guide](docs/windows_driver_installation_guide.md)
 * [Devices Provisioning Guide](docs/devices_provisioning_guide.md)
-* [Troubleshooting](docs/troubleshooting.md)
 
 #### 3rd Party
 
