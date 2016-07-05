@@ -12,16 +12,16 @@ The Duo's memory allocation is different from the Photon. The Duo has an externa
 
 The bootloader ranges from internal flash address **`0x08000000`** to **`0x08003FFFF`**, the size of which is 16 KB. The bootloader is versatile. It determines whether to run the Particle firmware or WICED applications. If neither of them are valid, then it enters DFU mode for firmware uploading.
 
-Besides, if the Duo is running Particle firmware, the bootloader is responsible for the factory application reset, applying the OTA downloaded user application, making the Duo enter Safe mode, clearing Wi-Fi credentials and etc.
+Besides, if the Duo is running Particle firmware, the bootloader is responsible for the factory application reset, applying the OTA downloaded firmware or user application, making the Duo enter Safe mode, clearing Wi-Fi credentials and etc.
 
 
 ## DCT (Device Configuration Table)
 
 The DCT (Device Configuration Table) ranges from internal flash address **`0x08004000`** to **`0x0800BFFFF`**, the size of which is 32 KB. It is separated into two partitions (DCT1 and DCT2) and each size is 16K. Only one of the DCTs is valid at a time and the another one is standby for swapping data. They are used alternately to keep the data integrate, in case of power down during changing the device configuration.
 
-The DCT is made up of two partitions:
+The DCT consists of two partitions:
 
-* The Platform DCT, starting from the begining address of DCT1 or DCT2. See the [Platform DCT](https://github.com/redbear/firmware/blob/duo/hal/src/duo/wiced/platform/include/platform_dct.h#L257) details.
+* The Platform DCT, starting from the begining address of DCT1 or DCT2. [Details...](https://github.com/redbear/firmware/blob/duo/hal/src/duo/wiced/platform/include/platform_dct.h#L257)
 * The Application DCT immediately following the Platform DCT. Regarding to the Particle firmware architecture, the Application DCT details are listed [here](https://github.com/redbear/firmware/blob/duo/platform/MCU/STM32F2xx/SPARK_Firmware_Driver/inc/dct.h#L54).
 
 
@@ -32,7 +32,7 @@ The DCT is made up of two partitions:
 The EEPROM emulation is used to store user's non-volatile data, the size of which is 80 KB. It ranges from internal flash address **`0x0800C000`** to **`0x0801FFFF`**. The working mechanism of the EEPROM emulation is the same as DCT, it is separated into two partitions and only one is valid at a time:
 
 * EEPROM emulation bank 1, 16 KB
-* EEPROM emulation bank 2, only 16 KB of the rest 64 KB is used
+* EEPROM emulation bank 2, only the first 16 KB is used
 
 See the [EEPROM Emulation APIs](https://github.com/redbear/Duo/blob/master/docs/programming_reference_manual.md#eeprom-emulation).
 
@@ -50,7 +50,7 @@ System part 1 ranges from internal flash address **`0x08020000`** to **`0x0803FF
 
 System part 2 ranges from internal flash address **`0x08040000`** to **`0x080BFFFF`**, the size of which is up to 512 KB. It is the mayor part of the Particle system firmware, which implements all of the Hardware Abstract Layer functions, including internal peripherals, WiFi, BLE and etc. They can be invoked by user application in the way of dynalibs.
 
-It is the core of Particle firmware which initialises the platform and runs the FreeRTOS real-time operating system. It is responsible for dealing with system events, OTA updating firmware and user application, configuring Wi-Fi credentials and invoking the `setup()` and `loop()` functions in the user application.
+The system part 2 is the core of the Particle firmware. It initialises the platform and runs the FreeRTOS real-time operating system. It is responsible for dealing with system events, OTA updating firmware and user application, configuring Wi-Fi credentials and calling the `setup()` and `loop()` functions in the user application.
 
 The partition 2 firmware has a copy of bootloader, if it found the bootloader version is lower than the copy, then it will update the bootloader automatically.
 
