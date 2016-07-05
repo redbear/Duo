@@ -55,7 +55,7 @@ Now make your Duo enter DFU Mode:
 * Dump the device private key. It's such important and secret that you must keep it privately:     
 `dfu-util -d 2b04:d058 -a 1 -s 34 -U device_private_key_backup.der`
 
-You can also download or dump other configurations to / from DCT using dfu-util. Please refer to the [Duo Firmware Architecture](duo_software_architecture_introduction.md) to obtain the offset address of each configuration.
+You can also download or dump other configurations to / from DCT using dfu-util. Please refer to the [Firmware Architecture Overview](firmware_architecture_overview.md) to obtain the offset address of each configuration.
 
 #### Update System Firmware
 
@@ -114,7 +114,7 @@ You can also download or dump other configurations to / from DCT using dfu-util.
 
 ## <span id="using-arduino-ide">Using Arduino IDE</span>
 
-If this is your first time playing with the Duo using Arduino IDE, you are recommended to follow the [Duo Getting Started with Arduino IDE Guide](duo_getting_started_with_arduino.md) to set up the Arduino environment first.
+If this is your first time playing with the Duo using Arduino IDE, you are recommended to follow the [Getting Started with Arduino IDE](getting_started_with_arduino_ide.md) to set up the Arduino environment first.
 
 #### Update User Application (aka. Arduino sketch)
 
