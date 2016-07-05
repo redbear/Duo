@@ -22,7 +22,38 @@ The DCT (Device Configuration Table) ranges from internal flash address **`0x080
 The DCT consists of two partitions:
 
 * The Platform DCT, starting from the begining address of DCT1 or DCT2. [Details...](https://github.com/redbear/firmware/blob/duo/hal/src/duo/wiced/platform/include/platform_dct.h#L257)
-* The Application DCT immediately following the Platform DCT. Regarding to the Particle firmware architecture, the Application DCT details are listed [here](https://github.com/redbear/firmware/blob/duo/platform/MCU/STM32F2xx/SPARK_Firmware_Driver/inc/dct.h#L54).
+* The Application DCT immediately following the Platform DCT. 
+
+Regarding to the Particle firmware architecture, the configurations in Application DCT are listed below. For more details, see [here](https://github.com/redbear/firmware/blob/duo/platform/MCU/STM32F2xx/SPARK_Firmware_Driver/inc/dct.h). 
+
+	Region					Offset		Size
+	------------------------------------------------
+	system flags 			0 			32
+	version					32			2
+	device private key		34			1216
+	device public key		1250		384
+	ip config				1634		128
+	country code			1758		4
+	claim code				1762		63
+	claimed					1825		1
+	ssid prefix				1826		26
+	device id				1852		6
+	version string			1858		32
+	dns resolve				1890		128
+	reserved1				2018		64
+	server public key		2082		768
+	padding					2850		2
+	flash modules			2852		100
+	product store			2952		24
+	antenna selection		2976		1
+	cloud transport			2977		1
+	alt device public key	2978		128
+	alt device private key	3106		192
+	alt server public key	3298		192
+	alt server address		3490		128
+	reserved2				3618		640
+	extra system flags		4258		32
+	end						4290
 
 
 ## EEPROM Emulation
