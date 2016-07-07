@@ -36,7 +36,7 @@ Glad you've received your Duo from vendor! Thanks for purchasing the Duo and hop
 
 #### 1. Power on
 
-Connect your Duo to computer via its native USB port with micro USB cable (ensure that the cable has data exchangement capability). Then the on-board RGB LED will keep flashing **blue**, i.e. the Duo is in Listening Mode for you to set Wi-Fi credentials. You'll learn that the Duo is more versatile when it is in Listening Mode.
+Connect your Duo to computer directly via its **Native** USB port with micro USB cable (ensure that the cable has data exchangement capability). Then the on-board RGB LED will keep flashing **blue**, i.e. the Duo is in Listening Mode for you to set Wi-Fi credentials. You'll learn that the Duo is more versatile when it is in Listening Mode.
 
 ![image](images/Duo-Blue.gif)
 
