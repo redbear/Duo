@@ -46,7 +46,9 @@ Connect your Duo to computer directly via its **Native** USB port with micro USB
 
     - Please follow the [Windows Driver Installation Guide](windows_driver_installation_guide.md) to install the driver for Duo.
 
-    - Install the [PuTTY](http://the.earth.li/~sgtatham/putty/latest/x86/putty.zip) serial terminal and start it. Change the Serial port to your one and press the "Open" button. You can also install other serial terminal, e.g. HyperTerminal, Tera Term, Arduino Serial Monitor(No line ending) and etc.
+    - Install the [PuTTY](http://the.earth.li/~sgtatham/putty/latest/x86/putty.zip) serial terminal and start it. Change the Serial port to your one and press the "Open" button. You can also install other serial terminal, e.g. HyperTerminal, Tera Term, Arduino Serial Monitor and etc.
+    
+        **Note:** If you are using Arduino Serial Monitor, before sending 'i', 'v' and 'w', the line ending should be set to "No line ending", otherwise, the ending character will be treated as the next input character. And before sending SSID, security type, cipher and password, the line ending should be changed to "New line". This is because the Duo will echo message upon received the 'i', 'v' and 'w' commands, but other input prompts should be ended with the '\n' character.
 
         ![image](images/PuTTY_01.png)
 
