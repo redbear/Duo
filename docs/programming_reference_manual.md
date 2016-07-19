@@ -361,7 +361,7 @@ Built-in instance **`WiFi`**. [Details...](https://docs.particle.io/reference/fi
 [**`disconnect()`**](https://docs.particle.io/reference/firmware/photon/#disconnect-)    
 [**`connecting()`**](https://docs.particle.io/reference/firmware/photon/#connecting-)    
 [**`ready()`**](https://docs.particle.io/reference/firmware/photon/#ready-)    
-[**`selectAntenna()`**](https://docs.particle.io/reference/firmware/photon/#selectantenna-)    
+[**`selectAntenna()`**](https://docs.particle.io/reference/firmware/photon/#selectantenna-) - Not applicable for Duo    
 [**`listen()`**](https://docs.particle.io/reference/firmware/photon/#listen-)    
 [**`listening()`**](https://docs.particle.io/reference/firmware/photon/#listening-)    
 [**`setCredentials()`**](https://docs.particle.io/reference/firmware/photon/#setcredentials-)    
