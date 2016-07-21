@@ -127,7 +127,7 @@ The voltage from `VBAT` should range from 1.8v to 3.6v, but it can NOT power up 
 
 ## <span id="package-characteristics">Package Characteristics</span>
 
-![image](images/Duo_Package.png)
+![image](images/Duo_Dimension.png)
 
 
 ## <span id="layout-recommendations">Layout Recommendations</span>
