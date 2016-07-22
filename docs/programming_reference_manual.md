@@ -613,7 +613,7 @@ Check if the external flash functions well or not. It returns **0** if success, 
 	  Serial.begin(115200);
 	  delay(5000);
 	
-	  if( selfTest() == 0 ) {
+	  if ( sFLASH.selfTest() == 0 ) {
 	    Serial.println("The external SPI flash functions well.");
 	  }
 	  else {
