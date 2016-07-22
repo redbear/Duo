@@ -15,10 +15,10 @@ Upon the Duo power on, it configures the system clock -- Waiting the High Speed 
 
 After the main system clock configured, it jumps to the `main()` function in the bootloader to begin the [boot procedure](#booting).
 
-Reference code:
+See:
 
-* [LoopFillZerobss](https://github.com/redbear/firmware/blob/duo/build/arm/startup/startup_stm32f2xx.S#L95)    
-* [SystemInit()](https://github.com/redbear/firmware/blob/duo/platform/MCU/STM32F2xx/SPARK_Firmware_Driver/src/system_stm32f2xx.c#L201)
+* [startup_stm32f2xx.S](https://github.com/redbear/firmware/blob/duo/build/arm/startup/startup_stm32f2xx.S): `LoopFillZerobss` 
+* [system_stm32f2xx.c](https://github.com/redbear/firmware/blob/duo/platform/MCU/STM32F2xx/SPARK_Firmware_Driver/src/system_stm32f2xx.c): `SystemInit()`
 
 
 ## <span id="booting">Booting</span>
@@ -71,19 +71,17 @@ If the Duo is applying the Particle Firmware architecture, then the bootloader w
 
 7. Else if the Safe Mode or none of the above modes is in candidate modes, then the bootloader checks if there is OTA downloaded firmware or user application in the OTA region of the external flash. If true, the bootloader then updates the internal firmware or user application with the OTA downloaded one (rapid blinking **magenta**). If Safe Mode is in candidate modes, the bootloader sets a flag to indicate the system firmware to enter safe mode, i.e. not to run user application. Then the bootloader checks if the system firmware is valid, if true, then it jumps to [run system Part 1](#run-system-part-1), otherwise, it stays in DFU Mode for uploading firmware. After the DFU Mode exited or you perform a hardware reset, the Duo will begin from [Startup](#startup).
 
-Reference code:
+See:
 
-* The bootloader [main()](https://github.com/redbear/firmware/blob/duo/bootloader/src/main.c#L85) function
-
+* [main.c](https://github.com/redbear/firmware/blob/duo/bootloader/src/main.c): `main()`
 
 ## <span id="run-system-part-1">Run System Part 1</span>
 
 Once program runs into system part 1, it does nothing except jumping to the [system part 2](#run-system-part-2).
 
-Reference code:
+See:
 
-* [system_part1_boot_table](https://github.com/redbear/firmware/blob/duo/modules/shared/stm32f2xx/inc/system_part1_loader.c#L34)
-* [system_part1_reset_handler()](https://github.com/redbear/firmware/blob/duo/modules/shared/stm32f2xx/inc/system_part1_loader.c#L28)
+* [system_part1_loader.c](https://github.com/redbear/firmware/blob/duo/modules/shared/stm32f2xx/inc/system_part1_loader.c): `system_part1_boot_table` and `system_part1_reset_handler()`
 
 
 ## <span id="run-system-part-2">Run System Part 2</span>
@@ -92,21 +90,51 @@ The system part 2 is the core of the system. It runs the embedded FreeRTOS real-
 
 ### Pre-Initialization
 
-Before running into the main() function of system part 2, it does some initialization works, e.g., re-map the vector table, configure system clock, copy global variables into RAM, construct C++ objects, initialise on-board peripherals and etc. Then it jumps into the main() function of system part 2.
+Before running into the main() function of system part 2, it does some initialization works, e.g., re-map the vector table, configure system clock, copy global variables into RAM, construct C++ objects, initialise on-board peripherals, check if user application is valid and etc. Then it jumps into the main() function of system part 2 to start the FreeRTOS.
 
-Reference code:
+See:
 
-* [HAL_Core_Config()](https://github.com/redbear/firmware/blob/duo/hal/src/stm32f2xx/core_hal_stm32f2xx.c#L292)
+* [system_part2_loader.c](https://github.com/redbear/firmware/blob/duo/modules/shared/stm32f2xx/inc/system_part2_loader.c): `system_part2_pre_init()`
+* [core_hal_stm32f2xx.c](https://github.com/redbear/firmware/blob/duo/hal/src/stm32f2xx/core_hal_stm32f2xx.c): `HAL_Core_Config()`
 
-### Starting FreeRTOS
+### Start FreeRTOS
+
+After pre-initialization completed, it jumps into the main() function of system part 2. In the main() function, it creates a thread, which is the system thread. Then it starts the task scheduler.
+
+See:
+
+* [core_hal_stm32f2xx.c](https://github.com/redbear/firmware/blob/duo/hal/src/stm32f2xx/core_hal_stm32f2xx.c): `application_start()`
 
 #### System Thread
 
-#### Application Thread
+In the system thread, it works in the following sequence:
 
-##### setup()
+##### Update bootloader if needed
 
-##### loop()
+The system part 2 has a copy of the bootloader, which is updated by updating system part 2. In this stage, the Duo checks the existing bootloader version, if the bootloader in system part 2 is newer than the existing one, then it will re-write the bootloader region with the newer bootloader.
+
+See:
+
+* [bootloader.cpp](https://github.com/redbear/firmware/blob/duo/hal/src/stm32f2xx/bootloader.cpp): `bootloader_update_if_needed()`
+##### Generate device private key if it is empty
+
+In this stage, if the Duo detectes that the device private key is empty, which is indicated by starting the device private key region with 0xFF, then it generates a new device private key and store it in the device private key region of the DCT. During generating the device private key, the on-board RGB will be blinking white.
+
+See:
+
+* [core_hal_stm32f2xx.c](https://github.com/redbear/firmware/blob/duo/hal/src/stm32f2xx/core_hal_stm32f2xx.c): `generate_key()`
+
+##### Initialise native USB
+
+In this stage, it initialise the native USB port.
+
+See:
+
+* [main.cpp](https://github.com/redbear/firmware/blob/duo/system/src/main.cpp): `app_setup_and_loop()`
+
+##### Update user application via Arduino avrdude if requested
+
+### Systick
 
 ## Device Modes
 
