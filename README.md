@@ -4,7 +4,7 @@
 
 ![image](docs/images/RB_Duo.png)
 
-The [RedBear Duo](http://www.redbear.cc/duo) is a thumb-size development board designed to simplify the process of building Internet of Things (IoT) products. It provides everything you need -- Wi-Fi, BLE and a powerful Cloud backend, all in a compact form factor that makes it ideal for your first prototype, a finished product, and everything in between. [More...](docs/duo_introduction.md) 
+The [RedBear Duo](http://www.redbear.cc/duo) is a thumb-size development board designed to simplify the process of building Internet of Things (IoT) products. It provides everything you need -- Wi-Fi, BLE and a powerful Cloud backend, all in a compact form factor that makes it ideal for your first prototype, a finished product, and everything in between. [More >>](docs/duo_introduction.md) 
 
 Purchase your RedBear Duo now: 
 
@@ -44,7 +44,7 @@ Purchase your RedBear Duo now:
 
 * [Out-of-Box Experience](docs/out_of_box_experience.md)
 * [Getting Started with Arduino IDE](docs/getting_started_with_arduino_ide.md)
-* [Getting Started with Particle Build (WebIDE)](docs/getting_started_with_particle_build.md)
+* [Getting Started with Particle Build (Web IDE)](docs/getting_started_with_particle_build.md)
 * [Firmware Deployment Guide](docs/firmware_deployment_guide.md)
 * [Arduino Board Package Installation Guide](docs/arduino_board_package_installation_guide.md)
 * [dfu-util Installation Guide](docs/dfu-util_installation_guide.md)
@@ -62,7 +62,7 @@ Purchase your RedBear Duo now:
 
 * [Application Examples](https://github.com/redbear/STM32-Arduino/tree/master/arduino/libraries/RedBear_Duo)
 * [Arduino IDE](https://www.arduino.cc/en/Main/Software)
-* [Particle Build (WebIDE)](https://build.particle.io/)
+* [Particle Build (Web IDE)](https://build.particle.io/)
 * [Particle Dashboard](https://dashboard.particle.io/)
 * [Modified Particle Firmware Source Code](https://github.com/redbear/firmware)
 * [Modified Espruino Source Code](https://github.com/redbear/Espruino)
@@ -85,9 +85,9 @@ Purchase your RedBear Duo now:
 
 ## ToDo
 
-* Add more BLE examples to the Particle Build (WebIDE) and Arduino IDE.
+* Add more BLE examples to the Particle Build (Web IDE) and Arduino IDE.
 
-	The BLE examples are not completed yet, for WebIDE, we have not yet added any examples for BLE, if you want to try BLE using WebIDE, please browse [this](https://github.com/redbear/STM32-Arduino/tree/master/arduino/libraries/RedBear_Duo/examples/03.BLE), copy & paste the code to the WebIDE.
+	The BLE examples are not completed yet, for Web IDE, we have not yet added any examples for BLE, if you want to try BLE using Web IDE, please browse [this](https://github.com/redbear/STM32-Arduino/tree/master/arduino/libraries/RedBear_Duo/examples/03.BLE), copy & paste the code to the Web IDE.
 
 * Reduce power consumption for BLE
 

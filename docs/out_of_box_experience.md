@@ -113,7 +113,7 @@ In later chapter, the device ID will be used for claiming your Duo on the Partic
 
 #### 6. Claim your Duo on the Partcile Cloud (optional)
 
-We work closely with Particle team and the Duo for development purpose, can freely and easily access the Particle Cloud and benifit from the services and tools provided by Particle, e.g., Particle WebIDE, Particle Dashboard, Particle Event System and etc. If you want to benefit from these features, you have to work through the following steps to claim your Duo first.
+We work closely with Particle team and the Duo for development purpose, can freely and easily access the Particle Cloud and benifit from the services and tools provided by Particle, e.g., Particle Web IDE, Particle Dashboard, Particle Event System and etc. If you want to benefit from these features, you have to work through the following steps to claim your Duo first.
 
 * Make sure that the Duo is connected to the Particle Cloud, i.e. the RGB is breathing **cyan**. If it can not connect to the Cloud, please check out the [Duo Troubleshooting](duo_troubleshooting.md) to fix it first before moving on.
 
@@ -205,7 +205,7 @@ We always recommend you update your Duo to the latest system firmware, since the
 ## <span id="whats-next">What's Next</span>
 
 * [Getting Started with Arduino IDE](getting_started_with_arduino_ide.md)
-* [Getting Started with Particle Build (WebIDE)](getting_started_with_particle_build.md)
+* [Getting Started with Particle Build (Web IDE)](getting_started_with_particle_build.md)
 
 
 ## <span id="references">References</span>
@@ -217,7 +217,7 @@ We always recommend you update your Duo to the latest system firmware, since the
 * [System Firmware Change-log](system_firmware_changelog.md)
 * [Devices Provisioning Guide](devices_provisioning_guide.md)
 * [dfu-util Installation Guide](dfu-util_installation_guide.md)
-* [Particle Build (WebIDE)](https://build.particle.io)
+* [Particle Build (Web IDE)](https://build.particle.io)
 * [Particle Dashboard](https://dashboard.particle.io/)
 * [Particle Docs](https://docs.particle.io/guide/getting-started/intro/photon/)
 * [RedBear discussion forum](http://discuss.redbear.cc/)

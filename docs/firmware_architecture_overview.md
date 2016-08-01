@@ -135,7 +135,7 @@ This region is to store the  WICED application relevant data, e.g the factory re
 ## References
 
 * [Getting Started with Arduino IDE](getting_started_with_arduino_ide.md)
-* [Getting Started with Particle Build (WebIDE)](getting_started_with_particle_build.md)
+* [Getting Started with Particle Build (Web IDE)](getting_started_with_particle_build.md)
 * [Firmware Deployment Guide](firmware_deployment_guide.md)
 * [Programming Reference Manual](programming_reference_manual.md)
 * [How It Works](how_it_works.md)

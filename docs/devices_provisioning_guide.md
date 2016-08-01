@@ -92,7 +92,7 @@ As there is always a chance that certain Duos may escape from the initial provis
 
 ## What's Next
 
-[Getting Started with Particle Build (WebIDE)](getting_started_with_particle_build.md)
+[Getting Started with Particle Build (Web IDE)](getting_started_with_particle_build.md)
 
 
 ## References

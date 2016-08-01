@@ -3,7 +3,7 @@
 
 ## Console Interfaces ##
 
-The default console is mapped to Duo's on-board USB, and UART1, which enables you to interact with WebIDE using RBLink. 
+The default console is mapped to Duo's on-board USB, and UART1, which enables you to interact with Espruino Web IDE using RBLink. 
 
 After power on, Duo's BLE is activated and begin advertising as "Duo JS Interpreter". If you connect your smart device to Duo, then the condole is moved to Bluetooth. There is a UART service containing two characteristics, one for sending JS command and one for echoing the JS interpreter status.
 

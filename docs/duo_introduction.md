@@ -66,8 +66,8 @@ The Duo is so powerful that it can be applied to many applications, e.g.:
     - JTAG(SWD) debug port
 * Development Platform: 
     - Arduino IDE
-    - Particle Build(WebIDE)
-    - Espruino WebIDE
+    - Particle Build(Web IDE)
+    - Espruino Web IDE
     - Broadcom WICED SDK
     - ARM GCC
 * Real-time operating system (FreeRTOS)

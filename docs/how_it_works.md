@@ -199,7 +199,7 @@ See:
 * [Duo Introduction](duo_introduction.md)
 * [Out-of-Box Experience](out_of_box_experience.md)
 * [Getting Started with Arduino IDE](getting_started_with_arduino_ide.md)
-* [Getting Started with Particle Build (WebIDE)](getting_started_with_particle_build.md)
+* [Getting Started with Particle Build (Web IDE)](getting_started_with_particle_build.md)
 * [Firmware Deployment Guide](firmware_deployment_guide.md)
 * [Programming Reference Manual](programming_reference_manual.md)
 * [Firmware Architecture Overview](firmware_architecture_overview.md)

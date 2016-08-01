@@ -114,7 +114,7 @@ If you can not see the device and comport in Device Manager or they are under th
 ## What's Next
 
 * [Getting Started with Arduino IDE](getting_started_with_arduino_ide.md)
-* [Getting Started with Particle Build (WebIDE)](getting_started_with_particle_build.md)
+* [Getting Started with Particle Build (Web IDE)](getting_started_with_particle_build.md)
 
 
 ## References
