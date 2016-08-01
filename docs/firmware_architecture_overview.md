@@ -138,6 +138,7 @@ This region is to store the  WICED application relevant data, e.g the factory re
 * [Getting Started with Particle Build (WebIDE)](getting_started_with_particle_build.md)
 * [Firmware Deployment Guide](firmware_deployment_guide.md)
 * [Programming Reference Manual](programming_reference_manual.md)
+* [How It Works](how_it_works.md)
 
 
 ## Resources

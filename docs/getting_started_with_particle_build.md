@@ -66,6 +66,7 @@ You should note that the Particle Build only supports firmware upgrading, if you
 * [Duo Introduction](duo_introduction.md)
 * [Programming Reference Manual](programming_reference_manual.md)
 * [Firmware Architecture Overview](firmware_architecture_overview.md)
+* [How It Works](how_it_works.md)
 * [Particle Build](https://build.particle.io)
 * [Particle Documentation](https://docs.particle.io/guide/getting-started/intro/photon/)
 * [RedBear Discussion Forum](http://discuss.redbear.cc/)
