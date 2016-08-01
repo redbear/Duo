@@ -37,6 +37,7 @@ Purchase your RedBear Duo now:
 * [How It Works](docs/how_it_works.md)
 * [System Firmware Change-log](docs/system_firmware_changelog.md)
 * [Arduino Board Package Change-log](https://github.com/redbear/STM32-Arduino/blob/master/CHANGELOG.md)
+* [JavaScript Interpreter Change-log](docs/javascript_interpreter_changelog.md)
 * [JavaScript Programming Reference Manual](docs/javascript_programming_reference_manual.md)
 * [Troubleshooting](docs/troubleshooting.md)
 
