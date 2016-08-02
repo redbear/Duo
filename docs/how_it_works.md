@@ -112,7 +112,7 @@ See:
 
 ## <span id="4-run-system-part-2">4. Run System Part 2</span>
 
-The system part 2 is the core of the Particle firmware. It runs the embedded FreeRTOS real-time operating system. Most of the system functionalities are integrated into system part 2. And the user application executes either in a separated thread or within the [infinite loop](#426-Infinite-loop) of the main thread.
+The system part 2 is the core of the Particle firmware. It runs the embedded FreeRTOS real-time operating system. Most of the system functionalities are integrated into system part 2. And the user application executes either in a separated thread or within the [infinite loop](#426-infinite-loop) of the main thread.
 
 ### <span id="41-pre-initialization">4.1 Pre-Initialization</span>
 
@@ -175,7 +175,7 @@ See:
 
 * [main.cpp](https://github.com/redbear/firmware/blob/duo/system/src/main.cpp): `Network_Setup()`
 
-#### <span id="426-Infinite-loop">4.2.6 Infinite loop</span>
+#### <span id="426-infinite-loop">4.2.6 Infinite loop</span>
 
 This loop is made up of two sub loops, [system loop](#4261-system-loop) and [user application loop](#4262-user-application-loop). The system loop executes first followed by the user application loop and repeat. If [system threading](https://docs.particle.io/reference/firmware/photon/#system-thread) is enabled in user application, the system loop and user application loop will execute in separated threads. If there is no valid user application detected at target address or the Safe Mode is chose, the user application loop will not execute.
 
