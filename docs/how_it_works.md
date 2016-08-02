@@ -7,6 +7,10 @@ The RedBear Duo is pre-installed the customed Particle Firmware during manufactu
 * [2. Booting](#2-booting)
 	* [2.1 WICED Architecture](#21-wiced-architecture)
     * [2.2 Particle Firmware Architecture](#22-particle-firmware-architecture)
+        * [2.2.1 Factory Reset Mode](#221-factory-reset-mode)
+        * [2.2.2 DFU Mode](#222-dfu-mode)
+        * [2.2.3 Safe Mode](#223-safe-mode)
+        * [2.2.4 Normal Mode](#224-normal-mode)
 * [3. Run System Part 1](#3-run-system-part-1)
 * [4. Run System Part 2](#4-run-system-part-2)
     * [4.1 Pre-initialization](#41-pre-initialization)
@@ -23,9 +27,9 @@ The RedBear Duo is pre-installed the customed Particle Firmware during manufactu
 
 ## <span id="1-startup">1. Startup</span>
 
-Upon the Duo power on, it configures the system clock -- Waiting the High Speed External crystal oscillator (HSE) to be stable and then configuring the main system clock, just the same as what most ARM cortex MCU working through upon power on. 
+Upon the Duo powers on, it configures the system clock -- Waiting for the High Speed External crystal oscillator (HSE) to be stable and then configuring the main system clock, just the same as what most ARM cortex MCU does upon power on. 
 
-After the main system clock configured, it jumps to the `main()` function in the bootloader to begin the [boot procedure](#booting).
+After the main system clock being configured, it jumps to the `main()` function in the bootloader to begin the [boot procedure](#2-booting).
 
 See:
 
@@ -37,15 +41,15 @@ See:
 
 Upon entering the boot procedure, it initialises the peripherals that may be used in the bootloader, e.g. Systick, CRC, RTC, Watchdog, Timers, on-board RGB, LED and button.
 
-After the platform setup, it loads the system flags from DCT. These flags  and certain backup registers will be judged and determine the workflow of bootloader.
+After the platform setup, it loads the system flags from DCT. These flags  and some of the backup registers will be judged to determine the workflow of the bootloader.
 
-If the **`wiced_application`** flag is equal to **`0x5AA5`**, which is set after uploading WICED application using dfu-util and means that there is a valid WICED application in corresponding region, then the bootloader assumes that the Duo is applying the WICED architecture. Else the bootloader assumes that the Duo is applying the Particle Firmware architecture.
+If the **`wiced_application`** flag is equal to **`0x5AA5`**, which is set after uploading WICED application using dfu-util, then the bootloader assumes that the Duo is applying the WICED architecture. Else the bootloader assumes that the Duo is applying the Particle Firmware architecture.
 
 #### <span id="21-wiced-architecture">2.1 WICED Architecture</span>
 
 If the Duo is applying the WICED architecture, then the bootloader works according to the following logic:
 
-- If the SETUP button is pressed, then it enters in [DFU Mode](#dfu-mode)
+- If the SETUP button is pressed, then it enters in [DFU Mode](#222-dfu-mode)
 
 - If the SETUP button is NOT pressed, then it jumps to run WICED application.
 
@@ -53,35 +57,45 @@ If the Duo is applying the WICED architecture, then the bootloader works accordi
 
 If the Duo is applying the Particle Firmware architecture, then the bootloader works in the following sequence:
 
-1. If the **`Factory_Reset_SysFlag`** is equal to **`0xAAAA`**, which is set by user application, then it adds the [Factory Reset Mode](#factory-reset-mode) to candidate modes and clears the flag.
+1. If the **`Factory_Reset_SysFlag`** is equal to **`0xAAAA`**, which is set by user application, then it adds the [Factory Reset Mode](#221-factory-reset-mode) to candidate modes and clears the flag.
 
-2. If the **`BKP_DR_01`** backup register is equal to **`0xEDFA`**, which is set by user application, then it adds the [DFU Mode](#dfu-mode) to candidate modes and clears the register.
+2. If the **`BKP_DR_01`** backup register is equal to **`0xEDFA`**, which is set by user application, then it adds the [DFU Mode](#222-dfu-mode) to candidate modes and clears the register.
 
-3. If the **`BKP_DR_01`** backup register is equal to **`0x5AFE`**, which is set by user application, then it adds the [Safe Mode](#safe-mode) to candidate modes and clears the flag.
+3. If the **`BKP_DR_01`** backup register is equal to **`0x5AFE`**, which is set by user application, then it adds the [Safe Mode](#223-safe-mode) to candidate modes and clears the flag.
 
-4. If the SETUP button is pressed, then one of the following situations may occure:
+4. If the SETUP button is pressed, then one of the following situations may happen:
 
-	- Release the button during 0 ~ 3 seconds (i.e. blinking **magenta**). It removes the Factory Reset Mode from candidate modes. And if the DFU Mode is not in the candidate modes, then it adds the Safe Mode to candidates modes, otherwise, it removes the Safe Mode from candidate modes.
+	- Release the button during 0 ~ 3 seconds (i.e. blinking **magenta**). It removes the Factory Reset Mode from candidate modes. And if the DFU Mode is not in the candidate modes, then it adds the [Safe Mode](#223-safe-mode) to candidates modes, otherwise, it removes the Safe Mode from candidate modes.
 
-	- Release the button during 3 ~ 6 seconds (i.e. blinking **yellow**). It removes the Factory Reset Mode and Safe Mode from candidate modes and adds the DFU Mode to candidate modes. 
+	- Release the button during 3 ~ 6 seconds (i.e. blinking **yellow**). It removes the Factory Reset Mode and Safe Mode from candidate modes and adds the [DFU Mode](#222-dfu-mode) to candidate modes. 
 	
-	*If the factory reset application (FAC) is valid in external flash:*
+	*If the factory reset application (FAC) is valid in external flash, then:*
 	
-	- Release the button during 6 ~ 9 seconds (i.e. blinking **green**). It removes the DFU Mode from candidate modes and adds the Factory Reset Mode to candidate modes.
+	- Release the button during 6 ~ 9 seconds (i.e. blinking **green**). It removes the DFU Mode from candidate modes and adds the [Factory Reset Mode](#221-factory-reset-mode) to candidate modes.
 	
-	- Release the button during 9 ~ 12 seconds (i.e. blinking **white**). It removes the DFU Mode from candidate modes and adds the Deep Factory Reset Mode to candidate modes, which additionaly sets a flag to indicate system firmware to clear Wi-Fi credentials comparing to the Factory Reset Mode.
+	- Release the button during 9 ~ 12 seconds (i.e. blinking **white**). It removes the DFU Mode from candidate modes and adds the [Deep Factory Reset Mode](#221-factory-reset-mode) to candidate modes, which additionaly sets a flag to indicate the system firmware to clear stored WiFi credentials, comparing to the Factory Reset Mode.
 
-	- If you don't release the button after 12 seconds, then it adds the Factory Reset Mode to candidate modes and also sets a flag to indicate system firmware to clear Wi-Fi credentials. Then it automatically goes to the next stage.
+	- Release the button after 12 seconds. It adds the [Deep Factory Reset Mode](#221-factory-reset-mode) to candidate modes, which additionaly sets a flag to indicate the system firmware to clear stored WiFi credentials, comparing to the Factory Reset Mode.
 
-	*If the factory reset application (FAC) is NOT valid in external flash:*
+	*If the factory reset application (FAC) is NOT valid in external flash, then:*
 
-	- Release the button after 3 seconds (i.e. always blinking **yellow**). Removes the Factory Reset Mode and Safe Mode from candidate modes. Adds the DFU Mode to candidate modes.  <br><br>
+	- Release the button after 3 seconds (i.e. always blinking **yellow**). It removes the Factory Reset Mode and Safe Mode from candidate modes and adds the [DFU Mode](#222-dfu-mode) to candidate modes. 
 
-5. If the Factory Reset Mode is in the candidate modes, then the bootloader copies the factory reset application from external flash to internal flash where the user application locates (rapid blinking **white** or **green**). After that, the Duo resets to start from [Startup](#startup).
+##### <span id="221-factory-reset-mode">2.2.1 Factory Reset Mode</span>
 
-6. Else if the DFU Mode is in candidate modes, then the bootloader stays in DFU Mode for uploading firmware. After the DFU Mode exited or you perform a hardware reset, the Duo will start from [Startup](#startup).
+The (Deep) Factory Reset Mode has the highest priority among the candidate modes. If the (Deep) Factory Reset Mode is in the candidate modes, then the bootloader copies the factory reset application from external flash to internal flash where the user application locates. During the Factory Reset Mode, the on-board RGB rapidly blinks **green**. During the Deep Factory Reset Mode, the on-board RGB rapidly blinks **while** and the stored WiFi credentials will be wiped out. After that, the Duo performs a soft-reset to start from [Startup](#1-startup).
 
-7. Else if the Safe Mode or none of the above modes is in candidate modes, then the bootloader checks if there is OTA downloaded firmware or user application in the OTA region of the external flash. If true, the bootloader then updates the internal firmware or user application with the OTA downloaded one (rapid blinking **magenta**). If Safe Mode is in candidate modes, the bootloader sets a flag to indicate the system firmware to enter safe mode, i.e. not to run user application. Then the bootloader checks if the system firmware is valid, if true, then it jumps to [run system Part 1](#run-system-part-1), otherwise, it stays in DFU Mode for uploading firmware. After the DFU Mode exited or you perform a hardware reset, the Duo will begin from [Startup](#startup).
+##### <span id="222-dfu-mode">2.2.2 DFU Mode</span>
+
+The DFU Mode has the second priority among the candidate modes. If the DFU Mode is in candidate modes, then the bootloader stays in the DFU Mode. You can use the [dfu-util](dfu-util_installation_guide.md) to upload firmware, with the on-board RGB blinking **yellow**. See the dfu-util part of the [Firmware Deployment Guide](firmware_deployment_guide.md). After the DFU Mode exits or you perform a hardware reset, the Duo will start from [Startup](#1-startup).
+
+##### <span id="223-safe-mode">2.2.3 Safe Mode</span>
+
+If the Safe Mode is in candidate modes, the bootloader acts the same as the [Normal Mode](#224-normal-mode), except that it sets a system flag in the DCT, which indicating the system firmware not to run user application but try to connect to the Particle Cloud.
+
+#### <span id="224-normal-mode">2.2.4 Normal Mode</span>
+
+If none of the Factory Reset Mode, DFU Mode and Safe Mode is in the candidate modes, the bootloader checks if there is available OTA downloaded firmware or user application in the OTA region of the external flash. If it is true, the bootloader updates the internal firmware or user application with the OTA downloaded one (rapid blinking **magenta**). Then the bootloader checks if the system firmware is valid, if true, then it jumps to [run system Part 1](#3-run-system-part-1), otherwise, it stays in [DFU Mode](#222-dfu-mode) for uploading firmware.
 
 See:
 
@@ -89,7 +103,7 @@ See:
 
 ## <span id="3-run-system-part-1">3. Run System Part 1</span>
 
-Once program runs into system part 1, it does nothing except jumping to the [system part 2](#run-system-part-2).
+Once program runs into system part 1, it does nothing except jumping to the [system part 2](#4-run-system-part-2).
 
 See:
 
@@ -153,9 +167,9 @@ See:
 
 1. Clear WiFi credentials if a Deep Factory Reset is performed before
 
-2. If the Safe Mode is chose during booting or the system mode is set to `AUTOMATIC` in user application, the DUo will turn on WiFi and try to connect to configured AP. If no WiFi credentials is configured, it will enter  the Listening Mode automatically
+2. If the Safe Mode is chose during booting or the system mode is set to [`AUTOMATIC`](https://docs.particle.io/reference/firmware/photon/#automatic-mode) in user application, the Duo will turn on WiFi and try to connect to configured AP. See also [`MANUAL`](https://docs.particle.io/reference/firmware/photon/#manual-mode) and [`SEMI_AUTOMATIC`](https://docs.particle.io/reference/firmware/photon/#semi-automatic-mode) system modes. If no WiFi credentials is configured, it will enter  the Listening Mode automatically
 
-3. Initialize the Particle cloud communication protocol
+3. If the system mode is set to [`AUTOMATIC`](https://docs.particle.io/reference/firmware/photon/#automatic-mode) in user application, it will initialize the Particle cloud communication protocol
 
 See:
 
@@ -169,7 +183,7 @@ This loop is made up of two sub loops, [system loop]((#4261-system-loop)) and [u
 
 1. Monitor the USB serial to determine if ymodom or Arduino avr dude uploading user application procedure should enter. Once enter the uploading procedure, the user application is uploaded via  USB serial and once finished, the Duo perform a soft-reset.
 
-2. Manage the network connection. It will disconnect the network connection from AP  and turn off the WiFi if requested by user application. It will try to connect to the AP which is configured in the DCT. The Duo is capable of storing up to 5 WiFi credentials. When trying to connect to AP, it tries the configured AP one by one in the sequence you configuring them, until the Duo connects to one of the AP successfully. If the Duo can not connect to any of the configured AP, then it will try again in the next system loop.
+2. Manage the network connection. It will disconnect the network connection from AP  and turn off the WiFi if requested by user application. It will try to connect to the AP which is configured in the DCT if requested by user application or, the system mode is set to [`AUTOMATIC`](https://docs.particle.io/reference/firmware/photon/#automatic-mode) in user application. The Duo is capable of storing up to 5 WiFi credentials. When trying to connect to AP, it tries the configured AP one by one in the sequence you configuring them, until the Duo connects to one of the AP successfully. If the Duo can not connect to any of the configured AP, then it will try again in the next system loop.
 
 3. Enter Listening Mode if requested by user application or by keeping pressing the SETUP button for at least 3 seconds. In the Listening Mode, the RGB blinks blue and it broadcasts a WiFi SoftAP and BLE Peripheral. During the mode, you can configure WiFi credentials via SoftAP and BLE Peripheral, update system firmware and user application via SoftAP, fetch device ID and system firmware version and so on. Once entering the Listening Mode, neither the system loop nor user application will execute, since it  will block in the Listening Mode until a valid WiFi credentials is configured or updating firmware completed or exiting Listening Mode function is called in user application.
 
@@ -184,6 +198,8 @@ See:
 * [system_task.cpp](https://github.com/redbear/firmware/blob/duo/system/src/system_task.cpp): `Spark_Idle_Events()`
 
 ##### <span id="4262-user-application-loop">4.2.6.2 User application loop</span>
+
+Only if the user application is valid and the Safe Mode is not chose, then it will run the user application loop.
 
 1. setup() - It executes only once at the first time running the user application loop. The `setup()` function is corresponding to the `setup()` function in user application.
 
