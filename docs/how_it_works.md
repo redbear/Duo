@@ -83,7 +83,7 @@ If the Duo is applying the Particle Firmware architecture, then the bootloader w
 
 ##### <span id="221-factory-reset-mode">2.2.1 Factory Reset Mode</span>
 
-The (Deep) Factory Reset Mode has the highest priority among the candidate modes. If the (Deep) Factory Reset Mode is in the candidate modes, then the bootloader copies the factory reset application from external flash to internal flash where the user application locates. During the Factory Reset Mode, the on-board RGB rapidly blinks **green**. During the Deep Factory Reset Mode, the on-board RGB rapidly blinks **while** and the stored WiFi credentials will be wiped out. After that, the Duo performs a soft-reset to start from [Startup](#1-startup).
+The (Deep) Factory Reset Mode has the highest priority among the candidate modes. If the (Deep) Factory Reset Mode is in the candidate modes, then the bootloader copies the factory reset application from external flash to internal flash where the user application locates. During the Factory Reset Mode, the on-board RGB rapidly blinks **green**. During the Deep Factory Reset Mode, the on-board RGB rapidly blinks **white** and the stored WiFi credentials will be wiped out. After that, the Duo performs a soft-reset to start from [Startup](#1-startup).
 
 ##### <span id="222-dfu-mode">2.2.2 DFU Mode</span>
 
@@ -91,7 +91,7 @@ The DFU Mode has the second priority among the candidate modes. If the DFU Mode 
 
 ##### <span id="223-safe-mode">2.2.3 Safe Mode</span>
 
-If the Safe Mode is in candidate modes, the bootloader acts the same as the [Normal Mode](#224-normal-mode), except that it sets a system flag in the DCT, which indicating the system firmware not to run user application but try to connect to the Particle Cloud.
+If the (Deep) Factory Reset Mode and DFU Mode are not in the candidate modes, while the Safe Mode is in candidate modes, the bootloader acts the same as the [Normal Mode](#224-normal-mode), except that it sets a system flag in the DCT, which indicating the system firmware not to run user application but try to connect to the Particle Cloud.
 
 #### <span id="224-normal-mode">2.2.4 Normal Mode</span>
 
@@ -112,7 +112,7 @@ See:
 
 ## <span id="4-run-system-part-2">4. Run System Part 2</span>
 
-The system part 2 is the core of the system. It runs the embedded FreeRTOS real-time operating system. Most of the system functionalities are integrated into system part 2. And the user application executes either in a separated thread or within the infinite loop of the main thread.
+The system part 2 is the core of the Particle firmware. It runs the embedded FreeRTOS real-time operating system. Most of the system functionalities are integrated into system part 2. And the user application executes either in a separated thread or within the [infinite loop](#426-Infinite-loop) of the main thread.
 
 ### <span id="41-pre-initialization">4.1 Pre-Initialization</span>
 
@@ -177,7 +177,7 @@ See:
 
 #### <span id="426-Infinite-loop">4.2.6 Infinite loop</span>
 
-This loop is made up of two sub loops, [system loop]((#4261-system-loop)) and [user application loop](#4262-user-application-loop). The system loop executes first followed by the user application loop and repeat. But if there is no valid user application detected at target address or the Safe Mode is chose, the user application loop will not execute.
+This loop is made up of two sub loops, [system loop](#4261-system-loop) and [user application loop](#4262-user-application-loop). The system loop executes first followed by the user application loop and repeat. If [system threading](https://docs.particle.io/reference/firmware/photon/#system-thread) is enabled in user application, the system loop and user application loop will execute in separated threads. If there is no valid user application detected at target address or the Safe Mode is chose, the user application loop will not execute.
 
 ##### <span id="4261-system-loop">4.2.6.1 System loop</span>
 
