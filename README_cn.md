@@ -162,7 +162,7 @@ Duo 可以应用于很多领域，比如：
 
 ## <span id="封装尺寸">封装尺寸</span>
 
-![image](docs/images/Duo_Package.png)
+![image](docs/images/Duo_Dimension.png)
 
 
 ## <span id="Layout建议">Layout建议</span>
