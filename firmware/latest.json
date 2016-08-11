@@ -1,5 +1,5 @@
 {
-    "version": "0.2.3",
-    "url": "https://github.com/XuGuohui/DuoSetupCLI/raw/master/firmware/v0.2.3-beta/duo_fw_v0.2.3_dfu.zip",
-    "size": 240
+    "version": "0.2.4",
+    "url": "https://github.com/redbear/Duo/raw/master/firmware/system/v0.2.4/duo_fw_v0.2.4.zip",
+    "size": 246548
 }

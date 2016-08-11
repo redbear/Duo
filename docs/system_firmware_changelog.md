@@ -1,26 +1,28 @@
-# Duo System Firmware Change-log
+# Duo: System Firmware Change-log
 ---
+
+* [Modified Particle firmware Source Code](https://github.com/redbear/firmware)
+* [Firmware Deployment Guide](firmware_deployment_guide.md)
 
 
 ## Current Version
 
-### v0.2.4
----
+### *v0.2.4*
 
-#### FEATURES
+##### FEATURES
 
 - BLE central now supports connecting 8 peripherals simultaneously
 - Add BLE API for setting scan respond data
 - Add BLE API for fetching MAC address
 - Add wiring APIs for using external serial flash
 
-#### ENHANCEMENTS
+##### ENHANCEMENTS
 
 - Update BTStack library
 - Add lots of BLE related macro definitions
 - Update bootloader
 
-#### BUGFIXES
+##### BUGFIXES
 
 - SoftAP http web page didn't work in listening mode
 - Duo performs soft reset upon connected to AP if WiFi.off() is invoked before
@@ -28,33 +30,32 @@
 
 ## Version History
 
-### v0.2.3
----
+### *v0.2.3*
 
 - For 2nd mass production firmware since 2016/04/20
 
-#### FEATURES
+##### FEATURES
 
 - Support updating system-part1, system-part2 and factory reset firmware via local TCP/IP during the same connection
 - Add JSON command to invalid user part
 - BLE central can now connect to peripherals and perform read, write and receive notification 
 
-#### ENHANCEMENTS
+##### ENHANCEMENTS
 
 - Remove the crc32 calculation function when uploading sketch via avrdude, since the crc32 is appended to the compiled binary on the Arduino IDE side
 - Add a ring buffer for staging the data to be notified to GATT client
 - Add a thread to dealing with BLE events, instead of by invoking `ble.loop()` in the sketch
 - Update BTStack library
 
-#### BUGFIXES
+##### BUGFIXES
 
 - BLE RSSI display incorrectly
 - If change the password for a stored WiFi credential using BLE provision, it makes no effect
 
-### v0.2.2   
----
 
-#### FEATURES
+### *v0.2.2*   
+
+##### FEATURES
 
 - Add APIs for fetching device name, i.e. "Duo-xxxx"
 - Instantiate Serial2 in wiring functions, thus user can use it directly in sketch
@@ -63,35 +64,35 @@
 - Integrate BTStack BLE library into system firmware, instead of WICED BTE library
 - Exports some BLE APIs for user part usage
 
-#### ENHANCEMENTS
+##### ENHANCEMENTS
 
 - Notify central device if BLE Provisioning failed.
 - Give different responds to the TCP client during OTA uploading firmware
 - JSON command "version" fetches the real module versions
 - update BLE Provisioning protocol to support setting hidden SSID and full key length 
 
-#### BUGFIXES
+##### BUGFIXES
 
 - SPI1 isn't instantiated by SPIClass because of the including header file order
 - Tone on pin A4 and A5 failed
 
-### v0.2.1
----
+
+### *v0.2.1*
 
 - For 1st mass production firmware since 2016/01/27
 
-#### FEATURES
+##### FEATURES
 
 - Updating firmware via local TCP/IP
 - Supports IPv6 protocol
 
-#### ENHANCEMENTS
+##### ENHANCEMENTS
 
 - Implements Servo functionality on more pins
 - Implements Tone functionality on more pins
 - Add Local Name attribute in BLE advertising packet
 
-#### BUGFIXES
+##### BUGFIXES
 
 - Arduino uploading stocks on verify stage
 - Arduino uploading fails on some PCs
@@ -99,30 +100,42 @@
 - Duo performs reset before Arduino uploading completed since the Flash Update Timeout isn't cleared on every packet transfered
 - When more than one Duo are advertising, LightBlue App can not distinguish from each other
 
-### v0.2.0
----
+
+### *v0.2.0*
 
 - For 2nd PP firmware since 2016/01/06
 
-#### FEATURES
+##### FEATURES
 
 - OTA updating system part firmware and bootloader using Particle cloud
 - HCI interface APIs to interact with bluetooth controller
 - Enable WiFi Tester
 
-#### ENHANCEMENTS
+##### ENHANCEMENTS
 
 - Arduino uploading is more stable
 - MCU performs soft reset after WiFi credentials saved and listening mode exited
 - It is more sufficient to determine to run WICED application or Particle application
 
-### v0.1.1 (Initial Firmware)
----
+
+### *v0.1.1 (Initial Firmware)*
 
 - For 1st PP firmware since 2016/01/06
 
-#### FEATURES
+##### FEATURES
+
 - Arduino IDE v1.6.6 with board manager package v0.1.1 compatible
 - OTA update  user application using online Particle Build
 - Bootloader automatically determines running Particle firmware or WICED firmware
 - Support setting WiFi credentials via Soft AP, USB serial and BLE
+
+
+## License
+
+Copyright (c) 2016 Red Bear
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
