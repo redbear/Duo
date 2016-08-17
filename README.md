@@ -20,6 +20,7 @@ Purchase your RedBear Duo now:
 * `firmware/bootloader/`: Released bootloader images for Duo
 * `firmware/dct/`: Some configuration files can be applied to Duo's internal DCT
 * `firmware/javascript_interpreter/`: Released JavaScript interpreter images for Duo
+* `firmware/python_interpreter/`: Released Python interpreter images for Duo
 * `firmware/system/`: Released system firmware images
 * `firmware/wifi/`: Wi-Fi firmware for the wireless module 
 * `hardware/`: Hardware design files, datasheets and pin mapping
