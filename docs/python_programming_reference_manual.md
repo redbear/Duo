@@ -65,12 +65,14 @@ A pin is the basic object to control I/O pins. It has methods to set the mode of
 Create a new Pin object associated with the id. If additional arguments are given, they are used to initialise the pin. See `Pin.init()`.
 
 For example:
+ 
+        from pyb import Pin
 
 	// Create a new pin using board pin name:
-	LED = pyb.Pin(pyb.Pin.board.D0)
+	LED = Pin(pyb.Pin.board.D0)
 	
 	// Create a new pin using CPU pin name:
-	LED = pyb.Pin(pyb.Pin.cpu.B7)
+	LED = Pin(pyb.Pin.cpu.B7)
 
 #### Methods
 
