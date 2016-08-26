@@ -41,71 +41,253 @@ For more information about the Duo and Particle firmware, please refer to:
 	* [class DAC](#class-dac)
 	* [class ExtInt](#class-extint)
 	* [class Timer](#class-timer)
-	* [class I2C](#class-i2c)
+	* [object I2C](#class-i2c)
 	* [class UART](#class-uart)
 	* [class SPI](#class-spi)
-	* [class WiFi](#class-wifi)
+	* [object WiFi](#class-wifi)
 	* [class TCPServer](#class-tcpserver)
 	* [class TCPClient](#class-tcpclient)
-	* [class BLE](#class-ble)
+	* [object BLE](#class-ble)
 	* [class Servo](#class-servo)
-	* [class RGB](#class-rgb)
+	* [object RGB](#class-rgb)
 
 
 ## <span id="libraries-specific-to-the-board">Libraries specific to the board</span>
 
+**Note: All of the following classes and functions are built within the `pyb` module, so you need `import pyb` before you using these classes and functions.**
+
+<br>
 ### <span id="class-pin">class `Pin`</span>
 
-A pin is the basic object to control I/O pins. It has methods to set the mode of the pin (input, output, etc) and methods to get and set the digital logic level.
+A pin is the basic object to control I/O pins. It has methods to set the mode of the pin (input, output, etc) and methods to get and set the digital logic level. 
 
-#### Constructors
+#### Constructor
 
-##### `pyb.Pin(id, ...)`
+> ##### `Pin(pin, mode)`
 
-Create a new Pin object associated with the id. If additional arguments are given, they are used to initialise the pin. See `Pin.init()`.
+Create a new Pin object associated with the pin. If additional arguments are given, they are used to initialise the pin. See `Pin.init()`.
 
 For example:
 
-	// Create a new pin using board pin name:
-	LED = pyb.Pin(pyb.Pin.board.D0)
+	from pyb import Pin
+
+	// Create a new pin object using board pin name:
+	LED = Pin(Pin.board.D0)
 	
-	// Create a new pin using CPU pin name:
-	LED = pyb.Pin(pyb.Pin.cpu.B7)
+	// Create a new pin object using CPU pin name and init pin mode:
+	BTN = Pin(Pin.cpu.B6, Pin.INPUT)
 
 #### Methods
 
-##### `Pin.init(mode, pull=Pin.PULL_NONE, af=-1)`
+> ##### `init(mode)`
 
 Initialise the pin.
 
 `mode` can be one of:
 
-* `Pin.IN` - configure the pin for input;
-* `Pin.OUT` - configure the pin for output
-* `Pin.AF_PP` - configure the pin for alternate function, pull-pull;
-* `Pin.AF_OD` - configure the pin for alternate function, open-drain;
-* `Pin.ANALOG` - configure the pin for analog.
-
-`pull` can be one of:
-
-* `Pin.PULL_NONE` - no pull up or down resistors;
-* `Pin.PULL_UP` - enable the pull-up resistor;
-* `Pin.PULL_DOWN` - enable the pull-down resistor.
-
-when mode is `Pin.AF_PP` or `Pin.AF_OD`, then af can be the index or name of one of the alternate functions associated with a pin.
+* `Pin.INPUT` - configure the pin for input;
+* `Pin.OUTPUT` - configure the pin for output;
+* `Pin.INPUT_PU` - configure the pin for input with internal pull-up resistor;
+* `Pin.INPUT_PD` - configure the pin for input with internal pull-down resistor;
+* `Pin.AF_OUTPUT_PP` - configure the pin for alternate function with push-pull drive;
+* `Pin.AF_OUTPUT_OD` - configure the pin for alternate function with open-drain drive;
+* `Pin.AN_INPUT` - configure the pin for analog input;
+* `Pin.AN_OUTPUT` - configure the pin for analog output.
 
 Returns: None.
 
 For example:
 
-	LED = pyb.Pin(pyb.Pin.board.D0)
-	LED.init(pyb.Pin.OUT)
+	LED = Pin(Pin.board.D0)
+	LED.init(Pin.OUTPUT)
 
-##### 
+> ##### `value([value])`
 
-#### Contants
+Get or set the digital logic level of the pin:
 
+* With no argument, return 0 or 1 depending on the logic level of the pin.
+* With `value` given, set the logic level of the pin. `value` can be anything that converts to a boolean. If it converts to `True`, the pin is set high, otherwise it is set low.
+
+For example:
+
+	// Output high level on the LED pin
+	LED.value(1);
+
+	// Read the level on the Button pin
+	val = BTN.value()
+
+> ##### `high()`
+
+Output high level on the pin.
+
+For example:
+
+	// Output high level on the LED pin
+	LED.high()
+
+> ##### `low()`
+
+Output low level on the pin.
+
+For example:
+
+	// Output low level on the LED pin
+	LED.low()
+
+> ##### `af_list()`
+
+Returns an array of alternate functions available for this pin.
+
+> ##### `mode()`
+
+Returns the currently configured mode of the pin. The string returned will match one of the allowed constants for the mode argument to the init function.
+
+> ##### `name()`
+
+Get the pin name.
+
+>##### `names()`
+
+Returns the cpu and board names for this pin.
+
+>##### `pin()`
+
+Get the pin number.
+
+>##### `port()`
+
+Get the pin port.
+
+#### Constants
+
+> ##### `Pin.INPUT`
+
+Value: `0`. Configure the pin for input.
+
+> ##### `Pin.OUTPUT`
+
+Value: `1`. Configure the pin for output.
+
+> ##### `Pin.INPUT_PU`
+
+Value: `2`. Configure the pin for input with internal pull-up resistor.
+
+> ##### `Pin.INPUT_PD`
+
+Value: `3`. Configure the pin for input with internal pull-down resistor.
+
+> ##### `Pin.AF_OUTPUT_PP`
+
+Value: `4`. Configure the pin for alternate function with a push-pull drive.
+
+> ##### `Pin.AF_OUTPUT_OD`
+
+Value: `5`. Configure the pin for alternate function with open-drain drive.
+
+> ##### `Pin.AN_INPUT`
+
+Value: `6`. Configure the pin for analog input.
+
+> ##### `Pin.AN_OUTPUT`
+
+Value: `7`. Configure the pin for analog output.
+
+<br>
 ### <span id="class-adc">class `ADC`</span>
+
+Analog to digital conversion. Only A0 ~ A7 are capable of analog input.
+
+#### Constructor
+
+> ##### `ADC(pin)`
+
+Create an ADC object associated with the given pin. This allows you to then read analog value on that pin.
+
+For example:
+
+	from pyb import Pin  // The Pin is used when construct ADC object
+	from pyb import ADC
+
+	// Create a new ADC object
+	adc = ADC(pyb.Pin.board.A0)
+
+#### Methods
+
+> ##### `read()`
+
+Read the value on the analog pin and return it. The returned value will be between 0 and 4095.
+
+For example:
+
+	// Read the analog pin value
+	val = adc.read()
+
+<br>
+### <span id="class-dac">Class DAC</span>
+
+The DAC is used to output analog values (a specific voltage) on pin A2 or pin A3. The voltage will be between 0 and 3.3V.
+
+#### Constructor
+
+##### `DAC(pin)`
+
+Create an DAC object associated with the given pin. This allows you to then output analog value to that pin. Only pin A2 and A3 are capable of analog output.
+
+For example:
+
+	from pyb import Pin  // The Pin is used when construct DAC object
+	from pyb import DAC
+
+	// Create a new DAC object
+	dac = DAC(Pin.board.A2)
+
+#### Methods
+
+##### `write(value)`
+
+Output analog value on specific pin. The `value` ranges from 0 to 4095, which corresponding to 0 to 3.3v on the pin.
+
+For example:
+
+	// sets DAC pin to an output voltage of 1024/4095 * 3.3V = 0.825V.
+	dac.write(1024)
+
+<br>
+### <span id="class-extint">Class ExtInt</span>
+
+#### Constructor
+
+
+
+#### Static Methods
+
+
+
+#### Methods
+
+
+
+#### Constants
+
+
+
+<br>
+### <span id="class-timer">Class Timer</span>
+
+#### Constructor
+
+
+
+#### Methods
+
+
+
+#### Constants
+
+
+
+<br>
+### <span id="">
 
 
 ## Support
