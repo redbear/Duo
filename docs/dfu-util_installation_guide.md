@@ -42,12 +42,15 @@ Use "brew" to install or follow the instructions from [the official website](htt
 
         $ sudo apt-get install dfu-util
 
-* Add the path of `dfu-util` to `PATH`:
+* Add UDEV rule:
 
-        export PATH=$PATH:{PATH_TO_DFU_UTIL}
+	$ sudo nano /etc/udev/rules.d/77-mm-usb-device-blacklist.rules
 
-    This will allow dfu-util to be executed globally in command prompt.
+    Simply add this single line:
 
+	ATTRS{idProduct}=="d058", ATTRS{idVendor}=="2b04", MODE="664", GROUP="plugdev"
+
+If it prompts "Cannot open DFU device", just reboot to try again.
 
 
 ## Build from Source ([origin](http://dfu-util.sourceforge.net/build.html))
