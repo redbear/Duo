@@ -56,41 +56,26 @@ For more information about the Duo and Particle firmware, please refer to:
 
 **Note: All of the following classes and functions are built within the `pyb` module, so you need `import pyb` before you using these classes and functions.**
 
-<br>
 ### <span id="class-pin">class `Pin`</span>
 
-A pin is the basic object to control I/O pins. It has methods to set the mode of the pin (input, output, etc) and methods to get and set the digital logic level. 
+`from pyb import Pin`
 
-#### Constructor
+A pin is the basic object to control I/O pins. It has methods to set the mode of the pin (input, output, etc) and methods to get and set the digital/analog level. 
 
-> ##### `Pin(pin, mode)`
+#### Static Methods
 
-Create a new Pin object associated with the pin. If additional arguments are given, they are used to initialise the pin. See `Pin.init()`.
+> ##### `Pin.pinMode(pin, mode)`
 
-For example:
- 
-	from pyb import Pin
+Initialise the pin mode.
 
-	// Create a new pin object using board pin name:
-	LED = Pin(Pin.board.D0)
-	
-	// Create a new pin object using CPU pin name and init pin mode:
-	BTN = Pin(Pin.cpu.B6, Pin.INPUT)
+The `pin` can be either the board pin or the CPU pin, i.e. the `Pin.board.D0` is the same as `Pin.cpu.B7`.
 
-#### Methods
-
-> ##### `init(mode)`
-
-Initialise the pin.
-
-`mode` can be one of:
+The `mode` can be one of:
 
 * `Pin.INPUT` - configure the pin for input;
 * `Pin.OUTPUT` - configure the pin for output;
 * `Pin.INPUT_PU` - configure the pin for input with internal pull-up resistor;
 * `Pin.INPUT_PD` - configure the pin for input with internal pull-down resistor;
-* `Pin.AF_OUTPUT_PP` - configure the pin for alternate function with push-pull drive;
-* `Pin.AF_OUTPUT_OD` - configure the pin for alternate function with open-drain drive;
 * `Pin.AN_INPUT` - configure the pin for analog input;
 * `Pin.AN_OUTPUT` - configure the pin for analog output.
 
@@ -98,63 +83,138 @@ Returns: None.
 
 For example:
 
-	LED = Pin(Pin.board.D0)
-	LED.init(Pin.OUTPUT)
+	LED = Pin.board.D0
+	Pin.pinMode(LED, OUTPUT)
 
-> ##### `value([value])`
+> ##### `Pin.digitalWrite(pin, value)`
 
-Get or set the digital logic level of the pin:
-
-* With no argument, return 0 or 1 depending on the logic level of the pin.
-* With `value` given, set the logic level of the pin. `value` can be anything that converts to a boolean. If it converts to `True`, the pin is set high, otherwise it is set low.
+Set the digital logic level of the pin. The `value` can be anything that converts to a boolean. If it converts to `True`, the pin is set high, otherwise it is set low.
 
 For example:
 
-	// Output high level on the LED pin
-	LED.value(1);
+	// Output high level on the D0
+	Pin.digitalWrite(Pin.board.D0, 1);
 
-	// Read the level on the Button pin
-	val = BTN.value()
+	// Output low level on the D0
+	Pin.digitalWrite(Pin.board.D0, 0);
 
-> ##### `high()`
+> ##### `Pin.digitalRead(pin)`
 
-Output high level on the pin.
-
-For example:
-
-	// Output high level on the LED pin
-	LED.high()
-
-> ##### `low()`
-
-Output low level on the pin.
+Get the digital logic level of the pin. It returns 0 or 1 depending on the logic level of the pin. The pin should be set as input mode (`INPUT`, `INPUT_PU`, `INPUT_PD`) using `Pin,pinMode()` first.
 
 For example:
 
-	// Output low level on the LED pin
-	LED.low()
+	// Read the level on the D1
+	BTN = Pin.board.D0
+	Pin.pinMode(BTN, INPUT_PU)
+	val = Pin.digitalRead(Pin.board.D1)
 
-> ##### `af_list()`
+> ##### `Pin.pwmWrite(pin, value, [frequency=500])`
+
+Output PWM (pulse-width modulated) on the pin. The `value` corresponds to duty cycle: between 0 (always off) and 255 (always on). The default `frequency` of the PWM signal is 500 Hz. Please check the Duo's [pinout](https://github.com/redbear/Duo/blob/master/docs/duo_introduction.md#pinouts) to see which pin is capable of outputing PWM signal.
+
+For example:
+
+	// Output PWM on D0 in 500Hz
+	Pin.pwmWrite(Pin.board.D0, 128)
+
+	// Output PWM on D0 in 1KHz
+	Pin.pwmWrite(Pin.board.D0, 128, 1000)
+
+> ##### `Pin.analogWrite(pin, value)`
+
+Output analog level on the pin. The `value` ranges from 0 to 4095, whihc maps to 0v to 3.3v. Only pin A2 and A3 are capable of analog output.
+
+For example:
+
+	// Output voltage of 1024/4095 * 3.3V = 0.825V on A2
+	Pin.analogWrite(Pin.board.A2, 1024)
+
+> ##### `Pin.analogRead(pin)`
+
+Get the analog level on the pin. The returned value will be between 0 and 4095. Only the pins A0 ~ A7 are capable of analog input.
+
+For example:
+	
+	// Read the analog value on the A0
+	val = Pin.analogRead(Pin.board.A0)
+
+> ##### `Pin.tone(pin, frequency, duration)`
+
+Generates a square wave (50% duty cycle) of the specified frequency and duration on the pin which supports PWM.
+
+For example:
+
+	// Output 1KHz frequency on the D0, last for 3 seconds
+	Pin.tone(Pin.board.D0, 1000, 3000)
+
+> ##### `Pin.noTone(pin)`
+
+Stops the generation of a square wave triggered by `tone(pin)` on a specified pin. Has no effect if no tone is being generated.
+
+For example:
+
+	Pin.noTone(Pin.board.D0)
+
+> ##### `Pin.shiftOut(data_pin, clock_pin, bit_order, value)`
+
+Shifts out a byte of data one bit at a time on a specified pin. Starts from either the most (i.e. the leftmost) or least (rightmost) significant bit. Each bit is written in turn to a data pin, after which a clock pin is pulsed (taken high, then low) to indicate that the bit is available.
+
+**NOTE**: if you're interfacing with a device that's clocked by rising edges, you'll need to make sure that the clock pin is low before the call to `Pin.shiftOut()`.
+
+The `bit_order` should be either `Pin.MSBFIRST` or `Pin.LSBFIRST` (Most Significant Bit First, or, Least Significant Bit First). The `value` should be one byte.
+
+For example:
+
+	DATA_PIN = Pin.board.D0
+	CLK_PIN = Pin.board.D1
+
+	Pin.shiftOut(DATA_PIN, CLK_PIN, Pin.MSBFIRST, 0x55)
+
+> ##### `Pin.shiftIn(data_pin, clock_pin, bit_order)`
+
+Shifts in a byte of data one bit at a time. Starts from either the most (i.e. the leftmost) or least (rightmost) significant bit. For each bit, the clock pin is pulled high, the next bit is read from the data line, and then the clock pin is taken low.
+
+**NOTE**: if you're interfacing with a device that's clocked by rising edges, you'll need to make sure that the clock pin is low before the call to `Pin.shiftOut()`.
+
+The `bit_order` should be either `Pin.MSBFIRST` or `Pin.LSBFIRST` (Most Significant Bit First, or, Least Significant Bit First). The `value` should be one byte.
+
+For example:
+
+	DATA_PIN = Pin.board.D0
+	CLK_PIN = Pin.board.D1
+
+	val = Pin.shiftIn(DATA_PIN, CLK_PIN, Pin.MSBFIRST)
+
+> ##### `Pin.pulseIn(pin, value)`
+
+Reads a pulse (either `Pin.HIGH` or `Pin.LOW`) on a pin. For example, if `value` is `Pin.HIGH`, `pulseIn()` waits for the pin to go HIGH, starts timing, then waits for the pin to go LOW and stops timing. Returns the length of the pulse in microseconds or 0 if no pulse is completed before the 3 second timeout (unsigned long).
+
+For example:
+
+	ms = Pin.pulseIn(Pin.board.D0, Pin.HIGH)
+
+> ##### `Pin.af_list(pin)`
 
 Returns an array of alternate functions available for this pin.
 
-> ##### `mode()`
+> ##### `Pin.mode(pin)`
 
 Returns the currently configured mode of the pin. The string returned will match one of the allowed constants for the mode argument to the init function.
 
-> ##### `name()`
+> ##### `Pin.name(pin)`
 
 Get the pin name.
 
->##### `names()`
+>##### `Pin.names(pin)`
 
 Returns the cpu and board names for this pin.
 
->##### `pin()`
+>##### `Pin.pin(pin)`
 
 Get the pin number.
 
->##### `port()`
+>##### `Pin.port(pin)`
 
 Get the pin port.
 
@@ -176,118 +236,91 @@ Value: `2`. Configure the pin for input with internal pull-up resistor.
 
 Value: `3`. Configure the pin for input with internal pull-down resistor.
 
-> ##### `Pin.AF_OUTPUT_PP`
-
-Value: `4`. Configure the pin for alternate function with a push-pull drive.
-
-> ##### `Pin.AF_OUTPUT_OD`
-
-Value: `5`. Configure the pin for alternate function with open-drain drive.
-
 > ##### `Pin.AN_INPUT`
 
-Value: `6`. Configure the pin for analog input.
+Value: `4`. Configure the pin for analog input.
 
 > ##### `Pin.AN_OUTPUT`
 
-Value: `7`. Configure the pin for analog output.
+Value: `5`. Configure the pin for analog output.
 
-<br>
-### <span id="class-adc">class `ADC`</span>
+> ##### `Pin.MSBFIRST`
 
-Analog to digital conversion. Only A0 ~ A7 are capable of analog input.
+**TBD**
 
-#### Constructor
+> ##### `Pin.LSBFIRST`
 
-> ##### `ADC(pin)`
+**TBD**
 
-Create an ADC object associated with the given pin. This allows you to then read analog value on that pin.
+> ##### `Pin.HIGH`
 
-For example:
+**TBD**
 
-	from pyb import Pin  // The Pin is used when construct ADC object
-	from pyb import ADC
+> ##### `Pin.LOW`
 
-	// Create a new ADC object
-	adc = ADC(pyb.Pin.board.A0)
+**TBD**
 
-#### Methods
-
-> ##### `read()`
-
-Read the value on the analog pin and return it. The returned value will be between 0 and 4095.
-
-For example:
-
-	// Read the analog pin value
-	val = adc.read()
-
-<br>
-### <span id="class-dac">Class DAC</span>
-
-The DAC is used to output analog values (a specific voltage) on pin A2 or pin A3. The voltage will be between 0 and 3.3V.
-
-#### Constructor
-
-##### `DAC(pin)`
-
-Create an DAC object associated with the given pin. This allows you to then output analog value to that pin. Only pin A2 and A3 are capable of analog output.
-
-For example:
-
-	from pyb import Pin  // The Pin is used when construct DAC object
-	from pyb import DAC
-
-	// Create a new DAC object
-	dac = DAC(Pin.board.A2)
-
-#### Methods
-
-##### `write(value)`
-
-Output analog value on specific pin. The `value` ranges from 0 to 4095, which corresponding to 0 to 3.3v on the pin.
-
-For example:
-
-	// sets DAC pin to an output voltage of 1024/4095 * 3.3V = 0.825V.
-	dac.write(1024)
-
-<br>
 ### <span id="class-extint">Class ExtInt</span>
 
-#### Constructor
+`from pyb import ExtInt`
 
-
+To capture the external event on specific pin, the pin should be configured as input first. The input mode can be either `INPUT`, `INPUT_PU` or `INOUT_PD`.
 
 #### Static Methods
 
+> ##### `ExtInt.enable_all_interrupt()`
 
+Enable all of the interrupts.
 
-#### Methods
+> ##### `ExtInt.disable_all_interrupt()`
 
+Disable all of the interrupts
 
+> ##### `Pin.attach_interrupt(pin, mode, callback)`
+
+Watch the interrupt on the pin so that when event occured the callback function will be called.
+
+The `mode` can be one of:
+
+* `ExtInt.IRQ_RISING` - callback when a rising edge occured on the pin;
+* `ExtInt.IRQ_FALLING` - callback when a falling edge occured on the pin;
+* `ExtInt.IRQ_CHANGE` - callback when a rising or falling edge occured on the pin.
+
+For example:
+
+	from pyb import Pin
+	from pyb import ExtInt
+
+	def my_callback():
+		print("Level changed.")
+
+	// Initialize the pin as input pull-up
+	Pin(Pin.board.D0, INPUT_PU)
+
+	// Watch the interrupt
+	ExtInt.attach_interrupt(Pin.board.D0, ExtInt.IRQ_CHANGE, my_callback)
+
+> ##### `Pin.detach_interrupt(pin)`
+
+Disable the interrupt on the pin so that the callback function will never be called when event occured on the pin.
+
+For example:
+
+	Pin.detach_interrupt(Pin.board.D0)
 
 #### Constants
 
+> ##### `ExtInt.IRQ_RISING`
 
+A rising edge on the pin will cause an interrupt.
 
-<br>
-### <span id="class-timer">Class Timer</span>
+> ##### `ExtInt.IRQ_FALLING`
 
-#### Constructor
+A falling edge on the pin will cause an interrupt.
 
+> ##### `ExtInt.IRQ_CHANGE`
 
-
-#### Methods
-
-
-
-#### Constants
-
-
-
-<br>
-### <span id="">
+Both a rising and falling edge on the pin will cause an interrupt.
 
 
 ## Support
