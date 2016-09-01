@@ -9,7 +9,7 @@ Glad you've received your Duo from vendor! Thanks for purchasing the Duo and hop
     - [Using Serial Terminal](#using-serial-terminal)
 * [Toggle the on-board LED using web browser](#toggle-the-on-board-led-using-web-browser)
 * [Further Operations](#further-operations)
-    - [Claim your Duo on the Partcile Cloud (Optional)](claim-your-duo-on-particle-cloud-optional)
+    - [Claim your Duo on the Partcile Cloud (Optional)](#claim-your-duo-on-the-partcile-cloud-optional)
     - [Backup the device private key (Highly Recommended)](#backup-the-device-private-key-highly-recommended)
     - [Update system firmware if needed](#update-system-firmware-if-needed)
 * [What's Next](#whats-next)
@@ -33,17 +33,17 @@ Glad you've received your Duo from vendor! Thanks for purchasing the Duo and hop
 
 Please go to the [App Store]() or [Google Play]() to get and install the Duo App on your iOS/Andriod device.
 
-1. Start the App. It will check the latest firmware on the [GitHub](https://github.com/redbear/Duo/tree/master/firmware/system) first. If there is a new released firmware on GitHub, then it automatically fetches the firmware to your iOS/Android device for updating your Duo via local TCP/IP afterwards.
+1. Start the App. It will check the latest firmware on the [GitHub](https://github.com/redbear/Duo/tree/master/firmware/system) first. If there is a new released firmware available on the GitHub, then it automatically fetches the firmware to your iOS/Android device for updating your Duo via local TCP/IP afterwards.
 
     ![image](images/FetchFirmware.png)
 
-2. After fetching the firmware, it provides two ways for you to configure your Duo: through WiFi or BLE. Now make your Duo enter [Listening Mode](https://docs.particle.io/guide/getting-started/modes/photon/#listening-mode). During in the listening Mode, the Duo acts as a WiFi SoftAP and a BLE Peripheral. Both ways you can fetch the Duo's device ID which will be used to claim the Duo on Particle Build, fetch the firmware versions currently running in the Duo and configure WiFi credential for the Duo. The differences between these two ways are that using WiFi you can update your Duo's system firmware if a newer system firmware available on your iOS/Android device and the password of the credential you are going to configure will be encrypted before sending to Duo, while using BLE you can NOT update the Duo's firmware and the password of the credential will be sent to your Duo in plain text. If WiFi function or BLE function is tured off or is not available on your iOS/Android device, the button will be gray to prevent you from moving on.
+2. After fetching the firmware, it provides two ways for you to configure your Duo: through WiFi or BLE. Now make your Duo enter [Listening Mode](https://docs.particle.io/guide/getting-started/modes/photon/#listening-mode). During in the listening Mode, the Duo acts as WiFi SoftAP and BLE Peripheral. Through both of the ways you can fetch the Duo's device ID which will be used to claim your Duo on Particle Cloud if you want, fetch the firmware versions currently running in the Duo and configure WiFi credential for the Duo. The differences between these two ways are that using WiFi you can update your Duo's system firmware if a newer system firmware available on your iOS/Android device and the password of the credential you are going to configure will be encrypted before sending to your Duo, while using BLE you can NOT update the Duo's firmware and the password of the credential will be sent to your Duo in plain text. If WiFi function or BLE function is tured off or is not available on your iOS/Android device, the sub-section turns to gray to prevent you from moving on.
 
     ![image](images/ProvisionSelect.png)
 
 3. Connect your iOS/Android device to Duo through WiFi or BLE:
 
-    - Through WiFi: Follow the instruction on the view bellow or touch on the "**Change WiFi Setting**" button to connect your iOS/Android device to the SoftAP that is broadcasted by you Duo. The SSID of the softAP is in the format "**Duo-xxxx**", where the "xxxx" varies from different Duos. Once your iOS/Android device connected to your Duo, return to the App. 
+    - Through WiFi: Follow the instructions on the view bellow or touch on the "**Change WiFi Setting**" button to connect your iOS/Android device to the SoftAP which is broadcasted by your Duo. The SSID of the softAP is in the format "**Duo-xxxx**", where the "xxxx" varies from different Duos. Once your iOS/Android device connected to your Duo, return to the App. 
 
     ![image](images/SettingWiFi.png)
 
@@ -51,17 +51,17 @@ Please go to the [App Store]() or [Google Play]() to get and install the Duo App
 
     ![image](images/BLEDeviceList.png)
 
-4. Once your iOS/Android device connect to your Duo, it will automatically scan and list the WiFi networks around your Duo, which for you to choose one of them to configure for your Duo. You can pull down the screen to scan WiFi networks again.
+4. Once your iOS/Android device connected to your Duo, it will automatically scan and list the WiFi networks around your Duo, which for you to choose one of them to configure for your Duo. You can pull down the screen to scan WiFi networks again.
 
     ![image](images/WiFiList.png)
 
-5. Touch on the menu button on the top-right corner, you can fetch your Duo's device ID and its currentr firmware versions.
+5. Touch on the menu button on the top-right corner, you can fetch your Duo's device ID and its current firmware versions.
 
     ![image](images/DeviceInfo.png)
 
-6. Choose one of the WiFi networks in the scan list to configure it for your Duo. If the WiFi network you want to configure is not in the scan list (e.g. hidden WiFi network), you can configure it manually by touching on the first colum "**+ Enter SSID manually**". If the WiFi network you chose is not open, you'll be asked to input password. After configuring WiFi credential for your Duo, the Duo will disconnect the WiFi/BLE connection from your iOS/Android device and try to connect to the WiFi network you just configured with the RGB flashing **green**. If Duo connects to the AP successfully, it then performs a soft reset to restart. Otherwise, Duo will enter Listening Mode again for you to re-configure the Wi-Fi credentials.
+6. Choose one of the WiFi networks in the scan list to configure it for your Duo. If the WiFi network you want to configure is not in the scan list (e.g. hidden WiFi network), you can configure it manually by touching on the first colum "**+ Enter SSID manually**". If the WiFi network you chose is not open, you'll be asked to input password. After configuring WiFi credential for your Duo, the Duo will disconnect the WiFi/BLE connection from your iOS/Android device and try to connect to the WiFi network you've just configured, with the RGB being flashing **green**. If your Duo connects to the AP successfully, it then performs a soft reset to restart. Otherwise, Duo will enter Listening Mode again for you to re-configure Wi-Fi credentials.
 
-    - If you are connecting to your Duo using WiFi, the App just jumps to the view as bellow, since it can not know whether your Duo has successfully connected to the WiFi network or not, due to  the currently implemented SoftAp protocol.
+    - If you are connecting to your Duo using WiFi, the App just jumps to the view as bellow, since it doesn't know whether your Duo has successfully connected to the WiFi network or not, which due to the currently implemented SoftAp protocol.
 
     ![image](images/ConnectWiFi1.png)
 
@@ -170,7 +170,7 @@ A default web server application now is running on your Duo, with broadcasting a
 
 ## <span id="further-operation">Further Operations</span>
 
-### <span id="claim-your-duo-on-particle-cloud-optional">Claim your Duo on the Partcile Cloud (Optional)</span>
+### <span id="claim-your-duo-on-the-partcile-cloud-optional">Claim your Duo on the Partcile Cloud (Optional)</span>
 
 We work closely with Particle team and the Duo for development purpose, can freely and easily access the Particle Cloud and benifit from the services and tools provided by Particle, e.g., Particle Web IDE, Particle Dashboard, Particle Event System and etc. If you want to benefit from these features, you have to work through the following steps to claim your Duo first.
 
