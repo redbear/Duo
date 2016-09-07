@@ -62,9 +62,8 @@ For more information about the Duo and Particle firmware, please refer to:
 
 A pin is the basic object to control I/O pins. It has methods to set the mode of the pin (input, output, etc) and methods to get and set the digital/analog level. 
 
-#### Static Methods
 
-##### *`Pin.pinMode(pin, mode)`*
+#### `Pin.pinMode(pin, mode)`
 
 Initialise the pin mode.
 
@@ -86,7 +85,7 @@ For example:
 	LED = Pin.board.D0
 	Pin.pinMode(LED, OUTPUT)
 
-##### *`Pin.digitalWrite(pin, value)`*
+#### `Pin.digitalWrite(pin, value)`
 
 Set the digital logic level of the pin. The `value` can be anything that converts to a boolean. If it converts to `True`, the pin is set high, otherwise it is set low.
 
@@ -98,7 +97,7 @@ For example:
 	// Output low level on the D0
 	Pin.digitalWrite(Pin.board.D0, 0);
 
-##### *`Pin.digitalRead(pin)`*
+#### `Pin.digitalRead(pin)`
 
 Get the digital logic level of the pin. It returns 0 or 1 depending on the logic level of the pin. The pin should be set as input mode (`INPUT`, `INPUT_PU`, `INPUT_PD`) using `Pin,pinMode()` first.
 
@@ -109,7 +108,7 @@ For example:
 	Pin.pinMode(BTN, INPUT_PU)
 	val = Pin.digitalRead(Pin.board.D1)
 
-##### *`Pin.pwmWrite(pin, value, [frequency=500])`*
+#### `Pin.pwmWrite(pin, value, [frequency=500])`
 
 Output PWM (pulse-width modulated) on the pin. The `value` corresponds to duty cycle: between 0 (always off) and 255 (always on). The default `frequency` of the PWM signal is 500 Hz. Please check the Duo's [pinout](https://github.com/redbear/Duo/blob/master/docs/duo_introduction.md#pinouts) to see which pin is capable of outputing PWM signal.
 
@@ -121,7 +120,7 @@ For example:
 	// Output PWM on D0 in 1KHz
 	Pin.pwmWrite(Pin.board.D0, 128, 1000)
 
-##### *`Pin.analogWrite(pin, value)`*
+#### `Pin.analogWrite(pin, value)`
 
 Output analog level on the pin. The `value` ranges from 0 to 4095, whihc maps to 0v to 3.3v. Only pin A2 and A3 are capable of analog output.
 
@@ -130,7 +129,7 @@ For example:
 	// Output voltage of 1024/4095 * 3.3V = 0.825V on A2
 	Pin.analogWrite(Pin.board.A2, 1024)
 
-##### *`Pin.analogRead(pin)`*
+#### `Pin.analogRead(pin)`
 
 Get the analog level on the pin. The returned value will be between 0 and 4095. Only the pins A0 ~ A7 are capable of analog input.
 
@@ -139,7 +138,7 @@ For example:
 	// Read the analog value on the A0
 	val = Pin.analogRead(Pin.board.A0)
 
-##### *`Pin.tone(pin, frequency, duration)`*
+#### `Pin.tone(pin, frequency, duration)`
 
 Generates a square wave (50% duty cycle) of the specified frequency and duration on the pin which supports PWM.
 
@@ -148,7 +147,7 @@ For example:
 	// Output 1KHz frequency on the D0, last for 3 seconds
 	Pin.tone(Pin.board.D0, 1000, 3000)
 
-##### *`Pin.noTone(pin)`*
+#### `Pin.noTone(pin)`
 
 Stops the generation of a square wave triggered by `tone(pin)` on a specified pin. Has no effect if no tone is being generated.
 
@@ -156,7 +155,7 @@ For example:
 
 	Pin.noTone(Pin.board.D0)
 
-##### *`Pin.shiftOut(data_pin, clock_pin, bit_order, value)`*
+#### `Pin.shiftOut(data_pin, clock_pin, bit_order, value)`
 
 Shifts out a byte of data one bit at a time on a specified pin. Starts from either the most (i.e. the leftmost) or least (rightmost) significant bit. Each bit is written in turn to a data pin, after which a clock pin is pulsed (taken high, then low) to indicate that the bit is available.
 
@@ -171,7 +170,7 @@ For example:
 
 	Pin.shiftOut(DATA_PIN, CLK_PIN, Pin.MSBFIRST, 0x55)
 
-##### *`Pin.shiftIn(data_pin, clock_pin, bit_order)`*
+#### `Pin.shiftIn(data_pin, clock_pin, bit_order)`
 
 Shifts in a byte of data one bit at a time. Starts from either the most (i.e. the leftmost) or least (rightmost) significant bit. For each bit, the clock pin is pulled high, the next bit is read from the data line, and then the clock pin is taken low.
 
@@ -186,7 +185,7 @@ For example:
 
 	val = Pin.shiftIn(DATA_PIN, CLK_PIN, Pin.MSBFIRST)
 
-##### *`Pin.pulseIn(pin, value)`*
+#### `Pin.pulseIn(pin, value)`
 
 Reads a pulse (either `Pin.HIGH` or `Pin.LOW`) on a pin. For example, if `value` is `Pin.HIGH`, `pulseIn()` waits for the pin to go HIGH, starts timing, then waits for the pin to go LOW and stops timing. Returns the length of the pulse in microseconds or 0 if no pulse is completed before the 3 second timeout (unsigned long).
 
@@ -194,71 +193,30 @@ For example:
 
 	ms = Pin.pulseIn(Pin.board.D0, Pin.HIGH)
 
-##### *`Pin.af_list(pin)`*
+#### `Pin.af_list(pin)`
 
 Returns an array of alternate functions available for this pin.
 
-##### *`Pin.mode(pin)`*
+#### `Pin.mode(pin)`
 
 Returns the currently configured mode of the pin. The string returned will match one of the allowed constants for the mode argument to the init function.
 
-##### *`Pin.name(pin)`*
+#### `Pin.name(pin)`
 
 Get the pin name.
 
-##### *`Pin.names(pin)`*
+#### `Pin.names(pin)`
 
 Returns the cpu and board names for this pin.
 
-##### *`Pin.pin(pin)`*
+#### `Pin.pin(pin)`
 
 Get the pin number.
 
-##### *`Pin.port(pin)`*
+#### `Pin.port(pin)`
 
 Get the pin port.
 
-#### Constants
-
-##### *`Pin.INPUT`*
-
-Value: `0`. Configure the pin for input.
-
-##### *`Pin.OUTPUT`*
-
-Value: `1`. Configure the pin for output.
-
-##### *`Pin.INPUT_PU`*
-
-Value: `2`. Configure the pin for input with internal pull-up resistor.
-
-##### *`Pin.INPUT_PD`*
-
-Value: `3`. Configure the pin for input with internal pull-down resistor.
-
-##### *`Pin.AN_INPUT`*
-
-Value: `4`. Configure the pin for analog input.
-
-##### *`Pin.AN_OUTPUT`*
-
-Value: `5`. Configure the pin for analog output.
-
-##### *`Pin.MSBFIRST`*
-
-**TBD**
-
-##### *`Pin.LSBFIRST`*
-
-**TBD**
-
-##### *`Pin.HIGH`*
-
-**TBD**
-
-##### *`Pin.LOW`*
-
-**TBD**
 
 ### <span id="class-extint">Class ExtInt</span>
 
@@ -266,17 +224,15 @@ Value: `5`. Configure the pin for analog output.
 
 To capture the external event on specific pin, the pin should be configured as input first. The input mode can be either `INPUT`, `INPUT_PU` or `INOUT_PD`.
 
-#### Static Methods
-
-##### *`ExtInt.enable_all_interrupt()`*
+#### `ExtInt.enable_all_interrupt()`
 
 Enable all of the interrupts.
 
-##### *`ExtInt.disable_all_interrupt()`*
+#### `ExtInt.disable_all_interrupt()`
 
 Disable all of the interrupts
 
-##### *`Pin.attach_interrupt(pin, mode, callback)`*
+#### `Pin.attach_interrupt(pin, mode, callback)`
 
 Watch the interrupt on the pin so that when event occured the callback function will be called.
 
@@ -300,7 +256,7 @@ For example:
 	// Watch the interrupt
 	ExtInt.attach_interrupt(Pin.board.D0, ExtInt.IRQ_CHANGE, my_callback)
 
-##### *`Pin.detach_interrupt(pin)`*
+#### `Pin.detach_interrupt(pin)`
 
 Disable the interrupt on the pin so that the callback function will never be called when event occured on the pin.
 
@@ -308,19 +264,68 @@ For example:
 
 	Pin.detach_interrupt(Pin.board.D0)
 
-#### Constants
 
-##### *`ExtInt.IRQ_RISING`*
+### <span id="class-i2c">Class I2C</span>
 
-A rising edge on the pin will cause an interrupt.
+`from pyb import I2C`
 
-##### *`ExtInt.IRQ_FALLING`*
+I2C is a two-wire protocol for communicating between devices. At the physical level it consists of 2 wires: SCL and SDA, the clock and data lines respectively. Regarding the Duo, the SDA is mapped to D0 and SCL is mapped to D1. Currently the Duo only supports I2C master role.
 
-A falling edge on the pin will cause an interrupt.
+#### `I2C.init(speed)`
 
-##### *`ExtInt.IRQ_CHANGE`*
+Initialize the I2C as master role. The `speed` can either be `CLOCK_SPEED_100KHZ` or `CLOCK_SPEED_400KHZ`.
 
-Both a rising and falling edge on the pin will cause an interrupt.
+#### `I2C.deinit()`
+
+Deinitialize the I2C module so that the SDA and SCL pins can be used for GPIO function.
+
+#### `I2C.recv_char(address)`
+
+It returns a character that is read from slave device, the addresss of which is specified by `address`.
+
+For example:
+
+	// Read one byte from slave 0x55
+	I2C.recv_char(0x55)
+
+#### `I2C.recv(buffer, address, quantity)`
+
+Read a quantity of data from slave device. The `buffer` is to hold the read out data. The `address` is the slave device address.
+
+For eaxmple:
+
+	// Read 5 bytes from slave 0x55 and store it in a list
+	buf = []
+	I2C.recv(list, 0x55, 5)
+
+#### `I2C.send_char(data, address)`
+
+Send one byte to slave device, the address of which is specified by `address`.
+
+For example:
+
+	// Send one byte 0x10 to slave 0x55
+	I2C.send_char(0x10, 0x55)
+
+#### `I2C.send(buffer, address)`
+
+Send a quantity of data to slave device. The `buffer` holds the data to be sent. The `address` is the slave device address, which will receive the data.
+
+For example:
+
+	// Send a string to slave  0x55
+	I2C.send("hello world!", 0x55)
+
+	// Send a list to slave 0x55
+	buf = [1, 2. 3, 4, 5]
+	I2C.send(list, 0x55)
+
+#### `I2C.isenable()`
+
+It returns `True` if the I2C module is enabled, otherwise returns `False`.
+
+
+
 
 
 ## Support
