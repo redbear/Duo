@@ -32,31 +32,28 @@ For more information about the Duo and Particle firmware, please refer to:
 * [**`utime`**](http://docs.micropython.org/en/latest/pyboard/library/utime.html) – time related functions
 * [**`uzlib`**](http://docs.micropython.org/en/latest/pyboard/library/uzlib.html) – zlib decompression
 
-### [Libraries specific to the board](libraries-specific-to-the-board)
+### [Libraries specific to the board](#libraries-specific-to-the-board)
 
 * **`pyb`** – functions related to the board
 
-	* [class Pin](#class-pin)
-	* [class ADC](#class-adc)
-	* [class DAC](#class-dac)
-	* [class ExtInt](#class-extint)
-	* [class Timer](#class-timer)
-	* [object I2C](#class-i2c)
-	* [class UART](#class-uart)
-	* [class SPI](#class-spi)
-	* [object WiFi](#class-wifi)
-	* [class TCPServer](#class-tcpserver)
-	* [class TCPClient](#class-tcpclient)
-	* [object BLE](#class-ble)
-	* [class Servo](#class-servo)
-	* [object RGB](#class-rgb)
+	* [Pin](#pin)
+	* [ExtInt](#extint)
+	* [I2C](#i2c)
+	* [SPI](#spi)
+	* [UART](#uart)
+	* [WiFi](#wifi)
+	* [TCPServer](#tcpserver)
+	* [TCPClient](#tcpclient)
+	* [BLE](#ble)
+	* [Servo](#servo)
+	* [RGB](#rgb)
 
 
 ## <span id="libraries-specific-to-the-board">Libraries specific to the board</span>
 
 **Note: All of the following classes and functions are built within the `pyb` module, so you need `import pyb` before you using these classes and functions.**
 
-### <span id="class-pin">class `Pin`</span>
+### <span id="pin">Pin</span>
 
 `from pyb import Pin`
 
@@ -193,7 +190,7 @@ For example:
 
 	ms = Pin.pulseIn(Pin.board.D0, Pin.HIGH)
 
-#### `Pin.af_list(pin)`
+#### `Pin.afList(pin)`
 
 Returns an array of alternate functions available for this pin.
 
@@ -218,21 +215,21 @@ Get the pin number.
 Get the pin port.
 
 
-### <span id="class-extint">Class ExtInt</span>
+### <span id="extint">ExtInt</span>
 
 `from pyb import ExtInt`
 
 To capture the external event on specific pin, the pin should be configured as input first. The input mode can be either `INPUT`, `INPUT_PU` or `INOUT_PD`.
 
-#### `ExtInt.enable_all_interrupt()`
+#### `ExtInt.enableAllInterrupt()`
 
 Enable all of the interrupts.
 
-#### `ExtInt.disable_all_interrupt()`
+#### `ExtInt.disableAllInterrupt()`
 
 Disable all of the interrupts
 
-#### `Pin.attach_interrupt(pin, mode, callback)`
+#### `Pin.attachInterrupt(pin, mode, callback)`
 
 Watch the interrupt on the pin so that when event occured the callback function will be called.
 
@@ -254,18 +251,18 @@ For example:
 	Pin(Pin.board.D0, INPUT_PU)
 
 	// Watch the interrupt
-	ExtInt.attach_interrupt(Pin.board.D0, ExtInt.IRQ_CHANGE, my_callback)
+	ExtInt.attachInterrupt(Pin.board.D0, ExtInt.IRQ_CHANGE, my_callback)
 
-#### `Pin.detach_interrupt(pin)`
+#### `Pin.detachInterrupt(pin)`
 
 Disable the interrupt on the pin so that the callback function will never be called when event occured on the pin.
 
 For example:
 
-	Pin.detach_interrupt(Pin.board.D0)
+	Pin.detachInterrupt(Pin.board.D0)
 
 
-### <span id="class-i2c">Class I2C</span>
+### <span id="i2c">I2C</span>
 
 `from pyb import I2C`
 
@@ -275,18 +272,18 @@ I2C is a two-wire protocol for communicating between devices. At the physical le
 
 Initialize the I2C as master role. The `speed` can either be `CLOCK_SPEED_100KHZ` or `CLOCK_SPEED_400KHZ`.
 
-#### `I2C.deinit()`
+#### `I2C.deInit()`
 
-Deinitialize the I2C module so that the SDA and SCL pins can be used for GPIO function.
+Deinitialize the I2C module so that the associated pins can be used for other functions.
 
-#### `I2C.recv_char(address)`
+#### `I2C.recvChar(address)`
 
 It returns a character that is read from slave device, the addresss of which is specified by `address`.
 
 For example:
 
 	// Read one byte from slave 0x55
-	I2C.recv_char(0x55)
+	ch = I2C.recvChar(0x55)
 
 #### `I2C.recv(buffer, address, quantity)`
 
@@ -298,14 +295,14 @@ For eaxmple:
 	buf = []
 	I2C.recv(list, 0x55, 5)
 
-#### `I2C.send_char(data, address)`
+#### `I2C.sendChar(char, address)`
 
 Send one byte to slave device, the address of which is specified by `address`.
 
 For example:
 
 	// Send one byte 0x10 to slave 0x55
-	I2C.send_char(0x10, 0x55)
+	I2C.sendChar(0x10, 0x55)
 
 #### `I2C.send(buffer, address)`
 
@@ -320,12 +317,224 @@ For example:
 	buf = [1, 2. 3, 4, 5]
 	I2C.send(list, 0x55)
 
-#### `I2C.isenable()`
+#### `I2C.isEnable()`
 
 It returns `True` if the I2C module is enabled, otherwise returns `False`.
 
 
+### <span id="spi">SPI</span>
 
+`from pyb import SPI`
+
+SPI is a serial protocol that is driven by a master. At the physical level there are 4 lines: SCK, MOSI, MISO, NSS. There are two SPI interfaces available on the Duo. The `SPI(1)` is mapped to A2 ~ A5 and the `SPI(2)` is mapped to D2 ~ D5. See the Duo [pin mapping](https://github.com/redbear/Duo/blob/master/docs/duo_introduction.md#pinouts).
+
+#### `SPI.SPI(alt_interface)`
+
+Constructs a SPI object associated with a SPI interface. The `alt_interface` can either be `1` or `2`. If `alt_interface = 1`, the constructed SPI object is associated with the SPI interface which is mapped to A2 ~ A5. Otherwise, the constructed SPI object is associated with the SPI interface which is mapped to D2 ~ D5.
+
+For example:
+
+	// Constructs SPI object associated with A2 ~ A5
+	spi = SPI(1)
+
+	// Constructs SPI object associated with D2 ~ D5
+	spi1 = SPI(2)
+
+#### `SPI.init()`
+
+Initialize the SPI interface.
+
+For example:
+
+	spi = SPI(1)
+	spi.init()
+
+#### `SPI.deInit()`
+
+Deinitialize the SPI interface so that the associated pins can be used for other functions.
+
+#### `SPI.setBitOrder(bit_order)`
+
+Sets the order of the bits shifted out of and into the SPI bus. The `bit_order` can either be `SPI.LSBFIRST` (least-significant bit first) or `SPI.MSBFIRST` (most-significant bit first).
+
+#### `SPI.setClockSpeed(value, scale)`
+
+Sets the SPI clock speed. The clock speed in Hz is equal to `value` * `scale`.
+
+For example:
+
+	// Sets the SPI clock speed to 15 MHz
+	spi = SPI(1)
+	spi.setClockSpeed(15, 1000000)
+
+#### `SPI.setClockDivider(divider)`
+
+Sets the SPI clock divider relative to the selected clock reference. The available dividers are 2, 4, 8, 16, 32, 64, 128 or 256. The default setting is `SPI.SPI_CLOCK_DIV4`, which sets the SPI clock to one-quarter the frequency of the system clock. The `divider` can be one of:
+
+* `SPI.SPI_CLOCK_DIV2`
+* `SPI.SPI_CLOCK_DIV4`
+* `SPI.SPI_CLOCK_DIV8`
+* `SPI.SPI_CLOCK_DIV16`
+* `SPI.SPI_CLOCK_DIV32`
+* `SPI.SPI_CLOCK_DIV64`
+* `SPI.SPI_CLOCK_DIV128`
+* `SPI.SPI_CLOCK_DIV256`
+
+#### `SPI.setDataMode(mode)`
+
+Sets the SPI data mode: that is, clock polarity and phase. See the [Wikipedia article on SPI](https://en.wikipedia.org/wiki/Serial_Peripheral_Interface_Bus) for details. The `mode` can be one of:
+
+* `SPI.MODE0`
+* `SPI.MODE1`
+* `SPI.MODE2`
+* `SPI.MODE3`
+
+#### `SPI.recvChar()`
+
+Receive a character from SPI slave device.
+
+For example:
+
+	spi = SPI(1)
+	spi.init()
+	ch = spi.recvChar()
+
+#### `SPI.recv(buffer, quantity)`
+
+Receives a quantity of data from SPI slave device.
+
+For example:
+
+	buf = []
+
+	spi = SPI(1)
+	spi.init()
+	spi.recv(buf, 20) // Receives 20 bytes from SPI slave device
+
+#### `SPI.sendChar(char)`
+
+Sends a character to SPI slave device. 
+
+For example:
+
+	spi = SPI(1)
+	spi.init()
+	spi.sendChar(0x55) // Sends 0x55 to SPI slave device
+
+#### `SPI.send(buffer)`
+
+Send a quantity of data to SPI slave device.
+
+For example:
+
+	buf = [1, 2, 3, 4, 5]
+
+	spi = SPI(1)
+	spi.init()
+	spi.send("Hello world!")
+	spi.send(buf)
+
+#### `SPI.isEnable()`
+
+It returns `True` if the SPI interface is enabled, otherwise returns `False`.
+
+
+### <span id="uart">UART</span>
+
+`from pyb import UART`
+
+UART implements the standard UART duplex serial communications protocol. At the physical level it consists of 2 lines: RX and TX. The unit of communication is a character (not to be confused with a string character) which can be 8 or 9 bits wide. There are two UART interfaces available on the Duo. The `UART(1)` is mapped to TX and RX pin, while the `UART(2)` is mapped to A0 and A1. See the Duo [pin mapping](https://github.com/redbear/Duo/blob/master/docs/duo_introduction.md#pinouts).
+
+#### `UART.UART(alt_interface)`
+
+Constructs a UART object associated with an UART interface. The `alt_interface` can either be `1` or `2`. If `alt_interface = 1`, the constructed UART object is associated with TX and RX pins. Otherwise, the constructed UART object is associated with A0 and A1 pins.
+
+For example:
+
+	// Constructs an UART object associated with TX and RX pins
+	uart = UART(1)
+
+	// Constructs an UART object associated with A0 and A1 pins
+	uart1 = UART(2)
+
+#### `UART.init(baudrate)`
+
+Initializes the UART interface and sets the baudrate. The `baudrate` can either be `UART.BAUDRATE_9600` or `UART.BAUDRATE_115200`.
+
+For example:
+
+	uart = UART(1)
+	uart.init(UART.BAUDRATE_9600)
+
+#### `UART.deInit()`
+
+Deinitializes the UART interface so that the associated pins can be used for other functions.
+
+#### `UART.writeChar(char)`
+
+Sends one byte to peer UART device.
+
+For example:
+
+	uart = UART(1)
+	uart.init(UART.BAUDRATE_9600)
+	uart.writeChar(0x55) // Sends 0x55 to peer device
+
+#### `UART.write(buffer)`
+
+Sends a quantity of data to peer device.
+
+For example:
+
+	buf = [1, 2, 3, 4, 5]
+
+	uart = UART(1)
+	uart.init(UART.BAUDRATE_9600)
+	UART.write("Hello world!")
+	UART.write(buf)
+
+#### `UART.flush()`
+
+Waits for the transmission of outgoing serial data to complete.
+
+**NOTE**: That this function does nothing at present, in particular it doesn't wait for the data to be sent, since this causes the application to wait indefinitely when there is no serial monitor connected.
+
+#### `UART.any()`
+
+Returns the number of bytes that is available in internal serial RX buffer.
+
+#### `UART.readChar()`
+
+Reads one byte from internal serial RX buffer.
+
+For example:
+
+	uart = UART(1)
+	uart.init(UART.BAUDRATE_9600)
+	if( uart.any() != 0 ):
+		ch = uart.readChar()
+
+#### `UART.read(buffer, quantity)`
+
+Reads a quantity of data from internal serial RX buffer.
+
+For example:
+
+	buf = []
+	len = 0
+
+	uart = UART(1)
+	uart.init(UART.BAUDRATE_9600)
+	len = uart.any()
+	uart.read(buf, len)
+
+#### `UART.peek()`
+
+Reads one byte from internal serial RX buffer, but without removing this byte from the internal serial buffer.
+
+#### `UART.isEnable()`
+
+It returns `True` if the UART interface is enabled, otherwise returns `False`.
 
 
 ## Support
