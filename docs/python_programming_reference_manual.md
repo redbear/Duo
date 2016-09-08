@@ -80,7 +80,7 @@ Returns: None.
 For example:
 
 	LED = Pin.board.D0
-	Pin.pinMode(LED, OUTPUT)
+	Pin.pinMode(LED, Pin.OUTPUT)
 
 #### `Pin.digitalWrite(pin, value)`
 
@@ -102,7 +102,7 @@ For example:
 
 	// Read the level on the D1
 	BTN = Pin.board.D0
-	Pin.pinMode(BTN, INPUT_PU)
+	Pin.pinMode(BTN, Pin.INPUT_PU)
 	val = Pin.digitalRead(Pin.board.D1)
 
 #### `Pin.pwmWrite(pin, value, [frequency=500])`
