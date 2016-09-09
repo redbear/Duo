@@ -722,7 +722,7 @@ For example:
     // Create a TCP server listening on port 5050
 	tcp_server = TCPServer(5050)
 
-#### `TCPServer.delect()`
+#### `TCPServer.delete()`
 
 Deletes a constructed TCP server and frees the allocated memory.
 
