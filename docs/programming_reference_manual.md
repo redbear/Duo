@@ -650,7 +650,8 @@ General methods:
 
 [**`setRandomAddrMode()`**](#setrandomaddrmode)    
 [**`setRandomAddr()`**](#setrandomaddr)    
-[**`getLocalBdAddr()`**](#getlocalbdaddr)
+[**`getLocalBdAddr()`**](#getlocalbdaddr)    
+[**`disconnect()`**](#disconnect)     
 [**`onConnectedCallback()`**](#onconnectedcallback)    
 [**`onDisconnectedCallback()`**](#ondisconnectedcallback)    
 
@@ -660,7 +661,6 @@ BLE Central:
 [**`startScanning()`**](#startscanning)    
 [**`stopScanning()`**](#stopscanning)       
 [**`connect()`**](#connect)    
-[**`disconnect()`**](#disconnect)    
 [**`onScanReportCallback()`**](#onscanreportcallback) 
 
 BLE Peripheral:     
