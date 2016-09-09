@@ -268,7 +268,7 @@ For example:
 
 I2C is a two-wire protocol for communicating between devices. At the physical level it consists of 2 wires: SCL and SDA, the clock and data lines respectively. Regarding the Duo, the SDA is mapped to D0 and SCL is mapped to D1. Currently the Duo only supports I2C master role.
 
-#### `I2C.init(speed)`
+#### `I2C.init([speed=CLOCK_SPEED_100KHZ])`
 
 Initializes the I2C as master role. The `speed` can either be `CLOCK_SPEED_100KHZ` or `CLOCK_SPEED_400KHZ`.
 
