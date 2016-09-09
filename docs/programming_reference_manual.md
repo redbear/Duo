@@ -1052,7 +1052,7 @@ User should keep the connection handle in case of used for further opertions to 
 
 ##### <span id="disconnect">`disconnect()`</span>
 
-Disconnects from the peer device that is connected through [**`ble.connect()`**](#connect). It takes a single parameter - the connection handle that is assigned when connection established before.
+Disconnects from the peer device. It takes a single parameter - the connection handle that is assigned when connection established before.
 
 A callback function registered by [**`ble.onDisconnectedCallback()`**](#ondisconnectedcallback) will be called once the connection disconnected.
 
