@@ -31,7 +31,7 @@ Glad you've received your Duo from vendor! Thanks for purchasing the Duo and hop
 
 ### <span id="using-iosandroid-app">Using iOS/Android App</span>
 
-Please go to the [App Store]() or [Google Play]() to get and install the Duo App on your iOS/Andriod device.
+Please go to the [App Store](https://itunes.apple.com/us/developer/redbear/id547623898) or [Google Play]() to get and install the Duo App on your iOS/Andriod device.
 
 1. Start the App. It will check the latest firmware on the [GitHub](https://github.com/redbear/Duo/tree/master/firmware/system) first. If there is a new released firmware available on the GitHub, then it automatically fetches the firmware to your iOS/Android device for updating your Duo via local TCP/IP afterwards.
 
