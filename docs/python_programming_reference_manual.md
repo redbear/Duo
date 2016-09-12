@@ -84,7 +84,7 @@ For example:
 
 #### `Pin.digitalWrite(pin, value)`
 
-Sets the digital logic level of the pin. The `value` can be anything that converts to a boolean. If it converts to `True`, the pin is set high, otherwise it is set low.
+Sets the digital logic level of the pin. The `value` can be`Pin.HIGH` or `Pin.LOW` or anything that converts to a boolean. If it converts to `True`, the pin is set high, otherwise it is set low.
 
 For example:
 
@@ -96,7 +96,7 @@ For example:
 
 #### `Pin.digitalRead(pin)`
 
-Gets the digital logic level of the pin. It returns 0 or 1 depending on the logic level of the pin. The pin should be set as input mode (`INPUT`, `INPUT_PU`, `INPUT_PD`) using `Pin,pinMode()` first.
+Gets the digital logic level of the pin. It returns `Pin.HIGH` or `Pin.LOW` depending on the logic level of the pin. The pin should be set as input mode (`INPUT`, `INPUT_PU`, `INPUT_PD`) using `Pin,pinMode()` first.
 
 For example:
 
