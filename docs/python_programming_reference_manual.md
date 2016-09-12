@@ -89,10 +89,10 @@ Sets the digital logic level of the pin. The `value` can be`Pin.HIGH` or `Pin.LO
 For example:
 
 	// Output high level on the D0
-	Pin.digitalWrite(Pin.board.D0, 1);
+	Pin.digitalWrite(Pin.board.D0, Pin.HIGH);
 
 	// Output low level on the D0
-	Pin.digitalWrite(Pin.board.D0, 0);
+	Pin.digitalWrite(Pin.board.D0, Pin.LOW);
 
 #### `Pin.digitalRead(pin)`
 
