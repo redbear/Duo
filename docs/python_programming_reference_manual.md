@@ -137,7 +137,7 @@ For example:
 
 #### `Pin.tone(pin, frequency, duration)`
 
-Generates a square wave (50% duty cycle) of the specified frequency and duration on the pin which supports PWM.
+Generates a square wave (50% duty cycle) of the specified frequency and duration on the pin which supports PWM, except D2/D3/D4, since they share the same timer with the on-board RGB. See the [know issue](https://github.com/redbear/firmware/issues/12).
 
 For example:
 
