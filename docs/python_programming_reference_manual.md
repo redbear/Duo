@@ -218,6 +218,7 @@ Gets the pin port.
 ### <span id="extint">ExtInt</span>
 
 `from pyb import ExtInt`
+`from pyb import Pin`
 
 To capture the external event on specific pin, the pin should be configured as input first. The input mode can be either `INPUT`, `INPUT_PU` or `INOUT_PD`.
 
@@ -227,9 +228,9 @@ Enables all of the interrupts.
 
 #### `ExtInt.disableAllInterrupt()`
 
-Disables all of the interrupts
+Disables all of the interrupts.
 
-#### `Pin.attachInterrupt(pin, mode, callback)`
+#### `ExtInt()`
 
 Watches the interrupt on the pin so that when event occured the callback function will be called.
 
@@ -253,7 +254,7 @@ For example:
 	// Watch the interrupt
 	ExtInt.attachInterrupt(Pin.board.D0, ExtInt.IRQ_CHANGE, my_callback)
 
-#### `Pin.detachInterrupt(pin)`
+#### `ExtInt.detachInterrupt(pin)`
 
 Disables the interrupt on the pin so that the callback function will never be called when event occured on the pin.
 
