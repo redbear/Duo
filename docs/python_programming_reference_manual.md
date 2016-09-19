@@ -230,9 +230,9 @@ Enables all of the interrupts.
 
 Disables all of the interrupts.
 
-#### `ExtInt()`
+#### `ExtInt.ExtInt(pin, mode, callback)`
 
-Watches the interrupt on the pin so that when event occured the callback function will be called.
+Constructs a ExtInt object associated with the specific pin.
 
 The `mode` can be one of:
 
@@ -249,18 +249,26 @@ For example:
 		print("Level changed.")
 
 	// Initialize the pin as input pull-up
-	Pin(Pin.board.D0, INPUT_PU)
+	Pin.pinMode(Pin.board.D0, INPUT_PU)
+	
+	int0 = ExtInt(Pin.board.D0, ExtInt.IRQ_CHANGE, my_callback)
+
+#### `ExtInt.attachInterrupt([mode], [callback])`
+
+Watches the interrupt on the pin so that when event occured the callback function will be called. You can pass in `mode` and `callback` to override the parameters that is set when constructing the ExtInt object.
+
+For example:
 
 	// Watch the interrupt
-	ExtInt.attachInterrupt(Pin.board.D0, ExtInt.IRQ_CHANGE, my_callback)
+	int0.attachInterrupt()
 
-#### `ExtInt.detachInterrupt(pin)`
+#### `ExtInt.detachInterrupt()`
 
 Disables the interrupt on the pin so that the callback function will never be called when event occured on the pin.
 
 For example:
 
-	Pin.detachInterrupt(Pin.board.D0)
+	int0.detachInterrupt()
 
 
 ### <span id="i2c">I2C</span>
