@@ -34,8 +34,8 @@ For more information about the Duo and Particle firmware, please refer to:
 
 ### [Libraries specific to the board](#libraries-specific-to-the-board)
 
-* **`pyb`** – functions related to the board
-        * [Time](#time)
+* **`pyb`** – functions related to the board    
+	* [Time](#time)    
 	* [Pin](#pin)
 	* [ExtInt](#extint)
 	* [I2C](#i2c)
