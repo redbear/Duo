@@ -612,16 +612,14 @@ For example:
 	// Configures an open AP
 	WiFi.setCredentials("ssid", WiFi.WLAN_SEC_UNSEC)
 
-#### `WiFi.getCredentials(buffer, num)`
+#### `WiFi.getCredentials(num)`
 
-Fetches `num` of WiFi credentials that are configured in the Duo. It returns the actual number of WiFi credentials that have been fetched. The fetched WiFi credentials are filled into the `buffer`.
+Fetches `num` of WiFi credentials that are configured in the Duo. It returns the actual number of WiFi credentials that have been fetched.
 
 For example:
 
-	credentials = []
-
 	// Fetches 5 configured WiFi credentials if possible
-	WiFi.getCredentials(credentials, 5)
+	WiFi.getCredentials(5)
 
 #### `WiFi.clearCredentials()`
 
@@ -659,7 +657,7 @@ Returns the IP address of the AP which the Duo is connecting to.
 
 Returns the sub-network IP mask.
 
-#### `WiFi.dncpServerIP()`
+#### `WiFi.dhcpServerIP()`
 
 Returns the IP address of the DHCP server in the network.
 
