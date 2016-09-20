@@ -35,7 +35,7 @@ For more information about the Duo and Particle firmware, please refer to:
 ### [Libraries specific to the board](#libraries-specific-to-the-board)
 
 * **`pyb`** – functions related to the board
-
+        * [Time](#time)
 	* [Pin](#pin)
 	* [ExtInt](#extint)
 	* [I2C](#i2c)
@@ -52,6 +52,27 @@ For more information about the Duo and Particle firmware, please refer to:
 ## <span id="libraries-specific-to-the-board">Libraries specific to the board</span>
 
 **Note: All of the following classes and functions are built within the `pyb` module, so you need `import pyb` before you using these classes and functions.**
+
+### <span id="time">Time</span>
+
+`import pyb`
+
+#### `pyb.millis()`
+
+Returns the number of milliseconds since the device began running the current program. This number will overflow (go back to zero), after approximately 49 days.
+
+#### `pyb.micros()`
+
+Returns the number of microseconds since the device began running the current program.
+
+#### `pyb.delay(ms)`
+
+Pauses the program for the amount of time (in miliseconds) specified as parameter. (There are 1000 milliseconds in a second.) `ms` is the number of milliseconds to pause (unsigned long).
+
+#### `pyb.delayMicroseconds(us)`
+
+Pauses the program for the amount of time (in microseconds) specified as parameter. There are a thousand microseconds in a millisecond, and a million microseconds in a second. `us` is the number of microseconds to pause (unsigned int).
+
 
 ### <span id="pin">Pin</span>
 
@@ -903,6 +924,10 @@ Stops advertising to make the Duo non-discoverable to central devices.
 #### `BLE.connected()`
 
 Returns `True` if the Duo is connected with BLE central device.
+
+#### `BLE.disconnect()`
+
+Makes the Duo disconnect from peer device if it is connecting with a peer device.
 
 #### `BLE.write(buffer)`
 
