@@ -33,7 +33,7 @@ Purchase your RedBear Duo now:
 
 * [Duo Introduction](docs/duo_introduction.md)
 * [RBLink Introduction](docs/rblink_introduction.md)
-* [Programming Reference Manual](docs/programming_reference_manual.md)
+* [Arduino/C/C++ Programming Reference Manual](docs/programming_reference_manual.md)
 * [Firmware Architecture Overview](docs/firmware_architecture_overview.md)
 * [How It Works](docs/how_it_works.md)
 * [System Firmware Change-log](docs/system_firmware_changelog.md)
