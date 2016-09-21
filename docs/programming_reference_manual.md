@@ -1,4 +1,4 @@
-# Duo: Programming Reference Manual
+# Duo: Arduino/C/C++ Programming Reference Manual
 ---
 
 ## Overview
