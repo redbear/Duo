@@ -159,6 +159,9 @@ If you mount your Duo onto RBLink and connect the RBLink to your computer, you c
 ## References
 
 * [Duo Introduction](duo_introduction.md)
+* [Arduino/C/C++ Programming Reference Manual](programming_reference_manual.md)
+* [JavaScript Programming Reference Manual](javascript_programming_reference_manual.md)
+* [Python Programming Reference Manual](python_programming_reference_manual.md)
 * [Firmware Architecture Overview](firmware_architecture_overview.md)
 * [System Firmware Change-log](system_firmware_changelog.md)
 * [dfu-util Installation Guide](dfu-util_installation_guide.md)

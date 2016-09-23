@@ -82,7 +82,7 @@ If your Duo's current system version is not the same as the one declared in the 
 ## References
 
 * [Duo Introduction](duo_introduction.md)
-* [Programming Reference Manual](programming_reference_manual.md)
+* [Arduino/C/C++ Programming Reference Manual](programming_reference_manual.md)
 * [How It Works](how_it_works.md)
 * [Arduino Board Package Installation Guide](arduino_board_package_installation_guide.md)
 * [Arduino Board Package Change-log](https://github.com/redbear/STM32-Arduino/blob/master/CHANGELOG.md)

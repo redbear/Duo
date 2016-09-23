@@ -40,6 +40,7 @@ Purchase your RedBear Duo now:
 * [Arduino Board Package Change-log](https://github.com/redbear/STM32-Arduino/blob/master/CHANGELOG.md)
 * [JavaScript Interpreter Change-log](docs/javascript_interpreter_changelog.md)
 * [JavaScript Programming Reference Manual](docs/javascript_programming_reference_manual.md)
+* [Python Programming Reference Manual](docs/python_programming_reference_manual.md)
 * [Troubleshooting](docs/troubleshooting.md)
 
 #### Tutorials
