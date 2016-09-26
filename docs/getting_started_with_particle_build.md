@@ -56,7 +56,7 @@ The Duo is installed the customed Particle firmware by default during manufactur
 
 We always recommend you update your Duo's system firmware to the latest version, since there may have new features added and bugfixes within the new released version. 
 
-It is very easy to update your Duo's system firmware with the Particle Build. Simply choose an upper firmware version for the application you are going to compile against (see step 3 of the [First Simple Application](#first-simple-application) section), and then OTA flash the application. It will automatically update your Duo's system firmware Over The Air. More details and other ways to update the system firmware, please refer to the [Firmware Deployment Guide](duo_firmware_deployment_guide.md).
+It is very easy to update your Duo's system firmware with the Particle Build. Simply choose an upper firmware version for the application you are going to compile against (see step 3 of the [First Simple Application](#first-simple-application) section), and then OTA flash the application. It will automatically update your Duo's system firmware Over The Air. More details and other ways to update the system firmware, please refer to the [Firmware Deployment Guide](firmware_deployment_guide.md).
 
 You should note that the Particle Build only supports firmware upgrading, if you choose a lower firmware verison to compile against, it won't downgrade  the Duo's system firmware for you.
 
