@@ -15,17 +15,17 @@ One of the following conditions satisfied will force the Duo enter Listening Mod
 
 3. Request by calling the [`WiFi.listen()`](https://docs.particle.io/reference/firmware/photon/#listen-) in user application.
 
-**Note :** When the Duo is in the Listening Mode, if [multithreading](https://docs.particle.io/reference/firmware/photon/#system-thread) is not used, neither the system event loop running backstage nor user application will continue, untill exiting from the Listening Mode. If multithreading is enabled, the system event loop running backstage will be blocked untill exiting from the Listening Mode, while the user application executes as usual.
+**Note :** When the Duo is in the Listening Mode, if [multithreading](https://docs.particle.io/reference/firmware/photon/#system-thread) is not used, neither the system event loop running backstage nor user application will continue, untill exiting from the Listening Mode. If multithreading is enabled, the system event loop running backstage will be blocked untill exiting from the Listening Mode, while the user application executes as usual. But in the case that user application has implemented the BLE functionality and multithreading is enbaled, since the Duo will de-init and re-init the BLE functionality in the Listening Mode, the BLE functionality implemented by user application won't work any more, even that it might make the BLE functionality in the Listening Mode broken.
 
 To exit Listening Mode, one of the following conditions must be satisfied:
 
-1. WiFi credentials is configured if using USB serial.
+1. WiFi credentials is configured via using USB serial.
 
-2. `connect-ap` command is received if using WiFi or BLE
+2. "Connect to AP" command is received via WiFi or BLE
 
-3. `finish-update` command is recieved is using WiFi (Duo only)
+3. "Finish Firmware Update" command is recieved via WiFi (Duo only)
 
-4. `WiFi.listen(false)` is called in user application only if multithreading is used
+4. `WiFi.listen(false)` is called in user application only if multithreading is enabled
 
 
 ## <span id="wifi-softap">WiFi SoftAP</span>
@@ -68,19 +68,19 @@ Response :
 
 ### Fetch Firmware Versions
 
-  - Endpoint: TCP/5609, HTTP/80
-  - command_name : `version`
-  - parameter_length : `0`
-  - parameter : omitted
-  - Response string (e.g.) : `{"release string":"0.2.4","bootloader":4,"system part1":7,"system part2":7,"user part":7}`
+- Endpoint: TCP/5609, HTTP/80
+- command_name : `version`
+- parameter_length : `0`
+- parameter : omitted
+- Response string (e.g.) : `{"release string":"0.2.4","bootloader":4,"system part1":7,"system part2":7,"user part":7}`
 
 ### Fetch Device ID
 
-  - Endpoint: TCP/5609, HTTP/80
-  - command_name : `device-id`
-  - parameter_length : `0`
-  - parameter : omitted
-  - Response string (e.g.) : `{"id":"112233445566778899001122","c":"1"}`
+- Endpoint: TCP/5609, HTTP/80
+- command_name : `device-id`
+- parameter_length : `0`
+- parameter : omitted
+- Response string (e.g.) : `{"id":"112233445566778899001122","c":"1"}`
 
 **id** : is the unique ID for the device.
 
@@ -89,11 +89,11 @@ the device has successfully connected to the cloud.
 
 ### Scan Nearby Access Points
 
-  - Endpoint: TCP/5609, HTTP/80
-  - command_name : `scan-ap`
-  - parameter_length : `0`
-  - parameter : omitted
-  - Response string (e.g.) : `{"scans":[{"ssid":"ssid-name","rssi":-30,"sec":value,"ch":value,"mdr":value},{result 1},{...},{result n}]}`
+- Endpoint: TCP/5609, HTTP/80
+- command_name : `scan-ap`
+- parameter_length : `0`
+- parameter : omitted
+- Response string (e.g.) : `{"scans":[{"ssid":"ssid-name","rssi":-30,"sec":value,"ch":value,"mdr":value},{result 1},{...},{result n}]}`
 
 **sec** : describes the security configuration of the scanned AP. It's an enum with one of the following values:
 
@@ -112,11 +112,11 @@ the device has successfully connected to the cloud.
 
 ### Configure WiFi Credential
 
-  - Endpoint: TCP/5609, HTTP/80
-  - command_name : `configure-ap`
-  - parameter_length : length of the parameter string
-  - parameter (e.g.) : `{"idx":index,"ssid":"my-ssid","pwd":"hex-encoded pwd","sec":value,"ch":value}`
-  - Response string (e.g.) : `{"r":0}` // 0 ok, non zero problem with index/data
+- Endpoint: TCP/5609, HTTP/80
+- command_name : `configure-ap`
+- parameter_length : length of the parameter string
+- parameter (e.g.) : `{"idx":index,"ssid":"my-ssid","pwd":"hex-encoded pwd","sec":value,"ch":value}`
+- Response string (e.g.) : `{"r":0}` // 0 ok, non zero problem with index/data
 
 **idx** : The value of it in the parameter doesn't matter for now.
   
@@ -139,11 +139,11 @@ the device has successfully connected to the cloud.
 
 ### Connect to AP
 
-  - Endpoint: TCP/5609, HTTP/80
-  - command_name : `connect-ap`
-  - parameter_length : length of the parameter string
-  - parameter (e.g.) : `{"idx":0}`
-  - Response string (e.g.) : `{"r":0}` // 0 ok, non zero problem with index/data
+- Endpoint: TCP/5609, HTTP/80
+- command_name : `connect-ap`
+- parameter_length : length of the parameter string
+- parameter (e.g.) : `{"idx":0}`
+- Response string (e.g.) : `{"r":0}` // 0 ok, non zero problem with index/data
 
 **idx** : The value of it in the parameter doesn't matter for now.
 
@@ -151,21 +151,21 @@ the device has successfully connected to the cloud.
 
 ### Fetch Device Public Key
 
-  - Endpoint: TCP/5609, HTTP/80
-  - command_name : `public-key`
-  - parameter_length : `0`
-  - parameter : omitted
-  - Response string (e.g.) : `{"b":"ascii hex-encoded data","r":0}` // 0 ok, non zero problem with index/data
+- Endpoint: TCP/5609, HTTP/80
+- command_name : `public-key`
+- parameter_length : `0`
+- parameter : omitted
+- Response string (e.g.) : `{"b":"ascii hex-encoded data","r":0}` // 0 ok, non zero problem with index/data
 
 The device's public key is in DER format.
 
 ### Set Key-Value Paired Data
 
-  - Endpoint: TCP/5609, HTTP/80
-  - command_name : `set`
-  - parameter_length : length of the parameter string
-  - parameter (e.g.) : `{"key":value}`
-  - Response string (e.g.) : `{"r":0}` // 0 ok, non zero problem with index/data
+- Endpoint: TCP/5609, HTTP/80
+- command_name : `set`
+- parameter_length : length of the parameter string
+- parameter (e.g.) : `{"key":value}`
+- Response string (e.g.) : `{"r":0}` // 0 ok, non zero problem with index/data
 
 The format of the value is determined by the key. Currently these keys are supported:
 
@@ -173,29 +173,29 @@ The format of the value is determined by the key. Currently these keys are suppo
 
 ### Check Credentials
 
-  - Endpoint: TCP/5609 only
-  - command_name : `check-credential`
-  - parameter_length : `0`
-  - parameter : omitted
-  - Response string (e.g.) : `{"has credentials":1}` // 1 for valid credentials stored, 0 for no valid credentials
+- Endpoint: TCP/5609 only
+- command_name : `check-credential`
+- parameter_length : `0`
+- parameter : omitted
+- Response string (e.g.) : `{"has credentials":1}` // 1 for valid credentials stored, 0 for no valid credentials
 
 ### Invalid User Application
 
-  - Endpoint: TCP/5609 only
-  - command_name : `invalid-user`
-  - parameter_length : `0`
-  - parameter : omitted
-  - Response string : `{"r":1}` // always return 1 for success
+- Endpoint: TCP/5609 only
+- command_name : `invalid-user`
+- parameter_length : `0`
+- parameter : omitted
+- Response string : `{"r":1}` // always return 1 for success
 
 This will invalid the user application by setting the user part CRC32 value to 0x00000000. Next time power on or reset, the Duo will enter [Safe Mode](https://docs.particle.io/guide/getting-started/modes/photon/#safe-mode) if the current user application is not overridden by a copy of a valid user application received OTA (Over The Air) from the external flash. This command is usually sent after OTA updating system firmware via local TCP connection. See the [Upload Firmware Images](#upload-firmware-images) section below. It is designed to avoid the imcompatibility between new system firmware and old user application, which might cause the old user application crashed.
 
 ### <span id="prepare-for-firmware-update">Prepare for Firmware Update</span>
 
-  - Endpoint: TCP/5609 only
-  - command_name : `prepare-update`
-  - parameter_length : length of the parameter string
-  - parameter (e.g.) : `{"file_length":"40960","chunk_address":"0","chunk_size":"128","file_store":"0"}`
-  - Response string : `{"r":1}` // always return 1 for success
+- Endpoint: TCP/5609 only
+- command_name : `prepare-update`
+- parameter_length : length of the parameter string
+- parameter (e.g.) : `{"file_length":"40960","chunk_address":"0","chunk_size":"128","file_store":"0"}`
+- Response string : `{"r":1}` // always return 1 for success
 
 **file_length** : The total length of the firmware image to to sent.
 
@@ -210,28 +210,30 @@ Every time before uploading one firmware image over TCP/50007, this command MUST
 If more than one firmware images to be uploaded to the OTA region, make sure that :
 
 - The `chunk_address` must be 4-KBytes aligned, since the external flash is 4-KBytes organized.
-- The `chunk_address` must not locate in the previously uploaded firmware data address range, or it will destroy the previously uploaded firmware image.
-- The `chunk_address` + `file_length` must not exceed the OTA region.
+- The `chunk_address` must NOT locate within the previously uploaded firmware data address range, or it will destroy the previously uploaded firmware image.
+- The (`chunk_address` + `file_length`) must NOT exceed the OTA region.
 
 ![image](images/OTA_region.png)
 
-**Note** : The current firmware image uploading procedure will abort if sending this command again, while the completed firmware image won't be reversed. 
+**Note** : The current firmware image uploading procedure will abort if sending this command again, while the previously uploaded firmware image won't be reversed. 
 
 ### Finish Firmware Update
 
-  - Endpoint: TCP/5609 only
-  - command_name : `finish-update`
-  - parameter_length : `0`
-  - parameter : omitted
-  - Response string : `{"r":1}` // always return 1 for success
+- Endpoint: TCP/5609 only
+- command_name : `finish-update`
+- parameter_length : `0`
+- parameter : omitted
+- Response string : `{"r":1}` // always return 1 for success
 
 This command will force the Duo exiting from the Listening Mode. If firmware uploading is performed successfully before, a soft-reset will be pending. Thus, once exits from the Listening Mode, the Duo then performs a soft-reset to deploy the uploaded firmware. If none of the firmware uploading is performed successfully, the Duo just exits from the Listening Mode normally without soft-reset.
 
+**Note** : If exiting from the Listening Mode without a reset, no matter multithreading is enabled or not, the BLE functionality in user application if implemented will not work any more, unless having a reset.
+
 ### <span id="upload-firmware-images">Upload Firmware Images</span>
 
-  - Endpoint: TCP/50007 only
-  - Request: Plain firmware image data block in sequence
-  - Response string :
+- Endpoint: TCP/50007 only
+- Request: Plain firmware image data block in sequence
+- Response string :
 
     - `not init` : indicates the firmware uploading procedure hasn't been initialized yet, i.e. the `prepare-update` command over TCP/5609 hasn't been sent or the command operated failed.
     - `chunk saved` : indicates a firmware data block has been stored in the [OTA region](https://github.com/redbear/Duo/blob/master/docs/firmware_architecture_overview.md#ota-image) or [FAC region](https://github.com/redbear/Duo/blob/master/docs/firmware_architecture_overview.md#factory-reset-image) appropriately.
@@ -249,6 +251,166 @@ When the `file saved` string is echoed, the Duo will assert a soft-reset flag. I
 
 
 ## <span id="ble-peripheral">BLE Peripheral</span>
+
+During in the Listening Mode, the Duo will act as a BLE peripheral waiting for BLE central device to connect, the device name of which is "Duo-xxxx", where "xxxx" varies from different devices. Before being connected by BLE central device, the Duo broadcasts the 128-bits Primary Service UUID and the device name so that BLE central device can filter the Duos those are in the Listening Mode for setup.
+
+**Note** : The BLE functionality implemented by user application won't work any more, no matter multithreading is enabled or not, even if after exiting from the Listening Mode.
+
+The implemented BLE Service and Characteristics during in thne Listening Mode :
+
+##### Primary Service 
+
+- 128-bits UUID : `3EC61400-89CD-49C3-A0D9-7A85669E901E`
+ 
+##### Command Characteristic
+
+- Under the Primary Service for receiving/sending command/response
+- 128-bits UUID : `3EC61401-89CD-49C3-A0D9-7A85669E901E`
+- Property : `PROPERTY_WRITE_NO_RESPONSE | PROPERTY_NOTIFY`
+- Maximum length : 20 bytes
+- If the length of a command/response stream to be sent is more than 20 bytes, then it should be split into segments, the length of which must be within 20 bytes, and send one segment per time until the command/response stream is sent completely. The command/response stream format :
+
+	`stream_length (1 byte) + command (1 byte) + parameters`
+
+ 	where the `stream_length` is the total length of a stream including itself and the `command` should be one of the enum value :
+
+		typedef enum {
+		    PROVISION_CMD_SCAN_REQUEST = 0xA0,
+		    PROVISION_CMD_CONFIG_AP_ENTRY,
+		    PROVISION_CMD_CONNECT_AP,
+		    PROVISION_CMD_NOTIFY_AP,
+		    PROVISION_CMD_NOTIFY_SYS_INFO,
+		    PROVISION_CMD_NOTIFY_IP_CONFIG,
+		} BLEProvisionCmd_t;
+
+##### State Characteristic
+
+- Under the Primary Service for notifying the setup stage
+- 128-bits UUID : `3EC61402-89CD-49C3-A0D9-7A85669E901E`
+- Property : `PROPERTY_NOTIFY`
+- Maximum length : 1 byte
+- The value of the characteristic should be one of the enum value :
+
+		typedef enum {
+		    PROVISION_STA_IDLE = 0xB0,
+		    PROVISION_STA_SCANNING,
+		    PROVISION_STA_SCAN_COMPLETE,
+		    PROVISION_STA_CONFIG_AP,
+		    PROVISION_STA_CONNECTING,
+		    PROVISION_STA_CONNECTED,
+		    PROVISION_STA_CONNECT_FAILED,
+		} BLEProvisionSta_t;
+
+### Get System Informations
+
+Command stream via Command Characteristic:
+
+![image](images/get_sys_info.png)
+  
+Response stream via Command Characteristic:
+
+![image](images/sys_info.png)
+
+The versions of the bootloader, system-part1, system-part2 and user part are of little endian. The release string is terminated without NULL.
+
+**Note** : If the Duo is in the state `PROVISION_STA_SCANNING`, it won't respond to this command, since in this condition the Command Characteristic will be used to send scanned Access Points details to central at any time and if the system informations is sent it will be treated as scanned AP details, which definitely cause unexpected issue.
+
+### Scan Nearby Access Points
+
+Command stream via Command Characteristic :
+
+![image](images/scan_request.png)
+
+Followed by notifying the new state via **State Characteristic** :
+
+![image](images/scanning.png)
+
+Then the Duo begins scanning nearby APs and once an AP is scanned, the details of the AP will be sent to central via Command Characteristic :
+
+![image](images/ap_details.png)
+
+When AP scanning completed, the Duo will notify the new state via **State Characteristic** :
+
+![image](images/scan_complete.png)
+
+**AP State** : Indicates that whether the scanned AP is the one being configured for Duo before. It should be one of the enum value :
+
+	typedef enum {
+	    AP_CONFIGURED = 0xD0,
+	    AP_SCANNED,
+	} BLEProvisionAPState_t;
+
+**RSSI** : It is an `int16_t` value and is of little endian.
+
+**Security Type** : It is an `uint32_t` value and is of little endian. It should be one of the following enum value (other values are not supported for now) :
+
+	enum Security {
+	    SECURITY_OPEN           = 0;          /**< Unsecured                               */
+	    SECURITY_WEP_PSK        = 1;     	  /**< WEP Security with open authentication   */
+	    SECURITY_WEP_SHARED     = 0x8001;     /**< WEP Security with shared authentication */
+	    SECURITY_WPA_TKIP_PSK   = 0x00200002; /**< WPA Security with TKIP                  */
+	    SECURITY_WPA_AES_PSK    = 0x00200004; /**< WPA Security with AES                   */
+	    SECURITY_WPA2_AES_PSK   = 0x00400004; /**< WPA2 Security with AES                  */
+	    SECURITY_WPA2_TKIP_PSK  = 0x00400002; /**< WPA2 Security with TKIP                 */
+	    SECURITY_WPA2_MIXED_PSK = 0x00400006; /**< WPA2 Security with AES & TKIP           */
+	}
+
+**SSID String** : It is terminated without NULL.
+
+The central device should cache the APs sent by the Duo so that the AP details can be retrieved when sending the Configure WiFi Credential command.
+
+**Note** : After sending the `PROVISION_CMD_SCAN_REQUEST` command and before being notified the state `PROVISION_STA_SCAN_COMPLETE`, the Duo won't respond to the `PROVISION_CMD_NOTIFY_SYS_INFO` command.
+
+### Configure WiFi Credential
+
+Command stream via Command Characteristic :
+
+![image](images/config_ap.png)
+
+Followed by notifying the new state via **State Characteristic** :
+
+![image](images/state_config_ap.png)
+
+**Channel** : Set it to `0` if you're not sure
+
+**Security Type** : It is an `uint32_t` value and is of little endian. It should be one of the following enum value (other values are not supported for now) :
+
+	enum Security {
+	    SECURITY_OPEN           = 0;          /**< Unsecured                               */
+	    SECURITY_WEP_PSK        = 1;     	  /**< WEP Security with open authentication   */
+	    SECURITY_WEP_SHARED     = 0x8001;     /**< WEP Security with shared authentication */
+	    SECURITY_WPA_TKIP_PSK   = 0x00200002; /**< WPA Security with TKIP                  */
+	    SECURITY_WPA_AES_PSK    = 0x00200004; /**< WPA Security with AES                   */
+	    SECURITY_WPA2_AES_PSK   = 0x00400004; /**< WPA2 Security with AES                  */
+	    SECURITY_WPA2_TKIP_PSK  = 0x00400002; /**< WPA2 Security with TKIP                 */
+	    SECURITY_WPA2_MIXED_PSK = 0x00400006; /**< WPA2 Security with AES & TKIP           */
+	}
+
+**SSID String** : It is terminated without NULL.
+
+**Password String** : If the security type is of open, the length of password string should be set to `0` and the password string can be omitted. Otherwise, central device must ensure that the length of the password string is more than 7 characters.
+
+### Connect to AP
+
+Command stream via Command Characteristic :
+
+![image](images/connect_ap.png)
+
+Followed by notifying the new state via **State Characteristic** :
+
+![image](images/connecting.png)
+
+Then the Duo exits from the Listening Mode and try connecting to the AP. If the Duo successfully connect to AP, the new state will ne notified via **State Characteristic** :
+
+![image](images/connected.png)
+
+Followed by notifying the IP configurations via Command Characteristic :
+
+![image](images/ip_config.png)
+
+While if the Duo fails to connect to AP, it then notify the new state via **State Characteristic** :
+
+![image](images/connect_failed.png)
 
 
 
