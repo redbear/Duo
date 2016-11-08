@@ -68,7 +68,7 @@ Request :
 
 Response :
 
-- A string that indicates the current firmware uploading state machine.
+- A string that indicates the current firmware updating state machine.
 
 ### Fetch Firmware Versions
 
