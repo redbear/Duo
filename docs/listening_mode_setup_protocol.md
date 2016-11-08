@@ -15,28 +15,26 @@ One of the following conditions satisfied will force the Duo enter Listening Mod
 
 3. Request by calling the [`WiFi.listen()`](https://docs.particle.io/reference/firmware/photon/#listen-) in user application.
 
-**Note :** When the Duo is in the Listening Mode, if [multithreading](https://docs.particle.io/reference/firmware/photon/#system-thread) is not used, neither the system event loop running backstage nor user application will continue, untill the Listening Mode exits. If multithreading is used, the system event loop running backstage will be blocked untill the Listening Mode exits, while the user application executes normally.
+**Note :** When the Duo is in the Listening Mode, if [multithreading](https://docs.particle.io/reference/firmware/photon/#system-thread) is not used, neither the system event loop running backstage nor user application will continue, untill exiting from the Listening Mode. If multithreading is enabled, the system event loop running backstage will be blocked untill exiting from the Listening Mode, while the user application executes as usual.
 
 To exit Listening Mode, one of the following conditions must be satisfied:
 
 1. WiFi credentials is configured if using USB serial.
 
-2. "connect-ap" command is received if using WiFi or BLE
+2. `connect-ap` command is received if using WiFi or BLE
 
-3. "finish-update" command is recieved is using WiFi (Duo only)
+3. `finish-update` command is recieved is using WiFi (Duo only)
 
 4. `WiFi.listen(false)` is called in user application only if multithreading is used
 
 
 ## <span id="wifi-softap">WiFi SoftAP</span>
 
-As described above, when the Duo is in the Listening Mode, it will broadcast as an open SoftAP, wich SSID is "Duo-xxxx" and IP address is 192.168.0.1. At meantime, the Duo starts a TCP server listening on port 5609 and a HTTP server listening on port 80 for receiving commands from client. It will start a TCP server listening on port 50007 for firmware update as well. Then you can connect your mobile phone, laptop or host PC to this SoftAP and start a TCP client or use web brower to communicate with Duo by following the protocol defined here. 
+As described above, when the Duo is in the Listening Mode, it will broadcast as an open SoftAP, wich SSID is "Duo-xxxx" and IP address is 192.168.0.1. In the meantime, the Duo starts a TCP server listening on port 5609 and a HTTP server listening on port 80 for receiving commands from client. It will start a TCP server listening on port 50007 for firmware update as well. Then you can connect your mobile phone, laptop or host PC to this SoftAP and start a TCP client or use web brower to communicate with Duo according to the protocol defined here. 
 
 ##### TCP/5609 :
 
-Request string :
-
-`command_name\n(parameter_length)\n\n[parameter]`
+Request string : `command_name\n(parameter_length)\n\n[parameter]`
 
 - The parameter length is essential, while the parameter is optional.
 - If parameter is required, it must be of JSON format.
@@ -49,9 +47,7 @@ Response:
 
 ##### HTTP/80 :
 
-Request :
-
-`http://192.168.0.8/command_name`
+Request : `http://192.168.0.8/command_name`
 
 - Commands with no data are sent as a GET.
 - Commands that require data (e.g. configure-ap) are sent as POST, with the data in the request body
@@ -126,7 +122,7 @@ the device has successfully connected to the cloud.
   
 **ch** : The value of it in the parameter doesn't matter.
 
-**pwd** : 256-bytes ascii hex-encoded string which carries the WiFi password (no greater than 64 characters). If the password is empty, the pwd attribute can be omitted. The plain password is then RSA encrypted with PKCS#1 padding scheme using the device's public key. The encrypted 128-bytes are then ascii hex-encoded, with the most significant nibble (4-bits) first, followed by the lest significant nibble. For example, the encryted 128-bytes `A10322983F...` in Hexadecimal would be encoded as 256 characters `"A10322983F..."`.
+**pwd** : 256-bytes ascii hex-encoded string which carries the WiFi password (no greater than 64 characters). If the password is empty, the `pwd` attribute can be omitted. The plain password is then RSA encrypted with PKCS#1 padding scheme using the device's public key. The encrypted 128-bytes are then ascii hex-encoded, with the most significant nibble (4-bits) first, followed by the lest significant nibble. For example, the encryted 128-bytes `A10322983F...` in Hexadecimal would be encoded as 256 characters `"A10322983F..."`.
 
 **sec** : describes the security configuration of the specified AP. It's an enum with one of the following values:
 
@@ -241,11 +237,15 @@ This command will force the Duo exiting from the Listening Mode. If firmware upl
     - `chunk saved` : indicates a firmware data block has been stored in the [OTA region](https://github.com/redbear/Duo/blob/master/docs/firmware_architecture_overview.md#ota-image) or [FAC region](https://github.com/redbear/Duo/blob/master/docs/firmware_architecture_overview.md#factory-reset-image) appropriately.
     - `file saved` : indicates a whole firmware image has been received and stored successfully. Only if the length of the received firmware data is equal to the length specified by `file_length` field in the [Prepare for Firmware Update](#prepare-for-firmware-update) command, then it will echo this string.
 
-Every time before uploading one firmware image over TCP/50007, the [Prepare for Firmware Update](#prepare-for-firmware-update) command MUST be sent over TCP/5609 to initialize the firmware updating state machine. The length of each firmware data block has no limitation. The Duo will calculate the offset from which to store a new received data block internally automatically. But we would suggest that the length of a data block is less than 1024 bytes for trusted transmission. When the `file saved` string is echoed, the Duo will assert a soft-reset flag. Once exiting from the Listening Mode, the Duo will perform a soft-reset to deploy the uploaded firmware images. Of course, a hard reset after a successful firmware uploading will also deploy the uploaded firmware images.
+The firmware images to be uploaded should be system part1, system part2 and user part (user application) images.
+
+Every time before uploading one firmware image over TCP/50007, the [Prepare for Firmware Update](#prepare-for-firmware-update) command MUST be sent over TCP/5609 to initialize the firmware updating state machine. The firmware image should be split into data blocks and the length of each data block has no limitation. The Duo will calculate the offset from which to store a new received data block internally automatically. But we would suggest that the length of a data block is less than 1024 bytes for trusted transmission.
+
+When the `file saved` string is echoed, the Duo will assert a soft-reset flag. If this flag is asserted, once exiting from the Listening Mode, the Duo will perform a soft-reset to deploy the uploaded firmware images. Of course, a hard reset after a successful firmware uploading will also deploy the uploaded firmware images.
 
 [Reference source code for uploading firmware images over TCP/50007](https://github.com/redbear/DuoSetupCLI/blob/master/src/main.c).
 
-**Note** : A firmware image must be appended with a valid CRC32 so that it can be applied to internal flash. Otherwise, it will be discarded after reboot.
+**Note** : A firmware image must be appended with a valid CRC32 so that it can be applied to internal flash. Otherwise, it will be discarded after reboot. A valid firmware image can be generated via Arduino IDE, Particle Build or by building the firmware source code. The system firmware images released [on GitHub](https://github.com/redbear/Duo/tree/master/firmware/system) are already CRC32 appended. The released [JavaScript interpreter](https://github.com/redbear/Duo/tree/master/firmware/javascript_interpreter) and [Python interpreter](https://github.com/redbear/Duo/tree/master/firmware/python_interpreter) firmware images are of user application actually and are CRC32 appended.
 
 
 ## <span id="ble-peripheral">BLE Peripheral</span>
