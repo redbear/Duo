@@ -390,6 +390,8 @@ Followed by notifying the new state via **State Characteristic** :
 
 **Password String** : If the security type is of open, the length of password string should be set to `0` and the password string can be omitted. Otherwise, central device must ensure that the length of the password string is more than 7 characters.
 
+**Note** : The password string is not encrypted.
+
 ### Connect to AP
 
 Command stream via Command Characteristic :
@@ -400,24 +402,32 @@ Followed by notifying the new state via **State Characteristic** :
 
 ![image](images/connecting.png)
 
-Then the Duo exits from the Listening Mode and try connecting to the AP. If the Duo successfully connect to AP, the new state will ne notified via **State Characteristic** :
+Then the Duo exits from the Listening Mode and try connecting to the AP. 
 
-![image](images/connected.png)
+- If the Duo successfully connect to AP, the new state will ne notified via **State Characteristic** :
 
-Followed by notifying the IP configurations via Command Characteristic :
+	![image](images/connected.png)
 
-![image](images/ip_config.png)
+	Followed by notifying the IP configurations via Command Characteristic :
 
-While if the Duo fails to connect to AP, it then notify the new state via **State Characteristic** :
+	![image](images/ip_config.png)
 
-![image](images/connect_failed.png)
+- While if the Duo fails to connect to AP, it then notify the new state via **State Characteristic** :
 
+	![image](images/connect_failed.png)
 
+**IPv4(IPv6)** : Indicates that whether the following IP address is IPv4 or IPv6. If it is equal to `0x04`, then the following IP address is 4-bytes with little endian, if `0x06`, then the following IP address is 6-bytes with little endian.
+
+**SSID String** : It is terminated without NULL.
+
+After central sending the `PROVISION_CMD_CONNECT_AP` command and the Duo notifying the state `PROVISION_STA_CONNECTING`, the Duo exits from the Listening Mode and try  connecting to the AP. If failed, the Duo will notify the state `PROVISION_STA_CONNECT_FAILED` followed by disconnecting from central device and  will enter the Listening mode again. If success, the Duo will notify the state `PROVISION_STA_CONNECTED` followed by notifying the IP configurations via the Command Characteristic and then perform a soft-reset.
 
 
 ## <span id="usb-serial">USB Serial</span>
 
+Connect the Duo to PC and follow the [Windows Driver Installation Guide](windows_driver_installation_guide.md) to install the driver if needed. 
 
+Then jump to the guidance : Configure WiFi Credential -- [Using Serial Terminal](https://github.com/redbear/Duo/blob/master/docs/out_of_box_experience.md#using-serial-terminal).
 
 
 ## <span id="references">References</span>
