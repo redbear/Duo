@@ -221,6 +221,7 @@ See:
 * [JavaScript Programming Reference Manual](javascript_programming_reference_manual.md)
 * [Python Programming Reference Manual](python_programming_reference_manual.md)
 * [Firmware Architecture Overview](firmware_architecture_overview.md)
+* [WiFi/BLE/USBSerial Setup Protocol in Listening Mode](listening_mode_setup_protocol.md)
 
 
 ## <span id="resources">Resources</span>

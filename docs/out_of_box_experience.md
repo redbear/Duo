@@ -242,6 +242,8 @@ We always recommend you update your Duo to the latest system firmware, since the
 * [Python Programming Reference Manual](python_programming_reference_manual.md)
 * [Firmware Architecture Overview](firmware_architecture_overview.md)
 * [Firmware Deployment Guide](firmware_deployment_guide.md)
+* [How It Works](how_it_works.md)
+* [WiFi/BLE/USBSerial Setup Protocol in Listening Mode](listening_mode_setup_protocol.md)
 * [System Firmware Change-log](system_firmware_changelog.md)
 * [Devices Provisioning Guide](devices_provisioning_guide.md)
 * [dfu-util Installation Guide](dfu-util_installation_guide.md)

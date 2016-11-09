@@ -36,6 +36,7 @@ Purchase your RedBear Duo now:
 * [Arduino/C/C++ Programming Reference Manual](docs/programming_reference_manual.md)
 * [Firmware Architecture Overview](docs/firmware_architecture_overview.md)
 * [How It Works](docs/how_it_works.md)
+* [WiFi/BLE/USBSerial Setup Protocol in Listening Mode](docs/listening_mode_setup_protocol.md)
 * [System Firmware Change-log](docs/system_firmware_changelog.md)
 * [Arduino Board Package Change-log](https://github.com/redbear/STM32-Arduino/blob/master/CHANGELOG.md)
 * [JavaScript Interpreter Change-log](docs/javascript_interpreter_changelog.md)
