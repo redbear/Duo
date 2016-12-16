@@ -1,0 +1,58 @@
+PODS:
+  - 1PasswordExtension (1.8.4)
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
+  - Crashlytics (3.8.3):
+    - Fabric (~> 1.6.3)
+  - Fabric (1.6.11)
+  - RWDropdownMenu (1.0.3)
+  - Spark-SDK (0.5.1):
+    - Spark-SDK/Helpers (= 0.5.1)
+    - Spark-SDK/SDK (= 0.5.1)
+  - Spark-SDK/Helpers (0.5.1)
+  - Spark-SDK/SDK (0.5.1):
+    - AFNetworking (~> 3.0)
+    - Spark-SDK/Helpers
+  - SparkSetup (0.6.1):
+    - SparkSetup/Comm (= 0.6.1)
+    - SparkSetup/Core (= 0.6.1)
+  - SparkSetup/Comm (0.6.1)
+  - SparkSetup/Core (0.6.1):
+    - 1PasswordExtension
+    - Spark-SDK
+    - SparkSetup/Comm
+  - SSZipArchive (1.6.2)
+
+DEPENDENCIES:
+  - Crashlytics
+  - Fabric
+  - RWDropdownMenu (~> 1.0.0)
+  - SparkSetup
+  - SSZipArchive
+
+SPEC CHECKSUMS:
+  1PasswordExtension: e775a29310c65851e5a6cec1afc349ab4e334e47
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
+  Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
+  RWDropdownMenu: c7fda4b7adf4f3f63a46d96359c2f490a7713795
+  Spark-SDK: 361c1d3aabc88f7c1eada27427cc8997f5a79ac1
+  SparkSetup: 0e63d1cce0c16278b798f383f1ece034032df6a7
+  SSZipArchive: 428eb1ac8d37dd133404d30f422b23958c1f9acc
+
+PODFILE CHECKSUM: d8d4fecd7f55173da25a3a42d1097c1cb80157b8
+
+COCOAPODS: 1.1.1
