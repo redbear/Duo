@@ -1,0 +1,6 @@
+framework module RWDropdownMenu {
+  umbrella header "RWDropdownMenu-umbrella.h"
+
+  export *
+  module * { export * }
+}

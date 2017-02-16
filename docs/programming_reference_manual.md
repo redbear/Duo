@@ -560,7 +560,7 @@ Built-in instance **`sFLASH`**.
 
 ##### <span id="erasesector">`eraseSector()`</span> 
 
-This method erases a given sector of the external flash. The pass in parameter **`uint32_t SectorAddr`** can be any of the address as long as it is located in the sector, i.e. the sector you are going to erase is (**`SectorAddr >> 3`**). Operation to the reserved sectors makes no effect.
+This method erases a given sector of the external flash. The pass in parameter **`uint32_t SectorAddr`** can be any of the address as long as it is located in the sector, i.e. the sector you are going to erase is (**`SectorAddr >> 12`**). Operation to the reserved sectors makes no effect.
  
 	// Erase the sector 18.
 	sFLASH.eraseSector(0x12000); 

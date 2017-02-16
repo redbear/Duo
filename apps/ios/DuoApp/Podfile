@@ -1,0 +1,11 @@
+
+platform :ios, '10.0'
+use_frameworks!
+
+target :'RedBear Duo' do
+    pod 'Crashlytics'
+    pod 'RWDropdownMenu', '~> 1.0.0'
+    pod 'Fabric'
+    pod 'SSZipArchive'
+    pod 'SparkSetup'
+end

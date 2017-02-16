@@ -1,0 +1,43 @@
+/* 
+  Localizable.strings
+  DuoApp
+
+  Created by Sunny Cheung on 15/7/2016.
+  Copyright © 2016 RedBear. All rights reserved.
+*/
+
+RBDUO_CHECK_F = "Checking for latest firmware...";
+RBDUO_F_UPDATEFW = "Update Firmware";
+RBDUO_F_NFW = "New Firmware Found";
+RBDUO_F_UPDATE = "Update";
+RBDUO_CANCEL="Cancel";
+RBDUO_ERR="Error";
+RBDUO_FW_FAIL="Download New Firmware Failed";
+RBDUO_OK="OK";
+RBDUO_RETRY="Retry";
+RBDUO_NOINTERNET="No Internet";
+RBDUO_NOINTERNET_MSG = "Latest update is not avaliable when app is not connected to Internet.  Please check your connection.";
+RBDUO_DOWNLOAD_ERR="Download Error.  Please make sure you can connect the internet!";
+ENTER_WIFI_CREDENTIAL = "WiFi Credential";
+ENTER_WIFI_CREDENTIAL_MSG = "Please enter WiFi Credential";
+ENTER_WIFI_INFORMATION = "WiFi Information";
+ENTER_WIFI_INFO_MSG = "Please enter your SSID";
+PROVISION_FINISHED = "WiFi Provisioning Done";
+PROVISION_FINISHED_MSG = "You have successfully finished provisioning Duo.  If you have problem to connect to your WiFi network or to Particle, please try to provision again.  Click ok to close this window.";
+AP_CONNECTING="Connecting to ";
+CANNOT_CONNECT_AP="Cannot Connect";
+RBDUO_HW_F_NFW = "There is a newer firmware for this Duo.  Do you want to upgrade now?";
+RBDUO_HW_UPGRADE = "Upgrade";
+BREATHGREEN_LABEL = "Breathing Green LED indicates Duo has connected to WiFi";
+BREATHBLUE_LABEL = "Breathing Blue LED indicates Duo has connected to cloud";
+BLINKINGGREEN_LABEL = "Blinking Green indiciates Duo is trying to connect to WiFi";
+BLINKINGBLUE_LABEL = "Duo has failed to connect to WiFi";
+RBDUO_WIFI_PROVISION = "Configure Duo WiFi credentials and OTA using WiFi";
+RBDUO_WIFI_DISABLED = "WiFi function is off.  Turn on WiFi function if you want to configure Duo Wifi credentials with WiFi.";
+RBDUO_BLE_PROVISION = "Configure Duo WiFi credentails using BLE. WiFi Password is not encrypted with BLE.";
+RBDUO_BLE_DISABLED = "BLE function is off. Turn on BLE function if you want to configure Duo Wifi credentials with BLE.";
+RBDUO_SCANNING_WIFI_NETWORK = "Scanning WiFi network...";
+
+
+
+

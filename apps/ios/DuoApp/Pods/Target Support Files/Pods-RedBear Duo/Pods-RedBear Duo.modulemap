@@ -1,0 +1,6 @@
+framework module Pods_RedBear_Duo {
+  umbrella header "Pods-RedBear Duo-umbrella.h"
+
+  export *
+  module * { export * }
+}

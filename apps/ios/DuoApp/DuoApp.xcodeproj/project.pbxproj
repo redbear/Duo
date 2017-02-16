@@ -1,0 +1,616 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A30638AD1D3BC236005499B0 /* AccessPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30638AC1D3BC236005499B0 /* AccessPoint.swift */; };
+		A30638AF1D3CA928005499B0 /* RBDuoNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30638AE1D3CA928005499B0 /* RBDuoNavigationController.swift */; };
+		A30638B41D3E1DC3005499B0 /* DuoDeviceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30638B31D3E1DC3005499B0 /* DuoDeviceCell.swift */; };
+		A317619E1D38D76200C52912 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A317619D1D38D76200C52912 /* AppDelegate.swift */; };
+		A31761A01D38D76200C52912 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A317619F1D38D76200C52912 /* ViewController.swift */; };
+		A31761A31D38D76200C52912 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A31761A11D38D76200C52912 /* Main.storyboard */; };
+		A31761A51D38D76200C52912 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A31761A41D38D76200C52912 /* Assets.xcassets */; };
+		A31761A81D38D76200C52912 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A31761A61D38D76200C52912 /* LaunchScreen.storyboard */; };
+		A31761B11D38E60E00C52912 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31761B01D38E60E00C52912 /* Settings.swift */; };
+		A31761B41D38EA1600C52912 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A31761B61D38EA1600C52912 /* Localizable.strings */; };
+		A31761BC1D3A6D0900C52912 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31761BB1D3A6D0900C52912 /* MainViewController.swift */; };
+		A31761C61D3B51D000C52912 /* BLE.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31761C31D3B51D000C52912 /* BLE.swift */; };
+		A325F5B31D3F4F5300AF297B /* DuoBLEProvisionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A325F5B21D3F4F5300AF297B /* DuoBLEProvisionTableViewController.swift */; };
+		A325F5B81D40CE2F00AF297B /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A325F5B71D40CE2F00AF297B /* DeviceInfo.swift */; };
+		A325F5BA1D40ECC500AF297B /* AccessPointTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A325F5B91D40ECC500AF297B /* AccessPointTableViewCell.swift */; };
+		A325F5BC1D413F7A00AF297B /* WifiInstructionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A325F5BB1D413F7A00AF297B /* WifiInstructionTableViewController.swift */; };
+		A325F5BE1D428CAA00AF297B /* SSID.swift in Sources */ = {isa = PBXBuildFile; fileRef = A325F5BD1D428CAA00AF297B /* SSID.swift */; };
+		A325F5C21D43BF7C00AF297B /* APServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A325F5C11D43BF7C00AF297B /* APServer.swift */; };
+		A325F5C41D444CBD00AF297B /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A325F5C31D444CBD00AF297B /* ConnectionManager.swift */; };
+		A3549B0C1D73F94100F654B1 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3549B0B1D73F94100F654B1 /* MenuTableViewController.swift */; };
+		A3549B0E1D75641D00F654B1 /* PopupMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3549B0D1D75641D00F654B1 /* PopupMenuViewController.swift */; };
+		A36DA2E31DDAD3980003B599 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A30638B01D3CCDE3005499B0 /* CoreBluetooth.framework */; };
+		A36DA2E51DDD77750003B599 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A36DA2E41DDD77750003B599 /* SystemConfiguration.framework */; };
+		A36DA2EA1DDD893B0003B599 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36DA2E91DDD893B0003B599 /* Reachability.swift */; };
+		A36DA2F91DDDA87A0003B599 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = A36DA2F11DDDA87A0003B599 /* SVIndefiniteAnimatedView.m */; };
+		A36DA2FA1DDDA87A0003B599 /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = A36DA2F31DDDA87A0003B599 /* SVProgressAnimatedView.m */; };
+		A36DA2FC1DDDA87A0003B599 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A36DA2F61DDDA87A0003B599 /* SVProgressHUD.m */; };
+		A36DA2FD1DDDA87A0003B599 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A36DA2F81DDDA87A0003B599 /* SVRadialGradientLayer.m */; };
+		A36DA2FE1DDDA88D0003B599 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A36DA2F41DDDA87A0003B599 /* SVProgressHUD.bundle */; };
+		A3967E981D88FA140035AE52 /* WiFiStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = A3967E971D88FA140035AE52 /* WiFiStatus.m */; };
+		A3AE6D891D53585C0019913A /* DuoIpInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AE6D881D53585C0019913A /* DuoIpInfo.swift */; };
+		A3AE6D8B1D539E0F0019913A /* NoWifiBLEProvisioningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AE6D8A1D539E0F0019913A /* NoWifiBLEProvisioningViewController.swift */; };
+		A3AE6D8D1D53AB220019913A /* DuoWifiProvisioningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AE6D8C1D53AB220019913A /* DuoWifiProvisioningViewController.swift */; };
+		A3AE6D8F1D54F5690019913A /* DuoInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AE6D8E1D54F5690019913A /* DuoInfoViewController.swift */; };
+		A3AE6D941D55C6280019913A /* OTAUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AE6D931D55C6270019913A /* OTAUpload.swift */; };
+		EFA84ECC2EBEF62FF80E8418 /* Pods_RedBear_Duo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F1DB515EE056F0A63BADC95 /* Pods_RedBear_Duo.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0F1DB515EE056F0A63BADC95 /* Pods_RedBear_Duo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RedBear_Duo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		323FE57F1B24FBA4CDBA837C /* Pods-RedBear Duo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedBear Duo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RedBear Duo/Pods-RedBear Duo.debug.xcconfig"; sourceTree = "<group>"; };
+		A11192BB9B67DB6D79B23387 /* Pods-RedBear Duo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedBear Duo.release.xcconfig"; path = "Pods/Target Support Files/Pods-RedBear Duo/Pods-RedBear Duo.release.xcconfig"; sourceTree = "<group>"; };
+		A30638AC1D3BC236005499B0 /* AccessPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessPoint.swift; sourceTree = "<group>"; };
+		A30638AE1D3CA928005499B0 /* RBDuoNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RBDuoNavigationController.swift; sourceTree = "<group>"; };
+		A30638B01D3CCDE3005499B0 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		A30638B31D3E1DC3005499B0 /* DuoDeviceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DuoDeviceCell.swift; sourceTree = "<group>"; };
+		A317619A1D38D76100C52912 /* RedBear Duo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RedBear Duo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A317619D1D38D76200C52912 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A317619F1D38D76200C52912 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A31761A21D38D76200C52912 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A31761A41D38D76200C52912 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A31761A71D38D76200C52912 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A31761A91D38D76200C52912 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A31761B01D38E60E00C52912 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		A31761B51D38EA1600C52912 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A31761B71D38EA1B00C52912 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A31761B81D38EA3000C52912 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		A31761B91D38EA3800C52912 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		A31761BA1D38EA4000C52912 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A31761BB1D3A6D0900C52912 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		A31761C31D3B51D000C52912 /* BLE.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLE.swift; sourceTree = "<group>"; };
+		A325F5B21D3F4F5300AF297B /* DuoBLEProvisionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DuoBLEProvisionTableViewController.swift; sourceTree = "<group>"; };
+		A325F5B71D40CE2F00AF297B /* DeviceInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
+		A325F5B91D40ECC500AF297B /* AccessPointTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessPointTableViewCell.swift; sourceTree = "<group>"; };
+		A325F5BB1D413F7A00AF297B /* WifiInstructionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WifiInstructionTableViewController.swift; sourceTree = "<group>"; };
+		A325F5BD1D428CAA00AF297B /* SSID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSID.swift; sourceTree = "<group>"; };
+		A325F5C11D43BF7C00AF297B /* APServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APServer.swift; sourceTree = "<group>"; };
+		A325F5C31D444CBD00AF297B /* ConnectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
+		A3549B0B1D73F94100F654B1 /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
+		A3549B0D1D75641D00F654B1 /* PopupMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PopupMenuViewController.swift; path = ../PopupMenuViewController.swift; sourceTree = "<group>"; };
+		A36DA2E41DDD77750003B599 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		A36DA2E91DDD893B0003B599 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		A36DA2F01DDDA87A0003B599 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVIndefiniteAnimatedView.h; path = SVProgressHUD/SVProgressHUD/SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
+		A36DA2F11DDDA87A0003B599 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVIndefiniteAnimatedView.m; path = SVProgressHUD/SVProgressHUD/SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
+		A36DA2F21DDDA87A0003B599 /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVProgressAnimatedView.h; path = SVProgressHUD/SVProgressHUD/SVProgressAnimatedView.h; sourceTree = "<group>"; };
+		A36DA2F31DDDA87A0003B599 /* SVProgressAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVProgressAnimatedView.m; path = SVProgressHUD/SVProgressHUD/SVProgressAnimatedView.m; sourceTree = "<group>"; };
+		A36DA2F41DDDA87A0003B599 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SVProgressHUD.bundle; path = SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle; sourceTree = "<group>"; };
+		A36DA2F51DDDA87A0003B599 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVProgressHUD.h; path = SVProgressHUD/SVProgressHUD/SVProgressHUD.h; sourceTree = "<group>"; };
+		A36DA2F61DDDA87A0003B599 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVProgressHUD.m; path = SVProgressHUD/SVProgressHUD/SVProgressHUD.m; sourceTree = "<group>"; };
+		A36DA2F71DDDA87A0003B599 /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVRadialGradientLayer.h; path = SVProgressHUD/SVProgressHUD/SVRadialGradientLayer.h; sourceTree = "<group>"; };
+		A36DA2F81DDDA87A0003B599 /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVRadialGradientLayer.m; path = SVProgressHUD/SVProgressHUD/SVRadialGradientLayer.m; sourceTree = "<group>"; };
+		A3967E951D88FA140035AE52 /* RedBear Duo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RedBear Duo-Bridging-Header.h"; sourceTree = "<group>"; };
+		A3967E961D88FA140035AE52 /* WiFiStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WiFiStatus.h; sourceTree = "<group>"; };
+		A3967E971D88FA140035AE52 /* WiFiStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WiFiStatus.m; sourceTree = "<group>"; };
+		A3AE6D881D53585C0019913A /* DuoIpInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DuoIpInfo.swift; sourceTree = "<group>"; };
+		A3AE6D8A1D539E0F0019913A /* NoWifiBLEProvisioningViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoWifiBLEProvisioningViewController.swift; sourceTree = "<group>"; };
+		A3AE6D8C1D53AB220019913A /* DuoWifiProvisioningViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DuoWifiProvisioningViewController.swift; sourceTree = "<group>"; };
+		A3AE6D8E1D54F5690019913A /* DuoInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DuoInfoViewController.swift; path = ../DuoInfoViewController.swift; sourceTree = "<group>"; };
+		A3AE6D931D55C6270019913A /* OTAUpload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTAUpload.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A31761971D38D76100C52912 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A36DA2E51DDD77750003B599 /* SystemConfiguration.framework in Frameworks */,
+				A36DA2E31DDAD3980003B599 /* CoreBluetooth.framework in Frameworks */,
+				EFA84ECC2EBEF62FF80E8418 /* Pods_RedBear_Duo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A30638AB1D3BC1FF005499B0 /* AP */ = {
+			isa = PBXGroup;
+			children = (
+				A30638AC1D3BC236005499B0 /* AccessPoint.swift */,
+				A325F5C11D43BF7C00AF297B /* APServer.swift */,
+				A3AE6D881D53585C0019913A /* DuoIpInfo.swift */,
+			);
+			name = AP;
+			sourceTree = "<group>";
+		};
+		A30638B21D3E1DA7005499B0 /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				A30638B31D3E1DC3005499B0 /* DuoDeviceCell.swift */,
+				A325F5B91D40ECC500AF297B /* AccessPointTableViewCell.swift */,
+			);
+			name = cells;
+			sourceTree = "<group>";
+		};
+		A31761911D38D76100C52912 = {
+			isa = PBXGroup;
+			children = (
+				A317619C1D38D76100C52912 /* DuoApp */,
+				A317619B1D38D76100C52912 /* Products */,
+				FAF04A82E8E7E4BE0976664F /* Frameworks */,
+				C89E4D52ABB4FC19726116A8 /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		A317619B1D38D76100C52912 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A317619A1D38D76100C52912 /* RedBear Duo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A317619C1D38D76100C52912 /* DuoApp */ = {
+			isa = PBXGroup;
+			children = (
+				A36DA2F01DDDA87A0003B599 /* SVIndefiniteAnimatedView.h */,
+				A36DA2F11DDDA87A0003B599 /* SVIndefiniteAnimatedView.m */,
+				A36DA2F21DDDA87A0003B599 /* SVProgressAnimatedView.h */,
+				A36DA2F31DDDA87A0003B599 /* SVProgressAnimatedView.m */,
+				A36DA2F41DDDA87A0003B599 /* SVProgressHUD.bundle */,
+				A36DA2F51DDDA87A0003B599 /* SVProgressHUD.h */,
+				A36DA2F61DDDA87A0003B599 /* SVProgressHUD.m */,
+				A36DA2F71DDDA87A0003B599 /* SVRadialGradientLayer.h */,
+				A36DA2F81DDDA87A0003B599 /* SVRadialGradientLayer.m */,
+				A31761AF1D38E5F100C52912 /* util */,
+				A30638B21D3E1DA7005499B0 /* cells */,
+				A325F5B61D40CE1800AF297B /* Device */,
+				A325F5B41D3F67AA00AF297B /* Navigation */,
+				A30638AB1D3BC1FF005499B0 /* AP */,
+				A31761C01D3B51D000C52912 /* BLE */,
+				A317619D1D38D76200C52912 /* AppDelegate.swift */,
+				A317619F1D38D76200C52912 /* ViewController.swift */,
+				A31761BB1D3A6D0900C52912 /* MainViewController.swift */,
+				A325F5B21D3F4F5300AF297B /* DuoBLEProvisionTableViewController.swift */,
+				A325F5BB1D413F7A00AF297B /* WifiInstructionTableViewController.swift */,
+				A3AE6D8A1D539E0F0019913A /* NoWifiBLEProvisioningViewController.swift */,
+				A3AE6D8C1D53AB220019913A /* DuoWifiProvisioningViewController.swift */,
+				A3AE6D8E1D54F5690019913A /* DuoInfoViewController.swift */,
+				A3549B0B1D73F94100F654B1 /* MenuTableViewController.swift */,
+				A3549B0D1D75641D00F654B1 /* PopupMenuViewController.swift */,
+				A31761A11D38D76200C52912 /* Main.storyboard */,
+				A31761A41D38D76200C52912 /* Assets.xcassets */,
+				A31761A61D38D76200C52912 /* LaunchScreen.storyboard */,
+				A31761A91D38D76200C52912 /* Info.plist */,
+				A31761B61D38EA1600C52912 /* Localizable.strings */,
+			);
+			path = DuoApp;
+			sourceTree = "<group>";
+		};
+		A31761AF1D38E5F100C52912 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				A325F5BD1D428CAA00AF297B /* SSID.swift */,
+				A325F5C31D444CBD00AF297B /* ConnectionManager.swift */,
+				A31761B01D38E60E00C52912 /* Settings.swift */,
+				A3AE6D931D55C6270019913A /* OTAUpload.swift */,
+				A3967E961D88FA140035AE52 /* WiFiStatus.h */,
+				A3967E971D88FA140035AE52 /* WiFiStatus.m */,
+				A3967E951D88FA140035AE52 /* RedBear Duo-Bridging-Header.h */,
+				A36DA2E91DDD893B0003B599 /* Reachability.swift */,
+			);
+			name = util;
+			sourceTree = "<group>";
+		};
+		A31761C01D3B51D000C52912 /* BLE */ = {
+			isa = PBXGroup;
+			children = (
+				A31761C31D3B51D000C52912 /* BLE.swift */,
+			);
+			name = BLE;
+			path = BLEFramework/BLE;
+			sourceTree = "<group>";
+		};
+		A325F5B41D3F67AA00AF297B /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				A30638AE1D3CA928005499B0 /* RBDuoNavigationController.swift */,
+			);
+			name = Navigation;
+			sourceTree = "<group>";
+		};
+		A325F5B61D40CE1800AF297B /* Device */ = {
+			isa = PBXGroup;
+			children = (
+				A325F5B71D40CE2F00AF297B /* DeviceInfo.swift */,
+			);
+			name = Device;
+			sourceTree = "<group>";
+		};
+		C89E4D52ABB4FC19726116A8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				323FE57F1B24FBA4CDBA837C /* Pods-RedBear Duo.debug.xcconfig */,
+				A11192BB9B67DB6D79B23387 /* Pods-RedBear Duo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		FAF04A82E8E7E4BE0976664F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A36DA2E41DDD77750003B599 /* SystemConfiguration.framework */,
+				A30638B01D3CCDE3005499B0 /* CoreBluetooth.framework */,
+				0F1DB515EE056F0A63BADC95 /* Pods_RedBear_Duo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A31761991D38D76100C52912 /* RedBear Duo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A31761AC1D38D76200C52912 /* Build configuration list for PBXNativeTarget "RedBear Duo" */;
+			buildPhases = (
+				2BB8D47D8EAC45CEB0A73B08 /* [CP] Check Pods Manifest.lock */,
+				A31761961D38D76100C52912 /* Sources */,
+				A31761971D38D76100C52912 /* Frameworks */,
+				A31761981D38D76100C52912 /* Resources */,
+				A3AE6D921D559F450019913A /* ShellScript */,
+				69B916691F3E890858106E78 /* [CP] Embed Pods Frameworks */,
+				2D3AB72E9F0196B41EC3D5CB /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "RedBear Duo";
+			productName = DuoApp;
+			productReference = A317619A1D38D76100C52912 /* RedBear Duo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A31761921D38D76100C52912 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = RedBear;
+				TargetAttributes = {
+					A31761991D38D76100C52912 = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = GLKR323QE8;
+						LastSwiftMigration = 0810;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = A31761951D38D76100C52912 /* Build configuration list for PBXProject "DuoApp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				"zh-Hant",
+				"zh-Hans",
+				ja,
+			);
+			mainGroup = A31761911D38D76100C52912;
+			productRefGroup = A317619B1D38D76100C52912 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A31761991D38D76100C52912 /* RedBear Duo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A31761981D38D76100C52912 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A36DA2FE1DDDA88D0003B599 /* SVProgressHUD.bundle in Resources */,
+				A31761A81D38D76200C52912 /* LaunchScreen.storyboard in Resources */,
+				A31761B41D38EA1600C52912 /* Localizable.strings in Resources */,
+				A31761A51D38D76200C52912 /* Assets.xcassets in Resources */,
+				A31761A31D38D76200C52912 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2BB8D47D8EAC45CEB0A73B08 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		2D3AB72E9F0196B41EC3D5CB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RedBear Duo/Pods-RedBear Duo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		69B916691F3E890858106E78 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RedBear Duo/Pods-RedBear Duo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A3AE6D921D559F450019913A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" c7de6906d4936ce6c4c811e60089d5ee0b544e0a c36bc2c5bd0fac54716fdec96fc7e077b316be54487f79815b5426e883cb9f74";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A31761961D38D76100C52912 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A36DA2F91DDDA87A0003B599 /* SVIndefiniteAnimatedView.m in Sources */,
+				A31761B11D38E60E00C52912 /* Settings.swift in Sources */,
+				A3AE6D8D1D53AB220019913A /* DuoWifiProvisioningViewController.swift in Sources */,
+				A3AE6D891D53585C0019913A /* DuoIpInfo.swift in Sources */,
+				A31761C61D3B51D000C52912 /* BLE.swift in Sources */,
+				A36DA2FC1DDDA87A0003B599 /* SVProgressHUD.m in Sources */,
+				A31761A01D38D76200C52912 /* ViewController.swift in Sources */,
+				A36DA2FD1DDDA87A0003B599 /* SVRadialGradientLayer.m in Sources */,
+				A325F5BC1D413F7A00AF297B /* WifiInstructionTableViewController.swift in Sources */,
+				A3967E981D88FA140035AE52 /* WiFiStatus.m in Sources */,
+				A3549B0E1D75641D00F654B1 /* PopupMenuViewController.swift in Sources */,
+				A325F5C21D43BF7C00AF297B /* APServer.swift in Sources */,
+				A3AE6D8B1D539E0F0019913A /* NoWifiBLEProvisioningViewController.swift in Sources */,
+				A3549B0C1D73F94100F654B1 /* MenuTableViewController.swift in Sources */,
+				A317619E1D38D76200C52912 /* AppDelegate.swift in Sources */,
+				A30638AF1D3CA928005499B0 /* RBDuoNavigationController.swift in Sources */,
+				A325F5BA1D40ECC500AF297B /* AccessPointTableViewCell.swift in Sources */,
+				A30638AD1D3BC236005499B0 /* AccessPoint.swift in Sources */,
+				A30638B41D3E1DC3005499B0 /* DuoDeviceCell.swift in Sources */,
+				A325F5B31D3F4F5300AF297B /* DuoBLEProvisionTableViewController.swift in Sources */,
+				A3AE6D8F1D54F5690019913A /* DuoInfoViewController.swift in Sources */,
+				A36DA2FA1DDDA87A0003B599 /* SVProgressAnimatedView.m in Sources */,
+				A3AE6D941D55C6280019913A /* OTAUpload.swift in Sources */,
+				A31761BC1D3A6D0900C52912 /* MainViewController.swift in Sources */,
+				A36DA2EA1DDD893B0003B599 /* Reachability.swift in Sources */,
+				A325F5C41D444CBD00AF297B /* ConnectionManager.swift in Sources */,
+				A325F5BE1D428CAA00AF297B /* SSID.swift in Sources */,
+				A325F5B81D40CE2F00AF297B /* DeviceInfo.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A31761A11D38D76200C52912 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A31761A21D38D76200C52912 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A31761A61D38D76200C52912 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A31761A71D38D76200C52912 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		A31761B61D38EA1600C52912 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A31761B51D38EA1600C52912 /* Base */,
+				A31761B71D38EA1B00C52912 /* en */,
+				A31761B81D38EA3000C52912 /* zh-Hant */,
+				A31761B91D38EA3800C52912 /* zh-Hans */,
+				A31761BA1D38EA4000C52912 /* ja */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A31761AA1D38D76200C52912 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A31761AB1D38D76200C52912 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A31761AD1D38D76200C52912 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 323FE57F1B24FBA4CDBA837C /* Pods-RedBear Duo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = DuoApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = cc.redbear.product.duo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "DuoApp/RedBear Duo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		A31761AE1D38D76200C52912 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A11192BB9B67DB6D79B23387 /* Pods-RedBear Duo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = DuoApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = cc.redbear.product.duo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "DuoApp/RedBear Duo-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A31761951D38D76100C52912 /* Build configuration list for PBXProject "DuoApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A31761AA1D38D76200C52912 /* Debug */,
+				A31761AB1D38D76200C52912 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A31761AC1D38D76200C52912 /* Build configuration list for PBXNativeTarget "RedBear Duo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A31761AD1D38D76200C52912 /* Debug */,
+				A31761AE1D38D76200C52912 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A31761921D38D76100C52912 /* Project object */;
+}

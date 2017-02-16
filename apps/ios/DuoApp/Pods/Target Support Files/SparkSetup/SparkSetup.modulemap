@@ -1,0 +1,6 @@
+framework module SparkSetup {
+  umbrella header "SparkSetup-umbrella.h"
+
+  export *
+  module * { export * }
+}
