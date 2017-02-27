@@ -38,7 +38,8 @@ Now make your Duo enter DFU Mode:
 #### Update DCT (Device Configuration Table)
 
 * Update the entire DCT:     
-`dfu-util -d 2b04:d058 -a 0 -s 0x8004000 -D fac-dct-r1.bin`
+For firmware till v0.2.4: `dfu-util -d 2b04:d058 -a 0 -s 0x8004000 -D fac-dct-r1.bin`    
+For firmware since v0.3.0: `dfu-util -d 2b04:d058 -a 0 -s 0x8008000 -D fac-dct-r1.bin`
 
 * Update the server public key:     
 `dfu-util -d 2b04:d058 -a 1 -s 2082 -D server_public_key.der`
@@ -47,7 +48,8 @@ Now make your Duo enter DFU Mode:
 `dfu-util -d 2b04:d058 -a 1 -s 34 -D device_private_key.der`
 
 * Dump the entire DCT. It may contain the device private key and the Wi-Fi credentials, so you need to keep it privately:     
-`dfu-util -d 2b04:d058 -a 0 -s 0x8004000 -U dct_backup.bin`
+For firmware till v0.2.4: `dfu-util -d 2b04:d058 -a 0 -s 0x8004000 -U dct_backup.bin`    
+For firmware since v0.2.4: `dfu-util -d 2b04:d058 -a 0 -s 0x8008000 -U dct_backup.bin`
 
 * Dump the server public key:    
 `dfu-util -d 2b04:d058 -a 1 -s 2082 -U server_public_key.der`

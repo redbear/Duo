@@ -18,7 +18,7 @@ The Duo's memory allocation is different from the Photon. The Duo has an externa
 
 ## Bootloader
 
-The bootloader ranges from internal flash address **`0x08000000`** to **`0x08007FFFF`**, the size of which is 32 KB. The bootloader is versatile. It determines whether to run the Particle firmware or WICED applications. If neither of them are valid, then it enters DFU mode for firmware uploading.
+The bootloader ranges from internal flash address **`0x08000000`** to **`0x08007FFF`**, the size of which is 32 KB. The bootloader is versatile. It determines whether to run the Particle firmware or WICED applications. If neither of them are valid, then it enters DFU mode for firmware uploading.
 
 Besides, if the Duo is running Particle firmware, the bootloader is responsible for the factory application reset, applying the OTA downloaded firmware or user application, making the Duo enter Safe mode, clearing Wi-Fi credentials and etc.
 
@@ -40,12 +40,14 @@ Regarding to the Particle firmware architecture, the configurations in Applicati
 	version					32			2
 	device private key		34			1216
 	device public key		1250		384
-	ip config				1634		128
+	ip config				1634		24
+	unused					1658		96
+	feature_flags			1754		4
 	country code			1758		4
 	claim code				1762		63
 	claimed					1825		1
 	ssid prefix				1826		26
-	device id				1852		6
+	device code				1852		6
 	version string			1858		32
 	dns resolve				1890		128
 	reserved1				2018		64
@@ -59,7 +61,12 @@ Regarding to the Particle firmware architecture, the configurations in Applicati
 	alt device private key	3106		192
 	alt server public key	3298		192
 	alt server address		3490		128
-	reserved2				3618		640
+	device id				3618		12
+	radio_flags				3630		1
+	mode button_mirror		3631		32
+	led mirror				3663		96
+	led theme				3759		64
+	reserved2				3823		435
 	extra system flags		4258		32
 	end						4290
 

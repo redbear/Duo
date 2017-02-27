@@ -1,11 +1,22 @@
 # Duo: WiFi/BLE/USBSerial Setup Protocol in Listening Mode
 ---
 
-If the Duo is running Particle firmware (by default out-of-box), it has several [device modes](https://docs.particle.io/guide/getting-started/modes/photon/). One of the device modes is [Listening Mode](https://docs.particle.io/guide/getting-started/modes/photon/#listening-mode), in which the Duo will act as SoftAP and BLE peripheral, both broadcasting the name in the format "Duo-xxxx", where "xxxx" varies from different Duos. During in the Listening mode, you can follow the protocol defined here to send command to fetch informations and configure the Duo.
+* [Via WiFi SoftAP](#wifi-softap)
+* [Via BLE](#ble-peripheral)
+* [Via USB Serial](#usb-serial)
 
-One of the following conditions satisfied will force the Duo enter Listening Mode:
+If the Duo is running Particle firmware (by default out-of-box), it has several [device modes](https://docs.particle.io/guide/getting-started/modes/photon/). One of the device modes is [Listening Mode](https://docs.particle.io/guide/getting-started/modes/photon/#listening-mode), in which the Duo will act as: 
 
-1. By holding the SETUP button for three seconds, until the RGB LED begins blinking blue.
+- WiFi SoftAP
+- BLE peripheral 
+	- If the Duo is running the system firmware below v0.3.0, it is always enabled
+	- If the Duo is running the system firmware above v0.3.0 (included), only if you invoke `BLE_SETUP(ENABLED);` in your application, it will be enabled. Defaultly disabled. 
+
+Both will broadcast the name in the format "Duo-xxxx", where "xxxx" varies from different Duos. During in the Listening mode, you can follow the protocol defined here to send command to fetch informations and configure the Duo.
+
+One of the following conditions being satisfied will force the Duo enter the Listening Mode:
+
+1. By holding the SETUP button for three seconds, until the RGB LED begins blinking **blue**.
 
 2. If no WiFi credentials stored and the Duo wants to connect to AP. To clear WiFi credentials:
 
@@ -13,18 +24,20 @@ One of the following conditions satisfied will force the Duo enter Listening Mod
     * Hold the SETUP button and tapping RESET, then continuing to hold SETUP until the on-board RGB turns **white**.
     * Call the [`WiFi.clearCredentials()`](https://docs.particle.io/reference/firmware/photon/#clearcredentials-) in user application.
 
-3. Request by calling the [`WiFi.listen()`](https://docs.particle.io/reference/firmware/photon/#listen-) in user application.
+3. Requested by calling the [`WiFi.listen()`](https://docs.particle.io/reference/firmware/photon/#listen-) in user application.
 
-**Note :** When the Duo is in the Listening Mode, if [multithreading](https://docs.particle.io/reference/firmware/photon/#system-thread) is not used, neither the system event loop running backstage nor user application will continue, untill exiting from the Listening Mode. If multithreading is enabled, the system event loop running backstage will be blocked untill exiting from the Listening Mode, while the user application executes as usual. But in the case that user application has implemented the BLE functionality and multithreading is enbaled, since the Duo will de-init and re-init the BLE functionality in the Listening Mode, the BLE functionality implemented by user application won't work any more, even more that it might break the BLE functionality during in the Listening Mode.
+**Note :** When the Duo is in the Listening Mode, if [multithreading](https://docs.particle.io/reference/firmware/photon/#system-thread) is not enabled, neither the system event loop running backstage nor user application will continue, untill exiting from the Listening Mode. If multithreading is enabled, the system event loop running backstage will be blocked untill exiting from the Listening Mode, while the user application executes as usual. Especially pay attention to the BLE functionality when the BLE setup is enabled:
+
+| BLE setup             | BLE running in application                           |
+|:--------------------- |:----------------------------------------------------:|
+| BLE_SETUP(ENABLED)    | Works only if the Duo never enter the Listening mode |
+| BLE_SETUP(DISABLED)   | Always works well                                    |
 
 To exit Listening Mode, one of the following conditions must be satisfied:
 
 1. WiFi credentials is configured via using USB serial.
-
 2. "Connect to AP" command is received via WiFi or BLE
-
-3. "Finish Firmware Update" command is recieved via WiFi (Duo only)
-
+3. [Finish Firmware Update](#finish-firmware-update) command is recieved via WiFi (Duo only)
 4. `WiFi.listen(false)` is called in user application only if multithreading is enabled
 
 
@@ -219,7 +232,7 @@ If more than one firmware images to be uploaded to the OTA region, make sure tha
 
 **Note** : The current firmware image uploading procedure will abort if sending this command again, while the previously uploaded firmware image won't be reversed. 
 
-### Finish Firmware Update
+### <span id="finish-firmware-update">Finish Firmware Update</span>
 
 - Endpoint: TCP/5609 only
 - command_name : `finish-update`
@@ -254,9 +267,14 @@ When the `file saved` string is echoed, the Duo will assert a soft-reset flag. I
 
 ## <span id="ble-peripheral">BLE Peripheral</span>
 
-During in the Listening Mode, the Duo will act as a BLE peripheral waiting for BLE central device to connect, the device name of which is "Duo-xxxx", where "xxxx" varies from different devices. Before being connected by BLE central device, the Duo broadcasts the 128-bits Primary Service UUID and the device name so that BLE central device can filter the Duos those are in the Listening Mode for setup.
+If enabled, during in the Listening Mode, the Duo will act as a BLE peripheral waiting for BLE central device to connect, the device name of which is "Duo-xxxx", where "xxxx" varies from different devices. Before being connected by BLE central device, the Duo broadcasts the 128-bits Primary Service UUID and the device name so that BLE central device can filter the Duos those are in the Listening Mode for setup.
 
-**Note** : The BLE functionality implemented by user application won't work any more, no matter multithreading is enabled or not, even if after exiting from the Listening Mode.
+**Note** : pay attention to the BLE functionality when the BLE setup is enabled:
+
+| BLE setup             | BLE running in application                           |
+|:--------------------- |:----------------------------------------------------:|
+| BLE_SETUP(ENABLED)    | Works only if the Duo never enter the Listening mode |
+| BLE_SETUP(DISABLED)   | Always works well                                    |
 
 The implemented BLE Service and Characteristics during in thne Listening Mode :
 
