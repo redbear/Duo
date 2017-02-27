@@ -7,6 +7,43 @@
 
 ## Current Version
 
+### *v0.3.1*
+
+-- Exactly based on the release v0.6.1-rc.2 of upstream.
+
+##### FEATURES
+
+- Arduino API compatible
+
+##### BUGFIXES
+
+- It won't apply the new updated application, neither via Arduino IDE or Particle cloud!
+
+**Any other awesome features, enhancements and bug fixes, please refer to the [change-log of upstream](https://github.com/spark/firmware/blob/develop/CHANGELOG.md)**
+
+## Version History
+
+### *v0.3.0*
+
+-- Exactly based on the release v0.6.1-rc.2 of upstream.
+
+##### FEATURES
+
+- Optionally enable BLE functionality for setup when the Duo is in the Listening mode
+- Optionally enable filtering duplicate BLE scanned device
+- More BLE APIs exported
+- Formal local TCP/IP OTA
+
+##### ENHANCEMENTS
+
+- Extends the bootloader to 32KB.
+
+##### BUGFIXES
+
+- Fixes the BLE address type issue, which result failure when compiling the SimpleBLECentral example.
+- BLE API typos
+- Particle building issue: [3b0f463](https://github.com/redbear/firmware/commit/3b0f463f0e761bebe67d669375bf01a9e3f7fa3a)
+
 ### *v0.2.4*
 
 ##### FEATURES
@@ -26,9 +63,6 @@
 
 - SoftAP http web page didn't work in listening mode
 - Duo performs soft reset upon connected to AP if WiFi.off() is invoked before
-
-
-## Version History
 
 ### *v0.2.3*
 
