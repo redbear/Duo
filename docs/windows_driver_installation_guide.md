@@ -4,7 +4,7 @@
 
 **Note: All the drivers mentioned here are for the Duo that running the Particle firmware. For the Duo that running the WICED application hasn't  implemented the USB device capability.**
 
-This guide aims to show you how to install the driver for Duo, including application USB driver and DFU USB driver, and the driver for RBLink if you have one in hand. 
+This guide aims to show you how to install the Windows driver for the Duo, including application USB driver and DFU USB driver, and the Windows driver for the RBLink if you have one in hand. 
 
 This guide is for Windows user only. Mac and Linux users need not to install driver for Duo.
 
