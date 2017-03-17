@@ -1133,13 +1133,13 @@ If the peer device characteristic has the **NOTIFY** property, then you should u
 	static gatt_client_characteristic_t characteristic; 
 
 	// Disable the characteristic notification and indication
-	writeClientCharsConfigDescritpor(conn_handle, &characteristic, GATT_CLIENT_CHARACTERISTICS_CONFIGURATION_NONE);
+	writeClientCharsConfigDescriptor(conn_handle, &characteristic, GATT_CLIENT_CHARACTERISTICS_CONFIGURATION_NONE);
 
 	// Enable the characteristic notification
-	writeClientCharsConfigDescritpor(conn_handle, &characteristic, GATT_CLIENT_CHARACTERISTICS_CONFIGURATION_NOTIFICATION);
+	writeClientCharsConfigDescriptor(conn_handle, &characteristic, GATT_CLIENT_CHARACTERISTICS_CONFIGURATION_NOTIFICATION);
 
 	// Enable the characteristic indication
-	writeClientCharsConfigDescritpor(conn_handle, &characteristic, GATT_CLIENT_CHARACTERISTICS_CONFIGURATION_INDICATION);
+	writeClientCharsConfigDescriptor(conn_handle, &characteristic, GATT_CLIENT_CHARACTERISTICS_CONFIGURATION_INDICATION);
 
 ##### <span id="ongattwriteclientcharacteristicconfigcallback">`onGattWriteClientCharacteristicConfigCallback()`</span>
 
