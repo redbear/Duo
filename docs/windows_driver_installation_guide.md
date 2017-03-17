@@ -15,11 +15,13 @@ This guide is for Windows user only. Mac and Linux users need not to install dri
 
 ## <span id="install-duo-application-usb-driver">Install Duo Application USB Driver</span>
 
-After your Duo boots-up to run system firmware, it will appear as USB comport device on your computer. The device name is **"Duo with WiFi and BLE"**.
+After your Duo boots-up to run system firmware, it will appear as USB comport device on your computer. The device name is **"Duo Serial"** or **"Duo with WiFi and BLE"**.
 
 ### Windows XP / 7
 
-* [Download](https://github.com/redbear/Duo/raw/master/driver/windows/duo_win_driver.zip) the Windows driver and unzip the file. It is fine to unzip this as a default into your 'Downloads' folder.
+* Download the [Windows driver installer](https://github.com/redbear/Duo/raw/master/driver/windows/particle_drivers_6.1.0.75.exe) or the [ZIP file](https://github.com/redbear/Duo/raw/master/driver/windows/windows-device-drivers.zip). For the Duo running the system firmware v0.2.4 or below, please download the [deprecated ZIP file](https://github.com/redbear/Duo/raw/master/driver/windows/deprecated/duo_win_driver.zip).
+
+* If you are using the Windows driver installer, just double click on the `.exe` to install the driver. If you are using the ZIP file, unzip it and work through the following steps.
 
 * Navigate to "Control Panel > Hardware and Sound > Device Manager" and double-click on your Duo device under "Other Devices".
 	
@@ -37,7 +39,7 @@ After your Duo boots-up to run system firmware, it will appear as USB comport de
 
 	![image](images/Complete.png)
 
-* You will see 'Duo with WiFi and BLE' under Ports.
+* You will see 'Duo with WiFi and BLE' under Ports. For the Duo running system firmware v0.3.0 or above, the comport name is "Duo Serial".
 
 	![image](images/Done.png)
 
