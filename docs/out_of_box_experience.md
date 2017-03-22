@@ -174,7 +174,7 @@ A default web server application now is running on your Duo, with broadcasting a
 
 We work closely with Particle team and the Duo for development purpose, can freely and easily access the Particle Cloud and benifit from the services and tools provided by Particle, e.g., Particle Web IDE, Particle Dashboard, Particle Event System and etc. If you want to benefit from these features, you have to work through the following steps to claim your Duo first.
 
-* Make sure that the Duo is connected to the Particle Cloud, i.e. the RGB is breathing **cyan**. If it can not connect to the Cloud, please check out the [Duo Troubleshooting](duo_troubleshooting.md) to fix it first before moving on.
+* Make sure that the Duo is connected to the Particle Cloud, i.e. the RGB is breathing **cyan**. If it can not connect to the Cloud, please check out the [Duo Troubleshooting](troubleshooting.md) to fix it first before moving on.
 
 * Go to [Particle Build](https://build.particle.io). Creat an account if you don't have one yet, or just login.
 
@@ -225,7 +225,7 @@ Before you backup the device private key, since such key is so personal that if 
 
 ### <span id="update-system-firmware-if-needed">Update system firmware if needed</span>
 
-We always recommend you update your Duo to the latest system firmware, since there may have new features added and bugfixes with a new released version. You should have known your Duo's current system firmware version at previous steps. Please check the [system firmware change-log](duo_system_firmware_changelog.md) to see if there is new system firmware version for an update. If available, follow the [Firmware Deployment Guide](duo_firmware_deployment_guide.md) to update the system firmware.
+We always recommend you update your Duo to the latest system firmware, since there may have new features added and bugfixes with a new released version. You should have known your Duo's current system firmware version at previous steps. Please check the [system firmware change-log](system_firmware_changelog.md) to see if there is new system firmware version for an update. If available, follow the [Firmware Deployment Guide](firmware_deployment_guide.md) to update the system firmware.
 
 
 ## <span id="whats-next">What's Next</span>
