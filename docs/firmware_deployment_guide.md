@@ -3,6 +3,29 @@
 
 The Duo is installed the customed Particle Firmware by default before shipped out. You can manage the firmware using dfu-util, Arduino IDE, Duo App, DuoSetupCLI, Particle CLI, Particle Cloud, Ymodem and OpenOCD.
 
+**! ! ! Important note :**
+
+**If you have updated your Duo to system firmware v0.3.0 or above, you MUST NOT downgrade the system firmware version to v0.2.4 or below. Otherwise, the bootloader will be destroyed! Unless you have a RBLink to fix the bootloader yourself.**
+
+**the DCT framework has been changed since v0.3.0. See the [new DCT](https://github.com/redbear/Duo/blob/master/docs/firmware_architecture_overview.md) framework. Since the new bootloader exceeds the 16K space, we extend the bootloader space to 32K. This pushes the DCT to a higher sectors and the EEPROM emulator is moved to external serial flash. By updating this system firmware, the bootloader will be automatically updated to the latest.**
+
+The only thing you should pay attention to is that the DCT start address has been changed from `0x08004000` to `0x08008000`. See the [new memory map](https://github.com/redbear/Duo/blob/master/docs/firmware_architecture_overview.md). So the information in the old DCT1 (from `0x08004000` to `0x08008000`) will be erased after updating the bootloader by updating the system firmware to v0.3.0 or above. In this case, if you're lucky that the old DCT2 (which has been the new DCT1) is in use before updating the system firmware, then everything in the DCT is kept. But if the old DCT1 is in use, then the device private key and cloud public key and WiFi credentials, as well other non-volatile data in the old DCT1 will be erased. Thus, you have to:
+
+1. Update the entire DCT using the [fac-dct-r1.bin](https://github.com/redbear/Duo/blob/master/firmware/dct/fac-dct-r1.bin), which includes the cloud public key.
+`dfu-util -d 2b04:d058 -a 0 -s 0x8008000 -D fac-dct-r1.bin`
+2. After you updating the entire DCT, the device private key will generated automatically. You have to [provision the Duo to the cloud](https://github.com/redbear/Duo/blob/master/docs/devices_provisioning_guide.md)
+3. Re-configure the WiFi credentials.
+
+Or if you have the backup device private key:
+
+1. Upload the [cloud public key](https://github.com/redbear/Duo/blob/master/firmware/dct/server_public_key.der) independently:
+ `dfu-util -d 2b04:d058 -a 1 -s 2082 -D server_public_key.der`
+2. Upload your device private key: 
+`dfu-util -d 2b04:d058 -a 1 -s 34 -D device_private_key.der`.
+3. Re-configure WiFi credentials.
+
+**If you don't want to provision your Duo again, you'd better dump the the device private key before updating the system firmware, or please follow the [provisioning guide](https://github.com/redbear/Duo/blob/master/docs/devices_provisioning_guide.md) to provision your Duo. More instructions to update the DCT using dfu-util, please refer to the [Firmware Deployment Guide](https://github.com/redbear/Duo/blob/master/docs/firmware_deployment_guide.md#using-dfu-util).**
+
 * [Using dfu-util](#using-dfu-util): You can update all of the internal flash memory and the external SPI flash memory, including DCT, system firmware, user application, Wi-Fi firmware and any other bianry files if you need, except the bootloader itself.
 
 * [Using Arduino IDE](#using-arduino-ide): You can update system firmware and  user application. If you have a RBLink in hand, you can even update the bootloader.
