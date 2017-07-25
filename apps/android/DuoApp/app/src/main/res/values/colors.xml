@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimaryDark">#a63639</color>
+    <color name="colorPrimary">#d05050</color>
+    <color name="colorPrimaryWhite">#f6f6f6</color>
+    <color name="colorPrimaryLight">#f7e2e2</color>
+    <color name="textColorRed">#d05050</color>
+    <color name="textColorGray">#474747</color>
+    <color name="colorAccent">#d05050</color>
+    <color name="backGroundColor">#F6F6F6</color>
+
+    <color name="splash_main_color">#EE6668</color>
+    <color name="splash_main_color2">#FFFE5658</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#474747</color>
+    <color name="gray">#777</color>
+    <color name="red">#FF0000</color>
+    <color name="green">#00FFAA</color>
+    <color name="blue">#00AAFF</color>
+    <color name="orange">#FFAA00</color>
+    <color name="NULL">#00000000</color>
+</resources>

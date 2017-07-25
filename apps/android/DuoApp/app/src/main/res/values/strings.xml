@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">RedBear</string>
+    <string name="device_scan_title">Devices</string>
+    <string name="version">0.2</string>
+</resources>

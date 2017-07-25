@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="支持多种连接方式"
+        android:textColor="@color/splash_main_color"
+        android:textSize="22sp"
+        android:id="@+id/textView"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        app:layout_marginTopPercent="10%" />
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/splash_one_round"
+        android:scaleType="centerInside"
+        android:id="@+id/imageView"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        app:layout_widthPercent="70%"
+        app:layout_heightPercent="50%"/>
+
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/splash_one_duo"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        app:layout_widthPercent="20%"
+        android:id="@+id/imageView2" />
+
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/splash_one_cloud"
+        android:id="@+id/splash1_cloud_image"
+        app:layout_marginLeftPercent="10%"
+        app:layout_marginTopPercent="20%"
+        app:layout_widthPercent="25%"/>
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/splash_one_ble"
+        android:id="@+id/splash1_ble_image"
+        app:layout_widthPercent="20%"
+        app:layout_marginLeftPercent="65%"
+        app:layout_marginTopPercent="24%"/>
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/splash_one_wifi"
+        android:id="@+id/splash1_wifi_image"
+        android:layout_centerHorizontal="true"
+        android:scaleType="fitStart"
+        app:layout_widthPercent="20%"
+        app:layout_marginTopPercent="68%"/>
+
+
+</android.support.percent.PercentRelativeLayout>

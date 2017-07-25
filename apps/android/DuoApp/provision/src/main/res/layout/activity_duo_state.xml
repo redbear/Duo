@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:gravity="center">
+
+            <net.redbear.view.DuoStateView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_weight="10"
+                app:Color="#00aa00"
+                app:FlashMode="breathe"
+                app:duration="20"
+                android:scaleType="centerInside"
+                android:src="@drawable/duo1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="17"
+                android:textSize="17sp"
+                android:gravity="center_horizontal"
+                android:textColor="@color/textColorRed"
+                android:text="Duo have connect to AP" />
+        </LinearLayout>
+
+
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                android:gravity="center">
+
+                <net.redbear.view.DuoStateView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="10"
+                    android:layout_marginTop="10dp"
+                    app:Color="#38cfc7"
+                    app:FlashMode="breathe"
+                    app:duration="20"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/duo1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="17"
+                    android:textSize="17sp"
+                    android:gravity="center_horizontal"
+                    android:textColor="@color/textColorRed"
+                    android:text="Duo have connect to AP and Particle cloud" />
+        </LinearLayout>
+    </TableRow>
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:gravity="center">
+
+            <net.redbear.view.DuoStateView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_weight="10"
+                app:Color="#00aa00"
+                app:FlashMode="blink"
+                android:scaleType="centerInside"
+                android:src="@drawable/duo1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="17"
+                android:textSize="17sp"
+                android:gravity="center_horizontal"
+                android:textColor="@color/textColorRed"
+                android:text="Duo is connecting to AP" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:gravity="center">
+
+            <net.redbear.view.DuoStateView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_weight="10"
+                app:Color="@color/blue"
+                app:FlashMode="blink"
+                android:scaleType="centerInside"
+                android:src="@drawable/duo1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="17"
+                android:textSize="17sp"
+                android:gravity="center_horizontal"
+                android:textColor="@color/textColorRed"
+                android:text="Duo is connecting to AP fail and back to setup mode" />
+        </LinearLayout>
+
+
+    </TableRow>
+</LinearLayout>

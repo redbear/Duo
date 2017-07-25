@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/RedBearDuo.iml" filepath="$PROJECT_DIR$/RedBearDuo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/controller/controller.iml" filepath="$PROJECT_DIR$/controller/controller.iml" />
+      <module fileurl="file://$PROJECT_DIR$/provision/provision.iml" filepath="$PROJECT_DIR$/provision/provision.iml" />
+      <module fileurl="file://$PROJECT_DIR$/taskmap/taskmap.iml" filepath="$PROJECT_DIR$/taskmap/taskmap.iml" />
+    </modules>
+  </component>
+</project>

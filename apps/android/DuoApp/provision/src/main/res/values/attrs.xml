@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="DuoStateView">
+        <attr name="Color" format="color"/>
+        <attr name="FlashMode">
+            <enum name="blink" value="0"/>
+            <enum name="breathe" value="1"/>
+        </attr>
+        <attr name="duration" format="integer"/>
+    </declare-styleable>
+
+</resources>

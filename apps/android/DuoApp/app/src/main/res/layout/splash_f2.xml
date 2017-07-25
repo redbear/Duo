@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="更多的功能"
+            android:textColor="@color/splash_main_color"
+            android:textSize="22sp"
+            android:layout_centerHorizontal="true"
+            app:layout_marginTopPercent="10%"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/splash_two_bg"
+            android:id="@+id/splash2_bg"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            app:layout_widthPercent="75%"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/splash_two_phone"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            app:layout_widthPercent="15%"
+            app:layout_marginLeftPercent="65%"
+            app:layout_marginTopPercent="24%"/>
+
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/splash_two_heart"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/splash2_heart_image"
+            app:layout_widthPercent="15%"
+            app:layout_marginLeftPercent="65%"
+            app:layout_marginTopPercent="28%"
+            android:alpha="0"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/splash_two_mouse"
+            android:id="@+id/splash2_mouse_image"
+            app:layout_widthPercent="10%"
+            app:layout_marginLeftPercent="62%"
+            app:layout_marginTopPercent="50%"
+            android:alpha="0"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/splash_two_printmachine"
+            android:id="@+id/splash2_printMachine_image"
+            app:layout_widthPercent="12%"
+            app:layout_marginLeftPercent="63%"
+            app:layout_marginTopPercent="34%"
+            android:alpha="0"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/splash_two_car"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/splash2_car_image"
+            app:layout_widthPercent="15%"
+            app:layout_marginLeftPercent="65%"
+            app:layout_marginTopPercent="59%"
+            android:alpha="0"/>
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/splash_two_controller"
+            android:id="@+id/splash2_controller_image"
+            app:layout_widthPercent="8%"
+            app:layout_marginLeftPercent="27%"
+            app:layout_marginTopPercent="50%"
+            android:alpha="0"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/splash_two_keyboard"
+            android:id="@+id/splash2_keyboard_image"
+            app:layout_widthPercent="13%"
+            app:layout_marginLeftPercent="25%"
+            app:layout_marginTopPercent="37%"
+            android:alpha="0"/>
+</android.support.percent.PercentRelativeLayout>

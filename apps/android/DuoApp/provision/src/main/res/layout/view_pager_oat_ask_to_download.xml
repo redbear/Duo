@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@drawable/custom_button4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Are you sure to download the newest firmware\nUpdate size: 3 KB"
+            android:textSize="20sp"
+            android:textColor="@color/textColorRed"
+            android:id="@+id/ota_2_text" />
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_weight="10">
+                <Button
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btn_positive"
+                    android:background="@drawable/custom_button2"
+                    android:gravity="center"
+                    android:textColor="@color/textColorRed"
+                    android:text="Yes"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="13">
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_weight="10">
+                <Button
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btn_negative"
+                    android:background="@drawable/custom_button2"
+                    android:text="Cancel"
+                    android:textColor="@color/textColorRed"
+                    android:gravity="center"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true" />
+            </RelativeLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- view的各种状态(正常无焦点,焦点,onclick按下、放开等等) -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 选中未up时 -->
+    <item android:state_pressed="true"><shape>
+            <solid android:color="@color/splash_main_color2"/>
+            <!-- 按钮四个圆角       	radius:半径 -->
+            <corners android:radius="10px" />
+
+            <!-- 按钮文字和边缘距离(内边距) -->
+            <padding android:bottom="10dp" android:left="30dp" android:right="30dp" android:top="10dp" />
+        </shape></item>
+    <item android:state_pressed="false"><shape>
+            <solid android:color="@color/splash_main_color"/>
+            <!-- 按钮四个圆角       	radius:半径 -->
+            <corners android:radius="10px" />
+
+            <!-- 按钮文字和边缘距离(内边距) -->
+            <padding android:bottom="10dp" android:left="30dp" android:right="30dp" android:top="10dp" />
+        </shape></item>
+
+</selector>

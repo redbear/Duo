@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20sp"
+    android:background="@drawable/custom_button4">
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@color/textColorRed"
+            android:text="DuoIP :"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:paddingLeft="10dp"
+            android:textSize="18sp"
+            android:textColor="@color/textColorRed"
+            android:id="@+id/dialog_info_ip" />
+    </TableRow>
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@color/textColorRed"
+            android:text="Gateway SSID :" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:paddingLeft="10dp"
+            android:textSize="18sp"
+            android:textColor="@color/textColorRed"
+            android:id="@+id/dialog_info_gateway_ssid" />
+    </TableRow>
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@color/textColorRed"
+            android:text="Gateway IP :" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:paddingLeft="10dp"
+            android:textSize="18sp"
+            android:textColor="@color/textColorRed"
+            android:id="@+id/dialog_info_gateway_ip" />
+    </TableRow>
+
+
+
+
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@color/textColorRed"
+            android:text="Gateway MAC :" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:textSize="18sp"
+            android:textColor="@color/textColorRed"
+            android:paddingLeft="10dp"
+            android:id="@+id/dialog_info_gateway_mac" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="20dp">
+
+        <Button
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="OK"
+            android:textSize="18sp"
+            android:textColor="@color/textColorRed"
+            android:background="@drawable/custom_button2"
+            android:id="@+id/dialog_info_ok" />
+    </TableRow>
+</LinearLayout>
