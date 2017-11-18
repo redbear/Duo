@@ -43,7 +43,7 @@ To exit Listening Mode, one of the following conditions must be satisfied:
 
 ## <span id="wifi-softap">WiFi SoftAP</span>
 
-As described above, when the Duo is in the Listening Mode, it will broadcast as an open SoftAP, wich SSID is "Duo-xxxx" and IP address is 192.168.0.1. In the meantime, the Duo starts a TCP server listening on port 5609 and a HTTP server listening on port 80 for receiving commands from client. It will start a TCP server listening on port 50007 for firmware update as well. Then you can connect your mobile phone, laptop or host PC to this SoftAP and start a TCP client or use web brower to communicate with Duo according to the protocol defined here.
+As described above, when the Duo is in the Listening Mode, it will broadcast as an open SoftAP, which SSID is "Duo-xxxx" and IP address is 192.168.0.1. In the meantime, the Duo starts a TCP server listening on port 5609 and a HTTP server listening on port 80 for receiving commands from client. It will start a TCP server listening on port 50007 for firmware update as well. Then you can connect your mobile phone, laptop or host PC to this SoftAP and start a TCP client or use web brower to communicate with Duo according to the protocol defined here.
 
 Reference : [Photon Soft-AP setup protocol](https://github.com/spark/firmware/blob/develop/hal/src/photon/soft-ap.md) 
 
