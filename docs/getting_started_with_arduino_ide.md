@@ -1,7 +1,7 @@
 # Duo: Getting Started with Arduino IDE
 ---
 
-The Duo is installed the customed Particle firmware by default during manufacturing, which enables you developing applications using Arduino IDE. You can directly connect your Duo to computer via its native USB port or, mount your Duo onto RBLink and connect the RBLink to computer via RBLink USB port.
+The Duo has the custom Particle firmware installed by default during manufacturing, which enables you to develop applications using the Arduino IDE. You can directly connect your Duo to your computer via its native USB port or mount your Duo onto an RBLink and connect the RBLink to computer via RBLink USB port.
 
 * [Requirements](#requirements)
 * [Essential Setup](#essential-setup)
@@ -19,13 +19,13 @@ The Duo is installed the customed Particle firmware by default during manufactur
 
 ## <span id="essential-setup">Essential Setup</span>
 
-1. Connect the Duo dierectly to your computer via its native USB port with micro USB cable. Alternatively, if you have a RBLink in hand, you can mount the Duo onto your RBLink and connect the RBLink to your computer via RBLink USB port with micro USB cable. It's fine you connect the Duo directly to computer while it is mounted onto RBLink.
+1. Connect the Duo directly to your computer via its native USB port with micro USB cable. Alternatively, if you have an RBLink in hand, you can mount the Duo onto your RBLink and connect the RBLink to your computer via RBLink USB port with micro USB cable. It's fine if you connect the Duo directly to computer while it is mounted onto RBLink.
 
     ![image](images/Duo_RBLink.png)
 
-2. (**Windows Only**) Install USB driver. If you connect the Duo directly to computer, then install the Duo application USB driver and the Duo DFU USB driver. If you connect the  RBLink to computer, then install the RBLink USB driver. Please follow the [Windows Driver Installation Guide](windows_driver_installation_guide.md) to install those drivers if you havn't done it before.
+2. (**Windows Only**) Install USB driver. If you connect the Duo directly to your computer, then install the Duo application USB driver and the Duo DFU USB driver. If you connect the RBLink to computer, then install the RBLink USB driver. Please follow the [Windows Driver Installation Guide](windows_driver_installation_guide.md) to install those drivers if you haven't done it before.
 
-3. Download and install the corresponding Arduino IDE 1.6.7 or above for the Operating System of your computer.
+3. Download and install the corresponding Arduino IDE 1.6.7 or above for your Operating System.
 
 4. Start Arduino IDE. Please follow the [Arduino Board Package Installation Guide](arduino_board_package_installation_guide.md) to install the board package for Duo.
 
@@ -51,7 +51,7 @@ The Duo is installed the customed Particle firmware by default during manufactur
 
 ## <span id="update-system-firmware">Update System Firmware</span>
 
-You are supposed to check the [board package change-log](duo_arduino_board_package_changelog.md) to see if there is a new released version of the board package. If available, you can simply follow the [Arduino Board Package Installation Guide](arduino_board_package_installation_guide.md) to update the board package to the latest version. 
+You should check the [board package change-log](duo_arduino_board_package_changelog.md) to see if there is a new released version of the board package. If available, you can simply follow the [Arduino Board Package Installation Guide](arduino_board_package_installation_guide.md) to update the board package to the latest version. 
 
 Since Duo board package v0.2.5, there is always a copy of the Duo's system firmware within the package. According to the board package change-log, it declares which version of the system firmware that should be compatible with applications developed based on the corresponding board package. If you've worked through the [Out-of-Box Experience](out_of_box_experience.md), you should have known the system firmware version of your Duo. If not, 
 
@@ -62,7 +62,7 @@ Since Duo board package v0.2.5, there is always a copy of the Duo's system firmw
 
     ![image](images/Serial_Monitor_Version.png)
 
-If your Duo's current system version is not the same as the one declared in the board package you've installed, you'd better follow the section "**Using Arduino IDE**" of the [Firmware Deployment Guide](firmware_deployment_guide.md), to update the system firmware for your Duo. 
+If your Duo's current system version is not the same as the one declared in the board package you've installed, follow the section "**Using Arduino IDE**" of the [Firmware Deployment Guide](firmware_deployment_guide.md), to update the system firmware for your Duo. 
 
 
 ## <span id="first-simple-application">First Simple Application</span>
@@ -74,9 +74,9 @@ If your Duo's current system version is not the same as the one declared in the 
 
     ![image](images/Blink_Example.png)
 
-4. Click on the ![image](images/Upload_icon.png) icon to compile the sketch followed by automatically uploading this sketch to your Duo. After uploadling completed, you will see the on-board blue LED is toggling in every second interval.
+4. Click on the ![image](images/Upload_icon.png) icon to compile the sketch followed by automatically uploading this sketch to your Duo. After the upload completes, you will see the on-board blue LED toggles in one second intervals.
 
-5. Well done! You could try more other examples that under "File > Examples > RedBear_Duo" or, just start coding your own sketch to build an awesome project!
+5. Well done! You could try more other examples that under "File > Examples > RedBear_Duo" or just start coding your own sketch to build an awesome project!
 
 
 ## References
