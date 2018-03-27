@@ -51,7 +51,7 @@ The Duo is installed the customed Particle firmware by default during manufactur
 
 ## <span id="update-system-firmware">Update System Firmware</span>
 
-You are supposed to check the [board package change-log](duo_arduino_board_package_changelog.md) to see if there is a new released version of the board package. If available, you can simply follow the [Arduino Board Package Installation Guide](arduino_board_package_installation_guide.md) to update the board package to the latest version. 
+You are supposed to check the [Arduino Board Package Change-log](https://github.com/redbear/STM32-Arduino/blob/master/CHANGELOG.md) to see if there is a new released version of the board package. If available, you can simply follow the [Arduino Board Package Installation Guide](arduino_board_package_installation_guide.md) to update the board package to the latest version. 
 
 Since Duo board package v0.2.5, there is always a copy of the Duo's system firmware within the package. According to the board package change-log, it declares which version of the system firmware that should be compatible with applications developed based on the corresponding board package. If you've worked through the [Out-of-Box Experience](out_of_box_experience.md), you should have known the system firmware version of your Duo. If not, 
 
