@@ -544,7 +544,7 @@ class DuoWifiProvisioningViewController: UITableViewController, StreamDelegate, 
             });
             
             
-            self.ssidAlertAction = UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_OK"), style: UIAlertActionStyle.default, handler: { (action) -> Void in
+            let ssidAlertAction = UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_OK"), style: UIAlertActionStyle.default, handler: { (action) -> Void in
                 
                 
                 func secHandler(_ action:UIAlertAction) {
@@ -576,7 +576,7 @@ class DuoWifiProvisioningViewController: UITableViewController, StreamDelegate, 
                             passwordTextField = textField
                         })
                         
-                        self.passAlertAction = UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_OK"), style: UIAlertActionStyle.default, handler: { (action) -> Void in
+                        let passAlertAction = UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_OK"), style: UIAlertActionStyle.default, handler: { (action) -> Void in
                             
                             let ssid = ssidTextField?.text
                             let password =  passwordTextField?.text
@@ -588,10 +588,11 @@ class DuoWifiProvisioningViewController: UITableViewController, StreamDelegate, 
                         passAlert.addAction(UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_CANCEL"), style: UIAlertActionStyle.cancel, handler: { (action) -> Void in
                             SVProgressHUD.dismiss()
                         }))
-
                         
-                        self.passAlertAction?.isEnabled = false
-                        passAlert.addAction(self.passAlertAction!)
+                        passAlertAction.isEnabled = false
+                        passAlert.addAction(passAlertAction)
+                        self.passAlertAction = passAlertAction
+
                         self.present(passAlert, animated: true, completion: nil)
                     }
                     else {
@@ -619,15 +620,14 @@ class DuoWifiProvisioningViewController: UITableViewController, StreamDelegate, 
                 //                SVProgressHUD.showWithStatus(Settings.sharedInstance.getLocalizedString("AP_CONNECTING") + "\(ap.ssid)...")
                 //                self.duo.setAPInfo(ap, password: password!)
             })
-            self.ssidAlertAction!.isEnabled = false
             
             alert.addAction(UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_CANCEL"), style: UIAlertActionStyle.cancel, handler: { (action) -> Void in
                 SVProgressHUD.dismiss()
             }))
-
             
-            alert.addAction(self.ssidAlertAction!)
-            
+            ssidAlertAction.isEnabled = false
+            alert.addAction(ssidAlertAction)
+            self.ssidAlertAction = ssidAlertAction
             
             self.present(alert, animated: true, completion: nil)
             tableView.deselectRow(at: indexPath, animated: false)
@@ -649,7 +649,7 @@ class DuoWifiProvisioningViewController: UITableViewController, StreamDelegate, 
                 textField.isSecureTextEntry = true
                 inputTextField = textField
             })
-            self.passAlertAction = UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_OK"), style: UIAlertActionStyle.default, handler: { (action) -> Void in
+            let passAlertAction = UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_OK"), style: UIAlertActionStyle.default, handler: { (action) -> Void in
                 
                 let password = inputTextField?.text
                 SVProgressHUD.show(withStatus: Settings.sharedInstance.getLocalizedString("AP_CONNECTING") + "\(ap.ssid)...")
@@ -659,11 +659,10 @@ class DuoWifiProvisioningViewController: UITableViewController, StreamDelegate, 
             alert.addAction(UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_CANCEL"), style: UIAlertActionStyle.default, handler: { (action) -> Void in
                 SVProgressHUD.dismiss()
             }))
-
             
-            self.passAlertAction?.isEnabled = false
-            alert.addAction(self.passAlertAction!)
-            
+            passAlertAction.isEnabled = false
+            alert.addAction(passAlertAction)
+            self.passAlertAction = passAlertAction
             
             self.present(alert, animated: true, completion: nil)
             
