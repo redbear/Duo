@@ -1,4 +1,4 @@
-Disclaimer
+# Disclaimer
 
 The hardware design/PCB/gerber files are provided "as is". Particle and RedBear does not provide any warranty of the item whatsoever, whether express, implied, or statutory, including, but not limited to, any warranty of merchantability or fitness for a particular purpose or any warranty that the contents of the item will be error-free.
 
