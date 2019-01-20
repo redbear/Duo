@@ -234,7 +234,7 @@ class DuoBLEProvisionTableViewController: UITableViewController, UIPopoverPresen
                 ssidTextField = textField
             });
             
-            self.ssidAlertAction = UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_OK"), style: UIAlertActionStyle.default, handler: { (action) -> Void in
+            let ssidAlertAction = UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_OK"), style: UIAlertActionStyle.default, handler: { (action) -> Void in
                 
                 
                 func secHandler(_ action:UIAlertAction) {
@@ -259,7 +259,7 @@ class DuoBLEProvisionTableViewController: UITableViewController, UIPopoverPresen
                         
                         let passAlert = UIAlertController(title: Settings.sharedInstance.getLocalizedString("ENTER_WIFI_CREDENTIAL"), message: Settings.sharedInstance.getLocalizedString("ENTER_WIFI_CREDENTIAL_MSG"), preferredStyle:.alert)
                         
-                        self.passAlertAction = UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_OK"), style: UIAlertActionStyle.default, handler: { (action) -> Void in
+                        let passAlertAction = UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_OK"), style: UIAlertActionStyle.default, handler: { (action) -> Void in
                             
                             let ssid = ssidTextField?.text
                             let password =  passwordTextField?.text
@@ -275,13 +275,14 @@ class DuoBLEProvisionTableViewController: UITableViewController, UIPopoverPresen
                             passwordTextField = textField
                         })
                         
-                        self.passAlertAction?.isEnabled = false
                         
                         passAlert.addAction(UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_CANCEL"), style: UIAlertActionStyle.cancel, handler: { (action) -> Void in
                             SVProgressHUD.dismiss()
                         }))
                         
-                        passAlert.addAction(self.passAlertAction!)
+                        passAlertAction.isEnabled = false
+                        passAlert.addAction(passAlertAction)
+                        self.passAlertAction = passAlertAction
                         
                         
                        
@@ -311,8 +312,9 @@ class DuoBLEProvisionTableViewController: UITableViewController, UIPopoverPresen
                 //                SVProgressHUD.showWithStatus(Settings.sharedInstance.getLocalizedString("AP_CONNECTING") + "\(ap.ssid)...")
                 //                self.duo.setAPInfo(ap, password: password!)
             })
-            self.ssidAlertAction!.isEnabled = false
-            alert.addAction(self.ssidAlertAction!)
+            ssidAlertAction.isEnabled = false
+            alert.addAction(ssidAlertAction)
+            self.ssidAlertAction = ssidAlertAction
             
             alert.addAction(UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_CANCEL"), style: UIAlertActionStyle.cancel, handler: { (action) -> Void in
                 SVProgressHUD.dismiss()
@@ -336,7 +338,7 @@ class DuoBLEProvisionTableViewController: UITableViewController, UIPopoverPresen
                 inputTextField = textField
             })
             
-            self.passAlertAction  = UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_OK"), style: UIAlertActionStyle.default, handler: { (action) -> Void in
+            let passAlertAction  = UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_OK"), style: UIAlertActionStyle.default, handler: { (action) -> Void in
                 
                 let password = inputTextField?.text
                 SVProgressHUD.show(withStatus: Settings.sharedInstance.getLocalizedString("AP_CONNECTING") + "\(ap.ssid)...")
@@ -349,8 +351,9 @@ class DuoBLEProvisionTableViewController: UITableViewController, UIPopoverPresen
 
 
             
-            self.passAlertAction?.isEnabled = false
-            alert.addAction(self.passAlertAction!)
+            passAlertAction.isEnabled = false
+            alert.addAction(passAlertAction)
+            self.passAlertAction = passAlertAction
             
             self.present(alert, animated: true, completion: nil)
             
