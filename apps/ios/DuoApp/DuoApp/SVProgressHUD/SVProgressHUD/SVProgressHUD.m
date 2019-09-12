@@ -628,7 +628,8 @@ static const CGFloat SVProgressHUDDefaultAnimationDuration = 0.15;
 
 - (void)setFadeOutTimer:(NSTimer*)timer {
     if(_fadeOutTimer) {
-        [_fadeOutTimer invalidate], _fadeOutTimer = nil;
+        [_fadeOutTimer invalidate];
+        _fadeOutTimer = nil;
     }
     if(timer) {
         _fadeOutTimer = timer;

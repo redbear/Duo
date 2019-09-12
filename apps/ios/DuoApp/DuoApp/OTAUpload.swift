@@ -97,7 +97,7 @@ class OTAUpload:NSObject, StreamDelegate{
                                 
                                 if output == "chunk saved" {
                                     print("chunk saved")
-                                    print("fileLen: \(self.fileLen) Byte Sent: \(self.sendBytes)")
+                                    print("fileLen: \(String(describing: self.fileLen)) Byte Sent: \(String(describing: self.sendBytes))")
                                    
                                     if (self.sendBytes < self.fileLen) {
                                         upload()
@@ -219,7 +219,7 @@ class OTAUpload:NSObject, StreamDelegate{
         
         self.outputStream?.write( (blockData! as NSData).bytes.bindMemory(to: UInt8.self, capacity: blockData!.count), maxLength: blockData!.count)
         sendBytes = sendBytes + chunkLen
-        print("Byte Sent: \(sendBytes)")
+        print("Byte Sent: \(String(describing: sendBytes))")
     }
     
     func setUploadVersion(_ version:String?) {

@@ -170,6 +170,8 @@ class ConnectionManager: NSObject, BLEDelegate {
             
             break;
             
+        @unknown default:
+            print("CBCentralManagerState Unknown")
         }
         NotificationCenter.default.post(name: Notification.Name(rawValue: "BLE_STATUS_CHANGED"), object: nil)
     }

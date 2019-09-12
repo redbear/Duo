@@ -252,7 +252,7 @@ class DuoWifiProvisioningViewController: UITableViewController, StreamDelegate, 
                 aps.removeAll()
                 for ap in apArray! {
                     print("\(ap)")
-                    print("\(ap["ssid"])")
+                    print("\(String(describing: ap["ssid"]))")
                     if ap["ssid"] != nil && ap["rssi"] != nil  && ap["sec"] != nil  && ap["ch"] != nil {
                             aps += [AccessPoint(json:(ap))]
                         }
@@ -433,8 +433,8 @@ class DuoWifiProvisioningViewController: UITableViewController, StreamDelegate, 
              s1 = String(format:"{\"ch\":\(ap.channel),\"pwd\":\"\(passcodeTruncated)\",\"idx\":0,\"ssid\":\"\(ap.ssid)\",\"sec\":\(ap.security)}")
         }
         
-        print(s1)
-        let s = String(format: "configure-ap\n\(s1.lengthOfBytes(using: String.Encoding.utf8))\n\n\(s1)")
+        print("\(String(describing: s1))")
+        let s = String(format: "configure-ap\n\(s1.lengthOfBytes(using: String.Encoding.utf8))\n\n\(String(describing: s1))")
         let data = s.data(using: String.Encoding.utf8)
         
         self.outputStream?.write( (data! as NSData).bytes.bindMemory(to: UInt8.self, capacity: data!.count), maxLength: data!.count)
@@ -544,7 +544,7 @@ class DuoWifiProvisioningViewController: UITableViewController, StreamDelegate, 
             });
             
             
-            self.ssidAlertAction = UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_OK"), style: UIAlertAction.Style.default, handler: { (action) -> Void in
+            let ssidAlertAction = UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_OK"), style: UIAlertAction.Style.default, handler: { (action) -> Void in
                 
                 
                 func secHandler(_ action:UIAlertAction) {
@@ -576,7 +576,7 @@ class DuoWifiProvisioningViewController: UITableViewController, StreamDelegate, 
                             passwordTextField = textField
                         })
                         
-                        self.passAlertAction = UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_OK"), style: UIAlertAction.Style.default, handler: { (action) -> Void in
+                        let passAlertAction = UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_OK"), style: UIAlertAction.Style.default, handler: { (action) -> Void in
                             
                             let ssid = ssidTextField?.text
                             let password =  passwordTextField?.text
@@ -590,8 +590,10 @@ class DuoWifiProvisioningViewController: UITableViewController, StreamDelegate, 
                         }))
 
                         
-                        self.passAlertAction?.isEnabled = false
-                        passAlert.addAction(self.passAlertAction!)
+                        passAlertAction.isEnabled = false
+                        passAlert.addAction(passAlertAction)
+                        self.passAlertAction = passAlertAction
+
                         self.present(passAlert, animated: true, completion: nil)
                     }
                     else {
@@ -619,8 +621,7 @@ class DuoWifiProvisioningViewController: UITableViewController, StreamDelegate, 
                 //                SVProgressHUD.showWithStatus(Settings.sharedInstance.getLocalizedString("AP_CONNECTING") + "\(ap.ssid)...")
                 //                self.duo.setAPInfo(ap, password: password!)
             })
-            self.ssidAlertAction!.isEnabled = false
-            
+
             alert.addAction(UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_CANCEL"), style: UIAlertAction.Style.cancel, handler: { (action) -> Void in
                 SVProgressHUD.dismiss()
             }))
@@ -628,7 +629,10 @@ class DuoWifiProvisioningViewController: UITableViewController, StreamDelegate, 
             
             alert.addAction(self.ssidAlertAction!)
             
-            
+            ssidAlertAction.isEnabled = false
+            alert.addAction(ssidAlertAction)
+            self.ssidAlertAction = ssidAlertAction
+
             self.present(alert, animated: true, completion: nil)
             tableView.deselectRow(at: indexPath, animated: false)
 
@@ -649,7 +653,7 @@ class DuoWifiProvisioningViewController: UITableViewController, StreamDelegate, 
                 textField.isSecureTextEntry = true
                 inputTextField = textField
             })
-            self.passAlertAction = UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_OK"), style: UIAlertAction.Style.default, handler: { (action) -> Void in
+            let passAlertAction = UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_OK"), style: UIAlertAction.Style.default, handler: { (action) -> Void in
                 
                 let password = inputTextField?.text
                 SVProgressHUD.show(withStatus: Settings.sharedInstance.getLocalizedString("AP_CONNECTING") + "\(ap.ssid)...")
@@ -661,8 +665,9 @@ class DuoWifiProvisioningViewController: UITableViewController, StreamDelegate, 
             }))
 
             
-            self.passAlertAction?.isEnabled = false
-            alert.addAction(self.passAlertAction!)
+            passAlertAction.isEnabled = false
+            alert.addAction(passAlertAction)
+            self.passAlertAction = passAlertAction
             
             
             self.present(alert, animated: true, completion: nil)

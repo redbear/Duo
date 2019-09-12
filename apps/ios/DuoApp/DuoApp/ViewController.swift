@@ -191,7 +191,7 @@ class ViewCotroller: UIViewController, URLSessionDelegate, URLSessionDownloadDel
         let fileManager = FileManager.default
 
         do {
-            print("\(writePath?.path)")
+            print("\(String(describing: writePath?.path))")
             for file in try fileManager.contentsOfDirectory(atPath: NSURL(fileURLWithPath:  docDir).path!) {
                 try fileManager.removeItem(atPath: file)
             }

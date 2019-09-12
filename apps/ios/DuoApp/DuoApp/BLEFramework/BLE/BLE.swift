@@ -204,7 +204,7 @@ class BLE: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     
     
     func peripheral(_ peripheral: CBPeripheral, didUpdateNotificationStateFor characteristic: CBCharacteristic, error: Error?) {
-        print(error)
+        print("\(String(describing: error))")
 //        if characteristic.isNotifying {
 //            activePeripheral!.readValueForCharacteristic(characteristic)
 //        }
@@ -218,7 +218,7 @@ class BLE: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
         }
         
         let data = characteristic.value
-        print("\(data)")
+        print("\(String(describing: data))")
         let resultBytes:[UInt8] = Array(UnsafeBufferPointer(start: (data! as NSData).bytes.bindMemory(to: UInt8.self, capacity: data!.count), count: data!.count))
 
         

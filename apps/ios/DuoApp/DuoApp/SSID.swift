@@ -16,7 +16,7 @@ class SSID {
                var currentSSID = ""
 //
         #if !(arch(i386) || arch(x86_64))
-        if let interfaces:CFArray? = CNCopySupportedInterfaces() {
+        if let interfaces = CNCopySupportedInterfaces() {
             for i in 0..<CFArrayGetCount(interfaces){
                 let interfaceName: UnsafeRawPointer = CFArrayGetValueAtIndex(interfaces, i)
                 let rec = unsafeBitCast(interfaceName, to: AnyObject.self)
