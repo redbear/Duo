@@ -43,6 +43,17 @@ DEPENDENCIES:
   - SparkSetup
   - SSZipArchive
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - 1PasswordExtension
+    - AFNetworking
+    - Crashlytics
+    - Fabric
+    - RWDropdownMenu
+    - Spark-SDK
+    - SparkSetup
+    - SSZipArchive
+
 SPEC CHECKSUMS:
   1PasswordExtension: e775a29310c65851e5a6cec1afc349ab4e334e47
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -55,4 +66,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: d8d4fecd7f55173da25a3a42d1097c1cb80157b8
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.7.5

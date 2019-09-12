@@ -18,8 +18,8 @@ class NoWifiBLEProvisioningViewController: UIViewController {
         self.navigationItem.hidesBackButton = true
 
         // popup menu
-        let img = UIImage(named: "menu")!.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
-        let rightBarButtonItem = UIBarButtonItem(image: img, style: UIBarButtonItemStyle.plain, target: self, action: #selector(openMenu))
+        let img = UIImage(named: "menu")!.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+        let rightBarButtonItem = UIBarButtonItem(image: img, style: UIBarButtonItem.Style.plain, target: self, action: #selector(openMenu))
         self.navigationItem.rightBarButtonItem =  rightBarButtonItem
         NotificationCenter.default.addObserver(self, selector: #selector(bleStatusChanged), name: NSNotification.Name(rawValue: "BLE_STATUS_CHANGED"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(wifiStatusChanged), name: NSNotification.Name(rawValue: "NETWORK_STATUS_CHANGED"), object: nil)
@@ -30,7 +30,7 @@ class NoWifiBLEProvisioningViewController: UIViewController {
     }
     
     // MARK: -Notification 
-    func bleStatusChanged() {
+    @objc func bleStatusChanged() {
         if cm.bleEnabled {
            
             self.navigationController?.popToRootViewController(animated: false)
@@ -38,7 +38,7 @@ class NoWifiBLEProvisioningViewController: UIViewController {
         }
     }
     
-    func wifiStatusChanged() {
+    @objc func wifiStatusChanged() {
         if cm.wifiEnabled {
             
 
@@ -50,7 +50,7 @@ class NoWifiBLEProvisioningViewController: UIViewController {
     }
     
     // MARK: - menu
-    func openMenu() {
+    @objc func openMenu() {
                
     }
 }

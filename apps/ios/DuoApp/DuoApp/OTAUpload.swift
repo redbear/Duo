@@ -63,8 +63,8 @@ class OTAUpload:NSObject, StreamDelegate{
         self.outputStream?.delegate = self
         
         
-        self.inputStream?.schedule(in: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
-        self.outputStream?.schedule(in: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
+        self.inputStream?.schedule(in: RunLoop.current, forMode: RunLoop.Mode.default)
+        self.outputStream?.schedule(in: RunLoop.current, forMode: RunLoop.Mode.default)
         
         self.inputStream?.open()
         self.outputStream?.open()
@@ -133,15 +133,15 @@ class OTAUpload:NSObject, StreamDelegate{
                 print("Network Error Occurred")
                 self.inputStream?.close()
                 self.outputStream?.close()
-                self.inputStream?.remove(from: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
-                self.outputStream?.remove(from: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
+                self.inputStream?.remove(from: RunLoop.current, forMode: RunLoop.Mode.default)
+                self.outputStream?.remove(from: RunLoop.current, forMode: RunLoop.Mode.default)
                 break
             case Stream.Event.endEncountered:
                 print("Network OTA End Encountered")
                 self.inputStream!.close()
-                self.inputStream!.remove(from: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
+                self.inputStream!.remove(from: RunLoop.current, forMode: RunLoop.Mode.default)
                 self.outputStream!.close()
-                self.outputStream!.remove(from: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
+                self.outputStream!.remove(from: RunLoop.current, forMode: RunLoop.Mode.default)
                
                 break;
             default: break

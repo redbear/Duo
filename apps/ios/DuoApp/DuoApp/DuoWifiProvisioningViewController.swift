@@ -93,8 +93,8 @@ class DuoWifiProvisioningViewController: UITableViewController, StreamDelegate, 
         SVProgressHUD.setDefaultMaskType(.black)
         
         // popup menu
-        let img = UIImage(named: "menu")!.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
-        let rightBarButtonItem = UIBarButtonItem(image: img, style: UIBarButtonItemStyle.plain, target: self, action: #selector(openMenu)) 
+        let img = UIImage(named: "menu")!.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+        let rightBarButtonItem = UIBarButtonItem(image: img, style: UIBarButtonItem.Style.plain, target: self, action: #selector(openMenu))
         self.navigationItem.rightBarButtonItem =  rightBarButtonItem
         
         // OTA update Delegate
@@ -145,8 +145,8 @@ class DuoWifiProvisioningViewController: UITableViewController, StreamDelegate, 
         self.outputStream?.delegate = self
         
         
-        self.inputStream?.schedule(in: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
-        self.outputStream?.schedule(in: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
+        self.inputStream?.schedule(in: RunLoop.current, forMode: RunLoop.Mode.default)
+        self.outputStream?.schedule(in: RunLoop.current, forMode: RunLoop.Mode.default)
         
         self.inputStream?.open()
         self.outputStream?.open()
@@ -191,16 +191,16 @@ class DuoWifiProvisioningViewController: UITableViewController, StreamDelegate, 
                 print("Network Error Occurred")
                 inputStream?.close()
                 outputStream?.close()
-                inputStream?.remove(from: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
-                outputStream?.remove(from: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
+                inputStream?.remove(from: RunLoop.current, forMode: RunLoop.Mode.default)
+                outputStream?.remove(from: RunLoop.current, forMode: RunLoop.Mode.default)
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "NETWORK_ERROR"), object: nil)
                 break
             case Stream.Event.endEncountered:
                 print("Network End Encountered")
                 self.inputStream!.close()
-                self.inputStream!.remove(from: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
+                self.inputStream!.remove(from: RunLoop.current, forMode: RunLoop.Mode.default)
                 self.outputStream!.close()
-                self.outputStream!.remove(from: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
+                self.outputStream!.remove(from: RunLoop.current, forMode: RunLoop.Mode.default)
                 processJSON(buff)
                 nextStage()
                 break;
@@ -284,7 +284,7 @@ class DuoWifiProvisioningViewController: UITableViewController, StreamDelegate, 
     }
     
     // first time connect there is no end acknowledgement!
-    func firstConnect(_ timer:Timer) {
+    @objc func firstConnect(_ timer:Timer) {
         self.processJSON(timer.userInfo as! String)
         self.nextStage()
     }
@@ -350,7 +350,7 @@ class DuoWifiProvisioningViewController: UITableViewController, StreamDelegate, 
         }
     }
     
-    func fetchDeviceId() {
+    @objc func fetchDeviceId() {
         print("Fetching Device ID")
        
         self.fetchingDeviceId = true
@@ -386,7 +386,7 @@ class DuoWifiProvisioningViewController: UITableViewController, StreamDelegate, 
         
     }
     
-    func scanAP() {
+    @objc func scanAP() {
         SVProgressHUD.show(withStatus: Settings.sharedInstance.getLocalizedString("RBDUO_SCANNING_WIFI_NETWORK"))
         oddRow = false
         buff=""
@@ -410,7 +410,7 @@ class DuoWifiProvisioningViewController: UITableViewController, StreamDelegate, 
         self.configingAP = true
         
         var s1:String!
-        var stringRange:NSRange = NSMakeRange(0, min(password.characters.count, 64))
+        var stringRange:NSRange = NSMakeRange(0, min(password.count, 64))
         stringRange = (password as NSString).rangeOfComposedCharacterSequences(for: stringRange)
         let passcodeTruncated = (password as NSString).substring(with: stringRange)
         var hexEncodedEncryptedPasscodeStr:NSString?
@@ -455,7 +455,7 @@ class DuoWifiProvisioningViewController: UITableViewController, StreamDelegate, 
         
     }
     
-    func apConnected() {
+    @objc func apConnected() {
         if  cm.apConnected {
             self.performSegue(withIdentifier: "FinishWifiProvisionSegue", sender: nil)
         }
@@ -477,12 +477,12 @@ class DuoWifiProvisioningViewController: UITableViewController, StreamDelegate, 
     
     func newFirmware() {
     
-        let alert = UIAlertController(title: Settings.sharedInstance.getLocalizedString("RBDUO_F_UPDATEFW"), message: Settings.sharedInstance.getLocalizedString("RBDUO_HW_F_NFW"), preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: Settings.sharedInstance.getLocalizedString("RBDUO_F_UPDATEFW"), message: Settings.sharedInstance.getLocalizedString("RBDUO_HW_F_NFW"), preferredStyle: UIAlertController.Style.alert)
         
         // Update new Firmware
-        alert.addAction(UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_HW_UPGRADE"), style: UIAlertActionStyle.default, handler: self.updateHandler))
+        alert.addAction(UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_HW_UPGRADE"), style: UIAlertAction.Style.default, handler: self.updateHandler))
         
-        alert.addAction(UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_CANCEL"), style: UIAlertActionStyle.cancel, handler: { (action:UIAlertAction) in
+        alert.addAction(UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_CANCEL"), style: UIAlertAction.Style.cancel, handler: { (action:UIAlertAction) in
             SVProgressHUD.dismiss()
             self.fetchPublicKey()
         }))
@@ -544,7 +544,7 @@ class DuoWifiProvisioningViewController: UITableViewController, StreamDelegate, 
             });
             
             
-            self.ssidAlertAction = UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_OK"), style: UIAlertActionStyle.default, handler: { (action) -> Void in
+            self.ssidAlertAction = UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_OK"), style: UIAlertAction.Style.default, handler: { (action) -> Void in
                 
                 
                 func secHandler(_ action:UIAlertAction) {
@@ -576,7 +576,7 @@ class DuoWifiProvisioningViewController: UITableViewController, StreamDelegate, 
                             passwordTextField = textField
                         })
                         
-                        self.passAlertAction = UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_OK"), style: UIAlertActionStyle.default, handler: { (action) -> Void in
+                        self.passAlertAction = UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_OK"), style: UIAlertAction.Style.default, handler: { (action) -> Void in
                             
                             let ssid = ssidTextField?.text
                             let password =  passwordTextField?.text
@@ -585,7 +585,7 @@ class DuoWifiProvisioningViewController: UITableViewController, StreamDelegate, 
                             self.setAPInfo(ap, password: password!)
                         })
                         
-                        passAlert.addAction(UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_CANCEL"), style: UIAlertActionStyle.cancel, handler: { (action) -> Void in
+                        passAlert.addAction(UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_CANCEL"), style: UIAlertAction.Style.cancel, handler: { (action) -> Void in
                             SVProgressHUD.dismiss()
                         }))
 
@@ -621,7 +621,7 @@ class DuoWifiProvisioningViewController: UITableViewController, StreamDelegate, 
             })
             self.ssidAlertAction!.isEnabled = false
             
-            alert.addAction(UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_CANCEL"), style: UIAlertActionStyle.cancel, handler: { (action) -> Void in
+            alert.addAction(UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_CANCEL"), style: UIAlertAction.Style.cancel, handler: { (action) -> Void in
                 SVProgressHUD.dismiss()
             }))
 
@@ -649,14 +649,14 @@ class DuoWifiProvisioningViewController: UITableViewController, StreamDelegate, 
                 textField.isSecureTextEntry = true
                 inputTextField = textField
             })
-            self.passAlertAction = UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_OK"), style: UIAlertActionStyle.default, handler: { (action) -> Void in
+            self.passAlertAction = UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_OK"), style: UIAlertAction.Style.default, handler: { (action) -> Void in
                 
                 let password = inputTextField?.text
                 SVProgressHUD.show(withStatus: Settings.sharedInstance.getLocalizedString("AP_CONNECTING") + "\(ap.ssid)...")
                 self.setAPInfo(ap, password: password!)
             })
             
-            alert.addAction(UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_CANCEL"), style: UIAlertActionStyle.default, handler: { (action) -> Void in
+            alert.addAction(UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_CANCEL"), style: UIAlertAction.Style.default, handler: { (action) -> Void in
                 SVProgressHUD.dismiss()
             }))
 
@@ -677,7 +677,7 @@ class DuoWifiProvisioningViewController: UITableViewController, StreamDelegate, 
     }
     
     // MARK: - menu
-    func openMenu() {
+    @objc func openMenu() {
         self.performSegue(withIdentifier: "menuSegue", sender: nil)
 
     }
@@ -758,19 +758,19 @@ class DuoWifiProvisioningViewController: UITableViewController, StreamDelegate, 
     }
     
     // MARK: - UITextField
-    func ssidTextChange(_ sender:UITextField) {
-        self.ssidAlertAction?.isEnabled = (sender.text?.characters.count > 0)
+    @objc func ssidTextChange(_ sender:UITextField) {
+        self.ssidAlertAction?.isEnabled = (sender.text?.count > 0)
     }
     
-    func passTextChange(_ sender:UITextField) {
-        self.passAlertAction?.isEnabled = (sender.text?.characters.count >= 8)
+    @objc func passTextChange(_ sender:UITextField) {
+        self.passAlertAction?.isEnabled = (sender.text?.count >= 8)
     }
     
     // MARK: - popupMenuDelegate
     func deviceIdDidTap() {
         if self.duoInfo.deviceId != nil {
             let alert = UIAlertController(title: "Device ID", message: "\(self.duoInfo.deviceId!.lowercased())", preferredStyle:.alert)
-            alert.addAction(UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_OK"), style: UIAlertActionStyle.default, handler: { (action) -> Void in
+            alert.addAction(UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_OK"), style: UIAlertAction.Style.default, handler: { (action) -> Void in
             }))
             self.present(alert, animated: true, completion: nil)
         }
@@ -778,7 +778,7 @@ class DuoWifiProvisioningViewController: UITableViewController, StreamDelegate, 
     
     func versionDidTap() {
         let alert = UIAlertController(title: "Firmware version", message: "Released Version: \(self.duoInfo.releaseVer!)\nBootloader: \(self.duoInfo.bootloadVer)\nSystem Part 1: \(self.duoInfo.systemPart1)\nSystem Part 2: \(self.duoInfo.systemPart2)\nUser Part: \(self.duoInfo.userPart) ", preferredStyle:.alert)
-        alert.addAction(UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_OK"), style: UIAlertActionStyle.default, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_OK"), style: UIAlertAction.Style.default, handler: { (action) -> Void in
         }))
         self.present(alert, animated: true, completion: nil)
         

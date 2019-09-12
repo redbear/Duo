@@ -57,7 +57,7 @@ class ConnectionManager: NSObject, BLEDelegate {
         
     }
     
-    func reachabilityChanged(_ notification:Notification) {
+    @objc func reachabilityChanged(_ notification:Notification) {
         print("Network Changed")
         let reachability = notification.object as! Reachability
         

@@ -31,7 +31,7 @@ class DuoInfoViewController: UIViewController {
 //        let rightBarButtonItem = UIBarButtonItem(image: img, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(openMenu))
 
      //   self.navigationItem.rightBarButtonItem =  rightBarButtonItem
-        let leftBarButtonItem = UIBarButtonItem(title: "< back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(networkChange))
+        let leftBarButtonItem = UIBarButtonItem(title: "< back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(networkChange))
         
         self.navigationItem.leftBarButtonItem = leftBarButtonItem
         
@@ -59,11 +59,11 @@ class DuoInfoViewController: UIViewController {
         super.viewWillDisappear(animated)
     }
     
-    func networkChange() {
+    @objc func networkChange() {
         if !alertShow {
             alertShow = true
             let alert = UIAlertController(title: Settings.sharedInstance.getLocalizedString("PROVISION_FINISHED"), message: Settings.sharedInstance.getLocalizedString("PROVISION_FINISHED_MSG"), preferredStyle:.alert)
-            alert.addAction(UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_OK"), style: UIAlertActionStyle.default, handler: { (action) -> Void in
+            alert.addAction(UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_OK"), style: UIAlertAction.Style.default, handler: { (action) -> Void in
                 
                          self.navigationController?.popToRootViewController(animated: true)
                     

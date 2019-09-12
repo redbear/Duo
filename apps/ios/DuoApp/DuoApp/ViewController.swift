@@ -76,17 +76,17 @@ class ViewCotroller: UIViewController, URLSessionDelegate, URLSessionDownloadDel
         // Dispose of any resources that can be recreated.
     }
     
-    func networkEnabled() {
+    @objc func networkEnabled() {
         if (cm.networkEnabled && !cm.apConnected) {  
             checkFirmware()
         }
         else {
             
             DispatchQueue.main.async {
-                let alert = UIAlertController(title: Settings.sharedInstance.getLocalizedString("RBDUO_NOINTERNET"), message: Settings.sharedInstance.getLocalizedString("RBDUO_NOINTERNET_MSG"), preferredStyle: UIAlertControllerStyle.alert)
+                let alert = UIAlertController(title: Settings.sharedInstance.getLocalizedString("RBDUO_NOINTERNET"), message: Settings.sharedInstance.getLocalizedString("RBDUO_NOINTERNET_MSG"), preferredStyle: UIAlertController.Style.alert)
                 
 
-                alert.addAction(UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_OK"), style: UIAlertActionStyle.cancel, handler: { (action:UIAlertAction) in
+                alert.addAction(UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_OK"), style: UIAlertAction.Style.cancel, handler: { (action:UIAlertAction) in
                     
                     self.activityLabel.text = "RedBear Duo"
                     self.activity.stopAnimating()

@@ -31,7 +31,7 @@ class WifiInstructionTableViewController: UITableViewController {
         super.viewDidAppear(animated)
        // self.navigationItem.hidesBackButton = true
         NotificationCenter.default.addObserver(self, selector: #selector(apConnected), name: NSNotification.Name(rawValue: "NETWORK_STATUS_CHANGED"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(wakeupFromBackground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(wakeupFromBackground), name: UIApplication.willEnterForegroundNotification, object: nil)
         if cm.apConnected {
             print("Connected to AP")
             Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(wifiProvision), userInfo: nil, repeats: false)
@@ -76,7 +76,7 @@ class WifiInstructionTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId)
         if cellId == "step1Cell" {
             let button = cell?.viewWithTag(123) as! UIButton
-            button.addTarget(self, action: #selector(wifiSetting), for: UIControlEvents.touchDown)
+            button.addTarget(self, action: #selector(wifiSetting), for: UIControl.Event.touchDown)
         }
         
         return cell!
@@ -87,7 +87,7 @@ class WifiInstructionTableViewController: UITableViewController {
     }
     
     // MARK: Notification Handler
-    func apConnected() {
+    @objc func apConnected() {
         if  cm.apConnected {
             let notification = UILocalNotification()
             notification.alertBody = "Connected to RedBear Duo"
@@ -104,18 +104,18 @@ class WifiInstructionTableViewController: UITableViewController {
     }
     
     // Timer Launch event
-    func wifiProvision() {
+    @objc func wifiProvision() {
         self.performSegue(withIdentifier: "WifiProvisioningSegue", sender: nil)
     }
     
-    func wifiSetting() {
+    @objc func wifiSetting() {
         print("Wifi Setting")
         let url = URL(string: "prefs:root=WIFI")!
         UIApplication.shared.openURL(url)
         
     }
     
-    func wakeupFromBackground(_ notifcation:Notification?) {
+    @objc func wakeupFromBackground(_ notifcation:Notification?) {
         print("wake up")
         // dont perform segue if already in wifi provisioning
         if cm.apConnected {

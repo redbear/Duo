@@ -93,7 +93,7 @@ class BLE: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
             centralManager?.scanForPeripherals(withServices: services, options: nil)
         }
     }
-    func stopScan() {
+    @objc func stopScan() {
         print("Stop Scanning")
         centralManager?.stopScan()
         isScanning = false
@@ -132,8 +132,8 @@ class BLE: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
         print("Set AP Info")
         var buff = [UInt8]()
         
-        let passLen = password.characters.count
-        let len:UInt8 = 9 + UInt8(passLen) + UInt8(ap.ssid.characters.count)
+        let passLen = password.count
+        let len:UInt8 = 9 + UInt8(passLen) + UInt8(ap.ssid.count)
         
         buff += [len, BLE_PROVISION_COMMAND_CONFIG_AP, ap.channel]
         
@@ -141,12 +141,12 @@ class BLE: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
         buff += [UInt8(ap.security & 0xff), UInt8((ap.security & 0xff00) >> 8), UInt8((ap.security & 0xff0000) >> 16), UInt8((ap.security >> 24) & 0xff)]
         
        // ssid length
-        buff += [UInt8(ap.ssid.characters.count)]
+        buff += [UInt8(ap.ssid.count)]
         // ssid
         buff += ap.ssid.utf8
         
         // password
-        buff += [UInt8(password.characters.count)]
+        buff += [UInt8(password.count)]
         buff += password.utf8
         
         let data = Data.init(bytes: UnsafePointer<UInt8>(buff),count: buff.count)
