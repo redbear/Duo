@@ -65,10 +65,11 @@ class ConnectionManager: NSObject, BLEDelegate {
             self.networkEnabled = true
                       if reachability.isReachableViaWiFi {
                 // check firmware if Wifi enabled
-                print("Wifi Reachable")
+                let ssid = SSID.fetchSSIDInfo()
+
+                print("Wifi Reachable: \(ssid)")
                 self.wifiEnabled = true
               
-                let ssid = SSID.fetchSSIDInfo()
                 if (ssid.range(of: "^Duo-.*", options: .regularExpression)) != nil {
                     print("Connect correct AP")
                     apConnected = true
