@@ -274,6 +274,9 @@
 		A31761921D38D76100C52912 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					123,
+				);
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = RedBear;
