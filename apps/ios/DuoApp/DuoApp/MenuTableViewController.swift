@@ -29,7 +29,7 @@ class MenuTableViewController: UITableViewController {
         super.viewWillDisappear(animated)
     }
     
-    func checkStatus() {
+    @objc func checkStatus() {
         
         self.tableView.reloadData()
     }
@@ -43,9 +43,9 @@ class MenuTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (indexPath.row == 0) {
             let cell = tableView.dequeueReusableCell(withIdentifier: "WiFiProvisionCell")
-            let imageView = cell?.viewWithTag(777) as! UIImageView!
-            let labelView = cell?.viewWithTag(888) as! UILabel!
-            let btn = cell?.viewWithTag(999) as! UIButton!
+            let imageView = cell?.viewWithTag(777) as? UIImageView
+            let labelView = cell?.viewWithTag(888) as? UILabel
+            let btn = cell?.viewWithTag(999) as? UIButton
 
             if (!ConnectionManager.shareInstance.wifiEnabled) {
                 imageView?.image = UIImage(named: "WiFi-inactive-1")
@@ -57,8 +57,8 @@ class MenuTableViewController: UITableViewController {
             else {
                 imageView?.image = UIImage(named: "WiFi-active-1")
                 labelView?.text = Settings.sharedInstance.getLocalizedString("RBDUO_WIFI_PROVISION")
-                labelView?.textColor = UIColor(colorLiteralRed: 186.0/255, green: 48.0/255, blue: 55.0/255, alpha: 1.0)
-                btn?.backgroundColor = UIColor(colorLiteralRed: 186.0/255, green: 48.0/255, blue: 55.0/255, alpha: 1.0)
+                labelView?.textColor = UIColor(red: 186.0/255, green: 48.0/255, blue: 55.0/255, alpha: 1.0)
+                btn?.backgroundColor = UIColor(red: 186.0/255, green: 48.0/255, blue: 55.0/255, alpha: 1.0)
                 btn?.isEnabled = true
             }
             
@@ -67,9 +67,9 @@ class MenuTableViewController: UITableViewController {
     
         let cell = tableView.dequeueReusableCell(withIdentifier: "BLEProvisionCell")
         
-        let imageView = cell?.viewWithTag(777) as! UIImageView!
-        let labelView = cell?.viewWithTag(888) as! UILabel!
-        let btn = cell?.viewWithTag(999) as! UIButton!
+        let imageView = cell?.viewWithTag(777) as? UIImageView
+        let labelView = cell?.viewWithTag(888) as? UILabel
+        let btn = cell?.viewWithTag(999) as? UIButton
 
         
         if (!ConnectionManager.shareInstance.bleEnabled) {
@@ -84,8 +84,8 @@ class MenuTableViewController: UITableViewController {
             imageView?.image = UIImage(named: "BLE-active")
             labelView?.text = Settings.sharedInstance.getLocalizedString("RBDUO_BLE_PROVISION")
 
-            labelView?.textColor = UIColor(colorLiteralRed: 186.0/255, green: 48.0/255, blue: 55.0/255, alpha: 1.0)
-            btn?.backgroundColor = UIColor(colorLiteralRed: 186.0/255, green: 48.0/255, blue: 55.0/255, alpha: 1.0)
+            labelView?.textColor = UIColor(red: 186.0/255, green: 48.0/255, blue: 55.0/255, alpha: 1.0)
+            btn?.backgroundColor = UIColor(red: 186.0/255, green: 48.0/255, blue: 55.0/255, alpha: 1.0)
             btn?.isEnabled = true
         }
         

@@ -35,7 +35,7 @@ class DeviceInfo: NSObject {
             releaseVer!.append(Character(UnicodeScalar(resultBytes[Int(i)])))
         }
         super.init()
-        print("Device Id: \(deviceId) bootloader: \(bootloadVer) systemPart1: \(systemPart1) systempart2: \(systemPart2) userPart: \(userPart) version: \(releaseVer)")
+        print("Device Id: \(String(describing: deviceId)) bootloader: \(bootloadVer) systemPart1: \(systemPart1) systempart2: \(systemPart2) userPart: \(userPart) version: \(String(describing: releaseVer))")
         
     }
     

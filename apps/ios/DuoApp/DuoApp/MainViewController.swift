@@ -73,7 +73,7 @@ class MainViewController: UITableViewController {
 //
 //    }
     
-    func statusChange() {
+    @objc func statusChange() {
         if (!cm.bleEnabled) {
             DispatchQueue.main.async(execute: { 
                 self.navigationController?.popToRootViewController(animated: true)
@@ -82,7 +82,7 @@ class MainViewController: UITableViewController {
         
     }
     
-    func rescan() {
+    @objc func rescan() {
         let uuid = CBUUID.init(string:ble.DuoServiceUUID)
         duos.removeAll()
         self.tableView.reloadData()
@@ -136,7 +136,7 @@ class MainViewController: UITableViewController {
     
     
     // Notification Handler
-    func duoDiscovered(_ notification:Notification) {
+    @objc func duoDiscovered(_ notification:Notification) {
         print("Discovered")
         let peripheral = notification.userInfo!["peripheral"] as! CBPeripheral
         duos += [peripheral]
@@ -147,7 +147,7 @@ class MainViewController: UITableViewController {
 
     }
     
-    func bleDisconnected() {
+    @objc func bleDisconnected() {
         print("BLE Event")
         if !viewIsLoaded { // let viewdidappear take care
             return
@@ -159,14 +159,14 @@ class MainViewController: UITableViewController {
         
     }
     
-    func bleScanComplete() {
+    @objc func bleScanComplete() {
         print("Finish Scanning")
         if (self.refreshControl != nil) {
             self.refreshControl?.endRefreshing()
         }
     }
     
-    func bleConnected() {
+    @objc func bleConnected() {
    //     SVProgressHUD.dismiss()
         self.performSegue(withIdentifier: "DuoBLEProvisionSegue", sender: nil)
     }

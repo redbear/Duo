@@ -69,8 +69,8 @@ class DuoBLEProvisionTableViewController: UITableViewController, UIPopoverPresen
         self.refreshControl?.addTarget(self, action: #selector(scanAP), for: .valueChanged)
 
         // popup menu
-        let img = UIImage(named: "menu")!.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
-        let rightBarButtonItem = UIBarButtonItem(image: img, style: UIBarButtonItemStyle.plain, target: self, action: #selector(openMenu))
+        let img = UIImage(named: "menu")!.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+        let rightBarButtonItem = UIBarButtonItem(image: img, style: UIBarButtonItem.Style.plain, target: self, action: #selector(openMenu))
         self.navigationItem.rightBarButtonItem =  rightBarButtonItem
         NotificationCenter.default.addObserver(self, selector: #selector(statusChange), name: NSNotification.Name(rawValue: "BLE_STATUS_CHANGED"), object: nil)
         
@@ -98,7 +98,7 @@ class DuoBLEProvisionTableViewController: UITableViewController, UIPopoverPresen
         super.viewDidDisappear(animated)
     }
     
-    func statusChange() {
+    @objc func statusChange() {
         if (!ConnectionManager.shareInstance.bleEnabled) {
             DispatchQueue.main.async(execute: { 
                 self.navigationController?.popToRootViewController(animated: true)
@@ -106,71 +106,71 @@ class DuoBLEProvisionTableViewController: UITableViewController, UIPopoverPresen
         }
     }
     
-    func scanAP() {
+    @objc func scanAP() {
         oddRow = false
         duo.duoAPScan()
     }
     
-    func getDeviceId() {
+    @objc func getDeviceId() {
         duo.getDeviceId()
     }
     
     // MARK: -notification
     
-    func duoDisconnected() {
+    @objc func duoDisconnected() {
         self.navigationController?.dismiss(animated: true, completion: nil)
     }
     
-    func onGetDeviceId(_ notification:Notification) {
-        print("\(notification.userInfo)")
+    @objc func onGetDeviceId(_ notification:Notification) {
+        print("\(String(describing: notification.userInfo))")
         deviceInfo = DeviceInfo.init(data:notification.userInfo!["data"] as! Data)
         duo.duoAPScan()
 
     }
     
-    func addAP(_ notification:Notification) {
+    @objc func addAP(_ notification:Notification) {
         
         let ap:AccessPoint = AccessPoint.init(data:notification.userInfo!["data"] as! Data)
         aps += [ap]
     }
     
-    func startScan() {
+    @objc func startScan() {
         
         aps.removeAll()
         SVProgressHUD.show(withStatus: Settings.sharedInstance.getLocalizedString("RBDUO_SCANNING_WIFI_NETWORK"))
     }
     
-    func completeScan() {
+    @objc func completeScan() {
         self.tableView.reloadData()
         SVProgressHUD.dismiss()
         self.refreshControl?.endRefreshing()
     }
     
-    func completeConfig() {
+    @objc func completeConfig() {
         duo.apConnect()
     }
     
     
-    func apConnecting() {
+    @objc func apConnecting() {
         
     }
     
-    func apConnected() {
+    @objc func apConnected() {
         SVProgressHUD.dismiss()
     }
     
-    func finishProvisioning(_ notification:Notification) {
+    @objc func finishProvisioning(_ notification:Notification) {
         let duoIpInfo = DuoIpInfo(data:notification.userInfo!["data"] as! Data)
         
         let alert = UIAlertController(title: "Duo", message: duoIpInfo.printString(), preferredStyle:.alert)
-        alert.addAction(UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_OK"), style: UIAlertActionStyle.default, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_OK"), style: UIAlertAction.Style.default, handler: { (action) -> Void in
                 self.navigationController?.popToRootViewController(animated: true)
             
             }))
         self.present(alert, animated: true, completion: nil)
     }
     
-    func apConnectFail() {
+    @objc func apConnectFail() {
         SVProgressHUD.showError(withStatus: Settings.sharedInstance.getLocalizedString("CANNOT_CONNECT_AP"))
         self.navigationController?.popToRootViewController(animated: true)
         
@@ -234,7 +234,7 @@ class DuoBLEProvisionTableViewController: UITableViewController, UIPopoverPresen
                 ssidTextField = textField
             });
             
-            self.ssidAlertAction = UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_OK"), style: UIAlertActionStyle.default, handler: { (action) -> Void in
+            let ssidAlertAction = UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_OK"), style: UIAlertAction.Style.default, handler: { (action) -> Void in
                 
                 
                 func secHandler(_ action:UIAlertAction) {
@@ -259,7 +259,7 @@ class DuoBLEProvisionTableViewController: UITableViewController, UIPopoverPresen
                         
                         let passAlert = UIAlertController(title: Settings.sharedInstance.getLocalizedString("ENTER_WIFI_CREDENTIAL"), message: Settings.sharedInstance.getLocalizedString("ENTER_WIFI_CREDENTIAL_MSG"), preferredStyle:.alert)
                         
-                        self.passAlertAction = UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_OK"), style: UIAlertActionStyle.default, handler: { (action) -> Void in
+                        let passAlertAction = UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_OK"), style: UIAlertAction.Style.default, handler: { (action) -> Void in
                             
                             let ssid = ssidTextField?.text
                             let password =  passwordTextField?.text
@@ -275,14 +275,14 @@ class DuoBLEProvisionTableViewController: UITableViewController, UIPopoverPresen
                             passwordTextField = textField
                         })
                         
-                        self.passAlertAction?.isEnabled = false
-                        
-                        passAlert.addAction(UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_CANCEL"), style: UIAlertActionStyle.cancel, handler: { (action) -> Void in
+                        passAlert.addAction(UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_CANCEL"), style: UIAlertAction.Style.cancel, handler: { (action) -> Void in
                             SVProgressHUD.dismiss()
                         }))
-                        
-                        passAlert.addAction(self.passAlertAction!)
-                        
+
+                        passAlertAction.isEnabled = false
+                        passAlert.addAction(passAlertAction)
+                        self.passAlertAction = passAlertAction
+
                         
                        
                         self.present(passAlert, animated: true, completion: nil)
@@ -311,10 +311,11 @@ class DuoBLEProvisionTableViewController: UITableViewController, UIPopoverPresen
                 //                SVProgressHUD.showWithStatus(Settings.sharedInstance.getLocalizedString("AP_CONNECTING") + "\(ap.ssid)...")
                 //                self.duo.setAPInfo(ap, password: password!)
             })
-            self.ssidAlertAction!.isEnabled = false
-            alert.addAction(self.ssidAlertAction!)
+            ssidAlertAction.isEnabled = false
+            alert.addAction(ssidAlertAction)
+            self.ssidAlertAction = ssidAlertAction
             
-            alert.addAction(UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_CANCEL"), style: UIAlertActionStyle.cancel, handler: { (action) -> Void in
+            alert.addAction(UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_CANCEL"), style: UIAlertAction.Style.cancel, handler: { (action) -> Void in
                 SVProgressHUD.dismiss()
             }))
 
@@ -336,21 +337,22 @@ class DuoBLEProvisionTableViewController: UITableViewController, UIPopoverPresen
                 inputTextField = textField
             })
             
-            self.passAlertAction  = UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_OK"), style: UIAlertActionStyle.default, handler: { (action) -> Void in
+            let passAlertAction  = UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_OK"), style: UIAlertAction.Style.default, handler: { (action) -> Void in
                 
                 let password = inputTextField?.text
                 SVProgressHUD.show(withStatus: Settings.sharedInstance.getLocalizedString("AP_CONNECTING") + "\(ap.ssid)...")
                 self.duo.setAPInfo(ap, password: password!)
             })
             
-            alert.addAction(UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_CANCEL"), style: UIAlertActionStyle.default, handler: { (action) -> Void in
+            alert.addAction(UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_CANCEL"), style: UIAlertAction.Style.default, handler: { (action) -> Void in
                 SVProgressHUD.dismiss()
             }))
 
 
             
-            self.passAlertAction?.isEnabled = false
-            alert.addAction(self.passAlertAction!)
+            passAlertAction.isEnabled = false
+            alert.addAction(passAlertAction)
+            self.passAlertAction = passAlertAction
             
             self.present(alert, animated: true, completion: nil)
             
@@ -364,20 +366,20 @@ class DuoBLEProvisionTableViewController: UITableViewController, UIPopoverPresen
     
     
     // MARK: - menu
-    func openMenu() {
+    @objc func openMenu() {
         
         self.performSegue(withIdentifier: "menuSegue", sender: nil)
     }
     
     // MARK: - UITextField
-    func ssidTextChange(_ sender:UITextField) {
+    @objc func ssidTextChange(_ sender:UITextField) {
    
-        self.ssidAlertAction?.isEnabled = (sender.text?.characters.count > 0)
+        self.ssidAlertAction?.isEnabled = (sender.text?.count > 0)
 
     }
     
-    func passTextChange(_ sender:UITextField) {
-         self.passAlertAction?.isEnabled = (sender.text?.characters.count >= 8)
+    @objc func passTextChange(_ sender:UITextField) {
+         self.passAlertAction?.isEnabled = (sender.text?.count >= 8)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -399,7 +401,7 @@ class DuoBLEProvisionTableViewController: UITableViewController, UIPopoverPresen
     // MARK: - popupMenuDelegate
     func deviceIdDidTap() {
         let alert = UIAlertController(title: "Device ID", message: "\(self.deviceInfo!.deviceId!.lowercased())", preferredStyle:.alert)
-        alert.addAction(UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_OK"), style: UIAlertActionStyle.default, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_OK"), style: UIAlertAction.Style.default, handler: { (action) -> Void in
         }))
         self.present(alert, animated: true, completion: nil)
 
@@ -407,7 +409,7 @@ class DuoBLEProvisionTableViewController: UITableViewController, UIPopoverPresen
     
     func versionDidTap() {
         let alert = UIAlertController(title: "Firmware version", message: "Released Version: \(self.deviceInfo!.releaseVer!)\nBootloader: \(self.deviceInfo!.bootloadVer)\nSystem Part 1: \(self.deviceInfo!.systemPart1)\nSystem Part 2: \(self.deviceInfo!.systemPart2)\nUser Part: \(self.deviceInfo!.userPart) ", preferredStyle:.alert)
-        alert.addAction(UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_OK"), style: UIAlertActionStyle.default, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title: Settings.sharedInstance.getLocalizedString("RBDUO_OK"), style: UIAlertAction.Style.default, handler: { (action) -> Void in
         }))
         self.present(alert, animated: true, completion: nil)
 
